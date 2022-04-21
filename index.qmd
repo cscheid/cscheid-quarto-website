@@ -1,0 +1,7 @@
+---
+title: my website
+---
+
+At some point this will be fancy.
+
+* [Chapman stick lesson notes](notes/music/chapman-stick/lessons/)

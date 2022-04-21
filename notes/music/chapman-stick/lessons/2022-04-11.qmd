@@ -1,0 +1,101 @@
+---
+categories:
+  - practice 
+---
+
+## Practicing I IV V.
+
+I still have trouble figuring out how the names relate to the
+positions:
+
+### Root position ("0th inversion")
+
+- root on bottom: 1, 3, 5
+
+The chord stacks as major third then minor third.
+
+### ("Second position") First inversion
+
+- third on bottom: 3, 5, 1
+- this is the double stop on the two high strings
+
+### chord stacks as minor third then fourth
+
+
+### ("Third position") Second inversion
+
+- fifth on bottom: 5, 1, 3
+
+The chord stacks as fourth then major third
+
+## I IV V Progression
+
+The obvious voice leading "walks backwards" the names of the
+positions, it seems:
+
+### starting on root position
+
+root position -> second inversion -> first inversion -> root position
+
+This doesn't move the hand much, but I don't think it sounds _that_
+good. 
+
+I think it's because the string the moves the most is the middle
+string:
+
+- The high string goes   G A G G
+- The middle string goes E F D E
+- The low string goes    C C B C
+
+So the string that moves the most (which I guess implies the melody)
+resolves to E, which is weird.
+
+But if we instead played the last I in second inversion, then the
+middle string goes E F D C, which sounds a lot nicer
+
+
+### starting on first inversion
+
+first inversion -> root position -> second inversion -> first inversion
+
+### starting on second inversion
+
+second inversion -> first inversion -> root -> second
+
+## I IV IV voice leading
+
+But it seems that I can get nicer voicings a slightly different way.
+
+So it seems that things sound nice if I either pick the highest or the
+lowest string to write a "melody", and then harmonize around it.
+
+So this means I really need to know by heart which chords have which
+notes in which position so I can naturally come up with the voicing.
+
+For example, I can do
+
+I -> IV -> V -> I
+
+second inversion -> first inversion -> second inversion -> first
+inversion
+
+by writing the "melody" E F B C and then harmonizing. That sounds good
+too.
+
+Or we can do G A B C; root -> second -> second -> first
+
+But then we can also do I ii V I instead, which sounds interesting as
+well, etc etc
+
+
+## Playing with three fingers
+
+Ran out of time, but I tried playing the right-hand side of Bach's
+Jesus, Joy of Man's Desiring and I'm struggling in some simple
+positions. I should ask Greg about this.
+
+2022-04-20 update: I kind of figured this out; the trick is that
+when you learn the scales across all positions, then when the song
+doesn't go exactly across a scale, you pick the last "good" finger and
+do the next scale assuming the previous finger is in a natural position. 
+You end up moving your hands more but it totally works out.

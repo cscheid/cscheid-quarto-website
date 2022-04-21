@@ -1,0 +1,18 @@
+---
+title: Chapman Stick lesson notes
+listing: 
+  id: sample-listings
+  categories: true
+  contents: "*.qmd"
+---
+
+## Hello?
+
+Where's the listings?
+
+::: {#sample-listings}
+:::
+
+Now?
+
+
