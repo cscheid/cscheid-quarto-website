@@ -1,0 +1,14 @@
+---
+title: "Karplus-Strong Plucked-String Synthesis"
+format: html
+---
+
+<div id="piano"></div>
+
+```{ojs}
+import { init } from "/src/audio/karplus-strong.js"
+import { init as initPiano } from "/src/audio/piano.js"
+
+initPiano();
+init();
+```

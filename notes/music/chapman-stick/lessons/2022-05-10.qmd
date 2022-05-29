@@ -1,0 +1,7 @@
+---
+title: "2022-05-10"
+categories:
+  - practice
+---
+
+I think I got the tone to be improved. The trick was to lower the tone dial on the _bass_, in addition to raising the tone on the melody. Now the clean output sounds distinct from one another, and I can take it from there.

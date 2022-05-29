@@ -1,18 +1,11 @@
 ---
 title: Chapman Stick lesson notes
-listing: 
-  id: sample-listings
+listing:
+  type: table
   categories: true
   contents: "*.qmd"
+  fields:
+    - title
 ---
-
-## Hello?
-
-Where's the listings?
-
-::: {#sample-listings}
-:::
-
-Now?
 
 
