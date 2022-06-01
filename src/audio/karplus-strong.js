@@ -4,7 +4,9 @@ import { makePlayer } from "./audio.js";
 
 import { notes } from "./notes.js";
 
-export function karplusStrong(sampleRate, pitchInHertz, duration) {
+import * as d3 from "https://cdn.skypack.dev/d3";
+
+export function karplusStrong(sampleRate, pitchInHertz, duration, amplitude = 1) {
   const period = 1 / pitchInHertz;
 
   const circularBufferSize = sampleRate * period;
@@ -21,7 +23,7 @@ export function karplusStrong(sampleRate, pitchInHertz, duration) {
 
   let circularBufferCursor = 0;
   for (let i = 0; i < circularBuffer.length; ++i) {
-    const r = Math.random() < 0.5 ? -1 : 1;
+    const r = Math.random() < 0.5 ? -amplitude : amplitude;
     circularBuffer[i] = r;
   }
   for (let i = 0; i < outputBuffer.length; ++i) {
@@ -46,12 +48,25 @@ export function karplusStrong(sampleRate, pitchInHertz, duration) {
 export function init()
 {
   initAll();
-  makePiano((note) => {
+  makePiano((note, d, el) => {
+    d3.select(el)
+      .attr("fill", "steelblue")
+      .interrupt()
+      .transition()
+      .duration(3000)
+      .ease(d3.easeExpOut)
+      .attr("fill", d => {
+        if (d.kind === "white") {
+          return "white";
+        } else {
+          return "black";
+        }
+      });
     if (window.player === undefined) {
       let player = makePlayer();
       window.player = player;
     }
-    const track = karplusStrong(44100, notes[note], 3);
+    const track = karplusStrong(44100, notes[note], 3, 0.5);
     player.playTrack(track);
   });
 }

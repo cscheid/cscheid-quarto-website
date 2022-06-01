@@ -147,7 +147,7 @@ export function makePiano(ondown) {
   d3.select("#piano")
     .selectAll("rect")
     .on("mousedown", (e, d) => {
-      ondown(d.note);
+      ondown(d.note, d, e.target);
     });
 
   document.onkeydown = (e) => {
@@ -155,6 +155,11 @@ export function makePiano(ondown) {
     if (miniPianoKeys[k] === undefined) {
       return;
     }
-    ondown(miniPianoKeys[k]);
+    const node = d3.select("#piano")
+      .selectAll("rect")
+      .filter(d => d.note === miniPianoKeys[k])
+      .node();
+    
+    ondown(miniPianoKeys[k], node.__data__, node);
   };
 }

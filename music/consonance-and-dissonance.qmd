@@ -1,0 +1,284 @@
+---
+title: "Consonance and Dissonance"
+format: html
+bibliography:
+  - music.bib
+---
+
+I recently learned that there's now a really good theory for why some musical intervals sound consonant ("nice"), and some sound dissonant ("rough", "out of tune"). This theory explains a lot of music, is backed by good experiments, is simple enough to explain in a single article, and was only figured out about 60 years ago.
+
+Incredibly, this theory _also_ explains both why Pythagoras thought music had to do with simple fractions, why western music likes 12-tone scales so much, and why _other_ musical cultures choose other scales!
+
+I'm talking about Plomp-Levelt curves [@plomp1965tonal].
+
+## On terminology
+
+In this article I'm using **consonance** to mean the perceptual notion: does this particular sound feel "smooth" or "rough"? Other definitions are also useful [see @sethares2005tuning, chap. 3], especially for writing music within a particular culture! But I'm interested in the "perceptual" notion because, for example, it will eventually let us say interesting things about the other notions.
+
+## Consonance and dissonance in "pure" sounds
+
+In math, there's a famous way to decompose (or "analyze", in signal-processingese) complicated sounds into simple sounds: that's "Fourier analysis". Sounds are waves, and you can think of complicated sounds as a sum of simple waves. Then, if we understand what happens with simple sounds, we use this understanding as a building block to understand what happens with complex sounds.
+
+The simplest wave is a sine curve with a given frequency and phase. But: is this math relevant to our how we _hear_ sounds?
+
+It's an incredible biological fact about your ears that yes, ears do Fourier analysis! Specifically, your ear has a part called a _basilar membrane_, and it decomposes a sound into frequencies. Specifically, the basilar membrane makes it so different frequencies are sent to different positions in your cochlea.
+
+### Critical bandwidth
+
+However, the basilar membrane is not perfect, and nearby frequencies bleed into one another. For each position in the cochlea, there is a range of nearby frequencies that activate it: some more strongly, some less so. The "size" of this region is called the "critical bandwidth", and it looks like this:
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  x: { label: "Frequency", type: "log", domain: [100, 10000] },
+  y: { label: "Critical Bandwidth", type: "log", domain: [50, 1000] },
+  marks: [ Plot.line(crit, {x: "x", y: "y"}), 
+         // Plot.line(wholeTone, {x: "x", y: "y"}) 
+         ]
+})
+```
+
+Here's how you read this plot. The part of the cochlea that receives 100 Hz (Hz, "Hertz" is the frequency of "one per second". The higher the number, the faster the wave vibrates) also is activated by frequencies from 50 Hz to 150 Hz (100Hz is the "width" of the "band" it perceives, the "bandwidth"). At 1KHz, the bandwidth is closer to 150Hz, and at 3KHz and higher, it becomes around 12% of the base frequency.
+
+## Measuring consonance and dissonance of simple waves
+
+The breakthrough experiment that Plomp and Levelt did in 1965 was to ask people, in a controlled environment, whether pairs of sine waves sounded consonant or dissonant. They tried a number of different base frequencies and intervals (differences between the frequencies). They found that sine waves that are very close to one another sound consonant. So do sound waves that are very apart from one another. But two sine waves that are _kind of close_ to each other sound rough. And this distance tends to match the critical bandwidth along the basilar membrane! So, for pure sine waves, the curve looks like this.
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  x: {
+    label: "Fraction of critical bandwidth →"
+  },
+  y: {
+    label: "↑ Dissonance",
+    grid: true
+  },
+
+  marks: [
+    Plot.line(diss, {x: "x", y: "y"}),
+  ]
+})
+```
+
+## "Cool trick. But consonance and dissonance are about music!"
+
+That's exactly right. And music is made with musical instruments. So we need to understand how sound comes out of musical instruments.
+
+When you pluck a guitar string, you hear a specific pitch. The bottom string in a guitar is often tuned to "E2", which is associated with the frequency of 82.4Hz. But that's not the only frequency the guitar string sound contains. Guitar strings are "harmonic". This means that when the lowest frequency they sound is X, they also make a sound at _positive integer multiples_ of that frequency. They make sounds at 2X the frequency, 3X, 4X, and so on. You're so used to hearing guitar sounds (and "harmonic instruments" more generally, _especially_ if you were raised in Western Europe or North American musical cultures. More on that later), that you don't realize this.
+
+The practical consequence is that the sound you thought was simple is actually fairly complicated. But, because we have Fourier analysis as a tool (and because miraculously your ear does Fourier analysis too!) then Fourier analysis can help us decompose complex sounds. So, to study the consonance or dissonance of guitar sounds, we don't compare one pure wave to another. Instead, we compare the sum of the frequencies made by one string to the sum of the frequencies made by the other. Specifically, we add the sounds of the two strings together. Then, for every pair of resulting frequencies, we compute the dissonance using the formula from the charts above. The "total dissonance" is just the sum of the dissonances for every pair.
+
+Here is the dissonance curve for a simulated guitar sound of E3 (the E you sound with the fourth string of your guitar on the second fret).
+
+```{ojs}
+//| echo: false
+plompLevelt(842, makeHarmonicTone(6, 0.75))
+```
+
+The base frequency for E3 is 842 Hz. If you're a musician, you'll notice right away that E4, an octave away at 1684Hz, sounds consonant. That's really cool, and it's actually not as obvious as it appears. Although guitars have consonant octaves, other instruments don't necessarily! If you're a musician, you might be surprised to know that (for example), pure sine waves a minor ninth away from one another don't sound dissonant, while they definitely do in the guitar (as you can also see in the chart by looking at 1784Hz).
+
+## There's no consonance without timbre
+
+This is both a simple idea but also very deep: perceptually speaking, whether two notes sound consonant or dissonant depends on the "timbre" of the instrument that played the note.
+
+The "timbre" of an instrument is a hard thing to pin down, but we usually use the word to mean the difference between the sound of a piano's C4 and a clarinet's C4. In this simplified setting here, we will use timbre to mean "the set of additional waves produced by an instrument, together with the amplitude of each of those waves". If you've read some of the literature, you might have come across the phrase "overtone series", a more specific term for this aspect of timbre.
+
+The valleys in the curve above indicate intervals that sound particularly consonant. So if you're looking to invent a system to play notes that tend to sound nice together, you will naturally end up with something that makes you choose those valleys. For "harmonic instruments" (instruments that produce harmonic overtones), those valleys correspond to many of the notes in the 12-tone scale, specifically under [just intonation](https://en.wikipedia.org/wiki/Just_intonation). So now we have a theory, math, and experiments that show how the design of musical scales is intimately connected to the way in the instruments generate sounds.
+
+## Clarinet, and other timbres
+
+This theory predicts a number of surprising things. For example, although wind instruments are harmonic, the overtone series of some wind instruments skips many of the harmonics. Specifically, wind instruments with closed tubes have _cancelling waves_ (because the wave bounces back at the end of the tube). As a result, they only emit overtones with **odd** integer multiples of the frequency. 
+
+To begin with, this makes them sound different from open-tube wind instruments. A clarinet is a closed-tube wind instrument, and so it sounds markedly different from a saxophone (which is open-tube and has even harmonic overtones). The same applies to the sound difference between flutes (open-tube) and pan flutes (closed-tube).
+
+But in addition to _sounding_ different, clarinets also prefer very different intervals to pianos (that part was personally surprising to me.) Here's the Plomp-Levelt curves for the clarinet, based on the overtones obtained by [Bryan Suits](https://pages.mtu.edu/~suits/clarinet.html).
+
+```{ojs}
+//| echo: false
+plompLevelt(1000, clarinetData, 4.1)
+```
+
+In this chart, I'm showing frequencies from 1KHz to 4KHz, so _two_ octaves up. The results here are, if you'll forgive me, _wild_. This chart predicts that clarinet intervals sound more consonant at the _twelfth_ note of the traditional western diatonic scale than at the _octave itself_. There's other wild features too, such as the absence of an especially dissonant major seventh or ninth! Working from the theory, this all happens because the clarinet lacks the second harmonic (which is an octave up from the base). The second harmonic from the low note, then, is not there to clash with the base frequency of the high ninth note. 
+
+I honestly didn't believe this at first. But then I wrote a simple synthesizer for clarinet sounds:
+
+- [Piano sounds](https://cscheid.net/static/synth/piano.mp3), fifth - **octave** - twelfth - **fifteenth**
+- [Clarinet sounds](https://cscheid.net/static/synth/clarinet.mp3), fifth - octave - **twelfth** - fifteenth
+
+I marked in bold what, to my ears, are the most consonant intervals in the sequences above. It's not a subtle effect either!
+
+So, it seems clear to me that a culture that only played closed-tube harmonic instruments could easily end up with weird scales that revolved around twelfth intervals being the "pseudo-octave". It just sounds better than the octave! That's bananas. 
+
+## Beyond harmonic instruments
+
+More shockingly, this is only the beginning of this story. We don't need to come up with imaginary cultures. Non-western cultures play instruments that want different scales, and that's why they use them!
+
+TBF: Thai xylophones, gamelans
+
+# Appendix: code
+
+```{ojs}
+xLog = d3.range(1, 150).map(x => Math.pow(2, x/4))
+```
+
+```{ojs}
+function dissonance(critBandwidthFraction)
+{
+  const x = critBandwidthFraction;
+  const t = 4 * Math.abs(x);
+  return t * Math.exp(1 - t);
+}
+```
+
+```{ojs}
+wholeTone = xLog.map(x => ({x, y: x * (Math.pow(2, 2/12) - 1)}))
+```
+
+```{ojs}
+diss = d3.range(-2, 2, 0.01).map(x => ({ x, y: dissonance(x) }))
+```
+
+```{ojs}
+// empirically reproducing the curve from Figure 3.4 in Sethares's Tuning, Timbre, Spectrum, Scale
+function criticalBandwidth(frequency)
+{
+  const x = frequency;
+  
+  const wholeTone = Math.pow(2, 2/12) - 1; // assume equal temperament for simplicity
+  const start = 100;
+  const xp = x - start;
+  const ramp = 500;
+  return start + xp * xp * wholeTone / (xp + ramp);
+}
+```
+
+```{ojs}
+crit = xLog.map(x => ({x, y: criticalBandwidth(x)}))
+```
+
+# Compound Tones
+
+```{ojs}
+function makeCompoundTone(baseFreq, overtones)
+{
+  return overtones.map(({ tone, amplitude }) => ({ tone: baseFreq * tone, amplitude }));
+}
+```
+
+```{ojs}
+function totalDissonance(tone1, tone2)
+{
+  let result = 0;
+  for (const { tone: ot1, amplitude: a1 } of tone1) {
+    for (const { tone: ot2, amplitude: a2 } of tone2) {
+      const low = Math.min(ot1, ot2), high = Math.max(ot1, ot2);
+      const c = criticalBandwidth(low);
+      result += dissonance((high - low) / c) * a1 * a2;
+    }
+  }
+  return result;
+}
+```
+
+## Plomp-Levelt curves, slightly adapted
+
+(You can skip this discussion if you don't know how Plomp-Levelt curves are originally constructed.)
+
+The original Plomp-Levelt curves sum the dissonance over _consecutive_ overtones on the resulting chord. 
+
+That's a fine idea, but it's a little weird when you take into account that overtones have different amplitudes. Say you have three overtones with frequencies ${tex`x, x+\epsilon, x+2\epsilon`} where the overtones are ${tex`1, 0.0001, 1`}. Should that mean you don't take the dissonances between the outer overtones into account? It seems better to me to take the sum of _all_ pairs of overtones scaled by the product of the respective amplitudes.
+
+This has the feature of making a "pure" tone have non-zero dissonance. That might be strange, but I think it's fine. If you designed a nonharmonic instrument with its first overtone being inside the critical bandwidth, then _every note, by itself would sound rough and dissonant_. That's the real lesson of the Plomp-Levelt experiments.
+
+The way to reconcile these two notions is through generalized inner products. TBF.
+
+```{ojs}
+function plompLevelt(baseFreq, overtones, high = 0)
+{
+  const step = baseFreq / 300;
+  const low = baseFreq * 0.9;
+  if (high === 0) {
+    high = baseFreq * 2.1;
+  } else {
+    high = baseFreq * high;
+  }
+    
+  const x = d3.range(low, high, step);
+  const baseTone = makeCompoundTone(baseFreq, overtones);
+  const y = x.map(v => {
+    const t1 = baseTone, t2 = makeCompoundTone(v, overtones);
+    const v1 = totalDissonance(t1, t1),
+      v2 = totalDissonance(t1, t2),
+      v3 = totalDissonance(t2, t2);
+    return {
+      x: v,
+      y: 2 * v2 - v1 - v3
+    };
+  });
+  return Plot.plot({
+    x: { label: "Frequency", domain: [low, high], type: "log" },
+    y: { label: "Dissonance" },
+    marks: [ Plot.line(y, {x: "x", y: "y"}) ]
+  });
+}
+```
+
+```{ojs}
+function makeClarinetTone(count, decay)
+{
+  // clarinets (and other closed-tube wind instruments) only have odd harmonics!
+  // this is very simplified model.
+  return d3.range(1, 2 * count, 2).map(c => ({ tone: c, amplitude: Math.pow(decay, c-1)}));
+}
+```
+
+```{ojs}
+clarinetData =[{tone: 1, amplitude: 1}, {tone: 3, amplitude: 0.75}, {tone: 5, amplitude: 0.5}, {tone: 7, amplitude: 0.14}, {tone: 9, amplitude: 0.5}, {tone: 11, amplitude: 0.12}, {tone: 13, amplitude: 0.17}]
+```
+
+```{ojs}
+function makeHarmonicTone(count, decay)
+{
+  return d3.range(1, count + 1).map(c => ({ tone: c, amplitude: Math.pow(decay, c-1)}));
+}
+```
+
+```{ojs}
+plompLevelt(1000, makeHarmonicTone(toneCount, decay))
+```
+
+```{ojs}
+//| echo: false
+viewof toneCount = Inputs.range([1, 10], { step: 1, value: 3, label: "Overtone count"} )
+```
+
+```{ojs}
+//| echo: false
+viewof decay = Inputs.range([0, 1], { step: 0.01, value: 0.9, label: "Overtone decay"} )
+```
+
+```{ojs}
+plompLevelt(440, makeClarinetTone(toneCount, 0.9))
+```
+
+```{ojs}
+makeClarinetTone(5, 0.9)
+```
+
+```{ojs}
+Math.pow(0.9, -3)
+```
+
+```{ojs}
+plompLevelt(1000, [{tone: 1, amplitude: 1}, {tone: 2.75, amplitude: 1}, {tone: 5.4, amplitude: 1}, {tone: 8.9, amplitude: 1}])
+```
+
+```{ojs}
+plompLevelt(1000, makeHarmonicTone(7, 0.9), 3.1)
+```
+
+```{ojs}
+totalDissonance(makeCompoundTone(1000, clarinetData), makeCompoundTone(1000 * (4/3), clarinetData))
+```
+

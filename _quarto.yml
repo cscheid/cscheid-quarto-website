@@ -1,7 +1,11 @@
 project:
   type: website
   title: "cscheid-quarto-website"
-format: html
+format: 
+  html:
+    theme: 
+      - sandstone
+      - cscheid-net.scss
 
 
 

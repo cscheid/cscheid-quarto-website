@@ -1,14 +1,23 @@
 ---
 title: "Karplus-Strong Plucked-String Synthesis"
 format: html
+bibliography:
+  - music.bib
 ---
 
 <div id="piano"></div>
 
 ```{ojs}
+//| echo: false
+//| output: false
 import { init } from "/src/audio/karplus-strong.js"
 import { init as initPiano } from "/src/audio/piano.js"
 
 initPiano();
 init();
 ```
+
+Strings in stringed instruments make _harmonic_ sounds: each string produces not only a base frequency but a mix of sounds of different frequencies. A "harmonic" sound means simply that the frequencies of such a sound are always integer multiples of the base frequency. Typical western music features predominantly harmonic sounds, and such harmonic sounds account for much of western music's notion of [consonance and dissonance](consonance-and-dissonance.qmd). So if we want to synthesize musical instruments that can be used to create western-sounding music, we better be able to create sounds with lots of harmonic tones.
+
+A plucking or hammering sound starts percussive and non-harmonic, but quickly resolves into a base frequency and lots of harmonic overtones. The higher the frequency, the faster these harmonics decay, and on long sustains we're left with only the low harmonics. Modeling this on slow computers used to be a significant challenge, until in 1983 Karplus and Strong devised a very simple method that sounds great to this day [@karplus1983digital].
+

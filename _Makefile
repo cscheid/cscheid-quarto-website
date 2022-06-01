@@ -1,0 +1,3 @@
+all:
+	quarto render
+	rsync -avzh `pwd`/_site cscheid@cscheid.net:/home/cscheid/web/static/

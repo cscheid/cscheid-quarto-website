@@ -1,0 +1,6 @@
+---
+title: Music
+listing:
+  contents: "*.qmd"
+  type: table
+---
