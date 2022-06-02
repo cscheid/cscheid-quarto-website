@@ -1,0 +1,92 @@
+---
+title: Seven Circles
+date: 2017-11-29
+categories: [optical-illusion]
+---
+
+The middle circle stays the same size throughout the animation.
+
+<div id="main"></div>
+
+```{ojs}
+{
+    var svg = d3.select("#main").append("svg")
+    .attr("viewBox", "0 0 600 600")
+    .attr("width", "100%").attr("height", "100%");
+    var center = svg.append("circle");
+    center.attr("r", 48) // 2-pixel margin
+        .attr("cx", 300)
+        .attr("cy", 300)
+        .attr("fill", d3.lab(50, 60, 0));
+
+    var circleData = [{
+        dx: -1,
+        dy: 0
+    }, {
+        dx: 1,
+        dy: 0
+    }, {
+        dx: -0.5,
+        dy: Math.sqrt(3)/2
+    }, {
+        dx: 0.5,
+        dy: Math.sqrt(3)/2
+    }, {
+        dx: -0.5,
+        dy: -Math.sqrt(3)/2
+    }, {
+        dx: 0.5,
+        dy: -Math.sqrt(3)/2
+    }];
+
+    var circles = svg.append("g")
+            .selectAll("circle")
+            .data(circleData)
+            .enter()
+            .append("circle");
+
+    var xScaleSmall = d3.scaleLinear().domain([-1, 1]).range([200, 400]);
+    var yScaleSmall = d3.scaleLinear().domain([-1, 1]).range([400, 200]);
+    var xScaleBig = d3.scaleLinear().domain([-1, 1]).range([120, 420]);
+    var yScaleBig = d3.scaleLinear().domain([-1, 1]).range([420, 120]);
+
+    circles.attr("cx", d => xScaleSmall(d.dx))
+        .attr("cy", d => yScaleSmall(d.dy))
+        .attr("r", 48)
+        .attr("fill", d3.lab(50, -60, 0));
+
+    function cycleBig() {
+        center.transition()
+            .duration(1000)
+            .attr("cx", 270)
+            .attr("cy", 270)
+        ;
+        
+        circles.transition()
+            .duration(1000)
+            .attr("cx", d => xScaleBig(d.dx))
+            .attr("cy", d => yScaleBig(d.dy))
+            .attr("r", 68)
+            .attr("fill", d3.lab(50, -60, 0))
+            .on("end", cycleSmall);
+    }
+
+    function cycleSmall() {
+        center.transition()
+            .duration(1000)
+            .attr("cx", 300)
+            .attr("cy", 300);
+
+        circles.transition()
+            .duration(1000)
+            .attr("cx", d => xScaleSmall(d.dx))
+            .attr("cy", d => yScaleSmall(d.dy))
+            .attr("r", 48)
+            .attr("fill", d3.lab(50, -60, 0))
+            .on("end", cycleBig);
+    }
+
+    cycleBig();
+
+}
+```

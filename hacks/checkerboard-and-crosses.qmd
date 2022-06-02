@@ -1,0 +1,111 @@
+---
+title: Checkerboard and Crosses
+date: 2017-12-05
+categories: [optical-illusion]
+---
+
+The checkerboard stays straight throughout the animation.
+
+<div id="main"></div>
+
+```{ojs}
+{
+    var svg = d3.select("#main").append("svg").attr("width", 600).attr("height", 800).append("g");
+
+    svg.attr("transform", "translate(0,0)");
+    function cycleScroll() {
+        svg.transition().duration(1000)
+            .attr("transform", "translate(0, 200)")
+            .transition().duration(1000)
+            .attr("transform", "translate(0,0)")
+            .on("end", cycleScroll);
+    }
+    cycleScroll();       
+
+    function roundUp(x) {
+        return ~~(x + 0.5);
+    };
+
+    var squaresData = [];
+    var xScale = d3.scaleLinear().domain([0,12]).range([0, 600]);
+    var yScale = d3.scaleLinear().domain([0,12]).range([600, 0]);
+    for (var i=0; i<12; ++i) {
+        for (var j=1; j<12; ++j) {
+            squaresData.push({
+                x: i, y: j,
+                color: (i ^ j) & 1
+            });
+        }
+    }
+    var crossesData = [];
+    for (i=1; i<12; ++i) {
+        for (j=1; j<11; ++j) {
+            var c = i + j;
+            var vs = [0, 1, 0, 1, 1, 0, 1, 0];
+            var vs2 = [0, 0, 1, 1];
+            crossesData.push({
+                x: i, y: j,
+                color_1: vs[c % 8],
+                color_2: (i ^ j) & 1,
+                color_3: Math.random() > 0.5 ? 1 : 0,
+                color_4: vs2[c % 4]
+            });
+        }
+    }
+
+    svg.append("g")
+        .selectAll("rect")
+        .data(squaresData)
+        .enter()
+        .append("rect")
+        .attr("x", d => ~~xScale(d.x))
+        .attr("y", d => ~~yScale(d.y))
+        .attr("width", roundUp(xScale(1) - xScale(0)))
+        .attr("height", roundUp(xScale(1) - xScale(0)))
+        .attr("fill", d => d.color ? d3.hcl(0, 0, 40) : d3.hcl(0, 0, 60));
+
+    var crossesG = svg.append("g");
+    var crosses = crossesG
+            .selectAll("path")
+            .data(crossesData)
+            .enter()
+            .append("path");
+
+    var lightCross = d3.hcl(0, 0, 100);
+    var darkCross =  d3.hcl(0, 0, 0);
+
+    crosses
+        .attr("transform", d => ("translate(" + xScale(d.x) + "," + yScale(d.y) + ")"))
+        .attr("d", "M -2,-2  l 0,-6  l 2,-2  l 2,2  l 0,6  l 6,0  l 2,2  l -2,2  l -6,0  l 0,6  l -2,2 l -2,-2  l 0,-6  l -6,0  l -2,-2 l 2,-2")
+        .attr("fill", d => !d.color_1 ? darkCross : lightCross);
+
+    function changeToAndThen(f, next) {
+        crossesG.selectAll("path")
+            .transition()
+            .delay(1000)
+            .duration(2000)
+            .attr("opacity", 0)
+            .transition()
+            .duration(10)
+            .attr("fill", f)
+            .transition()
+            .duration(2000)
+            .attr("opacity", 1)
+            .on("end", (d, i) => i === 0 ? next() : null);
+    }
+
+    function cyclePatterns() {
+        var accessors = ["color_1", "color_2", "color_3", "color_4"];
+        var fs = accessors.map((accessor, i) =>
+                            (() => changeToAndThen(d => d[accessor] ? darkCross : lightCross,
+                                                    fs[(i+1)%accessors.length])));
+        fs[0]();
+    }
+
+    cyclePatterns();
+}
+```
+
+## Acknowledgments
+
+([Source](http://bigblueboo.tumblr.com/post/81390584151/fooled-ya-brain)). Thanks, [Pete](https://twitter.com/Peter_shirley)!.

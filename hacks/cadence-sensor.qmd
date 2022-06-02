@@ -1,0 +1,28 @@
+---
+title: A JS Cadence Sensor
+categories: [signal-processing]
+date: 2022-06-02
+---
+
+At some point during the pandemic, I became suspicious about the accuracy of my [Saris H3](https://saris.com/products/h3-direct-drive-smart-trainer) cadence sensor, so I wrote my own.
+
+<script src="/src/lib/d3.v5.js"></script>
+<script src="/src/lib/dsp.js"></script>
+
+<button id="start">Start Cadence Sensor</button>
+<div>RPM: <span id="rpm-reader"></span></div>
+<div id="error-message"></div>
+
+<div id="chart1"></div>
+<div id="chart2"></div>
+<script src="cadence-sensor/main.js"></script>
+
+## How it works
+
+The algorithm is embarrassingly simple for how well it works:
+
+- Capture the time series of the accelerometer data (with a 1s half-life exponential decay),
+- compute the PCA, and extract the first principal component. You now have a 1D time series
+- Compute the FFT, and find the period with largest energy.
+
+Smartphones: supercomputer processing power, tricorder sensors. Amazing stuff.
