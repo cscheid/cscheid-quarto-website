@@ -1,0 +1,40 @@
+---
+title: Carlos Scheidegger
+---
+
+## About me
+
+Interactive visualization is crucial in understanding, exploring, and presenting data, but data scale can present serious barriers for effectiveness and adoption. 
+I study these barriers and design solutions to remove them.
+I like both [theoretical](http://www.algebraicvis.net/) and [hands-on](http://nanocubes.net/) work.
+
+Since joining UA, I have worked in a number of projects here, including support for interactive browsing of synteny data at [CoGe](https://genomevolution.org/coge/), and building up interactive visualization infrastructure for the [ANTARES project](https://antares.noirlab.edu/). If you're interested in my work and that of my former students, you should also take a look at the webpage of the [HDC Lab](https://hdc.arizona.edu), which I cofounded with my colleagues, Josh Levine and Kate Isaacs.
+
+## Funded projects
+
+My work is funded by a number of institutions, including the NSF, AT&T, and the Arizona Board of Regents.
+
+* NSF [III-1815238](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1815238): [An End-to-End Pipeline for Interactive Visual Analysis of Big Data](http://hdc.cs.arizona.edu/projects/end-to-end-visual-big-data/)
+* NSF [III-1513651](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1513651): [Topological Data Analysis for Large Network Visualization](http://www.sci.utah.edu/~beiwang/networktdav/networktdav.html)
+
+## Students
+
+* Katherine Best (MSc)
+* Rebecca Faust (PhD)
+* Mingwei Li (PhD)
+* Zhenge Zhao (PhD)
+* Zhe Wang (PhD)
+
+## Software projects I worked on
+
+[The year in parenthesis denotes the last year I was directly involved with the project]{.aside}
+
+* [Quarto](https://quarto.org): language-agnostic reproducible computational documents, for the web and beyond.
+* [Nanocubes](https://nanocubes.net): blazing fast large data visualization. (2013)
+* [Lux](https://github.com/cscheid/lux/): write WebGL shaders in Javascript, composably. (2014)
+* [RCloud](https://github.com/att/rcloud): collaborative data analysis on the web (2014).
+* [VisTrails](https://www.vistrails.org): a provenance-aware scientific workflow system. (2009)
+
+## Papers
+
+The easiest way to find my papers is through my [Google Scholar page](https://scholar.google.com/citations?user=8uHMJjsAAAAJ&hl=en&oi=ao).

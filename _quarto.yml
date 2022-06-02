@@ -6,7 +6,7 @@ format:
     theme: 
       - sandstone
       - cscheid-net.scss
-
-
+    code-tools: true
+    code-fold: true
 
 

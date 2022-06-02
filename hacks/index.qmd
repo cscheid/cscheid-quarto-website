@@ -1,0 +1,10 @@
+---
+title: Hacks
+listing:
+  categories: true
+  type: table
+  contents: "*.qmd"
+  sort:
+    - "date desc"
+  fields: [title, date]
+---
