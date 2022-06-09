@@ -8,17 +8,19 @@ var svg = d3.select("#main")
         .attr("width", "100%")
         .attr("height", "100%");
 
+const scaleBounds = [40, 700];
+
 var preTestScaleLogOdds = d3.scaleLinear()
         .domain([3, -3])
-        .range([20, 800]);
+        .range(scaleBounds);
 
 var postTestScaleLogOdds = d3.scaleLinear()
         .domain([-3, 3])
-        .range([20, 800]);
+        .range(scaleBounds);
 
 var logLikelihoodRatioScale = d3.scaleLinear()
         .domain([-6, 6])
-        .range([20, 800]);
+        .range(scaleBounds);
 
 var labels = ['pre-test probability',
               'likelihood ratio',
@@ -31,7 +33,7 @@ svg.append("g")
     .data(labels)
     .enter()
     .append("text")
-    .attr("x", 810)
+    .attr("x", 910)
     .attr("y", function(d, i) { return yScale(i); })
     .attr("dy", 3)
     .text(function(d) { return d; })
@@ -70,7 +72,9 @@ var postTestLine = postTestLineG
 function expFmt(v) {
     var l = Math.pow(10, v);
     var r = fmt(l / (1 + l));
-    return r.replace(/0+$/, "");
+    return r
+        .replace(/0+$/, "")
+        .replace(/(\..*)09+$/, (match, p1) => `${p1}1`); // i'm so sorry, universe.
 }
 
 function lrFmt(v) {
@@ -78,7 +82,9 @@ function lrFmt(v) {
     if (l == ~~l)
         return String(l);
     else 
-        return String(l).replace(/0+$/, "");
+        return String(l)
+            .replace(/0+$/, "")
+            .replace(/(\..*)09+$/, (match, p1) => `${p1}1`); // i'm so sorry, universe.
 }
 
 var preProbTicks = {
@@ -115,8 +121,7 @@ function addTicks(ticks)
         gs.append("text")
             .attr("x", function(d) { return ticks.scale(d); })
             .attr("y", -15)
-            .attr("text-anchor", "middle")
-            .attr("class", "label")
+            .attr("class", "tick-label")
             .text(function(d) { return ticks.fmt(d); });
     };
 }

@@ -3,8 +3,9 @@
 }
 
 .label {
-    font-family: Helvetica Neue, sans;
-    font-size: 12px;
-    font-weight: 200;
+    text-anchor: end;
 }
 
+.tick-label {
+    text-anchor: middle;
+}
