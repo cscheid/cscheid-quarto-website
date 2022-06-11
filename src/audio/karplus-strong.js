@@ -45,7 +45,7 @@ export function karplusStrong(sampleRate, pitchInHertz, duration, amplitude = 1)
   };
 }
 
-export function init()
+export function init(k)
 {
   initAll();
   makePiano((note, d, el) => {
@@ -65,6 +65,7 @@ export function init()
     if (window.player === undefined) {
       let player = makePlayer();
       window.player = player;
+      k && k();
     }
     const track = karplusStrong(44100, notes[note], 3, 0.5);
     player.playTrack(track);
