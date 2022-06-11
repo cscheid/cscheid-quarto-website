@@ -1,0 +1,65 @@
+---
+title: Notes on musical sound analysis in JS
+date: 2022-06-11
+---
+
+I want to build a frequency analyzer for musical sounds that runs on a web browser,
+so that my synthesized sounds have an analyzer next to them.
+
+I'm learning all that stuff as I go along, so: actual audio engineers, you probably will run away screaming here.
+Or don't, and tell me where I'm wrong. That helps too.
+
+## Enemies
+
+### Enemy number 1: frequency resolution
+
+I started out thinking that I could use the (very powerful!) [built-in AudioContext analyzer](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createAnalyser) in the Web audio API. 
+However, I realized that it does not provide prefiltering or subsampling of the data.
+This means that short-window FFTs can't distinguish small differences in low-frequency
+signals. This seems to make me need large window sizes.
+
+A bass guitar, for example, is tuned to produce notes (roughly) from E1 to G4, which
+have the lowest overtones ranging 40 to 400Hz. If we want to see 3 octaves of overtones at the highest end, that's 
+a range from 40 to 3200Hz.
+
+Let's consider $r$ samples/s as the signal rate. ($r = 48K$ typically).
+For an FFT of size $w$, this gives the lowest non-dc resolvable frequency at $r/2$ samples, or $2r/w$ frequency.
+
+$$r = 48K \\ w = 256 \\ 2r/w = 48K/256 = 187.5\textrm{Hz}$$
+
+Solving backwards to get a FFT window that can resolve 40Hz tones, we get $96k/w = 40, w = 2400$. So we need at least a 4096-wide FFT.
+But that's only the start. There are 12 pitches between 40 and 80Hz, and we would like to be able to distinguish those.
+
+At the low frequency, the resolution (difference between resolvable frequencies) of the plain FFT is $3r/w - 2r/w = r/w$.
+In our case, $r/w = 11.71Hz$, so we can see how 4096-wide FFTs can cause trouble. An 11Hz difference in low frequencies is quite noticeable. 
+E1 is $41.2\textrm{Hz}$, and G#1 is $51.9\textrm{Hz}$. We really would like to be able to distinguish
+Es from F#s, and 4096 samples aren't enough.
+
+If we want to distinguish between E1 and F1 in a frequency analyzer, we need
+$(43.65 - 41.2)\textrm{Hz} = 2.45\textrm{Hz}$ resolution, which works out to be $48000/w = 2.45, w = 19.5k$ samples. That means we
+need $w = 32768$ to make this work in the context of powers-of-2 FFT windows.
+
+### Enemy number 2: latency
+
+At $r = 48000$ and $w = 32768$, I really hope that the built-in analyzer uses moving windows, or otherwise we're stuck with high latency.
+
+## Performance: do we get away with it?
+
+If we use the built-in AudioContext processing, we are stuck at $w = 32768$ at least. But just how fast are FFTs in today's computers?
+How much of a hit do we take if we switch to a JS or WASM FFT, compared to the built-in ones? (I'm using a 2020-era 
+Intel MacBook Pro as my example). I found an ARM vs Rosetta [benchmark](https://forum.juce.com/t/comparing-fft-engines/46383/2)
+for Apple's vDSP (which is what Chromium uses internally) that claims a $w=65536$ FFT takes about 1ms on an M1 Mac. Let's say my computer is half as fast as that,
+and that the 32k FFT runs three times as fast; that means I should expect mine to take about 0.6ms. That should actually be fine (!)
+Yikes, computers are _fast_ nowadays.
+
+If we choose to use JS or WASM, [this benchmark](https://toughengineer.github.io/demo/dsp/fft-perf/) gives me
+a max window size of 16k, but my laptop appears to be able to process 4200 FFTs of that size per second in pure JS.
+But if we're doing JS, then we can pre-process our samples (prefiltering and subsampling should work really well
+because we know quite precisely the range of frequencies we care about), and we should be totally fine.
+Yikes, computers are _fast_ nowadays.
+
+
+
+
+
+

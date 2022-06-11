@@ -26,8 +26,7 @@ export function getAudioContext() {
     window.AudioContext = window.webkitAudioContext;
   }
   context = new AudioContext();
-  console.log(context.sampleRate);
-
+  
   context.playFloatArray = function (floatArray) {
     var buffer = context.createBuffer(1, floatArray.length, context.sampleRate);
     var data = buffer.getChannelData(0);
@@ -39,6 +38,10 @@ export function getAudioContext() {
     source.buffer = buffer;
     // Connect to the final output node (the speakers)
     source.connect(context.destination);
+    if (context._ourAnalyzer) {
+      console.log("Connecting");
+      source.connect(context._ourAnalyzer);
+    }
     // Play immediately
     source.start(0);
   };
@@ -57,7 +60,10 @@ export function getAudioContext() {
       source.buffer = buf;
       // Connect to the final output node (the speakers)
       source.connect(context.destination);
-      // Play immediately
+      if (context._ourAnalyzer) {
+        source.connect(context._ourAnalyzer);
+      }
+        // Play immediately
       source.start(0);
     }
 
@@ -104,6 +110,34 @@ export function makePlayer() {
       }
 
       return buffer;
+    },
+
+    spectrogram: function(callback, options) {
+      const analyzer = ctx.createAnalyser();
+      ctx._ourAnalyzer = analyzer;
+      options = {
+        fftSize: 256,
+        minDecibels: -60,
+        maxDecibels: -10,
+        ...(options || {}) 
+      };
+      analyzer.fftSize = options.fftSize;
+      analyzer.minDecibels = options.minDecibels;
+      analyzer.maxDecibels = options.maxDecibels;
+      const dataArray = new Float32Array(analyzer.frequencyBinCount);
+      let stopped = false;
+
+      const innerK = () => {
+        if (!stopped) {
+          window.requestAnimationFrame(innerK);
+        }
+        analyzer.getFloatFrequencyData(dataArray);
+        callback(dataArray);
+      };
+      const rAF = window.requestAnimationFrame(innerK);
+      return () => {
+        stopped = true;
+      };
     },
 
     makeWaveSamples: function (f, window) {
