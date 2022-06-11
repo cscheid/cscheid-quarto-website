@@ -1,0 +1,230 @@
+---
+title: Trigonometry
+date: 2017-11-06
+---
+
+## The basics
+
+[Just like everyone else on twitter](https://twitter.com/divbyzero/status/927517766369804289), when I saw this diagram below my reaction was: “why didn't they show this to me 25 years ago?” The lengths of the triangle legs correspond to the values of the trigonometric functions. Drag the point to change the diagram around.
+
+```{ojs}
+//| echo: false
+import { plot } from "/src/cscheid/cscheid.js";
+{
+  window.d3 = d3;
+  window._ = _;
+  const main = svg`<svg viewbox="0 0 600 300" width="100%" height="100%"></svg>`;
+
+var s = plot.surface({
+    element: d3.select(main),
+    width: 600,
+    height: 300,
+    margin: 2,
+    xScale: d3.scaleLinear().domain([0, 3]),
+    yScale: d3.scaleLinear().domain([0, 1.5]),
+    axes: false
+});
+
+var xScale = s.surface.xScale;
+
+function appendDefault(el) {
+    return function(sel) {
+        return sel.enter()
+            .append(el)
+            .each(function(d) {
+                var innerSel = sel._select(this); // hack to use inner selection context
+                for (var key in d) {
+                    innerSel.attr(key, d => d[key]);
+                }
+            });
+    };
+}
+
+s.append("circle")
+    .attr("r", xScale(1) - xScale(0))  // annoying...
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("stroke", "black")
+    .attr("fill", "none")
+    .attr("stroke-width", "3px");
+
+s.append("line")
+    .attr("x1", -1)
+    .attr("x2",  1)
+    .attr("y1",  0)
+    .attr("y2",  0)
+    .attr("stroke", "black")
+    .attr("fill", "none")
+    .attr("stroke-width", "1px");
+
+s.append("line")
+    .attr("y1", -1)
+    .attr("y2",  1)
+    .attr("x1",  0)
+    .attr("x2",  0)
+    .attr("stroke", "black")
+    .attr("fill", "none")
+    .attr("stroke-width", "1px");
+
+var t = Math.PI/3;
+
+var linesG = s.append("g");
+var arcG = s.append("g");
+
+var h0 = 30;
+var c0 = 70;
+var l0 = 50;
+var colors = [
+d3.hcl(h0+0,   0, 0)    ,
+d3.hcl(h0+0,   c0, l0)  ,    
+d3.hcl(h0+180, c0, l0)  ,
+d3.hcl(h0+60,  c0, l0)  ,
+d3.hcl(h0+240, c0, l0)  ,
+d3.hcl(h0+120, c0, l0)  ,
+d3.hcl(h0+300, c0, l0)  ,    
+];
+
+function updateLines() {
+    linesG.selectAll("line").remove();
+    var lines = [
+        { x1: Math.cos(t), y1: Math.sin(t), x2: 0, y2: 0,                         stroke:  colors[0], "stroke-width": 1 },
+        
+        { x1: Math.cos(t), y1: Math.sin(t), x2: 1/Math.cos(t), y2: 0,             stroke:  colors[1], "stroke-width": "5px" },   
+        { x1: Math.cos(t), y1: Math.sin(t), x2: 0,             y2: 1/Math.sin(t), stroke:  colors[2], "stroke-width": "5px" },
+        
+        { x1: Math.cos(t), y1: Math.sin(t), x2: 0,             y2: Math.sin(t),   stroke:  colors[3], "stroke-width": "5px" },
+        { x1: Math.cos(t), y1: 0,           x2: Math.cos(t),   y2: Math.sin(t),   stroke:  colors[4], "stroke-width": "5px" },
+
+        { x1: 0, y1: 0,                     x2: 1/Math.cos(t), y2: 0,             stroke:  colors[5], "stroke-width": "5px" },
+        { x1: 0, y1: 0,                     x2: 0,             y2: 1/Math.sin(t), stroke:  colors[6], "stroke-width": "5px" },
+    ];
+    
+    linesG.selectAll("line")
+        .data(lines)
+        .callReturn(appendDefault("line"));
+
+    arcG.selectAll("path").remove();
+
+    var r = s.surface.xScale(0.1) - s.surface.xScale(0);
+    // awkward again..
+    arcG.append("path")
+        .attr("d", "M "
+              + s.surface.xScale(0.1) + " " + s.surface.yScale(0)
+              + " A " + r + " " + r + " 0 0 0 "
+              + s.surface.xScale(Math.cos(t)*0.1) + " " + s.surface.yScale(Math.sin(t)*0.1))
+        .attr("stroke", "black")
+        .attr("fill", "none");
+}
+updateLines();
+
+var annotationsG = s.append("g");
+function updateAnnotations() {
+    annotationsG.selectAll("g").remove();
+
+    var tx = (Math.cos(t) + 1/Math.cos(t))/2, ty = Math.sin(t)/2;
+    var ctx = Math.cos(t)/2, cty = (Math.sin(t) + 1/Math.sin(t))/2;
+
+    var annotations = [
+        { x: tx - ty / 20,   y: ty + tx / 20,   text: "tangent",   fill: colors[1] }, // { x1: Math.cos(t), y1: Math.sin(t), x2: 1/Math.cos(t), y2: 0,             stroke: d3.hcl(0, 60, 60)    },   
+        { x: ctx - cty / 20, y: cty + ctx / 20, text: "cotangent", fill: colors[2] }, // { x1: Math.cos(t), y1: Math.sin(t), x2: 0,             y2: 1/Math.sin(t), stroke: d3.hcl(180, 60, 60)  },
+        
+        { x: Math.cos(t)/2, y: Math.sin(t), text: "cosine", anchor: "middle", baseline: "text-before-edge", fill: colors[3] }, // { x1: Math.cos(t), y1: Math.sin(t), x2: 0,             y2: Math.sin(t),   stroke: d3.hcl(60,  60, 60)  },
+        { x: Math.cos(t), y: Math.sin(t)/2, text: "sine", anchor: "right", baseline: "middle", fill: colors[4] }, // { x1: Math.cos(t), y1: 0,           x2: Math.cos(t),   y2: Math.sin(t),   stroke: d3.hcl(240, 60, 60)  },
+
+        { x: 0.5/Math.cos(t), y: 0.02, text: "secant", anchor: "middle", fill: colors[5] }, // { x1: 0, y1: 0,                     x2: 1/Math.cos(t), y2: 0,             stroke: d3.hcl(120, 60, 60)  },
+        { x: 0.02, y: 0.5/Math.sin(t), text: "cosecant", baseline: "middle", fill: colors[6] }, // { x1: 0, y1: 0,                     x2: 0,             y2: 1/Math.sin(t), stroke: d3.hcl(300, 60, 60)  }
+        { x: Math.cos(t/2)*0.12, y: Math.sin(t/2)*0.12, text: "t", fill: "black" }
+    ];
+
+    annotationsG.append("g").selectAll("text")
+        .data(annotations)
+        .enter()
+        .append("text")
+        .attr("x", d => d.x)
+        .attr("y", d => d.y)
+        .text(d => d.text)
+        .attr("stroke", "white")
+        .attr("stroke-width", "5px")
+        .attr("fill", d => "white")
+        .attr("text-anchor", d => d.anchor || null)
+        .attr("dominant-baseline", d => d.baseline || null)
+        .attr("font", "11pt Helvetica Neue")
+        .attr("font-weight", "300")
+    ;
+
+    annotationsG.append("g").selectAll("text")
+        .data(annotations)
+        .enter()
+        .append("text")
+        .attr("x", d => d.x)
+        .attr("y", d => d.y)
+        .text(d => d.text)
+        .attr("fill", d => d3.hcl(d.fill).darker())
+        .attr("text-anchor", d => d.anchor || null)
+        .attr("dominant-baseline", d => d.baseline || null)
+        .attr("font", "11pt Helvetica Neue")
+        .attr("font-weight", "300");
+
+}
+updateAnnotations();
+
+var circleHandle = s.append("circle");
+circleHandle.attr("cx", Math.cos(t))
+    .attr("cy", Math.sin(t))
+    .attr("r", 8)
+    .attr("fill", "white")
+    .attr("stroke", "black")
+    .attr("stroke-width", "2px")
+    .attr("cursor", "pointer")
+    .call(d3.drag()
+          .on("drag", function(e) {
+              var x = s.surface.xScale.invert(e.x);
+              var y = s.surface.yScale.invert(e.y);
+              if (x < 0.001) x = 0.001;
+              if (y < 0.001) y = 0.001;
+              if (x > 0.999) x = 0.999;
+              if (y > 0.999) y = 0.999;
+              var l = Math.sqrt(x * x + y * y);
+              x /= l;
+              y /= l;
+              t = Math.acos(x);
+              circleHandle.attr("cx", x);
+              circleHandle.attr("cy", y);
+              updateLines();
+              updateAnnotations();
+          }).on("end", function(e) {
+              var x = s.surface.xScale.invert(e.x);
+              var y = s.surface.yScale.invert(e.y);
+              if (x < 0.001) x = 0.001;
+              if (y < 0.001) y = 0.001;
+              if (x > 0.999) x = 0.999;
+              if (y > 0.999) y = 0.999;
+              var l = Math.sqrt(x * x + y * y);
+              x /= l;
+              y /= l;
+              t = Math.acos(x);
+              circleHandle.attr("cx", x);
+              circleHandle.attr("cy", y);
+              updateLines();
+              updateAnnotations();
+          }));
+
+
+  return main;
+}
+```
+
+## Complex Exponentials FTW
+
+We start from the formula for complex exponentials:
+
+$$\begin{eqnarray*}e^{ix} & & = & \ \cos x + i \sin x \\ e^{-ix} & = \ \cos -x + i \sin -x & = & \cos x - i \sin x \end{eqnarray*}$$
+
+We re-arrange this a bit to find a formula for cosines and sines in terms of the exponentials. This is maybe the two trigonometry formulas worth memorizing:
+
+$$\begin{eqnarray*} \cos x & = & \frac{e^{ix}+e^{-ix}}{2} \\ \sin x & = & \frac{e^{ix}-e^{-ix}}{2} \end{eqnarray*}$$
+
+Never memorize a formula for sines and cosines of sums again. [Stein](https://wstein.org/edu/winter06/20b/notes/html/node30.html) has some examples of how you can use this.
+
+
+
