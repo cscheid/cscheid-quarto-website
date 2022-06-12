@@ -15,7 +15,7 @@ export function karplusStrong(sampleRate, pitchInHertz, duration, amplitude = 1)
   // for now, we will round off the bufferSize and will be pitching
   // this wrong, especially for large buffers
   //
-  // TODO estimate how bad this is in 44.1KHz sampling
+  // TODO estimate how bad this is in 48KHz sampling
 
   const circularBuffer = new Float32Array(circularBufferSize);
 
@@ -67,7 +67,7 @@ export function init(k)
       window.player = player;
       k && k();
     }
-    const track = karplusStrong(44100, notes[note], 3, 0.5);
+    const track = karplusStrong(48000, notes[note], 3, 0.5);
     player.playTrack(track);
   });
 }

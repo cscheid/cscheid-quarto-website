@@ -31,6 +31,24 @@ spectrogramArray = {
     window.player.spectrogram(newData, { fftSize: 32768 });
   });
 }
+
+function findPeaks(array)
+{
+  const result = [];
+  for (let i = 1; i < array.length -1; ++i) {
+    if (array[i] > array[i-1] && array[i] > array[i+1]) {
+      result.push({i, v: array[i]});
+    }
+  }
+  return result;
+}
+```
+
+
+```{ojs}
+findPeaks(spectrogramArray)
+  .filter(v => v.v > -50)
+  .map(v => v.i * (48000 / 32768));
 ```
 
 ```{ojs}

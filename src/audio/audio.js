@@ -28,6 +28,7 @@ export function getAudioContext() {
   context = new AudioContext();
   
   context.playFloatArray = function (floatArray) {
+    console.log(context.sampleRate);
     var buffer = context.createBuffer(1, floatArray.length, context.sampleRate);
     var data = buffer.getChannelData(0);
     for (var i = 0; i < floatArray.length; ++i) {
