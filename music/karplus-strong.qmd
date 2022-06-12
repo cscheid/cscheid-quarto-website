@@ -3,6 +3,11 @@ title: "Karplus-Strong Plucked-String Synthesis"
 format: html
 bibliography:
   - music.bib
+code-tools: false
+echo: false
+code-fold: false
+css:
+  - karplus-strong.css
 ---
 
 <div id="piano"></div>
@@ -42,30 +47,26 @@ function findPeaks(array)
   }
   return result;
 }
-```
 
-
-```{ojs}
-findPeaks(spectrogramArray)
-  .filter(v => v.v > -50)
-  .map(v => v.i * (48000 / 32768));
+peaks = findPeaks(spectrogramArray)
+  .filter(v => v.v > -60)
+  .map(v => ({ freq: v.i * (48000 / 32768), amplitude: v.v }));
 ```
 
 ```{ojs}
 Plot.plot({
   marks: [
     Plot.line(
-      Array
-        .from(spectrogramArray)
-        .map((d, i) => ({ freq: i, amplitude: d})), 
+      peaks.map(v => [{ freq: v.freq, amplitude: -60 }, v, {freq: NaN, amplitude: NaN}]).flat(), 
       {
-        x: "freq", 
+        x: "freq",
         y: "amplitude",
         clip: true
       }
     )
   ],
-  y: { domain: [-60, -10] }
+  y: { domain: [-60, -20] },
+  x: { domain: [10, 20000] }
 })
 ```
 

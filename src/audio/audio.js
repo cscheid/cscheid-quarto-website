@@ -19,7 +19,7 @@ export function getAudioContext() {
   if (!window.AudioContext) {
     if (!window.webkitAudioContext) {
       alert(
-        "Your browser does not support any AudioContext and cannot play back this audio.",
+        "Your browser does not support AudioContext and cannot play this audio.",
       );
       return false;
     }
@@ -28,7 +28,6 @@ export function getAudioContext() {
   context = new AudioContext();
   
   context.playFloatArray = function (floatArray) {
-    console.log(context.sampleRate);
     var buffer = context.createBuffer(1, floatArray.length, context.sampleRate);
     var data = buffer.getChannelData(0);
     for (var i = 0; i < floatArray.length; ++i) {
@@ -40,7 +39,6 @@ export function getAudioContext() {
     // Connect to the final output node (the speakers)
     source.connect(context.destination);
     if (context._ourAnalyzer) {
-      console.log("Connecting");
       source.connect(context._ourAnalyzer);
     }
     // Play immediately

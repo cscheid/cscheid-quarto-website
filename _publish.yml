@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 9197f553-101a-4d49-ad59-f4a606feffbb
+      url: 'https://celebrated-bubblegum-86c4b3.netlify.app'
