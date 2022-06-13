@@ -10,7 +10,11 @@ css:
   - karplus-strong.css
 ---
 
+::: {.column-page}
+
 <div id="piano"></div>
+
+:::
 
 ```{ojs}
 //| output: false
@@ -20,8 +24,14 @@ import { init as initPiano } from "/src/audio/piano.js"
 ojsPiano = {
   if (window._initEverything)
     return;
+  window.d3 = d3;
   window._initEverything = true;
   initPiano();
+  d3.select("#piano")
+    .select("svg")
+    .attr("viewBox", `0 0 960 400`)
+    .attr("width", "100%")
+    .attr("height", null);
   await new Promise((res) => {
     init(res);
   });
@@ -53,22 +63,32 @@ peaks = findPeaks(spectrogramArray)
   .map(v => ({ freq: v.i * (48000 / 32768), amplitude: v.v }));
 ```
 
+:::{.column-page}
+
 ```{ojs}
-Plot.plot({
-  marks: [
-    Plot.line(
-      peaks.map(v => [{ freq: v.freq, amplitude: -60 }, v, {freq: NaN, amplitude: NaN}]).flat(), 
-      {
-        x: "freq",
-        y: "amplitude",
-        clip: true
-      }
-    )
-  ],
-  y: { domain: [-60, -20] },
-  x: { domain: [10, 20000] }
-})
+{
+  let result = Plot.plot({
+    marks: [
+      Plot.line(
+        peaks.map(v => [{ freq: v.freq, amplitude: -60 }, v, {freq: NaN, amplitude: NaN}]).flat(), 
+        {
+          x: "freq",
+          y: "amplitude",
+          clip: true
+        }
+      )
+    ],
+    y: { domain: [-60, -30], label: "amplitude (dB)" },
+    x: { domain: [10, 10000], label: "frequency (Hz)" },
+    height: 200,
+    width: 800,
+  });
+  result.setAttribute("width", "100%");
+  return result;
+}
 ```
+
+:::
 
 Strings in stringed instruments make _harmonic_ sounds: each string produces not only a base frequency but a mix of sounds of different frequencies. A "harmonic" sound means simply that the frequencies of such a sound are always integer multiples of the base frequency. Typical western music features predominantly harmonic sounds, and such harmonic sounds account for much of western music's notion of [consonance and dissonance](consonance-and-dissonance.qmd). So if we want to synthesize musical instruments that can be used to create western-sounding music, we better be able to create sounds with lots of harmonic tones.
 

@@ -3,8 +3,6 @@
 //                          F mapping to piano C#4;
 // etc
 
-import * as d3 from "https://cdn.skypack.dev/d3";
-
 import { parallel } from "./track.js";
 
 import { instrument2 } from "./instruments.js";
@@ -35,6 +33,15 @@ var pianoKeys = [
   { "note": 51, "kind": "white", "x": 6, "y": 0 },
   { "note": 52, "kind": "white", "x": 7, "y": 0 },
 
+  { "note": 40 + 12, "kind": "white", "x": 0 + 7, "y": 0 },
+  { "note": 42 + 12, "kind": "white", "x": 1 + 7, "y": 0 },
+  { "note": 44 + 12, "kind": "white", "x": 2 + 7, "y": 0 },
+  { "note": 45 + 12, "kind": "white", "x": 3 + 7, "y": 0 },
+  { "note": 47 + 12, "kind": "white", "x": 4 + 7, "y": 0 },
+  { "note": 49 + 12, "kind": "white", "x": 5 + 7, "y": 0 },
+  { "note": 51 + 12, "kind": "white", "x": 6 + 7, "y": 0 },
+  { "note": 52 + 12, "kind": "white", "x": 7 + 7, "y": 0 },
+
   // manual nudges on the x positions
   { "note": 29 - 12, "kind": "black", "x": 0.43 - 14, "y": 0 },
   { "note": 31 - 12, "kind": "black", "x": 1.57 - 14, "y": 0 },
@@ -53,6 +60,13 @@ var pianoKeys = [
   { "note": 46, "kind": "black", "x": 3.43, "y": 0 },
   { "note": 48, "kind": "black", "x": 4.5, "y": 0 },
   { "note": 50, "kind": "black", "x": 5.57, "y": 0 },
+
+  { "note": 41 + 12, "kind": "black", "x": 7 + 0.43, "y": 0 },
+  { "note": 43 + 12, "kind": "black", "x": 7 + 1.57, "y": 0 },
+  { "note": 46 + 12, "kind": "black", "x": 7 + 3.43, "y": 0 },
+  { "note": 48 + 12, "kind": "black", "x": 7 + 4.5, "y": 0 },
+  { "note": 50 + 12, "kind": "black", "x": 7 + 5.57, "y": 0 },
+
 ];
 
 var miniPianoKeys = {

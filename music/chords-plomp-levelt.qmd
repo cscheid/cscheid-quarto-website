@@ -1,0 +1,238 @@
+---
+title: Chords, a Plomp-Level analysis
+format:
+  html: default
+echo: false
+date: "2022-06-12"
+---
+
+Status: _draft_.
+
+We're hoping to analyze chord consonance/dissonance using the ideas behind Plomp-Levelt curves.
+
+Plomp-Levelt analysis shows sounds are perceived as dissonant when tones, _including harmonics_, are "near-misses" of each other. If many tones land right on top of one another, then the overall sound is "consonant". If many tones land _near_ each other, then the overall sound is "dissonant".
+
+So we can analyze chords as if they were polyrhythms in frequency. More consonant chords have more
+"notes" hitting at the same time.
+
+## Basics: intervals
+
+Octaves: ("2:1 polyrhythm")
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 200])
+```
+
+:::
+
+Fifths (3:2 polyrhythm)
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 150])
+```
+
+:::
+
+Fourth, 4:3:
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 133.333333])
+```
+
+:::
+
+Major third, 5:4:
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 125])
+```
+
+:::
+
+Minor third, 6:5:
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 120])
+```
+
+:::
+
+## Chords
+
+### Triads
+
+Major triad. A 5:4:z and x:6:5. That's 15:12:10 overall:
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 125, 150])
+```
+
+:::
+
+Major triad, first inversion. A 4:3:z and x:5:4. That's 20:15:12 overall:
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 100 * (4/3), 100 * (4/3) * (5/4)], 2000)
+```
+
+:::
+
+Major chord, second inversion. A 6:5:z and 5:y:3. That's 30:25:18 overall:
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 100 * (6/5), 100 * (5/3)], 3000)
+```
+
+:::
+
+Major chord as root-fifth-tenth. 3:2:z and x:5:3, overall 15:10:6. Fewer "notes" than basic major triad. Less rich, but more consonant?
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 150, 150 * 5 / 3])
+```
+
+:::
+
+Minor chord. A 6:5:z and a 3:y:2. That's 6:5:4 overall.
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 120, 150])
+```
+
+:::
+
+Diminished chord. Messy, depends on choice of tritone! Here, 6:5:z and 36:y:25, overall 36:30:25. We don't show that far.
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 120, 144])
+```
+
+:::
+
+### Sevenths
+
+Dominant seventh, 5:4:z:w, 3:y:2:w, 9:y:z:5. That's 45:36:30:25, (matching the dimished chord and adding a 45:36 = 5:4 on top). We don't show that far.
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 125, 150, 180])
+```
+
+:::
+
+Major seventh, 5:4:z:w, 3:y:2:w, 15:y:z:8. That's 15:12:10:8. Compare this to the dominant seventh, and the difference is quite clear. 
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 125, 150, 100 * 15 / 8])
+```
+
+:::
+
+Minor seventh, 6:5:z:w, 3:y:2:w, 9:y:z:5. That's 18:15:12:10. Again a much simpler ratio than the dominant seventh. This seems a decent explanation for why people think the major and minor sevenths are "stable" and the dominant seventh wants to be resolved somewhere.
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 120, 150, 180], 1800)
+```
+
+:::
+
+## Resolutions
+
+V7 -> I in first inversion:
+
+::: {.column-page}
+
+```{ojs}
+makeDiagram([100, 125, 150, 100 * 7 / 4], 3000)
+makeDiagram([100, 100 * (4/3), 100 * (4/3) * (5/4)], 3000)
+```
+
+:::
+
+
+## Appendix
+
+### Code
+
+```{ojs}
+//| echo: true
+function makeDiagram(chords, xMax)
+{
+    xMax = xMax || 1500;
+    const svg = html`<svg width=100% viewBox="0 0 990 ${chords.length * 30 + 30}"></svg>`;
+    
+    d3.select(svg).append("rect")
+        .attr("width", 990).attr("height", 30 * chords.length).attr("fill", "#eee");
+
+    const chordGroups = d3.select(svg)
+      .selectAll("g")
+      .data(chords)
+      .enter()
+      .append("g");
+    
+    const x = d3.scaleLinear().domain([50, xMax + 50]).range([0, 990]);
+    const y = d3.scaleLinear().domain([-0.5, chords.length - 0.5]).range([30 * chords.length, 0]);
+
+    chordGroups
+      .append("line")
+      .attr("x1", 0).attr("x2", 990)
+      .attr("y1", (d, i) => y(i)).attr("y2", (d, i) => y(i))
+      .attr("stroke", "gray");
+
+    const markGroups = chordGroups
+      .selectAll("g")
+      .data((d, i) => d3.range(1, 50).map(x => ({ x: x * d, y: i }))) // 30 harmonics
+      .enter()
+      .append("g");
+
+    markGroups
+      .append("circle")
+      .attr("r", 2)
+      .attr("fill", "black")
+      .attr("cx", d => x(d.x))
+      .attr("cy", d => y(d.y));
+    return svg;
+}
+```
+
+### Notes
+
+Discouraging: some this ends up being "simple ratios are good".
+
+So maybe we need to include even temperament here since they're _not_ simple ratios but they can get close enough to just that our ears can't tell. This will require taking the actual Plomp-Levelt curve into account for each note.
+
+We can also take the Pythagorean tuning and predict how chords using wolf intervals will sound dissonant.
+
+TODO: compute clashes among tone pairs.
+
+
+### Ideas
+
+What happens if instead of a harmonic sound, we play a super "fat" sound by including a large amount of non-harmonic tones _very near one another_, so that a dissonance is "lost"? Hmmm...

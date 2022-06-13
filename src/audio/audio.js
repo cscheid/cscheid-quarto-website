@@ -131,7 +131,9 @@ export function makePlayer() {
           window.requestAnimationFrame(innerK);
         }
         analyzer.getFloatFrequencyData(dataArray);
-        callback(dataArray);
+        if (dataArray.some(x => !isNaN(x))) {
+          callback(dataArray);
+        }
       };
       const rAF = window.requestAnimationFrame(innerK);
       return () => {
