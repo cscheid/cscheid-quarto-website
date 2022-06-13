@@ -2,3 +2,6 @@
 
 * [Trigonometry](trigonometry.qmd)
 
+## Music
+
+Index of [music explainers](music/index.qmd)

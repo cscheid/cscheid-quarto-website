@@ -3,6 +3,7 @@ import * as array from './cscheid/array.js';
 import * as basis from './cscheid/basis.js';
 import * as blas from './cscheid/blas.js';
 import * as caliper from './cscheid/caliper.js';
+import * as observable from './cscheid/observable.js';
 import * as classify from './cscheid/classify.js';
 import * as css from './cscheid/css.js';
 import * as data from './cscheid/data.js';
@@ -43,6 +44,7 @@ export {approximation,
   linalg,
   math,
   object,
+  observable,
   plot,
   random,
   reveal,

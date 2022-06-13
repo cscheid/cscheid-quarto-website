@@ -3,6 +3,7 @@ title: "Consonance and Dissonance"
 format: html
 bibliography:
   - music.bib
+date: "2022-06-13"
 ---
 
 I recently learned that there's now a really good theory for why some musical intervals sound consonant ("nice"), and some sound dissonant ("rough", "out of tune"). This theory explains a lot of music, is backed by good experiments, is simple enough to explain in a single article, and was only figured out about 60 years ago.
@@ -29,7 +30,7 @@ However, the basilar membrane is not perfect, and nearby frequencies bleed into 
 
 ```{ojs}
 //| echo: false
-Plot.plot({
+sizedPlot({
   x: { label: "Frequency", type: "log", domain: [100, 10000] },
   y: { label: "Critical Bandwidth", type: "log", domain: [50, 1000] },
   marks: [ Plot.line(crit, {x: "x", y: "y"}), 
@@ -46,7 +47,7 @@ The breakthrough experiment that Plomp and Levelt did in 1965 was to ask people,
 
 ```{ojs}
 //| echo: false
-Plot.plot({
+sizedPlot({
   x: {
     label: "Fraction of critical bandwidth →"
   },
@@ -216,7 +217,7 @@ function plompLevelt(baseFreq, overtones, high = 0)
       y: 2 * v2 - v1 - v3
     };
   });
-  return Plot.plot({
+  return sizedPlot({
     x: { label: "Frequency", domain: [low, high], type: "log" },
     y: { label: "Dissonance" },
     marks: [ Plot.line(y, {x: "x", y: "y"}) ]
@@ -282,3 +283,10 @@ plompLevelt(1000, makeHarmonicTone(7, 0.9), 3.1)
 totalDissonance(makeCompoundTone(1000, clarinetData), makeCompoundTone(1000 * (4/3), clarinetData))
 ```
 
+```{ojs}
+import { sizePlot } from "/src/cscheid/cscheid/observable.js";
+function sizedPlot(...args) {
+  const result = Plot.plot(...args);
+  return sizePlot(result);
+}
+```
