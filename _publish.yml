@@ -2,3 +2,6 @@
   netlify:
     - id: 9197f553-101a-4d49-ad59-f4a606feffbb
       url: 'https://celebrated-bubblegum-86c4b3.netlify.app'
+  connect:
+    - id: b3a33804-668a-40dd-b0b8-d7868672763a
+      url: 'https://rsc.radixu.com/content/b3a33804-668a-40dd-b0b8-d7868672763a/'
