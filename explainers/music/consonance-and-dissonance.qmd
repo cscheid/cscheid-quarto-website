@@ -3,6 +3,7 @@ title: "Consonance and Dissonance"
 format: html
 bibliography:
   - music.bib
+date: "2022-06-13"
 ---
 
 I recently learned that there's now a really good theory for why some musical intervals sound consonant ("nice"), and some sound dissonant ("rough", "out of tune"). This theory explains a lot of music, is backed by good experiments, is simple enough to explain in a single article, and was only figured out about 60 years ago.
@@ -29,7 +30,7 @@ However, the basilar membrane is not perfect, and nearby frequencies bleed into 
 
 ```{ojs}
 //| echo: false
-Plot.plot({
+sizedPlot({
   x: { label: "Frequency", type: "log", domain: [100, 10000] },
   y: { label: "Critical Bandwidth", type: "log", domain: [50, 1000] },
   marks: [ Plot.line(crit, {x: "x", y: "y"}), 
@@ -46,7 +47,7 @@ The breakthrough experiment that Plomp and Levelt did in 1965 was to ask people,
 
 ```{ojs}
 //| echo: false
-Plot.plot({
+sizedPlot({
   x: {
     label: "Fraction of critical bandwidth →"
   },
@@ -60,6 +61,59 @@ Plot.plot({
   ]
 })
 ```
+
+A different way to think about this is to consider a two-dimensional plot of frequencies against frequencies, where color indicates
+whether a pair of sine waves will sound rough or in-tune:
+
+```{ojs}
+{
+  const w = 400;
+  const h = 400;
+  const steps = 400;
+  const minFreq = 100, maxFreq = 800;
+
+  const context = DOM.context2d(w, h);
+
+  // I'm sure there's a better way to do this.
+  const freq = d3.scaleLinear().range([Math.log(minFreq), Math.log(maxFreq)]).domain([0, steps]);
+  const x = d3.scaleLinear().domain([0, steps]).range([40, 360]);
+  const y = d3.scaleLinear().domain([0, steps]).range([370, 30]);
+  const color = d3.scaleLinear().domain([0, 1]).range(["white", "red"]);
+  
+  for (const xi of d3.range(steps)) {
+    for (const yi of d3.range(steps)) {
+      debugger;
+      const xf = Math.exp(freq(xi));
+      const yf = Math.exp(freq(yi));
+      const left = x(xi), top = y(yi + 1), right = x(xi + 1), bottom = y(yi);
+      const dis = totalDissonance([{tone: xf, amplitude: 1}], [{tone: yf, amplitude: 1}]);
+      context.fillStyle = color(dis);
+      context.fillRect(left, top, Math.round(right - left)+1, Math.abs(Math.round(top - bottom))+1);
+    }
+  }
+  const div = html`<div position="absolute" width="400" height="400" style="max-height: 400px"></div>`;
+  div.appendChild(context.canvas);
+  const svg = Plot.plot({
+    width: 400,
+    height: 400,
+    x: { type: "log", domain: [minFreq, maxFreq] },
+    y: { type: "log", domain: [minFreq, maxFreq] },
+    marks: [
+      Plot.line([{x: 440, y: minFreq}, {x: 440, y: maxFreq}], { x: "x", y: "y" })
+    ]
+  });
+  const svgStyle = svg.querySelector("svg style");
+  svgStyle.innerHTML = svgStyle.innerHTML.replace("background: white;", "");
+  svg.style.position = "relative";
+  svg.style.top = "-405px"; // 40_5_?! shrug
+  div.appendChild(svg);
+  return div;
+  // context.canvas;
+  // return context.canvas;
+}
+```
+
+
 
 ## "Cool trick. But consonance and dissonance are about music!"
 
@@ -174,7 +228,7 @@ function totalDissonance(tone1, tone2)
     for (const { tone: ot2, amplitude: a2 } of tone2) {
       const low = Math.min(ot1, ot2), high = Math.max(ot1, ot2);
       const c = criticalBandwidth(low);
-      result += dissonance((high - low) / c) * a1 * a2;
+      result += dissonance((high - low) / (0.5 * c)) * a1 * a2;
     }
   }
   return result;
@@ -216,7 +270,7 @@ function plompLevelt(baseFreq, overtones, high = 0)
       y: 2 * v2 - v1 - v3
     };
   });
-  return Plot.plot({
+  return sizedPlot({
     x: { label: "Frequency", domain: [low, high], type: "log" },
     y: { label: "Dissonance" },
     marks: [ Plot.line(y, {x: "x", y: "y"}) ]
@@ -282,3 +336,10 @@ plompLevelt(1000, makeHarmonicTone(7, 0.9), 3.1)
 totalDissonance(makeCompoundTone(1000, clarinetData), makeCompoundTone(1000 * (4/3), clarinetData))
 ```
 
+```{ojs}
+import { sizePlot } from "/src/cscheid/cscheid/observable.js";
+function sizedPlot(...args) {
+  const result = Plot.plot(...args);
+  return sizePlot(result);
+}
+```

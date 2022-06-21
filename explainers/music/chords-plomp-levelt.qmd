@@ -1,5 +1,5 @@
 ---
-title: Chords, a Plomp-Level analysis
+title: Chords, a Plomp-Levelt analysis
 format:
   html: default
 echo: false
@@ -12,8 +12,7 @@ We're hoping to analyze chord consonance/dissonance using the ideas behind Plomp
 
 Plomp-Levelt analysis shows sounds are perceived as dissonant when tones, _including harmonics_, are "near-misses" of each other. If many tones land right on top of one another, then the overall sound is "consonant". If many tones land _near_ each other, then the overall sound is "dissonant".
 
-So we can analyze chords as if they were polyrhythms in frequency. More consonant chords have more
-"notes" hitting at the same time.
+So we can analyze chords as if they were "polyrhythms in frequency", because each harmonic note "beats" an evenly-spaced (in frequency domain) of tones. Since Plomp-Levelt have shown that dissonance and consonance arise from clashing near-misses of tones, we should expect more consonant chords have more "notes" hitting at the same time.
 
 ## Basics: intervals
 
