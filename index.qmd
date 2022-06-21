@@ -7,10 +7,10 @@ I'm a software engineer at [RStudio](https://rstudio.com) working on [quarto](ht
 
 ## Software I work(ed) on
 
-* [Quarto](https://quarto.org): language-agnostic reproducible computational documents, for the web and beyond.
-* [Nanocubes](https://nanocubes.net): blazing fast large data visualization. (2013)
+* [Quarto](https://quarto.org): language-agnostic reproducible computational documents, for the web and beyond. (2021-present)
 * [Lux](https://github.com/cscheid/lux/): write WebGL shaders in Javascript, composably. (2014)
 * [RCloud](https://github.com/att/rcloud): collaborative data analysis on the web (2014).
+* [Nanocubes](https://nanocubes.net): blazing fast large data visualization. (2013)
 * [VisTrails](https://www.vistrails.org): a provenance-aware scientific workflow system. (2009)
 
 
