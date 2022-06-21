@@ -1,0 +1,471 @@
+[
+  {
+    "objectID": "notes.html",
+    "href": "notes.html",
+    "title": "",
+    "section": "",
+    "text": "Chapman stick lesson notes"
+  },
+  {
+    "objectID": "hacks/straight-movement-on-circle.html",
+    "href": "hacks/straight-movement-on-circle.html",
+    "title": "Straight movement on circle",
+    "section": "",
+    "text": "Each individual circle moves along a straight line, but collectively, they look like a circle rolling inside a larger circle:"
+  },
+  {
+    "objectID": "hacks/straight-movement-on-circle.html#acknowledgments",
+    "href": "hacks/straight-movement-on-circle.html#acknowledgments",
+    "title": "Straight movement on circle",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\nAs usual, found on twitter. Apparently this is known as a Tusi couple."
+  },
+  {
+    "objectID": "hacks/bunimovich-stadium.html",
+    "href": "hacks/bunimovich-stadium.html",
+    "title": "Bunimovich Stadium",
+    "section": "",
+    "text": "The Bunimovich Stadium is one example of a Dynamical Billiards table that exhibits chaotic behavior even with only concave scatterings. Trajectories in the Bunimovich stadium exhibit (eventual) exponential divergence over time.\nIn addition, almost any trajectory in a Bunimovich stadium eventually gets arbitrarily close to any point of the stadium. This is in sharp contrast to trajectories in elliptical billiards: any one trajectory in elliptical billiards will always leave a chunk of the table unexplored."
+  },
+  {
+    "objectID": "hacks/bunimovich-stadium.html#acknowledgments",
+    "href": "hacks/bunimovich-stadium.html#acknowledgments",
+    "title": "Bunimovich Stadium",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\nInspiration for this post came from Baez’s post on the stadium."
+  },
+  {
+    "objectID": "hacks/ring-gap.html",
+    "href": "hacks/ring-gap.html",
+    "title": "Ring with rotating gap",
+    "section": "",
+    "text": "This is a continuous version of the purple dots illusion. Keep staring at the crosshairs. Eventually, instead of a white gap rotating, you’ll start seeing a bright band of the opponent color.\nIncidentally, you’ll notice that this opponent color is quite bright - it in fact appears brighter than the white background of your display! This is because you’re experiencing a Chimerical color."
+  },
+  {
+    "objectID": "hacks/ring-gap.html#acknowledgements",
+    "href": "hacks/ring-gap.html#acknowledgements",
+    "title": "Ring with rotating gap",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nI’m sure this has been discovered before, but I came up with this particular version."
+  },
+  {
+    "objectID": "hacks/cadence-sensor.html",
+    "href": "hacks/cadence-sensor.html",
+    "title": "A JS Cadence Sensor",
+    "section": "",
+    "text": "At some point during the pandemic, I became suspicious about the accuracy of my Saris H3 cadence sensor, so I wrote my own."
+  },
+  {
+    "objectID": "hacks/cadence-sensor.html#how-it-works",
+    "href": "hacks/cadence-sensor.html#how-it-works",
+    "title": "A JS Cadence Sensor",
+    "section": "How it works",
+    "text": "How it works\nThe algorithm is embarrassingly simple for how well it works:\n\nCapture the time series of the accelerometer data (with a 1s half-life exponential decay),\ncompute the PCA, and extract the first principal component. You now have a 1D time series\nCompute the FFT, and find the period with largest energy.\n\nSmartphones: supercomputer processing power, tricorder sensors. Amazing stuff."
+  },
+  {
+    "objectID": "hacks/seven-circles.html",
+    "href": "hacks/seven-circles.html",
+    "title": "Seven Circles",
+    "section": "",
+    "text": "Code\n{\n    var svg = d3.select(\"#main\").append(\"svg\")\n    .attr(\"viewBox\", \"0 0 600 600\")\n    .attr(\"width\", \"100%\").attr(\"height\", \"100%\");\n    var center = svg.append(\"circle\");\n    center.attr(\"r\", 48) // 2-pixel margin\n        .attr(\"cx\", 300)\n        .attr(\"cy\", 300)\n        .attr(\"fill\", d3.lab(50, 60, 0));\n\n    var circleData = [{\n        dx: -1,\n        dy: 0\n    }, {\n        dx: 1,\n        dy: 0\n    }, {\n        dx: -0.5,\n        dy: Math.sqrt(3)/2\n    }, {\n        dx: 0.5,\n        dy: Math.sqrt(3)/2\n    }, {\n        dx: -0.5,\n        dy: -Math.sqrt(3)/2\n    }, {\n        dx: 0.5,\n        dy: -Math.sqrt(3)/2\n    }];\n\n    var circles = svg.append(\"g\")\n            .selectAll(\"circle\")\n            .data(circleData)\n            .enter()\n            .append(\"circle\");\n\n    var xScaleSmall = d3.scaleLinear().domain([-1, 1]).range([200, 400]);\n    var yScaleSmall = d3.scaleLinear().domain([-1, 1]).range([400, 200]);\n    var xScaleBig = d3.scaleLinear().domain([-1, 1]).range([120, 420]);\n    var yScaleBig = d3.scaleLinear().domain([-1, 1]).range([420, 120]);\n\n    circles.attr(\"cx\", d => xScaleSmall(d.dx))\n        .attr(\"cy\", d => yScaleSmall(d.dy))\n        .attr(\"r\", 48)\n        .attr(\"fill\", d3.lab(50, -60, 0));\n\n    function cycleBig() {\n        center.transition()\n            .duration(1000)\n            .attr(\"cx\", 270)\n            .attr(\"cy\", 270)\n        ;\n        \n        circles.transition()\n            .duration(1000)\n            .attr(\"cx\", d => xScaleBig(d.dx))\n            .attr(\"cy\", d => yScaleBig(d.dy))\n            .attr(\"r\", 68)\n            .attr(\"fill\", d3.lab(50, -60, 0))\n            .on(\"end\", cycleSmall);\n    }\n\n    function cycleSmall() {\n        center.transition()\n            .duration(1000)\n            .attr(\"cx\", 300)\n            .attr(\"cy\", 300);\n\n        circles.transition()\n            .duration(1000)\n            .attr(\"cx\", d => xScaleSmall(d.dx))\n            .attr(\"cy\", d => yScaleSmall(d.dy))\n            .attr(\"r\", 48)\n            .attr(\"fill\", d3.lab(50, -60, 0))\n            .on(\"end\", cycleBig);\n    }\n\n    cycleBig();\n\n}"
+  },
+  {
+    "objectID": "hacks/index.html",
+    "href": "hacks/index.html",
+    "title": "Hacks",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nA JS Cadence Sensor\n\n\nJun 2, 2022\n\n\n\n\nBunimovich Stadium\n\n\nNov 14, 2020\n\n\n\n\nAn Interactive Fagan Nomogram\n\n\nNov 14, 2020\n\n\n\n\nStraight movement on circle\n\n\nNov 14, 2020\n\n\n\n\nVariations on the Hermann grid\n\n\nOct 13, 2018\n\n\n\n\nPurple dots\n\n\nSep 27, 2018\n\n\n\n\nRing with rotating gap\n\n\nSep 27, 2018\n\n\n\n\nCurvature Blindness\n\n\nDec 10, 2017\n\n\n\n\nCheckerboard and Crosses\n\n\nDec 5, 2017\n\n\n\n\nSeven Circles\n\n\nNov 29, 2017\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "hacks/curvature-blindness.html",
+    "href": "hacks/curvature-blindness.html",
+    "title": "Curvature Blindness",
+    "section": "",
+    "text": "Over a gray background, some of the wiggly lines appear much more triangular in shape than they do over a white or black background."
+  },
+  {
+    "objectID": "hacks/curvature-blindness.html#acknowledgments",
+    "href": "hacks/curvature-blindness.html#acknowledgments",
+    "title": "Curvature Blindness",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\nThis one appears to be quite new, published in 2017 by K. Takahashi."
+  },
+  {
+    "objectID": "hacks/fagan-nomogram.html",
+    "href": "hacks/fagan-nomogram.html",
+    "title": "An Interactive Fagan Nomogram",
+    "section": "",
+    "text": "As an illustration, consider the example illustrated in the default setting of the nomogram below. If only 10% of the population exhibit a particular kind of condition, then even if a test gives a ratio of true positives to false positives at 10 to 1, only 50% of the people tested positive will actually exhibit the condition.\nSimilarly, if only 10% of the population exhibits the condition, then in order to be 90% sure that a positive result indicates the presence of the condition, the test can give a false-positive result only 1 every 100 times it gives true positive results. Intuitively, what’s going on is that the base-10 logarithm of the “likelihood ratio” (10 and 100 respectively in the examples above) is the “number of nines added to the baseline probability”, interpreting a probability of 0.1 as having “negative 1 nine”.\nThe original nomogram was meant to be used with a physical ruler to do the calculations. Here, you can grab the circles and move them around to change the settings.\n\n\n\n\n\n\n\n\n\n\nReferences\n\nCasscells, Ward, Arno Schoenberger, and Thomas B Graboys. 1978. “Interpretation by Physicians of Clinical Laboratory Results.” New England Journal of Medicine 299 (18): 999–1001.\n\n\nFagan, T. J. 1975. “Nomogram for Bayes Theorem.” N Engl J Med 293 (5): 257.\n\n\nWikipedia contributors. 2022. “Nomogram — Wikipedia, the Free Encyclopedia.” https://en.wikipedia.org/w/index.php?title=Nomogram&oldid=1085193589."
+  },
+  {
+    "objectID": "hacks/checkerboard-and-crosses.html",
+    "href": "hacks/checkerboard-and-crosses.html",
+    "title": "Checkerboard and Crosses",
+    "section": "",
+    "text": "The checkerboard stays straight throughout the animation."
+  },
+  {
+    "objectID": "hacks/checkerboard-and-crosses.html#acknowledgments",
+    "href": "hacks/checkerboard-and-crosses.html#acknowledgments",
+    "title": "Checkerboard and Crosses",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\n(Source). Thanks, Pete!."
+  },
+  {
+    "objectID": "hacks/variations-on-the-hermann-grid.html",
+    "href": "hacks/variations-on-the-hermann-grid.html",
+    "title": "Variations on the Hermann grid",
+    "section": "",
+    "text": "The Hermann grid is the prototypical example of the extinction illusion. Here we build a small variation of Figure 5 from Ninio and Stevens’s Variations on the Hermann Grid: An Extinction Illusion. There are equally many points on either half of the image: the animation simply moves the points vertically."
+  },
+  {
+    "objectID": "hacks/variations-on-the-hermann-grid.html#acknowledgements",
+    "href": "hacks/variations-on-the-hermann-grid.html#acknowledgements",
+    "title": "Variations on the Hermann grid",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nI found out about the static version of this illusion on twitter."
+  },
+  {
+    "objectID": "hacks/purple-dots.html",
+    "href": "hacks/purple-dots.html",
+    "title": "Purple dots",
+    "section": "",
+    "text": "If you keep your gaze focused at the black crosshairs, eventually the purple dots fade away and you start seeing an animated bright green dot instead."
+  },
+  {
+    "objectID": "hacks/purple-dots.html#acknowledgements",
+    "href": "hacks/purple-dots.html#acknowledgements",
+    "title": "Purple dots",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nI tried to track down the original discoverer of this one but ultimately failed; it seems at this point to be folklore."
+  },
+  {
+    "objectID": "strava/strava.html#deficit",
+    "href": "strava/strava.html#deficit",
+    "title": "My Strava Data",
+    "section": "Deficit",
+    "text": "Deficit\n\nPlot.plot({\n    x: {\n        domain: [0, 365]\n    },\n    y: {\n        domain: [0, 1600],\n        grid: true\n    },\n    marks: [\n        Plot.line(transpose(df), {x: \"days\", y: \"deficit\"})\n    ]\n})"
+  },
+  {
+    "objectID": "strava/strava.html#miles-per-day",
+    "href": "strava/strava.html#miles-per-day",
+    "title": "My Strava Data",
+    "section": "Miles per day",
+    "text": "Miles per day\n\nMonthly average\n\nPlot.plot({\n    x: {\n        domain: [0, 365]\n    },\n    y: {\n        grid: true\n    },\n    marks: [\n        Plot.line(transpose(df), {x: \"days\", y: \"mpd_monthly\"})\n    ]\n})\n\n\n\n\n\n\n\n\nOverall\n\nPlot.plot({\n    x: {\n        domain: [0, 365]\n    },\n    y: {\n        grid: true\n    },\n    marks: [\n        Plot.line(transpose(df), {x: \"days\", y: \"mpd_so_far\"})\n    ]\n})"
+  },
+  {
+    "objectID": "strava/strava.html#miles-per-day-going-forward",
+    "href": "strava/strava.html#miles-per-day-going-forward",
+    "title": "My Strava Data",
+    "section": "Miles per day going forward",
+    "text": "Miles per day going forward\n\nPlot.plot({\n    x: {\n        domain: [0, 365]\n    },\n    y: {\n        domain: [15, 25],\n        grid: true\n    },\n    marks: [\n        Plot.line(transpose(df), {x: \"days\", y: \"remainder_per_day\"})\n    ]\n})"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Carlos Scheidegger",
+    "section": "",
+    "text": "I’m a software engineer at RStudio working on quarto, and an associate professor on leave in the Department of Computer Science at the University of Arizona. Before coming to sunny, beautiful Tucson, I worked at AT&T Research in New York."
+  },
+  {
+    "objectID": "index.html#software-i-worked-on",
+    "href": "index.html#software-i-worked-on",
+    "title": "Carlos Scheidegger",
+    "section": "Software I work(ed) on",
+    "text": "Software I work(ed) on\n\nQuarto: language-agnostic reproducible computational documents, for the web and beyond.\nNanocubes: blazing fast large data visualization. (2013)\nLux: write WebGL shaders in Javascript, composably. (2014)\nRCloud: collaborative data analysis on the web (2014).\nVisTrails: a provenance-aware scientific workflow system. (2009)"
+  },
+  {
+    "objectID": "index.html#some-small-stuff-i-made",
+    "href": "index.html#some-small-stuff-i-made",
+    "title": "Carlos Scheidegger",
+    "section": "Some small stuff I made",
+    "text": "Some small stuff I made\nI like web browsers, and I like Javascript. (I know.)\nGraphics and data visualization:\n\nIf you take pictures of clouds from an airplane, you can see their 3D structure.\nIf you stitch together 4 hours of an intercontinental flight, you get an interesting map of the US.\nAn exploration of the MLB Hall of Fame voting patterns.\n\nMath:\n\nThe set of roots of polynomials with small integer coefficients has some incredible structure\nThe Fagan Nomogram is a great way to build intuition for Bayes’s Theorem.\nThe Bunimovich stadium is a neat dynamical system.\nSome intuition for the duality principle in convex optimization.\nSome intuition for how 2x2 symmetric real matrices transform vectors via the eigendecomposition.\n\nOptical illusions:\n\nPurple dots\nRing with a rotating gap\nVariations on the Hermann Grid\nStraight Movement on Rotating Circle\nCurvature Blindness\nCheckerboard and Crosses\nSeven Circles"
+  },
+  {
+    "objectID": "academia.html",
+    "href": "academia.html",
+    "title": "Carlos Scheidegger",
+    "section": "",
+    "text": "Interactive visualization is crucial in understanding, exploring, and presenting data, but data scale can present serious barriers for effectiveness and adoption. I study these barriers and design solutions to remove them. I like both theoretical and hands-on work.\nSince joining UA, I have worked in a number of projects here, including support for interactive browsing of synteny data at CoGe, and building up interactive visualization infrastructure for the ANTARES project. If you’re interested in my work and that of my former students, you should also take a look at the webpage of the HDC Lab, which I cofounded with my colleagues, Josh Levine and Kate Isaacs."
+  },
+  {
+    "objectID": "academia.html#funded-projects",
+    "href": "academia.html#funded-projects",
+    "title": "Carlos Scheidegger",
+    "section": "Funded projects",
+    "text": "Funded projects\nMy work is funded by a number of institutions, including the NSF, AT&T, and the Arizona Board of Regents.\n\nNSF III-1815238: An End-to-End Pipeline for Interactive Visual Analysis of Big Data\nNSF III-1513651: Topological Data Analysis for Large Network Visualization"
+  },
+  {
+    "objectID": "academia.html#students",
+    "href": "academia.html#students",
+    "title": "Carlos Scheidegger",
+    "section": "Students",
+    "text": "Students\n\nKatherine Best (MSc)\nRebecca Faust (PhD)\nMingwei Li (PhD)\nZhenge Zhao (PhD)\nZhe Wang (PhD)"
+  },
+  {
+    "objectID": "academia.html#software-projects-i-worked-on",
+    "href": "academia.html#software-projects-i-worked-on",
+    "title": "Carlos Scheidegger",
+    "section": "Software projects I worked on",
+    "text": "Software projects I worked on\nThe year in parenthesis denotes the last year I was directly involved with the project\n\nQuarto: language-agnostic reproducible computational documents, for the web and beyond.\nNanocubes: blazing fast large data visualization. (2013)\nLux: write WebGL shaders in Javascript, composably. (2014)\nRCloud: collaborative data analysis on the web (2014).\nVisTrails: a provenance-aware scientific workflow system. (2009)"
+  },
+  {
+    "objectID": "academia.html#papers",
+    "href": "academia.html#papers",
+    "title": "Carlos Scheidegger",
+    "section": "Papers",
+    "text": "Papers\nThe easiest way to find my papers is through my Google Scholar page."
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-05-19.html",
+    "href": "notes/music/chapman-stick/lessons/2022-05-19.html",
+    "title": "2022-05-19",
+    "section": "",
+    "text": "Where does the flat 3 come from in Big Meadows?\nIt made me think of the theme to Sneakers, which I think has a similar movement, and I also don’t understand that one.\nneat thing I found in Stones’s “She’s a Rainbow”, the song starts on the V, pretending it’s in dorian.\n“so what?”\n“morning song?”\n“mr. pc john coltrane”"
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-04-11.html",
+    "href": "notes/music/chapman-stick/lessons/2022-04-11.html",
+    "title": "2022-04-11",
+    "section": "",
+    "text": "I still have trouble figuring out how the names relate to the positions:\n\n\n\nroot on bottom: 1, 3, 5\n\nThe chord stacks as major third then minor third.\n \n\n\n\n \n\n\n\n\nthird on bottom: 3, 5, 1\nthis is the double stop on the two high strings\n\nThe chord stacks as minor third then fourth.\n\n\n\n\nfifth on bottom: 5, 1, 3\n\nThe chord stacks as fourth then major third."
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-04-11.html#i-iv-v-progression",
+    "href": "notes/music/chapman-stick/lessons/2022-04-11.html#i-iv-v-progression",
+    "title": "2022-04-11",
+    "section": "I IV V Progression",
+    "text": "I IV V Progression\nThe obvious voice leading “walks backwards” the names of the positions, it seems:\n\nstarting on root position\nroot position -> second inversion -> first inversion -> root position\nThis doesn’t move the hand much, but I don’t think it sounds that good.\nI think it’s because the string the moves the most is the middle string:\n\nThe high string goes G A G G\nThe middle string goes E F D E\nThe low string goes C C B C\n\nSo the string that moves the most (which I guess implies the melody) resolves to E, which is weird.\nBut if we instead played the last I in second inversion, then the middle string goes E F D C, which sounds a lot nicer\n\n\nstarting on first inversion\nfirst inversion -> root position -> second inversion -> first inversion\n\n\nstarting on second inversion\nsecond inversion -> first inversion -> root -> second"
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-04-11.html#i-iv-iv-voice-leading",
+    "href": "notes/music/chapman-stick/lessons/2022-04-11.html#i-iv-iv-voice-leading",
+    "title": "2022-04-11",
+    "section": "I IV IV voice leading",
+    "text": "I IV IV voice leading\nBut it seems that I can get nicer voicings a slightly different way.\nSo it seems that things sound nice if I either pick the highest or the lowest string to write a “melody”, and then harmonize around it.\nSo this means I really need to know by heart which chords have which notes in which position so I can naturally come up with the voicing.\nFor example, I can do\nI -> IV -> V -> I\nsecond inversion -> first inversion -> second inversion -> first inversion\nby writing the “melody” E F B C and then harmonizing. That sounds good too.\nOr we can do G A B C; root -> second -> second -> first\nBut then we can also do I ii V I instead, which sounds interesting as well, etc etc"
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-04-11.html#playing-with-three-fingers",
+    "href": "notes/music/chapman-stick/lessons/2022-04-11.html#playing-with-three-fingers",
+    "title": "2022-04-11",
+    "section": "Playing with three fingers",
+    "text": "Playing with three fingers\nRan out of time, but I tried playing the right-hand side of Bach’s Jesus, Joy of Man’s Desiring and I’m struggling in some simple positions. I should ask Greg about this.\n2022-04-20 update: I kind of figured this out; the trick is that when you learn the scales across all positions, then when the song doesn’t go exactly across a scale, you pick the last “good” finger and do the next scale assuming the previous finger is in a natural position. You end up moving your hands more but it totally works out."
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-06-15.html",
+    "href": "notes/music/chapman-stick/lessons/2022-06-15.html",
+    "title": "2022-06-15",
+    "section": "",
+    "text": "how to play major sevenths on the bass side? double stop?\nfocus on hand positioning for chords, especially on left hand\ngo over Como nossos pais?\n\nhttps://www.youtube.com/watch?v=gdgj1kYqiFI\n\nhttp://stick.com/method/resources/chords/BM_chord_compendium.pdf"
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-06-02.html",
+    "href": "notes/music/chapman-stick/lessons/2022-06-02.html",
+    "title": "2022-06-02",
+    "section": "",
+    "text": "How does one go about transcribing a song?\nPlaying with a metronome: hard!\nProgress on:\n\nMinuet in G Major, still can’t really play it\nCPE Bach’s piece is progressively easier to play, I can even sometimes do a little dynamics\nParallel scales getting easier\n\nlet your right hand relax\n\npractice thirds on left hand\n\nraking scales pull-offs and hammer-ons, letting fingers lay down on the string rather than the tips\narpeggios\n\n1-3-5\n1-3-5-7\n1-3-5-8\n\nchord based vs part based"
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/index.html",
+    "href": "notes/music/chapman-stick/lessons/index.html",
+    "title": "Chapman Stick lesson notes",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\n\n\n\n2022-04-11\n\n\n\n\n2022-04-21\n\n\n\n\n2022-05-06\n\n\n\n\n2022-05-10\n\n\n\n\n2022-05-19\n\n\n\n\n2022-06-02\n\n\n\n\n2022-06-15\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-04-21.html",
+    "href": "notes/music/chapman-stick/lessons/2022-04-21.html",
+    "title": "2022-04-21",
+    "section": "",
+    "text": "Interlochen 2023?\nKeep an eye on announcement in dec.\nWeight-lifting belt?\nnew stick ?\n\n12-string\nlower tuning\ntry baritone melody\n\nrepeated notes\nfocus on hand movement and small steps\nexpression\nhelps get your mind off the mechanics\narpeggios - play one quiet and another loud\ncomparative listening to same pieces from the different recording\ncharles mingus - goodbye porkpie hat\near training - sing while playing scales or improvising\n\nbecome more familiar with modal patterns\n\nunderstand what can happen"
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-05-06.html",
+    "href": "notes/music/chapman-stick/lessons/2022-05-06.html",
+    "title": "2022-05-06",
+    "section": "",
+    "text": "Book still hasn’t arrived..\nIntonation of strings 4-5\n12-string stick?\nLower melody a semi-tone?"
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-05-06.html#things-ive-practiced",
+    "href": "notes/music/chapman-stick/lessons/2022-05-06.html#things-ive-practiced",
+    "title": "2022-05-06",
+    "section": "Things I’ve practiced",
+    "text": "Things I’ve practiced\n\nlearning the baritone melody neck\n\nmemorizing the note places (no stickers!)\nrelearning the three pieces I kind of know on baritone melody\n\nleft-hand scales\n\nstill can’t do them in unison, and I can’t find a position for the exercise that fits the whole neck going only up and down\n\nsight reading on sightreadingfactory (still very hard on the stick!)\ni-iv-v with bass\n\nIf the harmonic is sharp, the string is too long if the harmonic is flat, the string is too short always do something with both hands, even if the practice is one of them string transitions always 3-1 1-3 talk to yourself through it"
+  },
+  {
+    "objectID": "notes/music/chapman-stick/lessons/2022-05-10.html",
+    "href": "notes/music/chapman-stick/lessons/2022-05-10.html",
+    "title": "2022-05-10",
+    "section": "",
+    "text": "I think I got the tone to be improved. The trick was to lower the tone dial on the bass, in addition to raising the tone on the melody. Now the clean output sounds distinct from one another, and I can take it from there."
+  },
+  {
+    "objectID": "explainers/music/karplus-strong.html",
+    "href": "explainers/music/karplus-strong.html",
+    "title": "Karplus-Strong Plucked-String Synthesis",
+    "section": "",
+    "text": "Strings in stringed instruments make harmonic sounds: each string produces not only a base frequency but a mix of sounds of different frequencies. A “harmonic” sound means simply that the frequencies of such a sound are always integer multiples of the base frequency. Typical western music features predominantly harmonic sounds, and such harmonic sounds account for much of western music’s notion of consonance and dissonance. So if we want to synthesize musical instruments that can be used to create western-sounding music, we better be able to create sounds with lots of harmonic tones.\nA plucking or hammering sound starts percussive and non-harmonic, but quickly resolves into a base frequency and lots of harmonic overtones. The higher the frequency, the faster these harmonics decay, and on long sustains we’re left with only the low harmonics. Modeling this on slow computers used to be a significant challenge, until in 1983 Karplus and Strong devised a very simple method that sounds great to this day (Karplus and Strong 1983)."
+  },
+  {
+    "objectID": "explainers/music/karplus-strong.html#appendix",
+    "href": "explainers/music/karplus-strong.html#appendix",
+    "title": "Karplus-Strong Plucked-String Synthesis",
+    "section": "Appendix",
+    "text": "Appendix\n\nCode\n\nimport { sizePlot } from \"/src/cscheid/cscheid/observable.js\";\nfunction sizedPlot(...args) {\n  const result = Plot.plot(...args);\n  return sizePlot(result);\n}"
+  },
+  {
+    "objectID": "explainers/music/consonance-and-dissonance.html",
+    "href": "explainers/music/consonance-and-dissonance.html",
+    "title": "Consonance and Dissonance",
+    "section": "",
+    "text": "I recently learned that there’s now a really good theory for why some musical intervals sound consonant (“nice”), and some sound dissonant (“rough”, “out of tune”). This theory explains a lot of music, is backed by good experiments, is simple enough to explain in a single article, and was only figured out about 60 years ago.\nIncredibly, this theory also explains both why Pythagoras thought music had to do with simple fractions, why western music likes 12-tone scales so much, and why other musical cultures choose other scales!\nI’m talking about Plomp-Levelt curves (Plomp and Levelt 1965)."
+  },
+  {
+    "objectID": "explainers/music/consonance-and-dissonance.html#on-terminology",
+    "href": "explainers/music/consonance-and-dissonance.html#on-terminology",
+    "title": "Consonance and Dissonance",
+    "section": "On terminology",
+    "text": "On terminology\nIn this article I’m using consonance to mean the perceptual notion: does this particular sound feel “smooth” or “rough”? Other definitions are also useful (see Sethares 2005, chap. 3), especially for writing music within a particular culture! But I’m interested in the “perceptual” notion because, for example, it will eventually let us say interesting things about the other notions."
+  },
+  {
+    "objectID": "explainers/music/consonance-and-dissonance.html#consonance-and-dissonance-in-pure-sounds",
+    "href": "explainers/music/consonance-and-dissonance.html#consonance-and-dissonance-in-pure-sounds",
+    "title": "Consonance and Dissonance",
+    "section": "Consonance and dissonance in “pure” sounds",
+    "text": "Consonance and dissonance in “pure” sounds\nIn math, there’s a famous way to decompose (or “analyze”, in signal-processingese) complicated sounds into simple sounds: that’s “Fourier analysis”. Sounds are waves, and you can think of complicated sounds as a sum of simple waves. Then, if we understand what happens with simple sounds, we use this understanding as a building block to understand what happens with complex sounds.\nThe simplest wave is a sine curve with a given frequency and phase. But: is this math relevant to our how we hear sounds?\nIt’s an incredible biological fact about your ears that yes, ears do Fourier analysis! Specifically, your ear has a part called a basilar membrane, and it decomposes a sound into frequencies. Specifically, the basilar membrane makes it so different frequencies are sent to different positions in your cochlea.\n\nCritical bandwidth\nHowever, the basilar membrane is not perfect, and nearby frequencies bleed into one another. For each position in the cochlea, there is a range of nearby frequencies that activate it: some more strongly, some less so. The “size” of this region is called the “critical bandwidth”, and it looks like this:\n\n\nCode\nsizedPlot({\n  x: { label: \"Frequency\", type: \"log\", domain: [100, 10000] },\n  y: { label: \"Critical Bandwidth\", type: \"log\", domain: [50, 1000] },\n  marks: [ Plot.line(crit, {x: \"x\", y: \"y\"}), \n         // Plot.line(wholeTone, {x: \"x\", y: \"y\"}) \n         ]\n})\n\n\n\n\n\n\n\nHere’s how you read this plot. The part of the cochlea that receives 100 Hz (Hz, “Hertz” is the frequency of “one per second”. The higher the number, the faster the wave vibrates) also is activated by frequencies from 50 Hz to 150 Hz (100Hz is the “width” of the “band” it perceives, the “bandwidth”). At 1KHz, the bandwidth is closer to 150Hz, and at 3KHz and higher, it becomes around 12% of the base frequency."
+  },
+  {
+    "objectID": "explainers/music/consonance-and-dissonance.html#measuring-consonance-and-dissonance-of-simple-waves",
+    "href": "explainers/music/consonance-and-dissonance.html#measuring-consonance-and-dissonance-of-simple-waves",
+    "title": "Consonance and Dissonance",
+    "section": "Measuring consonance and dissonance of simple waves",
+    "text": "Measuring consonance and dissonance of simple waves\nThe breakthrough experiment that Plomp and Levelt did in 1965 was to ask people, in a controlled environment, whether pairs of sine waves sounded consonant or dissonant. They tried a number of different base frequencies and intervals (differences between the frequencies). They found that sine waves that are very close to one another sound consonant. So do sound waves that are very apart from one another. But two sine waves that are kind of close to each other sound rough. And this distance tends to match the critical bandwidth along the basilar membrane! So, for pure sine waves, the curve looks like this.\n\n\nCode\nsizedPlot({\n  x: {\n    label: \"Fraction of critical bandwidth →\"\n  },\n  y: {\n    label: \"↑ Dissonance\",\n    grid: true\n  },\n\n  marks: [\n    Plot.line(diss, {x: \"x\", y: \"y\"}),\n  ]\n})\n\n\n\n\n\n\n\nA different way to think about this is to consider a two-dimensional plot of frequencies against frequencies, where color indicates whether a pair of sine waves will sound rough or in-tune:\n\n\nCode\n{\n  const w = 400;\n  const h = 400;\n  const steps = 400;\n  const minFreq = 100, maxFreq = 800;\n\n  const context = DOM.context2d(w, h);\n\n  // I'm sure there's a better way to do this.\n  const freq = d3.scaleLinear().range([Math.log(minFreq), Math.log(maxFreq)]).domain([0, steps]);\n  const x = d3.scaleLinear().domain([0, steps]).range([40, 360]);\n  const y = d3.scaleLinear().domain([0, steps]).range([370, 30]);\n  const color = d3.scaleLinear().domain([0, 1]).range([\"white\", \"red\"]);\n  \n  for (const xi of d3.range(steps)) {\n    for (const yi of d3.range(steps)) {\n      debugger;\n      const xf = Math.exp(freq(xi));\n      const yf = Math.exp(freq(yi));\n      const left = x(xi), top = y(yi + 1), right = x(xi + 1), bottom = y(yi);\n      const dis = totalDissonance([{tone: xf, amplitude: 1}], [{tone: yf, amplitude: 1}]);\n      context.fillStyle = color(dis);\n      context.fillRect(left, top, Math.round(right - left)+1, Math.abs(Math.round(top - bottom))+1);\n    }\n  }\n  const div = html`<div position=\"absolute\" width=\"400\" height=\"400\" style=\"max-height: 400px\"></div>`;\n  div.appendChild(context.canvas);\n  const svg = Plot.plot({\n    width: 400,\n    height: 400,\n    x: { type: \"log\", domain: [minFreq, maxFreq] },\n    y: { type: \"log\", domain: [minFreq, maxFreq] },\n    marks: [\n      Plot.line([{x: 440, y: minFreq}, {x: 440, y: maxFreq}], { x: \"x\", y: \"y\" })\n    ]\n  });\n  const svgStyle = svg.querySelector(\"svg style\");\n  svgStyle.innerHTML = svgStyle.innerHTML.replace(\"background: white;\", \"\");\n  svg.style.position = \"relative\";\n  svg.style.top = \"-405px\"; // 40_5_?! shrug\n  div.appendChild(svg);\n  return div;\n  // context.canvas;\n  // return context.canvas;\n}"
+  },
+  {
+    "objectID": "explainers/music/consonance-and-dissonance.html#cool-trick.-but-consonance-and-dissonance-are-about-music",
+    "href": "explainers/music/consonance-and-dissonance.html#cool-trick.-but-consonance-and-dissonance-are-about-music",
+    "title": "Consonance and Dissonance",
+    "section": "“Cool trick. But consonance and dissonance are about music!”",
+    "text": "“Cool trick. But consonance and dissonance are about music!”\nThat’s exactly right. And music is made with musical instruments. So we need to understand how sound comes out of musical instruments.\nWhen you pluck a guitar string, you hear a specific pitch. The bottom string in a guitar is often tuned to “E2”, which is associated with the frequency of 82.4Hz. But that’s not the only frequency the guitar string sound contains. Guitar strings are “harmonic”. This means that when the lowest frequency they sound is X, they also make a sound at positive integer multiples of that frequency. They make sounds at 2X the frequency, 3X, 4X, and so on. You’re so used to hearing guitar sounds (and “harmonic instruments” more generally, especially if you were raised in Western Europe or North American musical cultures. More on that later), that you don’t realize this.\nThe practical consequence is that the sound you thought was simple is actually fairly complicated. But, because we have Fourier analysis as a tool (and because miraculously your ear does Fourier analysis too!) then Fourier analysis can help us decompose complex sounds. So, to study the consonance or dissonance of guitar sounds, we don’t compare one pure wave to another. Instead, we compare the sum of the frequencies made by one string to the sum of the frequencies made by the other. Specifically, we add the sounds of the two strings together. Then, for every pair of resulting frequencies, we compute the dissonance using the formula from the charts above. The “total dissonance” is just the sum of the dissonances for every pair.\nHere is the dissonance curve for a simulated guitar sound of E3 (the E you sound with the fourth string of your guitar on the second fret).\n\n\nCode\nplompLevelt(842, makeHarmonicTone(6, 0.75))\n\n\n\n\n\n\n\nThe base frequency for E3 is 842 Hz. If you’re a musician, you’ll notice right away that E4, an octave away at 1684Hz, sounds consonant. That’s really cool, and it’s actually not as obvious as it appears. Although guitars have consonant octaves, other instruments don’t necessarily! If you’re a musician, you might be surprised to know that (for example), pure sine waves a minor ninth away from one another don’t sound dissonant, while they definitely do in the guitar (as you can also see in the chart by looking at 1784Hz)."
+  },
+  {
+    "objectID": "explainers/music/consonance-and-dissonance.html#theres-no-consonance-without-timbre",
+    "href": "explainers/music/consonance-and-dissonance.html#theres-no-consonance-without-timbre",
+    "title": "Consonance and Dissonance",
+    "section": "There’s no consonance without timbre",
+    "text": "There’s no consonance without timbre\nThis is both a simple idea but also very deep: perceptually speaking, whether two notes sound consonant or dissonant depends on the “timbre” of the instrument that played the note.\nThe “timbre” of an instrument is a hard thing to pin down, but we usually use the word to mean the difference between the sound of a piano’s C4 and a clarinet’s C4. In this simplified setting here, we will use timbre to mean “the set of additional waves produced by an instrument, together with the amplitude of each of those waves”. If you’ve read some of the literature, you might have come across the phrase “overtone series”, a more specific term for this aspect of timbre.\nThe valleys in the curve above indicate intervals that sound particularly consonant. So if you’re looking to invent a system to play notes that tend to sound nice together, you will naturally end up with something that makes you choose those valleys. For “harmonic instruments” (instruments that produce harmonic overtones), those valleys correspond to many of the notes in the 12-tone scale, specifically under just intonation. So now we have a theory, math, and experiments that show how the design of musical scales is intimately connected to the way in the instruments generate sounds."
+  },
+  {
+    "objectID": "explainers/music/consonance-and-dissonance.html#clarinet-and-other-timbres",
+    "href": "explainers/music/consonance-and-dissonance.html#clarinet-and-other-timbres",
+    "title": "Consonance and Dissonance",
+    "section": "Clarinet, and other timbres",
+    "text": "Clarinet, and other timbres\nThis theory predicts a number of surprising things. For example, although wind instruments are harmonic, the overtone series of some wind instruments skips many of the harmonics. Specifically, wind instruments with closed tubes have cancelling waves (because the wave bounces back at the end of the tube). As a result, they only emit overtones with odd integer multiples of the frequency.\nTo begin with, this makes them sound different from open-tube wind instruments. A clarinet is a closed-tube wind instrument, and so it sounds markedly different from a saxophone (which is open-tube and has even harmonic overtones). The same applies to the sound difference between flutes (open-tube) and pan flutes (closed-tube).\nBut in addition to sounding different, clarinets also prefer very different intervals to pianos (that part was personally surprising to me.) Here’s the Plomp-Levelt curves for the clarinet, based on the overtones obtained by Bryan Suits.\n\n\nCode\nplompLevelt(1000, clarinetData, 4.1)\n\n\n\n\n\n\n\nIn this chart, I’m showing frequencies from 1KHz to 4KHz, so two octaves up. The results here are, if you’ll forgive me, wild. This chart predicts that clarinet intervals sound more consonant at the twelfth note of the traditional western diatonic scale than at the octave itself. There’s other wild features too, such as the absence of an especially dissonant major seventh or ninth! Working from the theory, this all happens because the clarinet lacks the second harmonic (which is an octave up from the base). The second harmonic from the low note, then, is not there to clash with the base frequency of the high ninth note.\nI honestly didn’t believe this at first. But then I wrote a simple synthesizer for clarinet sounds:\n\nPiano sounds, fifth - octave - twelfth - fifteenth\nClarinet sounds, fifth - octave - twelfth - fifteenth\n\nI marked in bold what, to my ears, are the most consonant intervals in the sequences above. It’s not a subtle effect either!\nSo, it seems clear to me that a culture that only played closed-tube harmonic instruments could easily end up with weird scales that revolved around twelfth intervals being the “pseudo-octave”. It just sounds better than the octave! That’s bananas."
+  },
+  {
+    "objectID": "explainers/music/consonance-and-dissonance.html#beyond-harmonic-instruments",
+    "href": "explainers/music/consonance-and-dissonance.html#beyond-harmonic-instruments",
+    "title": "Consonance and Dissonance",
+    "section": "Beyond harmonic instruments",
+    "text": "Beyond harmonic instruments\nMore shockingly, this is only the beginning of this story. We don’t need to come up with imaginary cultures. Non-western cultures play instruments that want different scales, and that’s why they use them!\nTBF: Thai xylophones, gamelans"
+  },
+  {
+    "objectID": "explainers/music/consonance-and-dissonance.html#plomp-levelt-curves-slightly-adapted",
+    "href": "explainers/music/consonance-and-dissonance.html#plomp-levelt-curves-slightly-adapted",
+    "title": "Consonance and Dissonance",
+    "section": "Plomp-Levelt curves, slightly adapted",
+    "text": "Plomp-Levelt curves, slightly adapted\n(You can skip this discussion if you don’t know how Plomp-Levelt curves are originally constructed.)\nThe original Plomp-Levelt curves sum the dissonance over consecutive overtones on the resulting chord.\nThat’s a fine idea, but it’s a little weird when you take into account that overtones have different amplitudes. Say you have three overtones with frequencies  where the overtones are . Should that mean you don’t take the dissonances between the outer overtones into account? It seems better to me to take the sum of all pairs of overtones scaled by the product of the respective amplitudes.\nThis has the feature of making a “pure” tone have non-zero dissonance. That might be strange, but I think it’s fine. If you designed a nonharmonic instrument with its first overtone being inside the critical bandwidth, then every note, by itself would sound rough and dissonant. That’s the real lesson of the Plomp-Levelt experiments.\nThe way to reconcile these two notions is through generalized inner products. TBF.\n\n\nCode\nfunction plompLevelt(baseFreq, overtones, high = 0)\n{\n  const step = baseFreq / 300;\n  const low = baseFreq * 0.9;\n  if (high === 0) {\n    high = baseFreq * 2.1;\n  } else {\n    high = baseFreq * high;\n  }\n    \n  const x = d3.range(low, high, step);\n  const baseTone = makeCompoundTone(baseFreq, overtones);\n  const y = x.map(v => {\n    const t1 = baseTone, t2 = makeCompoundTone(v, overtones);\n    const v1 = totalDissonance(t1, t1),\n      v2 = totalDissonance(t1, t2),\n      v3 = totalDissonance(t2, t2);\n    return {\n      x: v,\n      y: 2 * v2 - v1 - v3\n    };\n  });\n  return sizedPlot({\n    x: { label: \"Frequency\", domain: [low, high], type: \"log\" },\n    y: { label: \"Dissonance\" },\n    marks: [ Plot.line(y, {x: \"x\", y: \"y\"}) ]\n  });\n}\n\n\n\n\n\n\n\n\n\nCode\nfunction makeClarinetTone(count, decay)\n{\n  // clarinets (and other closed-tube wind instruments) only have odd harmonics!\n  // this is very simplified model.\n  return d3.range(1, 2 * count, 2).map(c => ({ tone: c, amplitude: Math.pow(decay, c-1)}));\n}\n\n\n\n\n\n\n\n\n\nCode\nclarinetData =[{tone: 1, amplitude: 1}, {tone: 3, amplitude: 0.75}, {tone: 5, amplitude: 0.5}, {tone: 7, amplitude: 0.14}, {tone: 9, amplitude: 0.5}, {tone: 11, amplitude: 0.12}, {tone: 13, amplitude: 0.17}]\n\n\n\n\n\n\n\n\n\nCode\nfunction makeHarmonicTone(count, decay)\n{\n  return d3.range(1, count + 1).map(c => ({ tone: c, amplitude: Math.pow(decay, c-1)}));\n}\n\n\n\n\n\n\n\n\n\nCode\nplompLevelt(1000, makeHarmonicTone(toneCount, decay))\n\n\n\n\n\n\n\n\n\nCode\nviewof toneCount = Inputs.range([1, 10], { step: 1, value: 3, label: \"Overtone count\"} )\n\n\n\n\n\n\n\n\n\nCode\nviewof decay = Inputs.range([0, 1], { step: 0.01, value: 0.9, label: \"Overtone decay\"} )\n\n\n\n\n\n\n\n\n\nCode\nplompLevelt(440, makeClarinetTone(toneCount, 0.9))\n\n\n\n\n\n\n\n\n\nCode\nmakeClarinetTone(5, 0.9)\n\n\n\n\n\n\n\n\n\nCode\nMath.pow(0.9, -3)\n\n\n\n\n\n\n\n\n\nCode\nplompLevelt(1000, [{tone: 1, amplitude: 1}, {tone: 2.75, amplitude: 1}, {tone: 5.4, amplitude: 1}, {tone: 8.9, amplitude: 1}])\n\n\n\n\n\n\n\n\n\nCode\nplompLevelt(1000, makeHarmonicTone(7, 0.9), 3.1)\n\n\n\n\n\n\n\n\n\nCode\ntotalDissonance(makeCompoundTone(1000, clarinetData), makeCompoundTone(1000 * (4/3), clarinetData))\n\n\n\n\n\n\n\n\n\nCode\nimport { sizePlot } from \"/src/cscheid/cscheid/observable.js\";\nfunction sizedPlot(...args) {\n  const result = Plot.plot(...args);\n  return sizePlot(result);\n}"
+  },
+  {
+    "objectID": "explainers/music/index.html",
+    "href": "explainers/music/index.html",
+    "title": "Music",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJun 12, 2022\n\n\nChords, a Plomp-Levelt analysis\n\n\n\n\n\n\nJun 13, 2022\n\n\nConsonance and Dissonance\n\n\n\n\n\n\n\n\nKarplus-Strong Plucked-String Synthesis\n\n\n\n\n\n\nJun 11, 2022\n\n\nNotes on musical sound analysis in JS\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "explainers/music/chords-plomp-levelt.html",
+    "href": "explainers/music/chords-plomp-levelt.html",
+    "title": "Chords, a Plomp-Levelt analysis",
+    "section": "",
+    "text": "Status: draft.\nWe’re hoping to analyze chord consonance/dissonance using the ideas behind Plomp-Levelt curves.\nPlomp-Levelt analysis shows sounds are perceived as dissonant when tones, including harmonics, are “near-misses” of each other. If many tones land right on top of one another, then the overall sound is “consonant”. If many tones land near each other, then the overall sound is “dissonant”.\nSo we can analyze chords as if they were “polyrhythms in frequency”, because each harmonic note “beats” an evenly-spaced (in frequency domain) of tones. Since Plomp-Levelt have shown that dissonance and consonance arise from clashing near-misses of tones, we should expect more consonant chords have more “notes” hitting at the same time."
+  },
+  {
+    "objectID": "explainers/music/chords-plomp-levelt.html#basics-intervals",
+    "href": "explainers/music/chords-plomp-levelt.html#basics-intervals",
+    "title": "Chords, a Plomp-Levelt analysis",
+    "section": "Basics: intervals",
+    "text": "Basics: intervals\nOctaves: (“2:1 polyrhythm”)\n\n\n\nCode\nmakeDiagram([100, 200])\n\n\n\n\n\n\n\n\nFifths (3:2 polyrhythm)\n\n\n\nCode\nmakeDiagram([100, 150])\n\n\n\n\n\n\n\n\nFourth, 4:3:\n\n\n\nCode\nmakeDiagram([100, 133.333333])\n\n\n\n\n\n\n\n\nMajor third, 5:4:\n\n\n\nCode\nmakeDiagram([100, 125])\n\n\n\n\n\n\n\n\nMinor third, 6:5:\n\n\n\nCode\nmakeDiagram([100, 120])"
+  },
+  {
+    "objectID": "explainers/music/chords-plomp-levelt.html#chords",
+    "href": "explainers/music/chords-plomp-levelt.html#chords",
+    "title": "Chords, a Plomp-Levelt analysis",
+    "section": "Chords",
+    "text": "Chords\n\nTriads\nMajor triad. A 5:4:z and x:6:5. That’s 15:12:10 overall:\n\n\n\nCode\nmakeDiagram([100, 125, 150])\n\n\n\n\n\n\n\n\nMajor triad, first inversion. A 4:3:z and x:5:4. That’s 20:15:12 overall:\n\n\n\nCode\nmakeDiagram([100, 100 * (4/3), 100 * (4/3) * (5/4)], 2000)\n\n\n\n\n\n\n\n\nMajor chord, second inversion. A 6:5:z and 5:y:3. That’s 30:25:18 overall:\n\n\n\nCode\nmakeDiagram([100, 100 * (6/5), 100 * (5/3)], 3000)\n\n\n\n\n\n\n\n\nMajor chord as root-fifth-tenth. 3:2:z and x:5:3, overall 15:10:6. Fewer “notes” than basic major triad. Less rich, but more consonant?\n\n\n\nCode\nmakeDiagram([100, 150, 150 * 5 / 3])\n\n\n\n\n\n\n\n\nMinor chord. A 6:5:z and a 3:y:2. That’s 6:5:4 overall.\n\n\n\nCode\nmakeDiagram([100, 120, 150])\n\n\n\n\n\n\n\n\nDiminished chord. Messy, depends on choice of tritone! Here, 6:5:z and 36:y:25, overall 36:30:25. We don’t show that far.\n\n\n\nCode\nmakeDiagram([100, 120, 144])\n\n\n\n\n\n\n\n\n\n\nSevenths\nDominant seventh, 5:4:z:w, 3:y:2:w, 9:y:z:5. That’s 45:36:30:25, (matching the dimished chord and adding a 45:36 = 5:4 on top). We don’t show that far.\n\n\n\nCode\nmakeDiagram([100, 125, 150, 180])\n\n\n\n\n\n\n\n\nMajor seventh, 5:4:z:w, 3:y:2:w, 15:y:z:8. That’s 15:12:10:8. Compare this to the dominant seventh, and the difference is quite clear.\n\n\n\nCode\nmakeDiagram([100, 125, 150, 100 * 15 / 8])\n\n\n\n\n\n\n\n\nMinor seventh, 6:5:z:w, 3:y:2:w, 9:y:z:5. That’s 18:15:12:10. Again a much simpler ratio than the dominant seventh. This seems a decent explanation for why people think the major and minor sevenths are “stable” and the dominant seventh wants to be resolved somewhere.\n\n\n\nCode\nmakeDiagram([100, 120, 150, 180], 1800)"
+  },
+  {
+    "objectID": "explainers/music/chords-plomp-levelt.html#resolutions",
+    "href": "explainers/music/chords-plomp-levelt.html#resolutions",
+    "title": "Chords, a Plomp-Levelt analysis",
+    "section": "Resolutions",
+    "text": "Resolutions\nV7 -> I in first inversion:\n\n\n\nCode\nmakeDiagram([100, 125, 150, 100 * 7 / 4], 3000)\n\n\n\n\n\n\n\n\n\nCode\nmakeDiagram([100, 100 * (4/3), 100 * (4/3) * (5/4)], 3000)"
+  },
+  {
+    "objectID": "explainers/music/chords-plomp-levelt.html#appendix",
+    "href": "explainers/music/chords-plomp-levelt.html#appendix",
+    "title": "Chords, a Plomp-Levelt analysis",
+    "section": "Appendix",
+    "text": "Appendix\n\nCode\n\n\nCode\nfunction makeDiagram(chords, xMax)\n{\n    xMax = xMax || 1500;\n    const svg = html`<svg width=100% viewBox=\"0 0 990 ${chords.length * 30 + 30}\"></svg>`;\n    \n    d3.select(svg).append(\"rect\")\n        .attr(\"width\", 990).attr(\"height\", 30 * chords.length).attr(\"fill\", \"#eee\");\n\n    const chordGroups = d3.select(svg)\n      .selectAll(\"g\")\n      .data(chords)\n      .enter()\n      .append(\"g\");\n    \n    const x = d3.scaleLinear().domain([50, xMax + 50]).range([0, 990]);\n    const y = d3.scaleLinear().domain([-0.5, chords.length - 0.5]).range([30 * chords.length, 0]);\n\n    chordGroups\n      .append(\"line\")\n      .attr(\"x1\", 0).attr(\"x2\", 990)\n      .attr(\"y1\", (d, i) => y(i)).attr(\"y2\", (d, i) => y(i))\n      .attr(\"stroke\", \"gray\");\n\n    const markGroups = chordGroups\n      .selectAll(\"g\")\n      .data((d, i) => d3.range(1, 50).map(x => ({ x: x * d, y: i }))) // 30 harmonics\n      .enter()\n      .append(\"g\");\n\n    markGroups\n      .append(\"circle\")\n      .attr(\"r\", 2)\n      .attr(\"fill\", \"black\")\n      .attr(\"cx\", d => x(d.x))\n      .attr(\"cy\", d => y(d.y));\n    return svg;\n}\n\n\n\n\n\n\n\n\n\nNotes\nDiscouraging: some this ends up being “simple ratios are good”.\nSo maybe we need to include even temperament here since they’re not simple ratios but they can get close enough to just that our ears can’t tell. This will require taking the actual Plomp-Levelt curve into account for each note.\nWe can also take the Pythagorean tuning and predict how chords using wolf intervals will sound dissonant.\nTODO: compute clashes among tone pairs.\n\n\nIdeas\nWhat happens if instead of a harmonic sound, we play a super “fat” sound by including a large amount of non-harmonic tones very near one another, so that a dissonance is “lost”? Hmmm…"
+  },
+  {
+    "objectID": "explainers/music/music-analyzer.html",
+    "href": "explainers/music/music-analyzer.html",
+    "title": "Notes on musical sound analysis in JS",
+    "section": "",
+    "text": "I want to build a frequency analyzer for musical sounds that runs on a web browser, so that my synthesized sounds have an analyzer next to them.\nI’m learning all that stuff as I go along, so: actual audio engineers, you probably will run away screaming here. Or don’t, and tell me where I’m wrong. That helps too."
+  },
+  {
+    "objectID": "explainers/music/music-analyzer.html#enemies",
+    "href": "explainers/music/music-analyzer.html#enemies",
+    "title": "Notes on musical sound analysis in JS",
+    "section": "Enemies",
+    "text": "Enemies\n\nEnemy number 1: frequency resolution\nI started out thinking that I could use the (very powerful!) built-in AudioContext analyzer in the Web audio API. However, I realized that it does not provide prefiltering or subsampling of the data. This means that short-window FFTs can’t distinguish small differences in low-frequency signals. This seems to make me need large window sizes.\nA bass guitar, for example, is tuned to produce notes (roughly) from E1 to G4, which have the lowest overtones ranging 40 to 400Hz. If we want to see 3 octaves of overtones at the highest end, that’s a range from 40 to 3200Hz.\nLet’s consider \\(r\\) samples/s as the signal rate. (\\(r = 48K\\) typically). For an FFT of size \\(w\\), this gives the lowest non-dc resolvable frequency at \\(r/2\\) samples, or \\(2r/w\\) frequency.\n\\[r = 48K \\\\ w = 256 \\\\ 2r/w = 48K/256 = 187.5\\textrm{Hz}\\]\nSolving backwards to get a FFT window that can resolve 40Hz tones, we get \\(96k/w = 40, w = 2400\\). So we need at least a 4096-wide FFT. But that’s only the start. There are 12 pitches between 40 and 80Hz, and we would like to be able to distinguish those.\nAt the low frequency, the resolution (difference between resolvable frequencies) of the plain FFT is \\(3r/w - 2r/w = r/w\\). In our case, \\(r/w = 11.71Hz\\), so we can see how 4096-wide FFTs can cause trouble. An 11Hz difference in low frequencies is quite noticeable. E1 is \\(41.2\\textrm{Hz}\\), and G#1 is \\(51.9\\textrm{Hz}\\). We really would like to be able to distinguish Es from F#s, and 4096 samples aren’t enough.\nIf we want to distinguish between E1 and F1 in a frequency analyzer, we need \\((43.65 - 41.2)\\textrm{Hz} = 2.45\\textrm{Hz}\\) resolution, which works out to be \\(48000/w = 2.45, w = 19.5k\\) samples. That means we need \\(w = 32768\\) to make this work in the context of powers-of-2 FFT windows.\n\n\nEnemy number 2: latency\nAt \\(r = 48000\\) and \\(w = 32768\\), I really hope that the built-in analyzer uses moving windows, or otherwise we’re stuck with high latency."
+  },
+  {
+    "objectID": "explainers/music/music-analyzer.html#performance-do-we-get-away-with-it",
+    "href": "explainers/music/music-analyzer.html#performance-do-we-get-away-with-it",
+    "title": "Notes on musical sound analysis in JS",
+    "section": "Performance: do we get away with it?",
+    "text": "Performance: do we get away with it?\nIf we use the built-in AudioContext processing, we are stuck at \\(w = 32768\\) at least. But just how fast are FFTs in today’s computers? How much of a hit do we take if we switch to a JS or WASM FFT, compared to the built-in ones? (I’m using a 2020-era Intel MacBook Pro as my example). I found an ARM vs Rosetta benchmark for Apple’s vDSP (which is what Chromium uses internally) that claims a \\(w=65536\\) FFT takes about 1ms on an M1 Mac. Let’s say my computer is half as fast as that, and that the 32k FFT runs three times as fast; that means I should expect mine to take about 0.6ms. That should actually be fine (!) Yikes, computers are fast nowadays.\nIf we choose to use JS or WASM, this benchmark gives me a max window size of 16k, but my laptop appears to be able to process 4200 FFTs of that size per second in pure JS. But if we’re doing JS, then we can pre-process our samples (prefiltering and subsampling should work really well because we know quite precisely the range of frequencies we care about), and we should be totally fine. Yikes, computers are fast nowadays."
+  },
+  {
+    "objectID": "explainers/index.html",
+    "href": "explainers/index.html",
+    "title": "",
+    "section": "",
+    "text": "Trigonometry"
+  },
+  {
+    "objectID": "explainers/index.html#music",
+    "href": "explainers/index.html#music",
+    "title": "",
+    "section": "Music",
+    "text": "Music\nIndex of music explainers"
+  },
+  {
+    "objectID": "explainers/trigonometry.html",
+    "href": "explainers/trigonometry.html",
+    "title": "Trigonometry",
+    "section": "",
+    "text": "Just like everyone else on twitter, when I saw this diagram below my reaction was: “why didn’t they show this to me 25 years ago?” The lengths of the triangle legs correspond to the values of the trigonometric functions. Drag the point to change the diagram around.\n\n\nCode\nimport { plot } from \"/src/cscheid/cscheid.js\";\n{\n  window.d3 = d3;\n  window._ = _;\n  const main = svg`<svg viewbox=\"0 0 600 300\" width=\"100%\" height=\"100%\"></svg>`;\n\nvar s = plot.surface({\n    element: d3.select(main),\n    width: 600,\n    height: 300,\n    margin: 2,\n    xScale: d3.scaleLinear().domain([0, 3]),\n    yScale: d3.scaleLinear().domain([0, 1.5]),\n    axes: false\n});\n\nvar xScale = s.surface.xScale;\n\nfunction appendDefault(el) {\n    return function(sel) {\n        return sel.enter()\n            .append(el)\n            .each(function(d) {\n                var innerSel = sel._select(this); // hack to use inner selection context\n                for (var key in d) {\n                    innerSel.attr(key, d => d[key]);\n                }\n            });\n    };\n}\n\ns.append(\"circle\")\n    .attr(\"r\", xScale(1) - xScale(0))  // annoying...\n    .attr(\"cx\", 0)\n    .attr(\"cy\", 0)\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    .attr(\"stroke-width\", \"3px\");\n\ns.append(\"line\")\n    .attr(\"x1\", -1)\n    .attr(\"x2\",  1)\n    .attr(\"y1\",  0)\n    .attr(\"y2\",  0)\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    .attr(\"stroke-width\", \"1px\");\n\ns.append(\"line\")\n    .attr(\"y1\", -1)\n    .attr(\"y2\",  1)\n    .attr(\"x1\",  0)\n    .attr(\"x2\",  0)\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    .attr(\"stroke-width\", \"1px\");\n\nvar t = Math.PI/3;\n\nvar linesG = s.append(\"g\");\nvar arcG = s.append(\"g\");\n\nvar h0 = 30;\nvar c0 = 70;\nvar l0 = 50;\nvar colors = [\nd3.hcl(h0+0,   0, 0)    ,\nd3.hcl(h0+0,   c0, l0)  ,    \nd3.hcl(h0+180, c0, l0)  ,\nd3.hcl(h0+60,  c0, l0)  ,\nd3.hcl(h0+240, c0, l0)  ,\nd3.hcl(h0+120, c0, l0)  ,\nd3.hcl(h0+300, c0, l0)  ,    \n];\n\nfunction updateLines() {\n    linesG.selectAll(\"line\").remove();\n    var lines = [\n        { x1: Math.cos(t), y1: Math.sin(t), x2: 0, y2: 0,                         stroke:  colors[0], \"stroke-width\": 1 },\n        \n        { x1: Math.cos(t), y1: Math.sin(t), x2: 1/Math.cos(t), y2: 0,             stroke:  colors[1], \"stroke-width\": \"5px\" },   \n        { x1: Math.cos(t), y1: Math.sin(t), x2: 0,             y2: 1/Math.sin(t), stroke:  colors[2], \"stroke-width\": \"5px\" },\n        \n        { x1: Math.cos(t), y1: Math.sin(t), x2: 0,             y2: Math.sin(t),   stroke:  colors[3], \"stroke-width\": \"5px\" },\n        { x1: Math.cos(t), y1: 0,           x2: Math.cos(t),   y2: Math.sin(t),   stroke:  colors[4], \"stroke-width\": \"5px\" },\n\n        { x1: 0, y1: 0,                     x2: 1/Math.cos(t), y2: 0,             stroke:  colors[5], \"stroke-width\": \"5px\" },\n        { x1: 0, y1: 0,                     x2: 0,             y2: 1/Math.sin(t), stroke:  colors[6], \"stroke-width\": \"5px\" },\n    ];\n    \n    linesG.selectAll(\"line\")\n        .data(lines)\n        .callReturn(appendDefault(\"line\"));\n\n    arcG.selectAll(\"path\").remove();\n\n    var r = s.surface.xScale(0.1) - s.surface.xScale(0);\n    // awkward again..\n    arcG.append(\"path\")\n        .attr(\"d\", \"M \"\n              + s.surface.xScale(0.1) + \" \" + s.surface.yScale(0)\n              + \" A \" + r + \" \" + r + \" 0 0 0 \"\n              + s.surface.xScale(Math.cos(t)*0.1) + \" \" + s.surface.yScale(Math.sin(t)*0.1))\n        .attr(\"stroke\", \"black\")\n        .attr(\"fill\", \"none\");\n}\nupdateLines();\n\nvar annotationsG = s.append(\"g\");\nfunction updateAnnotations() {\n    annotationsG.selectAll(\"g\").remove();\n\n    var tx = (Math.cos(t) + 1/Math.cos(t))/2, ty = Math.sin(t)/2;\n    var ctx = Math.cos(t)/2, cty = (Math.sin(t) + 1/Math.sin(t))/2;\n\n    var annotations = [\n        { x: tx - ty / 20,   y: ty + tx / 20,   text: \"tangent\",   fill: colors[1] }, // { x1: Math.cos(t), y1: Math.sin(t), x2: 1/Math.cos(t), y2: 0,             stroke: d3.hcl(0, 60, 60)    },   \n        { x: ctx - cty / 20, y: cty + ctx / 20, text: \"cotangent\", fill: colors[2] }, // { x1: Math.cos(t), y1: Math.sin(t), x2: 0,             y2: 1/Math.sin(t), stroke: d3.hcl(180, 60, 60)  },\n        \n        { x: Math.cos(t)/2, y: Math.sin(t), text: \"cosine\", anchor: \"middle\", baseline: \"text-before-edge\", fill: colors[3] }, // { x1: Math.cos(t), y1: Math.sin(t), x2: 0,             y2: Math.sin(t),   stroke: d3.hcl(60,  60, 60)  },\n        { x: Math.cos(t), y: Math.sin(t)/2, text: \"sine\", anchor: \"right\", baseline: \"middle\", fill: colors[4] }, // { x1: Math.cos(t), y1: 0,           x2: Math.cos(t),   y2: Math.sin(t),   stroke: d3.hcl(240, 60, 60)  },\n\n        { x: 0.5/Math.cos(t), y: 0.02, text: \"secant\", anchor: \"middle\", fill: colors[5] }, // { x1: 0, y1: 0,                     x2: 1/Math.cos(t), y2: 0,             stroke: d3.hcl(120, 60, 60)  },\n        { x: 0.02, y: 0.5/Math.sin(t), text: \"cosecant\", baseline: \"middle\", fill: colors[6] }, // { x1: 0, y1: 0,                     x2: 0,             y2: 1/Math.sin(t), stroke: d3.hcl(300, 60, 60)  }\n        { x: Math.cos(t/2)*0.12, y: Math.sin(t/2)*0.12, text: \"t\", fill: \"black\" }\n    ];\n\n    annotationsG.append(\"g\").selectAll(\"text\")\n        .data(annotations)\n        .enter()\n        .append(\"text\")\n        .attr(\"x\", d => d.x)\n        .attr(\"y\", d => d.y)\n        .text(d => d.text)\n        .attr(\"stroke\", \"white\")\n        .attr(\"stroke-width\", \"5px\")\n        .attr(\"fill\", d => \"white\")\n        .attr(\"text-anchor\", d => d.anchor || null)\n        .attr(\"dominant-baseline\", d => d.baseline || null)\n        .attr(\"font\", \"11pt Helvetica Neue\")\n        .attr(\"font-weight\", \"300\")\n    ;\n\n    annotationsG.append(\"g\").selectAll(\"text\")\n        .data(annotations)\n        .enter()\n        .append(\"text\")\n        .attr(\"x\", d => d.x)\n        .attr(\"y\", d => d.y)\n        .text(d => d.text)\n        .attr(\"fill\", d => d3.hcl(d.fill).darker())\n        .attr(\"text-anchor\", d => d.anchor || null)\n        .attr(\"dominant-baseline\", d => d.baseline || null)\n        .attr(\"font\", \"11pt Helvetica Neue\")\n        .attr(\"font-weight\", \"300\");\n\n}\nupdateAnnotations();\n\nvar circleHandle = s.append(\"circle\");\ncircleHandle.attr(\"cx\", Math.cos(t))\n    .attr(\"cy\", Math.sin(t))\n    .attr(\"r\", 8)\n    .attr(\"fill\", \"white\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"stroke-width\", \"2px\")\n    .attr(\"cursor\", \"pointer\")\n    .call(d3.drag()\n          .on(\"drag\", function(e) {\n              var x = s.surface.xScale.invert(e.x);\n              var y = s.surface.yScale.invert(e.y);\n              if (x < 0.001) x = 0.001;\n              if (y < 0.001) y = 0.001;\n              if (x > 0.999) x = 0.999;\n              if (y > 0.999) y = 0.999;\n              var l = Math.sqrt(x * x + y * y);\n              x /= l;\n              y /= l;\n              t = Math.acos(x);\n              circleHandle.attr(\"cx\", x);\n              circleHandle.attr(\"cy\", y);\n              updateLines();\n              updateAnnotations();\n          }).on(\"end\", function(e) {\n              var x = s.surface.xScale.invert(e.x);\n              var y = s.surface.yScale.invert(e.y);\n              if (x < 0.001) x = 0.001;\n              if (y < 0.001) y = 0.001;\n              if (x > 0.999) x = 0.999;\n              if (y > 0.999) y = 0.999;\n              var l = Math.sqrt(x * x + y * y);\n              x /= l;\n              y /= l;\n              t = Math.acos(x);\n              circleHandle.attr(\"cx\", x);\n              circleHandle.attr(\"cy\", y);\n              updateLines();\n              updateAnnotations();\n          }));\n\n\n  return main;\n}"
+  },
+  {
+    "objectID": "explainers/trigonometry.html#complex-exponentials-ftw",
+    "href": "explainers/trigonometry.html#complex-exponentials-ftw",
+    "title": "Trigonometry",
+    "section": "Complex Exponentials FTW",
+    "text": "Complex Exponentials FTW\nWe start from the formula for complex exponentials:\n\\[\\begin{eqnarray*}e^{ix} & & = & \\ \\cos x + i \\sin x \\\\ e^{-ix} & = \\ \\cos -x + i \\sin -x & = & \\cos x - i \\sin x \\end{eqnarray*}\\]\nWe re-arrange this a bit to find a formula for cosines and sines in terms of the exponentials. This is maybe the two trigonometry formulas worth memorizing:\n\\[\\begin{eqnarray*} \\cos x & = & \\frac{e^{ix}+e^{-ix}}{2} \\\\ \\sin x & = & \\frac{e^{ix}-e^{-ix}}{2} \\end{eqnarray*}\\]\nNever memorize a formula for sines and cosines of sums again. Stein has some examples of how you can use this."
+  }
+]

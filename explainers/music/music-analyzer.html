@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-99.9.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-06-11">
+
+<title>Notes on musical sound analysis in JS</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Notes on musical sound analysis in JS</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 11, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<p>I want to build a frequency analyzer for musical sounds that runs on a web browser, so that my synthesized sounds have an analyzer next to them.</p>
+<p>I’m learning all that stuff as I go along, so: actual audio engineers, you probably will run away screaming here. Or don’t, and tell me where I’m wrong. That helps too.</p>
+<section id="enemies" class="level2">
+<h2 class="anchored" data-anchor-id="enemies">Enemies</h2>
+<section id="enemy-number-1-frequency-resolution" class="level3">
+<h3 class="anchored" data-anchor-id="enemy-number-1-frequency-resolution">Enemy number 1: frequency resolution</h3>
+<p>I started out thinking that I could use the (very powerful!) <a href="https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createAnalyser">built-in AudioContext analyzer</a> in the Web audio API. However, I realized that it does not provide prefiltering or subsampling of the data. This means that short-window FFTs can’t distinguish small differences in low-frequency signals. This seems to make me need large window sizes.</p>
+<p>A bass guitar, for example, is tuned to produce notes (roughly) from E1 to G4, which have the lowest overtones ranging 40 to 400Hz. If we want to see 3 octaves of overtones at the highest end, that’s a range from 40 to 3200Hz.</p>
+<p>Let’s consider <span class="math inline">\(r\)</span> samples/s as the signal rate. (<span class="math inline">\(r = 48K\)</span> typically). For an FFT of size <span class="math inline">\(w\)</span>, this gives the lowest non-dc resolvable frequency at <span class="math inline">\(r/2\)</span> samples, or <span class="math inline">\(2r/w\)</span> frequency.</p>
+<p><span class="math display">\[r = 48K \\ w = 256 \\ 2r/w = 48K/256 = 187.5\textrm{Hz}\]</span></p>
+<p>Solving backwards to get a FFT window that can resolve 40Hz tones, we get <span class="math inline">\(96k/w = 40, w = 2400\)</span>. So we need at least a 4096-wide FFT. But that’s only the start. There are 12 pitches between 40 and 80Hz, and we would like to be able to distinguish those.</p>
+<p>At the low frequency, the resolution (difference between resolvable frequencies) of the plain FFT is <span class="math inline">\(3r/w - 2r/w = r/w\)</span>. In our case, <span class="math inline">\(r/w = 11.71Hz\)</span>, so we can see how 4096-wide FFTs can cause trouble. An 11Hz difference in low frequencies is quite noticeable. E1 is <span class="math inline">\(41.2\textrm{Hz}\)</span>, and G#1 is <span class="math inline">\(51.9\textrm{Hz}\)</span>. We really would like to be able to distinguish Es from F#s, and 4096 samples aren’t enough.</p>
+<p>If we want to distinguish between E1 and F1 in a frequency analyzer, we need <span class="math inline">\((43.65 - 41.2)\textrm{Hz} = 2.45\textrm{Hz}\)</span> resolution, which works out to be <span class="math inline">\(48000/w = 2.45, w = 19.5k\)</span> samples. That means we need <span class="math inline">\(w = 32768\)</span> to make this work in the context of powers-of-2 FFT windows.</p>
+</section>
+<section id="enemy-number-2-latency" class="level3">
+<h3 class="anchored" data-anchor-id="enemy-number-2-latency">Enemy number 2: latency</h3>
+<p>At <span class="math inline">\(r = 48000\)</span> and <span class="math inline">\(w = 32768\)</span>, I really hope that the built-in analyzer uses moving windows, or otherwise we’re stuck with high latency.</p>
+</section>
+</section>
+<section id="performance-do-we-get-away-with-it" class="level2">
+<h2 class="anchored" data-anchor-id="performance-do-we-get-away-with-it">Performance: do we get away with it?</h2>
+<p>If we use the built-in AudioContext processing, we are stuck at <span class="math inline">\(w = 32768\)</span> at least. But just how fast are FFTs in today’s computers? How much of a hit do we take if we switch to a JS or WASM FFT, compared to the built-in ones? (I’m using a 2020-era Intel MacBook Pro as my example). I found an ARM vs Rosetta <a href="https://forum.juce.com/t/comparing-fft-engines/46383/2">benchmark</a> for Apple’s vDSP (which is what Chromium uses internally) that claims a <span class="math inline">\(w=65536\)</span> FFT takes about 1ms on an M1 Mac. Let’s say my computer is half as fast as that, and that the 32k FFT runs three times as fast; that means I should expect mine to take about 0.6ms. That should actually be fine (!) Yikes, computers are <em>fast</em> nowadays.</p>
+<p>If we choose to use JS or WASM, <a href="https://toughengineer.github.io/demo/dsp/fft-perf/">this benchmark</a> gives me a max window size of 16k, but my laptop appears to be able to process 4200 FFTs of that size per second in pure JS. But if we’re doing JS, then we can pre-process our samples (prefiltering and subsampling should work really well because we know quite precisely the range of frequencies we care about), and we should be totally fine. Yikes, computers are <em>fast</em> nowadays.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Notes on musical sound analysis in JS</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2022-06-11</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>I want to build a frequency analyzer for musical sounds that runs on a web browser,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>so that my synthesized sounds have an analyzer next to them.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>I'm learning all that stuff as I go along, so: actual audio engineers, you probably will run away screaming here.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Or don't, and tell me where I'm wrong. That helps too.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Enemies</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### Enemy number 1: frequency resolution</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>I started out thinking that I could use the (very powerful!) <span class="co">[</span><span class="ot">built-in AudioContext analyzer</span><span class="co">](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createAnalyser)</span> in the Web audio API. </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>However, I realized that it does not provide prefiltering or subsampling of the data.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>This means that short-window FFTs can't distinguish small differences in low-frequency</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>signals. This seems to make me need large window sizes.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>A bass guitar, for example, is tuned to produce notes (roughly) from E1 to G4, which</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>have the lowest overtones ranging 40 to 400Hz. If we want to see 3 octaves of overtones at the highest end, that's </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>a range from 40 to 3200Hz.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Let's consider $r$ samples/s as the signal rate. ($r = 48K$ typically).</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>For an FFT of size $w$, this gives the lowest non-dc resolvable frequency at $r/2$ samples, or $2r/w$ frequency.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>$$r = 48K <span class="sc">\\</span> w = 256 <span class="sc">\\</span> 2r/w = 48K/256 = 187.5\textrm{Hz}$$</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Solving backwards to get a FFT window that can resolve 40Hz tones, we get $96k/w = 40, w = 2400$. So we need at least a 4096-wide FFT.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>But that's only the start. There are 12 pitches between 40 and 80Hz, and we would like to be able to distinguish those.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>At the low frequency, the resolution (difference between resolvable frequencies) of the plain FFT is $3r/w - 2r/w = r/w$.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>In our case, $r/w = 11.71Hz$, so we can see how 4096-wide FFTs can cause trouble. An 11Hz difference in low frequencies is quite noticeable. </span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>E1 is $41.2\textrm{Hz}$, and G#1 is $51.9\textrm{Hz}$. We really would like to be able to distinguish</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>Es from F#s, and 4096 samples aren't enough.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>If we want to distinguish between E1 and F1 in a frequency analyzer, we need</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>$(43.65 - 41.2)\textrm{Hz} = 2.45\textrm{Hz}$ resolution, which works out to be $48000/w = 2.45, w = 19.5k$ samples. That means we</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>need $w = 32768$ to make this work in the context of powers-of-2 FFT windows.</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">### Enemy number 2: latency</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>At $r = 48000$ and $w = 32768$, I really hope that the built-in analyzer uses moving windows, or otherwise we're stuck with high latency.</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## Performance: do we get away with it?</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>If we use the built-in AudioContext processing, we are stuck at $w = 32768$ at least. But just how fast are FFTs in today's computers?</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>How much of a hit do we take if we switch to a JS or WASM FFT, compared to the built-in ones? (I'm using a 2020-era </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>Intel MacBook Pro as my example). I found an ARM vs Rosetta <span class="co">[</span><span class="ot">benchmark</span><span class="co">](https://forum.juce.com/t/comparing-fft-engines/46383/2)</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>for Apple's vDSP (which is what Chromium uses internally) that claims a $w=65536$ FFT takes about 1ms on an M1 Mac. Let's say my computer is half as fast as that,</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>and that the 32k FFT runs three times as fast; that means I should expect mine to take about 0.6ms. That should actually be fine (!)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>Yikes, computers are _fast_ nowadays.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>If we choose to use JS or WASM, <span class="co">[</span><span class="ot">this benchmark</span><span class="co">](https://toughengineer.github.io/demo/dsp/fft-perf/)</span> gives me</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>a max window size of 16k, but my laptop appears to be able to process 4200 FFTs of that size per second in pure JS.</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>But if we're doing JS, then we can pre-process our samples (prefiltering and subsampling should work really well</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>because we know quite precisely the range of frequencies we care about), and we should be totally fine.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>Yikes, computers are _fast_ nowadays.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>

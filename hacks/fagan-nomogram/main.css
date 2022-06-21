@@ -1,0 +1,11 @@
+.test-line {
+    stroke: black;
+}
+
+.label {
+    text-anchor: end;
+}
+
+.tick-label {
+    text-anchor: middle;
+}

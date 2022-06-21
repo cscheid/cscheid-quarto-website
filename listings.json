@@ -1,0 +1,38 @@
+[
+  {
+    "listing": "/hacks/index.html",
+    "items": [
+      "/hacks/cadence-sensor.html",
+      "/hacks/bunimovich-stadium.html",
+      "/hacks/fagan-nomogram.html",
+      "/hacks/straight-movement-on-circle.html",
+      "/hacks/variations-on-the-hermann-grid.html",
+      "/hacks/purple-dots.html",
+      "/hacks/ring-gap.html",
+      "/hacks/curvature-blindness.html",
+      "/hacks/checkerboard-and-crosses.html",
+      "/hacks/seven-circles.html"
+    ]
+  },
+  {
+    "listing": "/notes/music/chapman-stick/lessons/index.html",
+    "items": [
+      "/notes/music/chapman-stick/lessons/2022-04-11.html",
+      "/notes/music/chapman-stick/lessons/2022-04-21.html",
+      "/notes/music/chapman-stick/lessons/2022-05-06.html",
+      "/notes/music/chapman-stick/lessons/2022-05-10.html",
+      "/notes/music/chapman-stick/lessons/2022-05-19.html",
+      "/notes/music/chapman-stick/lessons/2022-06-02.html",
+      "/notes/music/chapman-stick/lessons/2022-06-15.html"
+    ]
+  },
+  {
+    "listing": "/explainers/music/index.html",
+    "items": [
+      "/explainers/music/chords-plomp-levelt.html",
+      "/explainers/music/consonance-and-dissonance.html",
+      "/explainers/music/karplus-strong.html",
+      "/explainers/music/music-analyzer.html"
+    ]
+  }
+]
