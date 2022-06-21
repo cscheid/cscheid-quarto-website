@@ -1,6 +1,7 @@
 project:
   type: website
   title: "cscheid-quarto-website"
+freeze: true
 format: 
   html:
     theme: 
