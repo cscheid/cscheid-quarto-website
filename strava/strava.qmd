@@ -1,0 +1,155 @@
+---
+title: "My Strava Data"
+code-fold: false
+echo: false
+---
+
+```{python}
+#| output: true
+from stravaio import StravaIO
+from datetime import datetime, timedelta
+import pandas as pd
+import altair as alt
+import os
+import json
+import numpy as np
+
+os.environ["STRAVA_ACCESS_TOKEN"] = json.loads(open("strava-auth.json").readline())["access_token"]
+```
+
+```{python}
+#| output: false
+start = datetime(2022, 1, 1)
+
+client = StravaIO() # expects STRAVA_ACCESS_TOKEN environment variable
+
+acts = list(
+    act 
+    for act in client.get_logged_in_athlete_activities(after="last year")
+    if act.start_date.replace(tzinfo=None) >= start)
+
+#moving_time = list(a.moving_time for a in list(acts))
+#start_date = list(a.start_date_local for a in list(acts))
+#distance = list(a.distance for a in list(acts))
+#
+#df = pd.DataFrame({
+#    "moving_time": moving_time, 
+#    "start_date": start_date,
+#    "distance": distance
+#    })
+
+distance_so_far = []
+distance_goal_miles = 105 * 52 * 1609
+deficit = []
+remainder_per_day = []
+for i in range(365):
+    so_far = sum(
+        a.distance for a in acts 
+        if (a.start_date_local.replace(tzinfo=None) >= datetime(2022,1,1) and
+            a.start_date_local.replace(tzinfo=None) <= (datetime(2022, 1, 1) + timedelta(days = i)))
+    )
+    distance_so_far.append(so_far)
+    deficit_today = (i / 365) * distance_goal_miles - so_far
+    deficit.append(deficit_today)
+    remainder = distance_goal_miles - so_far
+    remainder_per_day_today = remainder / (365 - i)
+    remainder_per_day.append(remainder_per_day_today)
+```
+
+```{python}
+days = list(range(365))
+df = pd.DataFrame({ 
+    "days": days, 
+    "deficit": deficit, 
+    "distance_so_far": distance_so_far,
+    "remainder_per_day": remainder_per_day
+    })
+df["deficit"] = df["deficit"] / 1609
+df["remainder_per_day"] = df["remainder_per_day"] / 1609
+df["mpd_so_far"] = (df["distance_so_far"] / 1609) / np.maximum(df["days"], 1)
+
+df["mpd_monthly"] = np.pad(
+    np.array(df["distance_so_far"])[30:] - np.array(df["distance_so_far"])[:-30], 
+    (30, 0), mode='edge') / (30 * 1609)
+
+def style(chart):
+    return chart.properties(
+        width = 600, 
+        height = 300, 
+        padding = { 
+            "left": 30, 
+            "bottom": 40, 
+            "top": 20
+        }, 
+        autosize="none"
+    )
+
+ojs_define(df = df)
+```
+
+## Deficit
+
+```{ojs}
+Plot.plot({
+    x: {
+        domain: [0, 365]
+    },
+    y: {
+        domain: [0, 1600],
+        grid: true
+    },
+    marks: [
+        Plot.line(transpose(df), {x: "days", y: "deficit"})
+    ]
+})
+```
+
+## Miles per day
+
+### Monthly average
+
+```{ojs}
+Plot.plot({
+    x: {
+        domain: [0, 365]
+    },
+    y: {
+        grid: true
+    },
+    marks: [
+        Plot.line(transpose(df), {x: "days", y: "mpd_monthly"})
+    ]
+})
+```
+### Overall
+
+```{ojs}
+Plot.plot({
+    x: {
+        domain: [0, 365]
+    },
+    y: {
+        grid: true
+    },
+    marks: [
+        Plot.line(transpose(df), {x: "days", y: "mpd_so_far"})
+    ]
+})
+```
+
+## Miles per day going forward
+
+```{ojs}
+Plot.plot({
+    x: {
+        domain: [0, 365]
+    },
+    y: {
+        domain: [15, 25],
+        grid: true
+    },
+    marks: [
+        Plot.line(transpose(df), {x: "days", y: "remainder_per_day"})
+    ]
+})
+```
