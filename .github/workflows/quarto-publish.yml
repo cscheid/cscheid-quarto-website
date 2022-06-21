@@ -5,6 +5,7 @@ on:
   # TODO test PR trigger
   # pull_request:
   #   branches: main
+  workflow_dispatch:
 
 name: Render and deploy to Netlify
 

@@ -26,7 +26,7 @@ Graphics and data visualization:
 
 Math:
 
-* The set of roots of polynomials with small integer coefficients has some [incredible structure](http://cscheid.github.io/lux/demos/beauty_of_roots/beauty_of_roots.html)
+* The set of roots of polynomials with small integer coefficients has some [incredible structure](http://cscheid.github.io/lux/demos/beauty_of_roots/beauty_of_roots.html).
 * The [Fagan Nomogram](https://cscheid.net/projects/fagan_nomogram/) is a great way to build intuition for Bayes’s Theorem.
 * The [Bunimovich stadium](https://cscheid.net/projects/bunimovich_stadium/) is a neat dynamical system.
 * Some intuition for the [duality principle](https://cscheid.net/writing/data_science/duality.html) in convex optimization.
