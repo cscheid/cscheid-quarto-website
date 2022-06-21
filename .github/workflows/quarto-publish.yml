@@ -28,4 +28,4 @@ jobs:
         uses: cscheid/quarto-actions/publish@v2
         with:
           to: netlify
-          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
