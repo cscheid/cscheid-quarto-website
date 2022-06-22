@@ -24,8 +24,15 @@ jobs:
           # uncomment below and fill to pin a version
           # version: 0.9.600
       
-      - name: Publish to Netlify (and render)
+      # - name: Publish to Netlify (and render)
+      #   uses: cscheid/quarto-actions/publish@v2
+      #   with:
+      #     to: netlify
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      - name: Publish to RStudio Connect (and render)
         uses: cscheid/quarto-actions/publish@v2
         with:
-          to: netlify
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          to: connect
+          CONNECT_SERVER: https://rsc.radixu.com/
+          CONNECT_API_KEY: ${{ secrets.CONNECT_API_KEY }} 
