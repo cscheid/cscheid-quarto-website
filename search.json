@@ -172,14 +172,14 @@
     "href": "index.html#software-i-worked-on",
     "title": "Carlos Scheidegger",
     "section": "Software I work(ed) on",
-    "text": "Software I work(ed) on\n\nQuarto: language-agnostic reproducible computational documents, for the web and beyond.\nNanocubes: blazing fast large data visualization. (2013)\nLux: write WebGL shaders in Javascript, composably. (2014)\nRCloud: collaborative data analysis on the web (2014).\nVisTrails: a provenance-aware scientific workflow system. (2009)"
+    "text": "Software I work(ed) on\n\nQuarto: language-agnostic reproducible computational documents, for the web and beyond. (2021-present)\nLux: write WebGL shaders in Javascript, composably. (2014)\nRCloud: collaborative data analysis on the web (2014).\nNanocubes: blazing fast large data visualization. (2013)\nVisTrails: a provenance-aware scientific workflow system. (2009)"
   },
   {
     "objectID": "index.html#some-small-stuff-i-made",
     "href": "index.html#some-small-stuff-i-made",
     "title": "Carlos Scheidegger",
     "section": "Some small stuff I made",
-    "text": "Some small stuff I made\nI like web browsers, and I like Javascript. (I know.)\nGraphics and data visualization:\n\nIf you take pictures of clouds from an airplane, you can see their 3D structure.\nIf you stitch together 4 hours of an intercontinental flight, you get an interesting map of the US.\nAn exploration of the MLB Hall of Fame voting patterns.\n\nMath:\n\nThe set of roots of polynomials with small integer coefficients has some incredible structure\nThe Fagan Nomogram is a great way to build intuition for Bayes’s Theorem.\nThe Bunimovich stadium is a neat dynamical system.\nSome intuition for the duality principle in convex optimization.\nSome intuition for how 2x2 symmetric real matrices transform vectors via the eigendecomposition.\n\nOptical illusions:\n\nPurple dots\nRing with a rotating gap\nVariations on the Hermann Grid\nStraight Movement on Rotating Circle\nCurvature Blindness\nCheckerboard and Crosses\nSeven Circles"
+    "text": "Some small stuff I made\nI like web browsers, and I like Javascript. (I know.)\nGraphics and data visualization:\n\nIf you take pictures of clouds from an airplane, you can see their 3D structure.\nIf you stitch together 4 hours of an intercontinental flight, you get an interesting map of the US.\nAn exploration of the MLB Hall of Fame voting patterns.\n\nMath:\n\nThe set of roots of polynomials with small integer coefficients has some incredible structure.\nThe Fagan Nomogram is a great way to build intuition for Bayes’s Theorem.\nThe Bunimovich stadium is a neat dynamical system.\nSome intuition for the duality principle in convex optimization.\nSome intuition for how 2x2 symmetric real matrices transform vectors via the eigendecomposition.\n\nOptical illusions:\n\nPurple dots\nRing with a rotating gap\nVariations on the Hermann Grid\nStraight Movement on Rotating Circle\nCurvature Blindness\nCheckerboard and Crosses\nSeven Circles"
   },
   {
     "objectID": "academia.html",

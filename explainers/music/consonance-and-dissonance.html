@@ -888,7 +888,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a><span class="vs">The breakthrough experiment that Plomp and Levelt did in 1965 was to ask people, in a controlled environment, whether pairs of sine waves sounded consonant or dissonant. They tried a number of different base frequencies and intervals (differences between the frequencies). They found that sine waves that are very close to one another sound consonant. So do sound waves that are very apart from one another. But two sine waves that are _kind of close_ to each other sound rough. And this distance tends to match the critical bandwidth along the basilar membrane! So, for pure sine waves, the curve looks like this.</span></span>
 <span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
 <span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a><span class="fu">sizedPlot</span>({</span>
 <span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
@@ -908,7 +908,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-69"><a href="#cb28-69" aria-hidden="true" tabindex="-1"></a><span class="vs">A different way to think about this is to consider a two-dimensional plot of frequencies against frequencies, where color indicates</span></span>
 <span id="cb28-70"><a href="#cb28-70" aria-hidden="true" tabindex="-1"></a><span class="vs">whether a pair of sine waves will sound rough or in-tune:</span></span>
 <span id="cb28-71"><a href="#cb28-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-74"><a href="#cb28-74" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-74"><a href="#cb28-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-75"><a href="#cb28-75" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb28-76"><a href="#cb28-76" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">400</span><span class="op">;</span></span>
 <span id="cb28-77"><a href="#cb28-77" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span><span class="op">;</span></span>
@@ -968,7 +968,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-131"><a href="#cb28-131" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-132"><a href="#cb28-132" aria-hidden="true" tabindex="-1"></a><span class="vs">Here is the dissonance curve for a simulated guitar sound of E3 (the E you sound with the fourth string of your guitar on the second fret).</span></span>
 <span id="cb28-133"><a href="#cb28-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-136"><a href="#cb28-136" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-136"><a href="#cb28-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-137"><a href="#cb28-137" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
 <span id="cb28-138"><a href="#cb28-138" aria-hidden="true" tabindex="-1"></a><span class="fu">plompLevelt</span>(<span class="dv">842</span><span class="op">,</span> <span class="fu">makeHarmonicTone</span>(<span class="dv">6</span><span class="op">,</span> <span class="fl">0.75</span>))</span>
 <span id="cb28-139"><a href="#cb28-139" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
@@ -991,7 +991,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-156"><a href="#cb28-156" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-157"><a href="#cb28-157" aria-hidden="true" tabindex="-1"></a><span class="vs">But in addition to _sounding_ different, clarinets also prefer very different intervals to pianos (that part was personally surprising to me.) Here's the Plomp-Levelt curves for the clarinet, based on the overtones obtained by [Bryan Suits](https://pages.mtu.edu/~suits/clarinet.html).</span></span>
 <span id="cb28-158"><a href="#cb28-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-161"><a href="#cb28-161" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-161"><a href="#cb28-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-162"><a href="#cb28-162" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
 <span id="cb28-163"><a href="#cb28-163" aria-hidden="true" tabindex="-1"></a><span class="fu">plompLevelt</span>(<span class="dv">1000</span><span class="op">,</span> clarinetData<span class="op">,</span> <span class="fl">4.1</span>)</span>
 <span id="cb28-164"><a href="#cb28-164" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
@@ -1015,11 +1015,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-182"><a href="#cb28-182" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-183"><a href="#cb28-183" aria-hidden="true" tabindex="-1"></a><span class="vs"># Appendix: code</span></span>
 <span id="cb28-184"><a href="#cb28-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-187"><a href="#cb28-187" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-187"><a href="#cb28-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-188"><a href="#cb28-188" aria-hidden="true" tabindex="-1"></a>xLog <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">150</span>)<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="dv">2</span><span class="op">,</span> x<span class="op">/</span><span class="dv">4</span>))</span>
 <span id="cb28-189"><a href="#cb28-189" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-190"><a href="#cb28-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-193"><a href="#cb28-193" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-193"><a href="#cb28-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-194"><a href="#cb28-194" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">dissonance</span>(critBandwidthFraction)</span>
 <span id="cb28-195"><a href="#cb28-195" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb28-196"><a href="#cb28-196" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x <span class="op">=</span> critBandwidthFraction<span class="op">;</span></span>
@@ -1028,15 +1028,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-199"><a href="#cb28-199" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb28-200"><a href="#cb28-200" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-201"><a href="#cb28-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-204"><a href="#cb28-204" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-204"><a href="#cb28-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-205"><a href="#cb28-205" aria-hidden="true" tabindex="-1"></a>wholeTone <span class="op">=</span> xLog<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> x <span class="op">*</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">/</span><span class="dv">12</span>) <span class="op">-</span> <span class="dv">1</span>)}))</span>
 <span id="cb28-206"><a href="#cb28-206" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-207"><a href="#cb28-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-210"><a href="#cb28-210" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-210"><a href="#cb28-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-211"><a href="#cb28-211" aria-hidden="true" tabindex="-1"></a>diss <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="fl">0.01</span>)<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({ x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">dissonance</span>(x) }))</span>
 <span id="cb28-212"><a href="#cb28-212" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-213"><a href="#cb28-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-216"><a href="#cb28-216" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-216"><a href="#cb28-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-217"><a href="#cb28-217" aria-hidden="true" tabindex="-1"></a><span class="co">// empirically reproducing the curve from Figure 3.4 in Sethares's Tuning, Timbre, Spectrum, Scale</span></span>
 <span id="cb28-218"><a href="#cb28-218" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">criticalBandwidth</span>(frequency)</span>
 <span id="cb28-219"><a href="#cb28-219" aria-hidden="true" tabindex="-1"></a>{</span>
@@ -1050,20 +1050,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-227"><a href="#cb28-227" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb28-228"><a href="#cb28-228" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-229"><a href="#cb28-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-232"><a href="#cb28-232" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-232"><a href="#cb28-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-233"><a href="#cb28-233" aria-hidden="true" tabindex="-1"></a>crit <span class="op">=</span> xLog<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">criticalBandwidth</span>(x)}))</span>
 <span id="cb28-234"><a href="#cb28-234" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-235"><a href="#cb28-235" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-236"><a href="#cb28-236" aria-hidden="true" tabindex="-1"></a><span class="vs"># Compound Tones</span></span>
 <span id="cb28-237"><a href="#cb28-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-240"><a href="#cb28-240" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-240"><a href="#cb28-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-241"><a href="#cb28-241" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeCompoundTone</span>(baseFreq<span class="op">,</span> overtones)</span>
 <span id="cb28-242"><a href="#cb28-242" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb28-243"><a href="#cb28-243" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> overtones<span class="op">.</span><span class="fu">map</span>(({ tone<span class="op">,</span> amplitude }) <span class="kw">=&gt;</span> ({ <span class="dt">tone</span><span class="op">:</span> baseFreq <span class="op">*</span> tone<span class="op">,</span> amplitude }))<span class="op">;</span></span>
 <span id="cb28-244"><a href="#cb28-244" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb28-245"><a href="#cb28-245" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-246"><a href="#cb28-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-249"><a href="#cb28-249" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-249"><a href="#cb28-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-250"><a href="#cb28-250" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">totalDissonance</span>(tone1<span class="op">,</span> tone2)</span>
 <span id="cb28-251"><a href="#cb28-251" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb28-252"><a href="#cb28-252" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> result <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
@@ -1090,7 +1090,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-273"><a href="#cb28-273" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-274"><a href="#cb28-274" aria-hidden="true" tabindex="-1"></a><span class="vs">The way to reconcile these two notions is through generalized inner products. TBF.</span></span>
 <span id="cb28-275"><a href="#cb28-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-278"><a href="#cb28-278" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-278"><a href="#cb28-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-279"><a href="#cb28-279" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">plompLevelt</span>(baseFreq<span class="op">,</span> overtones<span class="op">,</span> high <span class="op">=</span> <span class="dv">0</span>)</span>
 <span id="cb28-280"><a href="#cb28-280" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb28-281"><a href="#cb28-281" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> step <span class="op">=</span> baseFreq <span class="op">/</span> <span class="dv">300</span><span class="op">;</span></span>
@@ -1121,7 +1121,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-306"><a href="#cb28-306" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb28-307"><a href="#cb28-307" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-308"><a href="#cb28-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-311"><a href="#cb28-311" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-311"><a href="#cb28-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-312"><a href="#cb28-312" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeClarinetTone</span>(count<span class="op">,</span> decay)</span>
 <span id="cb28-313"><a href="#cb28-313" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb28-314"><a href="#cb28-314" aria-hidden="true" tabindex="-1"></a>  <span class="co">// clarinets (and other closed-tube wind instruments) only have odd harmonics!</span></span>
@@ -1130,56 +1130,56 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb28-317"><a href="#cb28-317" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb28-318"><a href="#cb28-318" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-319"><a href="#cb28-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-322"><a href="#cb28-322" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-322"><a href="#cb28-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-323"><a href="#cb28-323" aria-hidden="true" tabindex="-1"></a>clarinetData <span class="op">=</span>[{<span class="dt">tone</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="dv">1</span>}<span class="op">,</span> {<span class="dt">tone</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="fl">0.75</span>}<span class="op">,</span> {<span class="dt">tone</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="fl">0.5</span>}<span class="op">,</span> {<span class="dt">tone</span><span class="op">:</span> <span class="dv">7</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="fl">0.14</span>}<span class="op">,</span> {<span class="dt">tone</span><span class="op">:</span> <span class="dv">9</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="fl">0.5</span>}<span class="op">,</span> {<span class="dt">tone</span><span class="op">:</span> <span class="dv">11</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="fl">0.12</span>}<span class="op">,</span> {<span class="dt">tone</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="fl">0.17</span>}]</span>
 <span id="cb28-324"><a href="#cb28-324" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-325"><a href="#cb28-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-328"><a href="#cb28-328" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-328"><a href="#cb28-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-329"><a href="#cb28-329" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">makeHarmonicTone</span>(count<span class="op">,</span> decay)</span>
 <span id="cb28-330"><a href="#cb28-330" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb28-331"><a href="#cb28-331" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> count <span class="op">+</span> <span class="dv">1</span>)<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span> ({ <span class="dt">tone</span><span class="op">:</span> c<span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(decay<span class="op">,</span> c<span class="op">-</span><span class="dv">1</span>)}))<span class="op">;</span></span>
 <span id="cb28-332"><a href="#cb28-332" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb28-333"><a href="#cb28-333" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-334"><a href="#cb28-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-337"><a href="#cb28-337" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-337"><a href="#cb28-337" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-338"><a href="#cb28-338" aria-hidden="true" tabindex="-1"></a><span class="fu">plompLevelt</span>(<span class="dv">1000</span><span class="op">,</span> <span class="fu">makeHarmonicTone</span>(toneCount<span class="op">,</span> decay))</span>
 <span id="cb28-339"><a href="#cb28-339" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-340"><a href="#cb28-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-343"><a href="#cb28-343" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-343"><a href="#cb28-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-344"><a href="#cb28-344" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
 <span id="cb28-345"><a href="#cb28-345" aria-hidden="true" tabindex="-1"></a>viewof toneCount <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> { <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Overtone count"</span>} )</span>
 <span id="cb28-346"><a href="#cb28-346" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-347"><a href="#cb28-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-350"><a href="#cb28-350" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-350"><a href="#cb28-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-351"><a href="#cb28-351" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
 <span id="cb28-352"><a href="#cb28-352" aria-hidden="true" tabindex="-1"></a>viewof decay <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> { <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.9</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Overtone decay"</span>} )</span>
 <span id="cb28-353"><a href="#cb28-353" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-354"><a href="#cb28-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-357"><a href="#cb28-357" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-357"><a href="#cb28-357" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-358"><a href="#cb28-358" aria-hidden="true" tabindex="-1"></a><span class="fu">plompLevelt</span>(<span class="dv">440</span><span class="op">,</span> <span class="fu">makeClarinetTone</span>(toneCount<span class="op">,</span> <span class="fl">0.9</span>))</span>
 <span id="cb28-359"><a href="#cb28-359" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-360"><a href="#cb28-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-363"><a href="#cb28-363" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-363"><a href="#cb28-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-364"><a href="#cb28-364" aria-hidden="true" tabindex="-1"></a><span class="fu">makeClarinetTone</span>(<span class="dv">5</span><span class="op">,</span> <span class="fl">0.9</span>)</span>
 <span id="cb28-365"><a href="#cb28-365" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-366"><a href="#cb28-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-369"><a href="#cb28-369" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-369"><a href="#cb28-369" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-370"><a href="#cb28-370" aria-hidden="true" tabindex="-1"></a><span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="fl">0.9</span><span class="op">,</span> <span class="op">-</span><span class="dv">3</span>)</span>
 <span id="cb28-371"><a href="#cb28-371" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-372"><a href="#cb28-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-375"><a href="#cb28-375" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-375"><a href="#cb28-375" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-376"><a href="#cb28-376" aria-hidden="true" tabindex="-1"></a><span class="fu">plompLevelt</span>(<span class="dv">1000</span><span class="op">,</span> [{<span class="dt">tone</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="dv">1</span>}<span class="op">,</span> {<span class="dt">tone</span><span class="op">:</span> <span class="fl">2.75</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="dv">1</span>}<span class="op">,</span> {<span class="dt">tone</span><span class="op">:</span> <span class="fl">5.4</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="dv">1</span>}<span class="op">,</span> {<span class="dt">tone</span><span class="op">:</span> <span class="fl">8.9</span><span class="op">,</span> <span class="dt">amplitude</span><span class="op">:</span> <span class="dv">1</span>}])</span>
 <span id="cb28-377"><a href="#cb28-377" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-378"><a href="#cb28-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-381"><a href="#cb28-381" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-381"><a href="#cb28-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-382"><a href="#cb28-382" aria-hidden="true" tabindex="-1"></a><span class="fu">plompLevelt</span>(<span class="dv">1000</span><span class="op">,</span> <span class="fu">makeHarmonicTone</span>(<span class="dv">7</span><span class="op">,</span> <span class="fl">0.9</span>)<span class="op">,</span> <span class="fl">3.1</span>)</span>
 <span id="cb28-383"><a href="#cb28-383" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-384"><a href="#cb28-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-387"><a href="#cb28-387" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-387"><a href="#cb28-387" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-388"><a href="#cb28-388" aria-hidden="true" tabindex="-1"></a><span class="fu">totalDissonance</span>(<span class="fu">makeCompoundTone</span>(<span class="dv">1000</span><span class="op">,</span> clarinetData)<span class="op">,</span> <span class="fu">makeCompoundTone</span>(<span class="dv">1000</span> <span class="op">*</span> (<span class="dv">4</span><span class="op">/</span><span class="dv">3</span>)<span class="op">,</span> clarinetData))</span>
 <span id="cb28-389"><a href="#cb28-389" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb28-390"><a href="#cb28-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-393"><a href="#cb28-393" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>ojs</span>
+<span id="cb28-393"><a href="#cb28-393" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb28-394"><a href="#cb28-394" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { sizePlot } <span class="im">from</span> <span class="st">"/src/cscheid/cscheid/observable.js"</span><span class="op">;</span></span>
 <span id="cb28-395"><a href="#cb28-395" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sizedPlot</span>(<span class="op">...</span>args) {</span>
 <span id="cb28-396"><a href="#cb28-396" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>(<span class="op">...</span>args)<span class="op">;</span></span>
