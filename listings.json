@@ -15,6 +15,15 @@
     ]
   },
   {
+    "listing": "/explainers/music/index.html",
+    "items": [
+      "/explainers/music/chords-plomp-levelt.html",
+      "/explainers/music/consonance-and-dissonance.html",
+      "/explainers/music/karplus-strong.html",
+      "/explainers/music/music-analyzer.html"
+    ]
+  },
+  {
     "listing": "/notes/music/chapman-stick/lessons/index.html",
     "items": [
       "/notes/music/chapman-stick/lessons/2022-04-11.html",
@@ -24,15 +33,6 @@
       "/notes/music/chapman-stick/lessons/2022-05-19.html",
       "/notes/music/chapman-stick/lessons/2022-06-02.html",
       "/notes/music/chapman-stick/lessons/2022-06-15.html"
-    ]
-  },
-  {
-    "listing": "/explainers/music/index.html",
-    "items": [
-      "/explainers/music/chords-plomp-levelt.html",
-      "/explainers/music/consonance-and-dissonance.html",
-      "/explainers/music/karplus-strong.html",
-      "/explainers/music/music-analyzer.html"
     ]
   }
 ]
