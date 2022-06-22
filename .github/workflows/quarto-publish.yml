@@ -38,7 +38,7 @@ jobs:
       #     CONNECT_API_KEY: ${{ secrets.CONNECT_API_KEY }} 
 
       - name: Publish to GitHub Pages (and render)
-        uses: cscheid-quarto-actions/publish@v1
+        uses: cscheid-quarto-actions/publish@v2
         with:
           to: gh-pages
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
