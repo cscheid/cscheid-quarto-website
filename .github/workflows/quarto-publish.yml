@@ -41,5 +41,6 @@ jobs:
         uses: cscheid/quarto-actions/publish@v2
         with:
           to: gh-pages
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
 
