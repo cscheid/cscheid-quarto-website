@@ -1,0 +1,29 @@
+---
+title: Sereia by Lulu Santos
+---
+
+Key: F
+
+<pre>
+I V vi V (F C Dm C)
+
+I V vi V
+
+ii iii V iii ii V I Imaj7 I6 I (Gm Am C Am Dm C F F7M F6 F)
+
+I V vi V
+
+I V vi V
+
+ii iii IV iii ii V I Imaj7 I6 I
+
+ii iii ii iii I Imaj7
+
+ii iii <b>iv7m II</b> V I
+</pre>
+
+I don't understand what's going on that bolded section there. That Bbm7 into G then back to F through C sounds great, but I don't know the logic
+of it. I can't make sense of any key change that might be going on there. 
+
+In the key of F, the melody goes to a flat 3 and a flat 6 (it's not super clear if it's flat or half-flat from the singing, but the chord has a flat 6 for sure), and goes from there to G. There is no key in the diatonic scale with Bb7m and G both, so some fancy shit is going on over my head here.
+

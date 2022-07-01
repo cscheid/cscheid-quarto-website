@@ -1,0 +1,66 @@
+---
+title: Scales
+---
+
+# Diatonic
+
+Two octaves of the diatonic scale, to start
+
+|name                |C|D|E|F|G|A| B| C| D| E| F| G| A| B|
+|--------------------|-|-|-|-|-|-|--|--|--|--|--|--|--|--|
+|scale degree        |1|2|3|4|5|6| 7| 1| 2| 3| 4| 5| 6| 7|
+|semitones from root |0|2|4|5|7|9|11|12|14|16|17|19|21|23|
+
+## Mode
+
+When a "scale" is given by starting at a different scale degree of another scale, it's not called a scale: it's called a "mode".
+
+The diatonic scale has 7 distinct modes, each corresponding to what you get if you start a different scale degree.
+
+### "Minor"
+
+The "minor" scale is actually the sixth-degree mode of the diatonic. We start on A and subtract 9 semitones to get back to the root:
+
+|scale degree        |1| 2| 3| 4| 5| 6| 7|
+|--------------------|-|--|--|--|--|--|--|
+|starting on A       |9|11|12|14|16|17|19|
+|semitones from root |0| 2| 3| 5| 7| 8|10|
+|name                |C| D|E♭| F| G|A♭|B♭|
+
+The note names are always C, D, E, F, G, A, B. In order for the pitches to match, accidentals are added, always relative to the diatonic scale.
+
+### All Modes of the Diatonic
+
+We list the modes in an order that makes it easier to remember their relationship, rather than in order of their scale degrees.
+
+| Mode | Starting scale degree | Notes | | | | | | |
+|------|-----------------------|-------|-|-|-|-|-|-|
+| Lydian     | 4 | C | D  |E   | F♯ | G  | A  | B  |
+| Ionian     | 1 | C | D  |E   | F  | G  | A  | B  |
+| Mixolydian | 5 | C | D  |E   | F  | G  | A  | B♭ |
+| Dorian     | 2 | C | D  |E♭  | F  | G  | A  | B♭ |
+| Aeolian    | 6 | C | D  |E♭  | F  | G  | A♭ | B♭ |
+| Phrygian   | 3 | C | D♭ | E♭ | F  | G  | A♭ | B♭ |
+| Locrian    | 7 | C | D♭ | E♭ | F  | G♭ | A♭ | B♭ |
+
+## Harmonic Minor
+
+Take the Aeolian (the "minor scale") and raise the 7 to a natural B
+
+| Name | Notes | | | | | | |
+|------|-------|-|-|-|-|-|-|
+| Aeolian        | C | D  |E♭  | F  | G  | A♭ | B♭ |
+| Harmonic Minor | C | D  |E♭  | F  | G  | A♭ | B  |
+
+The typical use of this scale is (like the name says) in harmony, so that you have a B next to the C, making chords that want to resolve to the I. But some people play it in melodies too, because it has a particular feel from the augmented second between A♭ and B.
+
+### Modes
+
+You can take modes of it too, and the fifth-degree mode of the harmonic minor is called the "Phrygian Dominant", presumably because it's the mode starting at the fifth ("dominant") scale degree of the harmonic minor, but it's very close to the Phrygian mode of the diatonic:
+
+| Name | Notes | | | | | | |
+|------|-------|-|-|-|-|-|-|
+| Phrygian Dominant | C | D♭ | E | F | G | A♭ | B♭ |
+| Phrygian | C | D♭ | E♭ | F | G | A♭ | B♭ |
+
+So it's almost exactly the Phrygian, but with a natural 3 instead of a flat 3.
