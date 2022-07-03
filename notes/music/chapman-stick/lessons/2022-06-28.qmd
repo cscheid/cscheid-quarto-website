@@ -1,10 +1,19 @@
+---
+title: "2022-04-28"
+categories:
+  - practice
+  - lesson
+---
 
+## Practice
 
 Pachelbel's canon in D, silly but I tried and I can kind of play it!
 
 I7, IV7, V7, and tritone substitutions for C# D# G#, ha
 
 blues scale - easier to sing along to!
+
+## Lesson
 
 mr. pc - john coltrane
 
@@ -15,4 +24,4 @@ paso doble
 
 g7 -> ab7
 
-E -> F ends up making a phyrigian dominant
+E major -> F major ends up making a phyrigian dominant (need to add a flat B)

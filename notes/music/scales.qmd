@@ -1,15 +1,20 @@
 ---
 title: Scales
+echo: false
 ---
 
 # Diatonic
 
-Two octaves of the diatonic scale, to start
+Two octaves of the diatonic scale, to start.
 
 |name                |C|D|E|F|G|A| B| C| D| E| F| G| A| B|
 |--------------------|-|-|-|-|-|-|--|--|--|--|--|--|--|--|
 |scale degree        |1|2|3|4|5|6| 7| 1| 2| 3| 4| 5| 6| 7|
 |semitones from root |0|2|4|5|7|9|11|12|14|16|17|19|21|23|
+
+```{ojs}
+viewof play = scaleButton([0, 2, 4, 5, 7, 9, 11, 12]);
+```
 
 ## Mode
 
@@ -27,21 +32,140 @@ The "minor" scale is actually the sixth-degree mode of the diatonic. We start on
 |semitones from root |0| 2| 3| 5| 7| 8|10|
 |name                |C| D|E♭| F| G|A♭|B♭|
 
+```{ojs}
+viewof play2 = scaleButton([0, 2, 3, 5, 7, 8, 10, 12])
+```
+
 The note names are always C, D, E, F, G, A, B. In order for the pitches to match, accidentals are added, always relative to the diatonic scale.
 
 ### All Modes of the Diatonic
 
 We list the modes in an order that makes it easier to remember their relationship, rather than in order of their scale degrees.
 
-| Mode | Starting scale degree | Notes | | | | | | |
-|------|-----------------------|-------|-|-|-|-|-|-|
-| Lydian     | 4 | C | D  |E   | F♯ | G  | A  | B  |
-| Ionian     | 1 | C | D  |E   | F  | G  | A  | B  |
-| Mixolydian | 5 | C | D  |E   | F  | G  | A  | B♭ |
-| Dorian     | 2 | C | D  |E♭  | F  | G  | A  | B♭ |
-| Aeolian    | 6 | C | D  |E♭  | F  | G  | A♭ | B♭ |
-| Phrygian   | 3 | C | D♭ | E♭ | F  | G  | A♭ | B♭ |
-| Locrian    | 7 | C | D♭ | E♭ | F  | G♭ | A♭ | B♭ |
+| Mode | Starting scale degree | Notes | | | | | | | |
+|------|-----------------------|-------|-|-|-|-|-|-|-|
+| Lydian     | 4 | C | D  |E   | F♯ | G  | A  | B  |<button class="btn btn-quarto" onclick="">Play</button>|
+| Ionian     | 1 | C | D  |E   | F  | G  | A  | B  |<button class="btn btn-quarto" onclick="">Play</button>|
+| Mixolydian | 5 | C | D  |E   | F  | G  | A  | B♭ |<button class="btn btn-quarto" onclick="">Play</button>|
+| Dorian     | 2 | C | D  |E♭  | F  | G  | A  | B♭ |<button class="btn btn-quarto" onclick="">Play</button>|
+| Aeolian    | 6 | C | D  |E♭  | F  | G  | A♭ | B♭ |<button class="btn btn-quarto" onclick="">Play</button>|
+| Phrygian   | 3 | C | D♭ | E♭ | F  | G  | A♭ | B♭ |<button class="btn btn-quarto" onclick="">Play</button>|
+| Locrian    | 7 | C | D♭ | E♭ | F  | G♭ | A♭ | B♭ |<button class="btn btn-quarto" onclick="">Play</button>|
+
+In this order, then, there's an easy way to "see" how the fingerings relate to one another in an instrument with strings tuned in straight fourths. Say you're playing the bass. Then, if you're playing scales in A, these are the modes, in logical order.
+
+#### Lydian
+```{ojs}
+scaleButton([0, 2, 4, 6, 7, 9, 11, 12], "Play Lydian")
+```
+
+```
+ 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5| |6| |7|
+A| |2| |3| |4|
+E| | | | |1| |
+ -------------
+```
+
+#### Ionian, flat the 4
+
+```{ojs}
+scaleButton([0, 2, 4, 5, 7, 9, 11, 12], "Play Ionian")
+```
+
+```
+ 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5| |6| |7|
+A| |2| |3|4| |
+E| | | | |1| |
+ -------------
+```
+
+#### Mixolydian, flat the 7:
+
+```{ojs}
+scaleButton([0, 2, 4, 5, 7, 9, 10, 12], "Play Mixolydian")
+```
+
+```
+ 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5| |6|7| |
+A| |2| |3|4| |
+E| | | | |1| |
+ -------------
+```
+
+#### Dorian, flat the 3:
+
+```{ojs}
+scaleButton([0, 2, 3, 5, 7, 9, 10, 12], "Play Dorian")
+```
+
+```
+ 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5| |6|7| |
+A| |2|3| |4| |
+E| | | | |1| |
+ -------------
+```
+
+#### Aeolian, flat the 6:
+
+```{ojs}
+scaleButton([0, 2, 3, 5, 7, 8, 10, 12], "Play Aeolian")
+```
+
+```
+ 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5|6| |7| |
+A| |2|3| |4| |
+E| | | | |1| |
+ -------------
+```
+
+#### Phrygian, flat the 2:
+
+```{ojs}
+scaleButton([0, 1, 3, 5, 7, 8, 10, 12], "Play Phrygian")
+```
+
+```
+ 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5|6| |7| |
+A|2| |3| |4| |
+E| | | | |1| |
+ -------------
+```
+
+#### Locrian, flat the 5:
+
+```{ojs}
+scaleButton([0, 1, 3, 5, 6, 8, 10, 12], "Play Locrian")
+```
+
+```
+ 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D|5| |6| |7| |
+A|2| |3| |4| |
+E| | | | |1| |
+ -------------
+```
+
+It is much easier for me to see the changes in scales with this fingering, where the root (which is the one note that doesn't change on any of the modes) is played on separate strings.
 
 ## Harmonic Minor
 
@@ -51,6 +175,11 @@ Take the Aeolian (the "minor scale") and raise the 7 to a natural B
 |------|-------|-|-|-|-|-|-|
 | Aeolian        | C | D  |E♭  | F  | G  | A♭ | B♭ |
 | Harmonic Minor | C | D  |E♭  | F  | G  | A♭ | B  |
+
+```{ojs}
+scaleButton([0, 2, 3, 5, 7, 8, 10, 12], "Aeolian (\"Minor\")")
+scaleButton([0, 2, 3, 5, 7, 8, 11, 12], "Harmonic Minor")
+```
 
 The typical use of this scale is (like the name says) in harmony, so that you have a B next to the C, making chords that want to resolve to the I. But some people play it in melodies too, because it has a particular feel from the augmented second between A♭ and B.
 
@@ -64,3 +193,41 @@ You can take modes of it too, and the fifth-degree mode of the harmonic minor is
 | Phrygian | C | D♭ | E♭ | F | G | A♭ | B♭ |
 
 So it's almost exactly the Phrygian, but with a natural 3 instead of a flat 3.
+
+```{ojs}
+scaleButton([0, 1, 4, 5, 7, 8, 10, 12], "Phrygian Dominant")
+scaleButton([0, 1, 3, 5, 7, 8, 10, 12], "Phrygian")
+```
+
+
+# Appendix
+
+```{ojs}
+//| output: false
+import { playNote } from "/src/audio/karplus-strong.js"
+import { makePlayer } from "/src/audio/audio.js";
+import { notes } from "/src/audio/notes.js";
+import { sequence } from "/src/audio/sequence.ts";
+import { playScale } from "./scales.ts";
+
+function initPlayer()
+{
+    if (window.player === undefined) {
+        let player = makePlayer();
+        window.player = player;
+    }
+}
+function withPlayer(fun) {
+    return () => {
+        initPlayer();
+        fun();
+    }
+}
+
+function scaleButton(scale, label) {
+    return Inputs.button(label || "Play", { value: 0, reduce: withPlayer(() => {
+        playScale(scale);        
+    })})
+}
+
+```

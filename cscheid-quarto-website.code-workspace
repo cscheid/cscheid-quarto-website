@@ -1,0 +1,21 @@
+{
+    "folders": [
+      {
+        "path": "."
+      }
+    ],
+    "settings": {
+      "editor.tabSize": 2,
+      "debug.javascript.unmapMissingSources": true,
+      "deno.lint": true,
+      "deno.enable": true,
+      "deno.unstable": true,
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "denoland.vscode-deno",    
+      "deno.suggest.imports.hosts": {
+        "https://deno.land": true,
+        "https://den.o.land": false
+      },
+    }
+  }
+  
