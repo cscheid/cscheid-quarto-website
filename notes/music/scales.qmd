@@ -199,15 +199,11 @@ scaleButton([0, 1, 4, 5, 7, 8, 10, 12], "Phrygian Dominant")
 scaleButton([0, 1, 3, 5, 7, 8, 10, 12], "Phrygian")
 ```
 
-
-# Appendix
-
 ```{ojs}
 //| output: false
 import { playNote } from "/src/audio/karplus-strong.js"
 import { makePlayer } from "/src/audio/audio.js";
 import { notes } from "/src/audio/notes.js";
-import { sequence } from "/src/audio/sequence.ts";
 import { playScale } from "./scales.ts";
 
 function initPlayer()

@@ -1,7 +1,18 @@
 {
   "lint": {
-      "rules": {
-          "exclude": ["no-explicit-any"]
-      }
+    "rules": {
+      "exclude": ["no-explicit-any"]
+    }
+  },
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "dom.asynciterable",
+      "deno.ns",
+      "deno.unstable"
+    ]
   }
 }

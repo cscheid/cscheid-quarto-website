@@ -1,0 +1,20 @@
+---
+title: Yesterday
+---
+
+```
+F Em7 A7 Dm Dm/C Bb C7 F F/E Dm G7 Bb F
+
+  Em7 A7 Dm Dm/C Bb A7(4) Gm6 C7 F
+```
+
+```.abc
+T: Yesterday (chords)
+K: F
+"F"[FAC]"Em7"[EG=BD]"A7"[GA E ^C]"Dm"[DFA]"Dm/C"[CDFA]"Bb"[_BDF]"C7"[CEGB]"F"[CFA]"F/E"[CEFA]"Dm"[DFA]"G7"[G=BDF]"Bb"[_BDF]"F"[FAC]
+"Em7"[EG=BD] "A7"[GA E ^C]"Dm"[DFA]"Dm/C"[CDFA] "Bb"[_BDF] "A7(4)"[ADEG] "Gm6"[G_BDE] "C7"[CEGB] "F"[FAC]
+```
+
+It would be really nice to have an auto-voicer.
+
+{{< include ../../../includes/abcjs.inc >}}

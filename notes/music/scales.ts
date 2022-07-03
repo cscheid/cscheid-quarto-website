@@ -4,7 +4,7 @@ import { sequence } from "../../src/audio/sequence.ts";
 
 export function playScale(scale: number[]) {
   const calls = scale
-    .map((n) => notes[n + 30])
+    .map((n: number) => notes[n + 30])
     .map((pitch) => () => playNote(pitch, 1, 0.25));
   sequence(calls, 300);
 }
