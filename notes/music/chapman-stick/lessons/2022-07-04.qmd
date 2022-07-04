@@ -1,0 +1,17 @@
+---
+title: "2022-07-04"
+categories:
+  - practice
+---
+
+Stumbled upon this neat arpeggio alternating harmonic minor and phrygian. 
+
+```.abc
+K: Cmin
+M: 6/8
+L: 1/8
+|:CDFG=BC'|=BAGFED:|
+|:C_DFGA_D'|C'AGFE_D:|
+```
+
+{{< include ../../../../includes/abcjs.inc >}}
