@@ -7,6 +7,27 @@
     "text": "Chapman stick lesson notes"
   },
   {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Carlos Scheidegger",
+    "section": "",
+    "text": "2022 - present: Software Engineer, RStudio. Working on quarto.\n2014 - 2022: Assistant and Associate Professor, Department of Computer Science, University of Arizona. I was on leave from 2021-2022.\n2009 - 2014: PhD Student, SCI Institute, University of Utah. Advisor: Claudio Silva."
+  },
+  {
+    "objectID": "resume.html#software",
+    "href": "resume.html#software",
+    "title": "Carlos Scheidegger",
+    "section": "Software",
+    "text": "Software\nThe year in parenthesis denotes the last year I was directly involved with the project\n\nQuarto: language-agnostic reproducible computational documents, for the web and beyond.\nNanocubes: blazing fast large data visualization. (2013)\nLux: WebGL shaders in Javascript, composably. (2014)\nRCloud: collaborative data analysis on the web (2014).\nVisTrails: a provenance-aware scientific workflow system. (2009)"
+  },
+  {
+    "objectID": "resume.html#academic-work",
+    "href": "resume.html#academic-work",
+    "title": "Carlos Scheidegger",
+    "section": "Academic work",
+    "text": "Academic work\nResearch interests: data visualization (especially interactivity and large datasets), machine learning (especially ML fairness and interpretability)\n\nacademic CV as of 2021\nGoogle Scholar."
+  },
+  {
     "objectID": "tests/abcjs.html",
     "href": "tests/abcjs.html",
     "title": "abcjs tests",
@@ -172,56 +193,14 @@
     "href": "index.html",
     "title": "Carlos Scheidegger",
     "section": "",
-    "text": "I’m a software engineer at RStudio working on quarto, and an associate professor on leave in the Department of Computer Science at the University of Arizona. Before coming to sunny, beautiful Tucson, I worked at AT&T Research in New York."
+    "text": "I’m a software engineer at RStudio working on quarto.\nBefore joining RStudio, I was an associate professor in the Department of Computer Science at the University of Arizona."
   },
   {
-    "objectID": "index.html#software-i-worked-on",
-    "href": "index.html#software-i-worked-on",
+    "objectID": "index.html#other-stuff",
+    "href": "index.html#other-stuff",
     "title": "Carlos Scheidegger",
-    "section": "Software I work(ed) on",
-    "text": "Software I work(ed) on\n\nQuarto: language-agnostic reproducible computational documents, for the web and beyond. (2021-present)\nLux: write WebGL shaders in Javascript, composably. (2014)\nRCloud: collaborative data analysis on the web (2014).\nNanocubes: blazing fast large data visualization. (2013)\nVisTrails: a provenance-aware scientific workflow system. (2009)"
-  },
-  {
-    "objectID": "index.html#some-small-stuff-i-made",
-    "href": "index.html#some-small-stuff-i-made",
-    "title": "Carlos Scheidegger",
-    "section": "Some small stuff I made",
-    "text": "Some small stuff I made\nI like web browsers, and I like Javascript. (I know.)\nGraphics and data visualization:\n\nIf you take pictures of clouds from an airplane, you can see their 3D structure.\nIf you stitch together 4 hours of an intercontinental flight, you get an interesting map of the US.\nAn exploration of the MLB Hall of Fame voting patterns.\n\nMath:\n\nThe set of roots of polynomials with small integer coefficients has some incredible structure.\nThe Fagan Nomogram is a great way to build intuition for Bayes’s Theorem.\nThe Bunimovich stadium is a neat dynamical system.\nSome intuition for the duality principle in convex optimization.\nSome intuition for how 2x2 symmetric real matrices transform vectors via the eigendecomposition.\n\nOptical illusions:\n\nPurple dots\nRing with a rotating gap\nVariations on the Hermann Grid\nStraight Movement on Rotating Circle\nCurvature Blindness\nCheckerboard and Crosses\nSeven Circles"
-  },
-  {
-    "objectID": "academia.html",
-    "href": "academia.html",
-    "title": "Carlos Scheidegger",
-    "section": "",
-    "text": "Interactive visualization is crucial in understanding, exploring, and presenting data, but data scale can present serious barriers for effectiveness and adoption. I study these barriers and design solutions to remove them. I like both theoretical and hands-on work.\nSince joining UA, I have worked in a number of projects here, including support for interactive browsing of synteny data at CoGe, and building up interactive visualization infrastructure for the ANTARES project. If you’re interested in my work and that of my former students, you should also take a look at the webpage of the HDC Lab, which I cofounded with my colleagues, Josh Levine and Kate Isaacs."
-  },
-  {
-    "objectID": "academia.html#funded-projects",
-    "href": "academia.html#funded-projects",
-    "title": "Carlos Scheidegger",
-    "section": "Funded projects",
-    "text": "Funded projects\nMy work is funded by a number of institutions, including the NSF, AT&T, and the Arizona Board of Regents.\n\nNSF III-1815238: An End-to-End Pipeline for Interactive Visual Analysis of Big Data\nNSF III-1513651: Topological Data Analysis for Large Network Visualization"
-  },
-  {
-    "objectID": "academia.html#students",
-    "href": "academia.html#students",
-    "title": "Carlos Scheidegger",
-    "section": "Students",
-    "text": "Students\n\nKatherine Best (MSc)\nRebecca Faust (PhD)\nMingwei Li (PhD)\nZhenge Zhao (PhD)\nZhe Wang (PhD)"
-  },
-  {
-    "objectID": "academia.html#software-projects-i-worked-on",
-    "href": "academia.html#software-projects-i-worked-on",
-    "title": "Carlos Scheidegger",
-    "section": "Software projects I worked on",
-    "text": "Software projects I worked on\nThe year in parenthesis denotes the last year I was directly involved with the project\n\nQuarto: language-agnostic reproducible computational documents, for the web and beyond.\nNanocubes: blazing fast large data visualization. (2013)\nLux: write WebGL shaders in Javascript, composably. (2014)\nRCloud: collaborative data analysis on the web (2014).\nVisTrails: a provenance-aware scientific workflow system. (2009)"
-  },
-  {
-    "objectID": "academia.html#papers",
-    "href": "academia.html#papers",
-    "title": "Carlos Scheidegger",
-    "section": "Papers",
-    "text": "Papers\nThe easiest way to find my papers is through my Google Scholar page."
+    "section": "Other stuff",
+    "text": "Other stuff\nI like to write small JavaScript demos:\n\nExplainers\nHacks"
   },
   {
     "objectID": "notes/music/scales.html",
