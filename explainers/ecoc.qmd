@@ -3,8 +3,6 @@ title: Error-Correcting Output Codes
 layout: bootstrap_wide
 ---
 
-# Error Correcting Output Codes
-
 Often it will be the case that we can model a process we care about as
 two parties communicating with one another over a *noisy channel*. Sometimes
 this is very straightforward: if you're sending the content of a website to
@@ -37,7 +35,7 @@ single classes, and the decision of the overall classifier.
 
 Graphically, it looks like this:
 
-<img style="width:70%" src="ecoc-binary-tree.png">
+<img src="ecoc-binary-tree.png">
 
 If you compare this scheme to the OVA and AVA ideas, you can notice a
 few similarities and a few differences.
@@ -163,21 +161,21 @@ let's pretend that our original problem had 16 classes instead
 of 8. The encoding process is itself very easy to describe. We send
 the 4-bit word into a 7-bit space:
 
-* $ A = d\_1\ \textrm{xor}\ d\_2\ \textrm{xor}\ d\_4 $
-* $ B = d\_1\ \textrm{xor}\ d\_3\ \textrm{xor}\ d\_4 $
-* $ C = d\_2\ \textrm{xor}\ d\_3\ \textrm{xor}\ d\_4 $
-* $ D = d\_1 $
-* $ E = d\_2 $
-* $ F = d\_3 $
-* $ G = d\_4 $
+* $A = d\_1\ \textrm{xor}\ d\_2\ \textrm{xor}\ d\_4$
+* $B = d\_1\ \textrm{xor}\ d\_3\ \textrm{xor}\ d\_4$
+* $C = d\_2\ \textrm{xor}\ d\_3\ \textrm{xor}\ d\_4$
+* $D = d\_1$
+* $E = d\_2$
+* $F = d\_3$
+* $G = d\_4$
 
 Here, $d\_1$ through $d\_4$ are the digits of the word we want to
 send. As we argued above, it must be the case that this code is
 redundant. Indeed, any valid word respects the following equations:
 
-* $ A\ \textrm{xor}\ D\ \textrm{xor}\ E\ \textrm{xor}\ G = 0 $
-* $ B\ \textrm{xor}\ D\ \textrm{xor}\ F\ \textrm{xor}\ G = 0 $
-* $ C\ \textrm{xor}\ E\ \textrm{xor}\ F\ \textrm{xor}\ G = 0 $
+* $A\ \textrm{xor}\ D\ \textrm{xor}\ E\ \textrm{xor}\ G = 0$
+* $B\ \textrm{xor}\ D\ \textrm{xor}\ F\ \textrm{xor}\ G = 0$
+* $C\ \textrm{xor}\ E\ \textrm{xor}\ F\ \textrm{xor}\ G = 0$
 
 These equations are easy to prove: remember that $\textrm{xor}$ is
 commutatitive and associative, and that $a\ \textrm{xor}\ a = 0$.
@@ -186,13 +184,13 @@ Here's a minor modification we will make. Let's assume that an error
 can happen on any digit we send, so we replace $A$ with $\tilde{A}$,
 etc:
 
-* $ \tilde{A} = \epsilon_A\ \textrm{xor}\ d\_1\ \textrm{xor}\ d\_2\ \textrm{xor}\ d\_4 $
-* $ \tilde{B} = \epsilon_B\ \textrm{xor}\ d\_1\ \textrm{xor}\ d\_3\ \textrm{xor}\ d\_4 $
-* $ \tilde{C} = \epsilon_C\ \textrm{xor}\ d\_2\ \textrm{xor}\ d\_3\ \textrm{xor}\ d\_4 $
-* $ \tilde{D} = \epsilon_D\ \textrm{xor}\ d\_1 $
-* $ \tilde{E} = \epsilon_E\ \textrm{xor}\ d\_2 $
-* $ \tilde{F} = \epsilon_F\ \textrm{xor}\ d\_3 $
-* $ \tilde{G} = \epsilon_G\ \textrm{xor}\ d\_4 $
+* $\tilde{A} = \epsilon_A\ \textrm{xor}\ d\_1\ \textrm{xor}\ d\_2\ \textrm{xor}\ d\_4$
+* $\tilde{B} = \epsilon_B\ \textrm{xor}\ d\_1\ \textrm{xor}\ d\_3\ \textrm{xor}\ d\_4$
+* $\tilde{C} = \epsilon_C\ \textrm{xor}\ d\_2\ \textrm{xor}\ d\_3\ \textrm{xor}\ d\_4$
+* $\tilde{D} = \epsilon_D\ \textrm{xor}\ d\_1$
+* $\tilde{E} = \epsilon_E\ \textrm{xor}\ d\_2$
+* $\tilde{F} = \epsilon_F\ \textrm{xor}\ d\_3$
+* $\tilde{G} = \epsilon_G\ \textrm{xor}\ d\_4$
 
 Here, we use $\epsilon\_A$, $\epsilon\_B$, etc. to model errors in our
 transmission. The code we are describing here can only correct
@@ -207,9 +205,9 @@ it seems like it will be hard to figure out that something went wrong
 those three equations that we derived which describe the redundancy in the code. Now, consider their equivalents with
 $\tilde{A}$, etc. I'm also giving each term a name now, $c\_0$ through $c\_2$:
 
-* $ c\_0 = \tilde{A}\ \textrm{xor}\ \tilde{D}\ \textrm{xor}\ \tilde{E}\ \textrm{xor}\ \tilde{G} = \epsilon\_{A}\ \textrm{xor}\ \epsilon\_{D}\ \textrm{xor}\ \epsilon\_{E}\ \textrm{xor}\ \epsilon\_{G} $
-* $ c\_1 = \tilde{B}\ \textrm{xor}\ \tilde{D}\ \textrm{xor}\ \tilde{F}\ \textrm{xor}\ \tilde{G} = \epsilon\_{B}\ \textrm{xor}\ \epsilon\_{D}\ \textrm{xor}\ \epsilon\_{F}\ \textrm{xor}\ \epsilon\_{G} $
-* $ c\_2 = \tilde{C}\ \textrm{xor}\ \tilde{E}\ \textrm{xor}\ \tilde{F}\ \textrm{xor}\ \tilde{G} = \epsilon\_{C}\ \textrm{xor}\ \epsilon\_{E}\ \textrm{xor}\ \epsilon\_{F}\ \textrm{xor}\ \epsilon\_{G} $
+* $c\_0 = \tilde{A}\ \textrm{xor}\ \tilde{D}\ \textrm{xor}\ \tilde{E}\ \textrm{xor}\ \tilde{G} = \epsilon\_{A}\ \textrm{xor}\ \epsilon\_{D}\ \textrm{xor}\ \epsilon\_{E}\ \textrm{xor}\ \epsilon\_{G}$
+* $c\_1 = \tilde{B}\ \textrm{xor}\ \tilde{D}\ \textrm{xor}\ \tilde{F}\ \textrm{xor}\ \tilde{G} = \epsilon\_{B}\ \textrm{xor}\ \epsilon\_{D}\ \textrm{xor}\ \epsilon\_{F}\ \textrm{xor}\ \epsilon\_{G}$
+* $c\_2 = \tilde{C}\ \textrm{xor}\ \tilde{E}\ \textrm{xor}\ \tilde{F}\ \textrm{xor}\ \tilde{G} = \epsilon\_{C}\ \textrm{xor}\ \epsilon\_{E}\ \textrm{xor}\ \epsilon\_{F}\ \textrm{xor}\ \epsilon\_{G}$
 
 Notice two very important things on the right hand sides: every
 error variable appears at least once, and no error variable was
@@ -256,7 +254,6 @@ we will be able to spot it and fix it, at the expense of training only
 three more classifiers. And all of these classifiers are trained on different label distributions, and so we don't run into the issue of repeated classification mistakes (like we would if we used the "repeat transmission" code).
 
 Isn't that amazing?
-
 
 # Further reading
 
