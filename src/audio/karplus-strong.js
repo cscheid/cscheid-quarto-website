@@ -6,7 +6,12 @@ import { notes } from "./notes.js";
 
 import * as d3 from "https://cdn.skypack.dev/d3";
 
-export function karplusStrong(sampleRate, pitchInHertz, duration, amplitude = 1) {
+export function karplusStrong(
+  sampleRate,
+  pitchInHertz,
+  duration,
+  amplitude = 1,
+) {
   const period = 1 / pitchInHertz;
 
   const circularBufferSize = sampleRate * period;
@@ -45,8 +50,16 @@ export function karplusStrong(sampleRate, pitchInHertz, duration, amplitude = 1)
   };
 }
 
-export function init(k)
-{
+export function playNote(pitch, duration, amplitude) {
+  const track = karplusStrong(48000, pitch, duration, amplitude);
+  if (window.player === undefined) {
+    return;
+  } else {
+    window.player.playTrack(track);
+  }
+}
+
+export function init(k) {
   initAll();
   makePiano((note, d, el) => {
     d3.select(el)
@@ -55,7 +68,7 @@ export function init(k)
       .transition()
       .duration(3000)
       .ease(d3.easeExpOut)
-      .attr("fill", d => {
+      .attr("fill", (d) => {
         if (d.kind === "white") {
           return "white";
         } else {
@@ -71,5 +84,3 @@ export function init(k)
     player.playTrack(track);
   });
 }
-
-

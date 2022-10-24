@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Scales</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Scales</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="diatonic" class="level1">
+<h1>Diatonic</h1>
+<p>Two octaves of the diatonic scale, to start.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>name</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>scale degree</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>semitones from root</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>7</td>
+<td>9</td>
+<td>11</td>
+<td>12</td>
+<td>14</td>
+<td>16</td>
+<td>17</td>
+<td>19</td>
+<td>21</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="15" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 14;"><span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>viewof play <span class="op">=</span> <span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">12</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<section id="mode" class="level2">
+<h2 class="anchored" data-anchor-id="mode">Mode</h2>
+<p>When a “scale” is given by starting at a different scale degree of another scale, it’s not called a scale: it’s called a “mode”.</p>
+<p>The diatonic scale has 7 distinct modes, each corresponding to what you get if you start a different scale degree.</p>
+<section id="minor" class="level3">
+<h3 class="anchored" data-anchor-id="minor">“Minor”</h3>
+<p>The “minor” scale is actually the sixth-degree mode of the diatonic. We start on A and subtract 9 semitones to get back to the root:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>scale degree</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>starting on A</td>
+<td>9</td>
+<td>11</td>
+<td>12</td>
+<td>14</td>
+<td>16</td>
+<td>17</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td>semitones from root</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>7</td>
+<td>8</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>name</td>
+<td>C</td>
+<td>D</td>
+<td>E♭</td>
+<td>F</td>
+<td>G</td>
+<td>A♭</td>
+<td>B♭</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="35" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 34;"><span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>viewof play2 <span class="op">=</span> <span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<p>The note names are always C, D, E, F, G, A, B. In order for the pitches to match, accidentals are added, always relative to the diatonic scale.</p>
+</section>
+<section id="all-modes-of-the-diatonic" class="level3">
+<h3 class="anchored" data-anchor-id="all-modes-of-the-diatonic">All Modes of the Diatonic</h3>
+<p>We list the modes in an order that makes it easier to remember their relationship, rather than in order of their scale degrees.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 45%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mode</th>
+<th>Starting scale degree</th>
+<th>Notes</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lydian</td>
+<td>4</td>
+<td></td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F♯</td>
+<td>G</td>
+<td>A</td>
+<td>B</td>
+<td><button class="btn btn-quarto" onclick="playScale([0,2,4,6,7,9,11,12]); return false;">Play</button></td>
+</tr>
+<tr class="even">
+<td>Ionian</td>
+<td>1</td>
+<td></td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>A</td>
+<td>B</td>
+<td><button class="btn btn-quarto" onclick="playScale([0,2,4,5,7,9,11,12]); return false;">Play</button></td>
+</tr>
+<tr class="odd">
+<td>Mixolydian</td>
+<td>5</td>
+<td></td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>A</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0,2,4,5,7,9,10,12]); return false;">Play</button></td>
+</tr>
+<tr class="even">
+<td>Dorian</td>
+<td>2</td>
+<td></td>
+<td>C</td>
+<td>D</td>
+<td>E♭</td>
+<td>F</td>
+<td>G</td>
+<td>A</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0,2,3,5,7,9,10,12]); return false;">Play</button></td>
+</tr>
+<tr class="odd">
+<td>Aeolian</td>
+<td>6</td>
+<td></td>
+<td>C</td>
+<td>D</td>
+<td>E♭</td>
+<td>F</td>
+<td>G</td>
+<td>A♭</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0,2,3,5,7,8,10,12]); return false;">Play</button></td>
+</tr>
+<tr class="even">
+<td>Phrygian</td>
+<td>3</td>
+<td></td>
+<td>C</td>
+<td>D♭</td>
+<td>E♭</td>
+<td>F</td>
+<td>G</td>
+<td>A♭</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0,1,3,5,7,8,10,12]); return false;">Play</button></td>
+</tr>
+<tr class="odd">
+<td>Locrian</td>
+<td>7</td>
+<td></td>
+<td>C</td>
+<td>D♭</td>
+<td>E♭</td>
+<td>F</td>
+<td>G♭</td>
+<td>A♭</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0,1,3,5,6,8,10,12]); return false;">Play</button></td>
+</tr>
+</tbody>
+</table>
+<p>In this order, then, there’s an easy way to “see” how the fingerings relate to one another in an instrument with strings tuned in straight fourths. Say you’re playing the bass. Then, if you’re playing scales in A, these are the modes, in logical order.</p>
+<section id="lydian" class="level4">
+<h4 class="anchored" data-anchor-id="lydian">Lydian</h4>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="58" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 57;"><span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Lydian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<pre><code> 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5| |6| |7|
+A| |2| |3| |4|
+E| | | | |1| |
+ -------------</code></pre>
+</section>
+<section id="ionian-flat-the-4" class="level4">
+<h4 class="anchored" data-anchor-id="ionian-flat-the-4">Ionian, flat the 4</h4>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="74" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 73;"><span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Ionian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<pre><code> 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5| |6| |7|
+A| |2| |3|4| |
+E| | | | |1| |
+ -------------</code></pre>
+</section>
+<section id="mixolydian-flat-the-7" class="level4">
+<h4 class="anchored" data-anchor-id="mixolydian-flat-the-7">Mixolydian, flat the 7:</h4>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="90" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 89;"><span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Mixolydian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<pre><code> 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5| |6|7| |
+A| |2| |3|4| |
+E| | | | |1| |
+ -------------</code></pre>
+</section>
+<section id="dorian-flat-the-3" class="level4">
+<h4 class="anchored" data-anchor-id="dorian-flat-the-3">Dorian, flat the 3:</h4>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="106" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 105;"><span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Dorian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<pre><code> 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5| |6|7| |
+A| |2|3| |4| |
+E| | | | |1| |
+ -------------</code></pre>
+</section>
+<section id="aeolian-flat-the-6" class="level4">
+<h4 class="anchored" data-anchor-id="aeolian-flat-the-6">Aeolian, flat the 6:</h4>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="122" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Aeolian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<pre><code> 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5|6| |7| |
+A| |2|3| |4| |
+E| | | | |1| |
+ -------------</code></pre>
+</section>
+<section id="phrygian-flat-the-2" class="level4">
+<h4 class="anchored" data-anchor-id="phrygian-flat-the-2">Phrygian, flat the 2:</h4>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="138" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 137;"><span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Phrygian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-8" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<pre><code> 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D| |5|6| |7| |
+A|2| |3| |4| |
+E| | | | |1| |
+ -------------</code></pre>
+</section>
+<section id="locrian-flat-the-5" class="level4">
+<h4 class="anchored" data-anchor-id="locrian-flat-the-5">Locrian, flat the 5:</h4>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="154" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 153;"><span id="cb15-154"><a href="#cb15-154" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Locrian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-9" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<pre><code> 0 1 2 3 4 5 6
+ -------------
+G| |1| | | | |
+D|5| |6| |7| |
+A|2| |3| |4| |
+E| | | | |1| |
+ -------------</code></pre>
+<p>It is much easier for me to see the changes in scales with this fingering, where the root (which is the one note that doesn’t change on any of the modes) is played on separate strings.</p>
+</section>
+</section>
+</section>
+<section id="harmonic-minor" class="level2">
+<h2 class="anchored" data-anchor-id="harmonic-minor">Harmonic Minor</h2>
+<p>Take the Aeolian (the “minor scale”) and raise the 7 to a natural B</p>
+<table class="table">
+<colgroup>
+<col style="width: 61%">
+<col style="width: 11%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aeolian</td>
+<td>C</td>
+<td>D</td>
+<td>E♭</td>
+<td>F</td>
+<td>G</td>
+<td>A♭</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0, 2, 3, 5, 7, 8, 10, 12]); return false;">Play</button></td>
+</tr>
+<tr class="even">
+<td>Harmonic Minor</td>
+<td>C</td>
+<td>D</td>
+<td>E♭</td>
+<td>F</td>
+<td>G</td>
+<td>A♭</td>
+<td>B</td>
+<td><button class="btn btn-quarto" onclick="playScale([0, 2, 3, 5, 7, 8, 11, 12]); return false;">Play</button></td>
+</tr>
+</tbody>
+</table>
+<p>The typical use of this scale is (like the name says) in harmony, so that you have a B next to the C, making chords that want to resolve to the I. But some people play it in melodies too, because it has a particular feel from the augmented second between A♭ and B.</p>
+<section id="modes" class="level3">
+<h3 class="anchored" data-anchor-id="modes">Modes</h3>
+<p>You can take modes of it too, and the fifth-degree mode of the harmonic minor is called the “Phrygian Dominant”, presumably because it’s the mode starting at the fifth (“dominant”) scale degree of the harmonic minor, but it’s very close to the Phrygian mode of the diatonic:</p>
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 34%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phrygian Dominant</td>
+<td>C</td>
+<td>D♭</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>A♭</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0, 1, 4, 5, 7, 8, 10, 12]); return false;">Play</button></td>
+</tr>
+<tr class="even">
+<td>Phrygian</td>
+<td>C</td>
+<td>D♭</td>
+<td>E♭</td>
+<td>F</td>
+<td>G</td>
+<td>A♭</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0, 1, 3, 5, 7, 8, 10, 12]); return false;">Play</button></td>
+</tr>
+</tbody>
+</table>
+<p>So it’s almost exactly the Phrygian, but with a natural 3 instead of a flat 3.</p>
+</section>
+</section>
+<section id="superlocrian" class="level2">
+<h2 class="anchored" data-anchor-id="superlocrian">Superlocrian</h2>
+<p>Take the modes of the diatonic scale, follow the pattern, and notice that the only “scale degree left to flatten” is the 4. That doesn’t lead to a mode of the diatonic scale, but leads to a useful scale, which is sometimes called the “superlocrian”:</p>
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 34%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Locrian</td>
+<td>C</td>
+<td>D♭</td>
+<td>E♭</td>
+<td>F</td>
+<td>G♭</td>
+<td>A♭</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0,1,3,5,6,8,10,12]); return false;">Play</button></td>
+</tr>
+<tr class="even">
+<td>Superlocrian</td>
+<td>C</td>
+<td>D♭</td>
+<td>E♭</td>
+<td>F♭</td>
+<td>G♭</td>
+<td>A♭</td>
+<td>B♭</td>
+<td><button class="btn btn-quarto" onclick="playScale([0,1,3,4,6,8,10,12]); return false;">Play</button></td>
+</tr>
+</tbody>
+</table>
+<p>I can see a couple of ways to think about it. One is that it plays like “Ionian with a sharp 1”. The other comes from inspecting the intervals. It’s HWHWWWW, so the first four notes are the first half of the 8-note diminished scale (the “half whole scale”), and the last three notes are the second half of the whole-note scale.</p>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="207" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 206;"><span id="cb17-207"><a href="#cb17-207" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { playNote } <span class="im">from</span> <span class="st">"/src/audio/karplus-strong.js"</span></span>
+<span id="cb17-208"><a href="#cb17-208" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { makePlayer } <span class="im">from</span> <span class="st">"/src/audio/audio.js"</span><span class="op">;</span></span>
+<span id="cb17-209"><a href="#cb17-209" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { notes } <span class="im">from</span> <span class="st">"/src/audio/notes.js"</span><span class="op">;</span></span>
+<span id="cb17-210"><a href="#cb17-210" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { playScale } <span class="im">from</span> <span class="st">"./scales.ts"</span><span class="op">;</span></span>
+<span id="cb17-211"><a href="#cb17-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-212"><a href="#cb17-212" aria-hidden="true" tabindex="-1"></a><span class="co">// this is ugly, but easily the most convenient way to do it</span></span>
+<span id="cb17-213"><a href="#cb17-213" aria-hidden="true" tabindex="-1"></a><span class="bu">window</span><span class="op">.</span><span class="at">playScale</span> <span class="op">=</span> (<span class="op">...</span>args) <span class="kw">=&gt;</span> {</span>
+<span id="cb17-214"><a href="#cb17-214" aria-hidden="true" tabindex="-1"></a>    <span class="fu">initPlayer</span>()<span class="op">;</span></span>
+<span id="cb17-215"><a href="#cb17-215" aria-hidden="true" tabindex="-1"></a>    <span class="fu">playScale</span>(<span class="op">...</span>args)<span class="op">;</span></span>
+<span id="cb17-216"><a href="#cb17-216" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-10-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-10-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-10-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-10-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-10-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="218" data-source-offset="-334"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">initPlayer</span>()</span>
+<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="bu">window</span><span class="op">.</span><span class="at">player</span> <span class="op">===</span> <span class="kw">undefined</span>) {</span>
+<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> player <span class="op">=</span> <span class="fu">makePlayer</span>()<span class="op">;</span></span>
+<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a>        <span class="bu">window</span><span class="op">.</span><span class="at">player</span> <span class="op">=</span> player<span class="op">;</span></span>
+<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">withPlayer</span>(fun) {</span>
+<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a>        <span class="fu">initPlayer</span>()<span class="op">;</span></span>
+<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fun</span>()<span class="op">;</span></span>
+<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">scaleButton</span>(scale<span class="op">,</span> label) {</span>
+<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">button</span>(label <span class="op">||</span> <span class="st">"Play"</span><span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">reduce</span><span class="op">:</span> <span class="fu">withPlayer</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a>        <span class="fu">playScale</span>(scale)<span class="op">;</span>        </span>
+<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a>    })})</span>
+<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-10-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-10-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-10-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof play = scaleButton([0, 2, 4, 5, 7, 9, 11, 12]);\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof play2 = scaleButton([0, 2, 3, 5, 7, 8, 10, 12])\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"scaleButton([0, 2, 4, 6, 7, 9, 11, 12], \"Play Lydian\")\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"scaleButton([0, 2, 4, 5, 7, 9, 11, 12], \"Play Ionian\")\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"scaleButton([0, 2, 4, 5, 7, 9, 10, 12], \"Play Mixolydian\")\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"scaleButton([0, 2, 3, 5, 7, 9, 10, 12], \"Play Dorian\")\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"scaleButton([0, 2, 3, 5, 7, 8, 10, 12], \"Play Aeolian\")\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"scaleButton([0, 1, 3, 5, 7, 8, 10, 12], \"Play Phrygian\")\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"scaleButton([0, 1, 3, 5, 6, 8, 10, 12], \"Play Locrian\")\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"import { playNote } from \"/src/audio/karplus-strong.js\"\nimport { makePlayer } from \"/src/audio/audio.js\";\nimport { notes } from \"/src/audio/notes.js\";\nimport { playScale } from \"./scales.ts\";\n\n// this is ugly, but easily the most convenient way to do it\nwindow.playScale = (...args) => {\n    initPlayer();\n    playScale(...args);\n};\n\nfunction initPlayer()\n{\n    if (window.player === undefined) {\n        let player = makePlayer();\n        window.player = player;\n    }\n}\nfunction withPlayer(fun) {\n    return () => {\n        initPlayer();\n        fun();\n    }\n}\n\nfunction scaleButton(scale, label) {\n    return Inputs.button(label || \"Play\", { value: 0, reduce: withPlayer(() => {\n        playScale(scale);        \n    })})\n}\n\n"},{"methodName":"interpretQuiet","source":"shinyInput('play')"},{"methodName":"interpretQuiet","source":"shinyInput('play2')"}]}
+</script>
+<script type="module">
+window._ojs.paths.runtimeToDoc = "../../notes/music";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb19" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Scales</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="an">echo:</span><span class="co"> false</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Diatonic</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>Two octaves of the diatonic scale, to start.</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>|name                |C|D|E|F|G|A| B| C| D| E| F| G| A| B|</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>|--------------------|-|-|-|-|-|-|--|--|--|--|--|--|--|--|</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>|scale degree        |1|2|3|4|5|6| 7| 1| 2| 3| 4| 5| 6| 7|</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>|semitones from root |0|2|4|5|7|9|11|12|14|16|17|19|21|23|</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>viewof play <span class="op">=</span> <span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">12</span>])<span class="op">;</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="vs">## Mode</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="vs">When a "scale" is given by starting at a different scale degree of another scale, it's not called a scale: it's called a "mode".</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="vs">The diatonic scale has 7 distinct modes, each corresponding to what you get if you start a different scale degree.</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="vs">### "Minor"</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="vs">The "minor" scale is actually the sixth-degree mode of the diatonic. We start on A and subtract 9 semitones to get back to the root:</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="vs">|scale degree        |1| 2| 3| 4| 5| 6| 7|</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a><span class="vs">|--------------------|-|--|--|--|--|--|--|</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a><span class="vs">|starting on A       |9|11|12|14|16|17|19|</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="vs">|semitones from root |0| 2| 3| 5| 7| 8|10|</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="vs">|name                |C| D|E♭| F| G|A♭|B♭|</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>viewof play2 <span class="op">=</span> <span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>])</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a><span class="vs">The note names are always C, D, E, F, G, A, B. In order for the pitches to match, accidentals are added, always relative to the diatonic scale.</span></span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a><span class="vs">### All Modes of the Diatonic</span></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a><span class="vs">We list the modes in an order that makes it easier to remember their relationship, rather than in order of their scale degrees.</span></span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="vs">| Mode | Starting scale degree | Notes | | | | | | | | |</span></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a><span class="vs">|------|-----------------------|-------|-------|-|-|-|-|-|-|-|</span></span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a><span class="vs">| Lydian     | 4 | | C | D  |E   | F♯ | G  | A  | B  |&lt;button class="btn btn-quarto" onclick="playScale([0,2,4,6,7,9,11,12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a><span class="vs">| Ionian     | 1 | | C | D  |E   | F  | G  | A  | B  |&lt;button class="btn btn-quarto" onclick="playScale([0,2,4,5,7,9,11,12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a><span class="vs">| Mixolydian | 5 | | C | D  |E   | F  | G  | A  | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0,2,4,5,7,9,10,12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a><span class="vs">| Dorian     | 2 | | C | D  |E♭  | F  | G  | A  | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0,2,3,5,7,9,10,12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a><span class="vs">| Aeolian    | 6 | | C | D  |E♭  | F  | G  | A♭ | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0,2,3,5,7,8,10,12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a><span class="vs">| Phrygian   | 3 | | C | D♭ | E♭ | F  | G  | A♭ | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0,1,3,5,7,8,10,12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a><span class="vs">| Locrian    | 7 | | C | D♭ | E♭ | F  | G♭ | A♭ | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0,1,3,5,6,8,10,12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a><span class="vs">In this order, then, there's an easy way to "see" how the fingerings relate to one another in an instrument with strings tuned in straight fourths. Say you're playing the bass. Then, if you're playing scales in A, these are the modes, in logical order.</span></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a><span class="vs">#### Lydian</span></span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Lydian"</span>)</span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a>G<span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a>D<span class="op">|</span> <span class="op">|</span><span class="dv">5</span><span class="op">|</span> <span class="op">|</span><span class="dv">6</span><span class="op">|</span> <span class="op">|</span><span class="dv">7</span><span class="op">|</span></span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a>A<span class="op">|</span> <span class="op">|</span><span class="dv">2</span><span class="op">|</span> <span class="op">|</span><span class="dv">3</span><span class="op">|</span> <span class="op">|</span><span class="dv">4</span><span class="op">|</span></span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a><span class="cn">E</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a><span class="vs">#### Ionian, flat the 4</span></span>
+<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Ionian"</span>)</span>
+<span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-87"><a href="#cb19-87" aria-hidden="true" tabindex="-1"></a> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb19-88"><a href="#cb19-88" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-89"><a href="#cb19-89" aria-hidden="true" tabindex="-1"></a>G<span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-90"><a href="#cb19-90" aria-hidden="true" tabindex="-1"></a>D<span class="op">|</span> <span class="op">|</span><span class="dv">5</span><span class="op">|</span> <span class="op">|</span><span class="dv">6</span><span class="op">|</span> <span class="op">|</span><span class="dv">7</span><span class="op">|</span></span>
+<span id="cb19-91"><a href="#cb19-91" aria-hidden="true" tabindex="-1"></a>A<span class="op">|</span> <span class="op">|</span><span class="dv">2</span><span class="op">|</span> <span class="op">|</span><span class="dv">3</span><span class="op">|</span><span class="dv">4</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-92"><a href="#cb19-92" aria-hidden="true" tabindex="-1"></a><span class="cn">E</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-93"><a href="#cb19-93" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-94"><a href="#cb19-94" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-95"><a href="#cb19-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-96"><a href="#cb19-96" aria-hidden="true" tabindex="-1"></a><span class="vs">#### Mixolydian, flat the 7:</span></span>
+<span id="cb19-97"><a href="#cb19-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-100"><a href="#cb19-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-101"><a href="#cb19-101" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Mixolydian"</span>)</span>
+<span id="cb19-102"><a href="#cb19-102" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-103"><a href="#cb19-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-104"><a href="#cb19-104" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-105"><a href="#cb19-105" aria-hidden="true" tabindex="-1"></a> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb19-106"><a href="#cb19-106" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-107"><a href="#cb19-107" aria-hidden="true" tabindex="-1"></a>G<span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-108"><a href="#cb19-108" aria-hidden="true" tabindex="-1"></a>D<span class="op">|</span> <span class="op">|</span><span class="dv">5</span><span class="op">|</span> <span class="op">|</span><span class="dv">6</span><span class="op">|</span><span class="dv">7</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-109"><a href="#cb19-109" aria-hidden="true" tabindex="-1"></a>A<span class="op">|</span> <span class="op">|</span><span class="dv">2</span><span class="op">|</span> <span class="op">|</span><span class="dv">3</span><span class="op">|</span><span class="dv">4</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-110"><a href="#cb19-110" aria-hidden="true" tabindex="-1"></a><span class="cn">E</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-111"><a href="#cb19-111" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-112"><a href="#cb19-112" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-113"><a href="#cb19-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-114"><a href="#cb19-114" aria-hidden="true" tabindex="-1"></a><span class="vs">#### Dorian, flat the 3:</span></span>
+<span id="cb19-115"><a href="#cb19-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-118"><a href="#cb19-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-119"><a href="#cb19-119" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Dorian"</span>)</span>
+<span id="cb19-120"><a href="#cb19-120" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-121"><a href="#cb19-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-122"><a href="#cb19-122" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-123"><a href="#cb19-123" aria-hidden="true" tabindex="-1"></a> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb19-124"><a href="#cb19-124" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-125"><a href="#cb19-125" aria-hidden="true" tabindex="-1"></a>G<span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-126"><a href="#cb19-126" aria-hidden="true" tabindex="-1"></a>D<span class="op">|</span> <span class="op">|</span><span class="dv">5</span><span class="op">|</span> <span class="op">|</span><span class="dv">6</span><span class="op">|</span><span class="dv">7</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-127"><a href="#cb19-127" aria-hidden="true" tabindex="-1"></a>A<span class="op">|</span> <span class="op">|</span><span class="dv">2</span><span class="op">|</span><span class="dv">3</span><span class="op">|</span> <span class="op">|</span><span class="dv">4</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-128"><a href="#cb19-128" aria-hidden="true" tabindex="-1"></a><span class="cn">E</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-129"><a href="#cb19-129" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-130"><a href="#cb19-130" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-131"><a href="#cb19-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-132"><a href="#cb19-132" aria-hidden="true" tabindex="-1"></a><span class="vs">#### Aeolian, flat the 6:</span></span>
+<span id="cb19-133"><a href="#cb19-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-136"><a href="#cb19-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-137"><a href="#cb19-137" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Aeolian"</span>)</span>
+<span id="cb19-138"><a href="#cb19-138" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-139"><a href="#cb19-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-140"><a href="#cb19-140" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-141"><a href="#cb19-141" aria-hidden="true" tabindex="-1"></a> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb19-142"><a href="#cb19-142" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-143"><a href="#cb19-143" aria-hidden="true" tabindex="-1"></a>G<span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-144"><a href="#cb19-144" aria-hidden="true" tabindex="-1"></a>D<span class="op">|</span> <span class="op">|</span><span class="dv">5</span><span class="op">|</span><span class="dv">6</span><span class="op">|</span> <span class="op">|</span><span class="dv">7</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-145"><a href="#cb19-145" aria-hidden="true" tabindex="-1"></a>A<span class="op">|</span> <span class="op">|</span><span class="dv">2</span><span class="op">|</span><span class="dv">3</span><span class="op">|</span> <span class="op">|</span><span class="dv">4</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-146"><a href="#cb19-146" aria-hidden="true" tabindex="-1"></a><span class="cn">E</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-147"><a href="#cb19-147" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-148"><a href="#cb19-148" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-149"><a href="#cb19-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-150"><a href="#cb19-150" aria-hidden="true" tabindex="-1"></a><span class="vs">#### Phrygian, flat the 2:</span></span>
+<span id="cb19-151"><a href="#cb19-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-154"><a href="#cb19-154" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-155"><a href="#cb19-155" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Phrygian"</span>)</span>
+<span id="cb19-156"><a href="#cb19-156" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-157"><a href="#cb19-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-158"><a href="#cb19-158" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-159"><a href="#cb19-159" aria-hidden="true" tabindex="-1"></a> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb19-160"><a href="#cb19-160" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-161"><a href="#cb19-161" aria-hidden="true" tabindex="-1"></a>G<span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-162"><a href="#cb19-162" aria-hidden="true" tabindex="-1"></a>D<span class="op">|</span> <span class="op">|</span><span class="dv">5</span><span class="op">|</span><span class="dv">6</span><span class="op">|</span> <span class="op">|</span><span class="dv">7</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-163"><a href="#cb19-163" aria-hidden="true" tabindex="-1"></a>A<span class="op">|</span><span class="dv">2</span><span class="op">|</span> <span class="op">|</span><span class="dv">3</span><span class="op">|</span> <span class="op">|</span><span class="dv">4</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-164"><a href="#cb19-164" aria-hidden="true" tabindex="-1"></a><span class="cn">E</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-165"><a href="#cb19-165" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-166"><a href="#cb19-166" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-167"><a href="#cb19-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-168"><a href="#cb19-168" aria-hidden="true" tabindex="-1"></a><span class="vs">#### Locrian, flat the 5:</span></span>
+<span id="cb19-169"><a href="#cb19-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-172"><a href="#cb19-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-173"><a href="#cb19-173" aria-hidden="true" tabindex="-1"></a><span class="fu">scaleButton</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="st">"Play Locrian"</span>)</span>
+<span id="cb19-174"><a href="#cb19-174" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-175"><a href="#cb19-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-176"><a href="#cb19-176" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-177"><a href="#cb19-177" aria-hidden="true" tabindex="-1"></a> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb19-178"><a href="#cb19-178" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-179"><a href="#cb19-179" aria-hidden="true" tabindex="-1"></a>G<span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-180"><a href="#cb19-180" aria-hidden="true" tabindex="-1"></a>D<span class="op">|</span><span class="dv">5</span><span class="op">|</span> <span class="op">|</span><span class="dv">6</span><span class="op">|</span> <span class="op">|</span><span class="dv">7</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-181"><a href="#cb19-181" aria-hidden="true" tabindex="-1"></a>A<span class="op">|</span><span class="dv">2</span><span class="op">|</span> <span class="op">|</span><span class="dv">3</span><span class="op">|</span> <span class="op">|</span><span class="dv">4</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-182"><a href="#cb19-182" aria-hidden="true" tabindex="-1"></a><span class="cn">E</span><span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span> <span class="op">|</span><span class="dv">1</span><span class="op">|</span> <span class="op">|</span></span>
+<span id="cb19-183"><a href="#cb19-183" aria-hidden="true" tabindex="-1"></a> <span class="op">-------------</span></span>
+<span id="cb19-184"><a href="#cb19-184" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb19-185"><a href="#cb19-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-186"><a href="#cb19-186" aria-hidden="true" tabindex="-1"></a><span class="vs">It is much easier for me to see the changes in scales with this fingering, where the root (which is the one note that doesn't change on any of the modes) is played on separate strings.</span></span>
+<span id="cb19-187"><a href="#cb19-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-188"><a href="#cb19-188" aria-hidden="true" tabindex="-1"></a><span class="vs">## Harmonic Minor</span></span>
+<span id="cb19-189"><a href="#cb19-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-190"><a href="#cb19-190" aria-hidden="true" tabindex="-1"></a><span class="vs">Take the Aeolian (the "minor scale") and raise the 7 to a natural B</span></span>
+<span id="cb19-191"><a href="#cb19-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-192"><a href="#cb19-192" aria-hidden="true" tabindex="-1"></a><span class="vs">| Name           |   | | | | | | | |</span></span>
+<span id="cb19-193"><a href="#cb19-193" aria-hidden="true" tabindex="-1"></a><span class="vs">|----------------|---|-|-|-|-|-|-|-|</span></span>
+<span id="cb19-194"><a href="#cb19-194" aria-hidden="true" tabindex="-1"></a><span class="vs">| Aeolian        | C | D | E♭ | F | G | A♭ | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0, 2, 3, 5, 7, 8, 10, 12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-195"><a href="#cb19-195" aria-hidden="true" tabindex="-1"></a><span class="vs">| Harmonic Minor | C | D | E♭ | F | G | A♭ | B  |&lt;button class="btn btn-quarto" onclick="playScale([0, 2, 3, 5, 7, 8, 11, 12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-196"><a href="#cb19-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-197"><a href="#cb19-197" aria-hidden="true" tabindex="-1"></a><span class="vs">The typical use of this scale is (like the name says) in harmony, so that you have a B next to the C, making chords that want to resolve to the I. But some people play it in melodies too, because it has a particular feel from the augmented second between A♭ and B.</span></span>
+<span id="cb19-198"><a href="#cb19-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-199"><a href="#cb19-199" aria-hidden="true" tabindex="-1"></a><span class="vs">### Modes</span></span>
+<span id="cb19-200"><a href="#cb19-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-201"><a href="#cb19-201" aria-hidden="true" tabindex="-1"></a><span class="vs">You can take modes of it too, and the fifth-degree mode of the harmonic minor is called the "Phrygian Dominant", presumably because it's the mode starting at the fifth ("dominant") scale degree of the harmonic minor, but it's very close to the Phrygian mode of the diatonic:</span></span>
+<span id="cb19-202"><a href="#cb19-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-203"><a href="#cb19-203" aria-hidden="true" tabindex="-1"></a><span class="vs">| Name | | | | | | | | |</span></span>
+<span id="cb19-204"><a href="#cb19-204" aria-hidden="true" tabindex="-1"></a><span class="vs">|------|-------|-|-|-|-|-|-|-|</span></span>
+<span id="cb19-205"><a href="#cb19-205" aria-hidden="true" tabindex="-1"></a><span class="vs">| Phrygian Dominant | C | D♭ | E | F | G | A♭ | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0, 1, 4, 5, 7, 8, 10, 12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-206"><a href="#cb19-206" aria-hidden="true" tabindex="-1"></a><span class="vs">| Phrygian | C | D♭ | E♭ | F | G | A♭ | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0, 1, 3, 5, 7, 8, 10, 12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-207"><a href="#cb19-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-208"><a href="#cb19-208" aria-hidden="true" tabindex="-1"></a><span class="vs">So it's almost exactly the Phrygian, but with a natural 3 instead of a flat 3.</span></span>
+<span id="cb19-209"><a href="#cb19-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-210"><a href="#cb19-210" aria-hidden="true" tabindex="-1"></a><span class="vs">## Superlocrian</span></span>
+<span id="cb19-211"><a href="#cb19-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-212"><a href="#cb19-212" aria-hidden="true" tabindex="-1"></a><span class="vs">Take the modes of the diatonic scale, follow the pattern, and notice that the only "scale degree left to flatten" is the 4. That doesn't lead to a mode of the diatonic scale, but</span></span>
+<span id="cb19-213"><a href="#cb19-213" aria-hidden="true" tabindex="-1"></a><span class="vs">leads to a useful scale, which is sometimes called the "superlocrian":</span></span>
+<span id="cb19-214"><a href="#cb19-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-215"><a href="#cb19-215" aria-hidden="true" tabindex="-1"></a><span class="vs">| Name | | | | | | | | |</span></span>
+<span id="cb19-216"><a href="#cb19-216" aria-hidden="true" tabindex="-1"></a><span class="vs">|------|-------|-|-|-|-|-|-|-|</span></span>
+<span id="cb19-217"><a href="#cb19-217" aria-hidden="true" tabindex="-1"></a><span class="vs">| Locrian      | C | D♭ | E♭ | F  | G♭ | A♭ | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0,1,3,5,6,8,10,12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-218"><a href="#cb19-218" aria-hidden="true" tabindex="-1"></a><span class="vs">| Superlocrian | C | D♭ | E♭ | F♭ | G♭ | A♭ | B♭ |&lt;button class="btn btn-quarto" onclick="playScale([0,1,3,4,6,8,10,12]); return false;"&gt;Play&lt;/button&gt;|</span></span>
+<span id="cb19-219"><a href="#cb19-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-220"><a href="#cb19-220" aria-hidden="true" tabindex="-1"></a><span class="vs">I can see a couple of ways to think about it. One is that it plays like "Ionian with a sharp 1". The other comes from inspecting the intervals. It's HWHWWWW, so the first four notes are the first half of the 8-note diminished scale (the "half whole scale"), and the last three notes are the second half of the whole-note scale.</span></span>
+<span id="cb19-221"><a href="#cb19-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-222"><a href="#cb19-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-225"><a href="#cb19-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb19-226"><a href="#cb19-226" aria-hidden="true" tabindex="-1"></a><span class="co">//| output: false</span></span>
+<span id="cb19-227"><a href="#cb19-227" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { playNote } <span class="im">from</span> <span class="st">"/src/audio/karplus-strong.js"</span></span>
+<span id="cb19-228"><a href="#cb19-228" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { makePlayer } <span class="im">from</span> <span class="st">"/src/audio/audio.js"</span><span class="op">;</span></span>
+<span id="cb19-229"><a href="#cb19-229" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { notes } <span class="im">from</span> <span class="st">"/src/audio/notes.js"</span><span class="op">;</span></span>
+<span id="cb19-230"><a href="#cb19-230" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { playScale } <span class="im">from</span> <span class="st">"./scales.ts"</span><span class="op">;</span></span>
+<span id="cb19-231"><a href="#cb19-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-232"><a href="#cb19-232" aria-hidden="true" tabindex="-1"></a><span class="co">// this is ugly, but easily the most convenient way to do it</span></span>
+<span id="cb19-233"><a href="#cb19-233" aria-hidden="true" tabindex="-1"></a><span class="bu">window</span><span class="op">.</span><span class="at">playScale</span> <span class="op">=</span> (<span class="op">...</span>args) <span class="kw">=&gt;</span> {</span>
+<span id="cb19-234"><a href="#cb19-234" aria-hidden="true" tabindex="-1"></a>    <span class="fu">initPlayer</span>()<span class="op">;</span></span>
+<span id="cb19-235"><a href="#cb19-235" aria-hidden="true" tabindex="-1"></a>    <span class="fu">playScale</span>(<span class="op">...</span>args)<span class="op">;</span></span>
+<span id="cb19-236"><a href="#cb19-236" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb19-237"><a href="#cb19-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-238"><a href="#cb19-238" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">initPlayer</span>()</span>
+<span id="cb19-239"><a href="#cb19-239" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb19-240"><a href="#cb19-240" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="bu">window</span><span class="op">.</span><span class="at">player</span> <span class="op">===</span> <span class="kw">undefined</span>) {</span>
+<span id="cb19-241"><a href="#cb19-241" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> player <span class="op">=</span> <span class="fu">makePlayer</span>()<span class="op">;</span></span>
+<span id="cb19-242"><a href="#cb19-242" aria-hidden="true" tabindex="-1"></a>        <span class="bu">window</span><span class="op">.</span><span class="at">player</span> <span class="op">=</span> player<span class="op">;</span></span>
+<span id="cb19-243"><a href="#cb19-243" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-244"><a href="#cb19-244" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-245"><a href="#cb19-245" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">withPlayer</span>(fun) {</span>
+<span id="cb19-246"><a href="#cb19-246" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb19-247"><a href="#cb19-247" aria-hidden="true" tabindex="-1"></a>        <span class="fu">initPlayer</span>()<span class="op">;</span></span>
+<span id="cb19-248"><a href="#cb19-248" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fun</span>()<span class="op">;</span></span>
+<span id="cb19-249"><a href="#cb19-249" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-250"><a href="#cb19-250" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-251"><a href="#cb19-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-252"><a href="#cb19-252" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">scaleButton</span>(scale<span class="op">,</span> label) {</span>
+<span id="cb19-253"><a href="#cb19-253" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">button</span>(label <span class="op">||</span> <span class="st">"Play"</span><span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">reduce</span><span class="op">:</span> <span class="fu">withPlayer</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb19-254"><a href="#cb19-254" aria-hidden="true" tabindex="-1"></a>        <span class="fu">playScale</span>(scale)<span class="op">;</span>        </span>
+<span id="cb19-255"><a href="#cb19-255" aria-hidden="true" tabindex="-1"></a>    })})</span>
+<span id="cb19-256"><a href="#cb19-256" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-257"><a href="#cb19-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-258"><a href="#cb19-258" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>

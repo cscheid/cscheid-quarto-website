@@ -26,7 +26,7 @@ export function getAudioContext() {
     window.AudioContext = window.webkitAudioContext;
   }
   context = new AudioContext();
-  
+
   context.playFloatArray = function (floatArray) {
     var buffer = context.createBuffer(1, floatArray.length, context.sampleRate);
     var data = buffer.getChannelData(0);
@@ -62,7 +62,7 @@ export function getAudioContext() {
       if (context._ourAnalyzer) {
         source.connect(context._ourAnalyzer);
       }
-        // Play immediately
+      // Play immediately
       source.start(0);
     }
 
@@ -76,6 +76,13 @@ export function getAudioContext() {
 
 //////////////////////////////////////////////////////////////////////////////
 // player
+
+export function initPlayer() {
+  if (window.player === undefined) {
+    const player = makePlayer();
+    window.player = player;
+  }
+}
 
 export function makePlayer() {
   var ctx = getAudioContext();
@@ -111,14 +118,14 @@ export function makePlayer() {
       return buffer;
     },
 
-    spectrogram: function(callback, options) {
+    spectrogram: function (callback, options) {
       const analyzer = ctx.createAnalyser();
       ctx._ourAnalyzer = analyzer;
       options = {
         fftSize: 256,
         minDecibels: -60,
         maxDecibels: -10,
-        ...(options || {}) 
+        ...(options || {}),
       };
       analyzer.fftSize = options.fftSize;
       analyzer.minDecibels = options.minDecibels;
@@ -131,7 +138,7 @@ export function makePlayer() {
           window.requestAnimationFrame(innerK);
         }
         analyzer.getFloatFrequencyData(dataArray);
-        if (dataArray.some(x => !isNaN(x))) {
+        if (dataArray.some((x) => !isNaN(x))) {
           callback(dataArray);
         }
       };
