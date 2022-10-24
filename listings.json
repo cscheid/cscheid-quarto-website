@@ -1,20 +1,5 @@
 [
   {
-    "listing": "/notes/music/chapman-stick/lessons/index.html",
-    "items": [
-      "/notes/music/chapman-stick/lessons/2022-04-11.html",
-      "/notes/music/chapman-stick/lessons/2022-04-21.html",
-      "/notes/music/chapman-stick/lessons/2022-06-21.html",
-      "/notes/music/chapman-stick/lessons/2022-06-28.html",
-      "/notes/music/chapman-stick/lessons/2022-05-06.html",
-      "/notes/music/chapman-stick/lessons/2022-05-10.html",
-      "/notes/music/chapman-stick/lessons/2022-05-19.html",
-      "/notes/music/chapman-stick/lessons/2022-06-02.html",
-      "/notes/music/chapman-stick/lessons/2022-06-15.html",
-      "/notes/music/chapman-stick/lessons/2022-07-04.html"
-    ]
-  },
-  {
     "listing": "/hacks/index.html",
     "items": [
       "/hacks/cadence-sensor.html",
@@ -27,6 +12,21 @@
       "/hacks/curvature-blindness.html",
       "/hacks/checkerboard-and-crosses.html",
       "/hacks/seven-circles.html"
+    ]
+  },
+  {
+    "listing": "/notes/music/chapman-stick/lessons/index.html",
+    "items": [
+      "/notes/music/chapman-stick/lessons/2022-04-11.html",
+      "/notes/music/chapman-stick/lessons/2022-04-21.html",
+      "/notes/music/chapman-stick/lessons/2022-06-21.html",
+      "/notes/music/chapman-stick/lessons/2022-06-28.html",
+      "/notes/music/chapman-stick/lessons/2022-05-06.html",
+      "/notes/music/chapman-stick/lessons/2022-05-10.html",
+      "/notes/music/chapman-stick/lessons/2022-05-19.html",
+      "/notes/music/chapman-stick/lessons/2022-06-02.html",
+      "/notes/music/chapman-stick/lessons/2022-06-15.html",
+      "/notes/music/chapman-stick/lessons/2022-07-04.html"
     ]
   },
   {
