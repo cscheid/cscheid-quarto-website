@@ -42,15 +42,15 @@ The note names are always C, D, E, F, G, A, B. In order for the pitches to match
 
 We list the modes in an order that makes it easier to remember their relationship, rather than in order of their scale degrees.
 
-| Mode | Starting scale degree | Notes | | | | | | | |
-|------|-----------------------|-------|-|-|-|-|-|-|-|
-| Lydian     | 4 | C | D  |E   | F♯ | G  | A  | B  |<button class="btn btn-quarto" onclick="playScale([0,2,4,6,7,9,11,12]); return false;">Play</button>|
-| Ionian     | 1 | C | D  |E   | F  | G  | A  | B  |<button class="btn btn-quarto" onclick="playScale([0,2,4,5,7,9,11,12]); return false;">Play</button>|
-| Mixolydian | 5 | C | D  |E   | F  | G  | A  | B♭ |<button class="btn btn-quarto" onclick="playScale([0,2,4,5,7,9,10,12]); return false;">Play</button>|
-| Dorian     | 2 | C | D  |E♭  | F  | G  | A  | B♭ |<button class="btn btn-quarto" onclick="playScale([0,2,3,5,7,9,10,12]); return false;">Play</button>|
-| Aeolian    | 6 | C | D  |E♭  | F  | G  | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,2,3,5,7,8,10,12]); return false;">Play</button>|
-| Phrygian   | 3 | C | D♭ | E♭ | F  | G  | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,1,3,5,7,8,10,12]); return false;">Play</button>|
-| Locrian    | 7 | C | D♭ | E♭ | F  | G♭ | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,1,3,5,6,8,10,12]); return false;">Play</button>|
+| Mode | Starting scale degree | Notes | | | | | | | | |
+|------|-----------------------|-------|-------|-|-|-|-|-|-|-|
+| Lydian     | 4 | | C | D  |E   | F♯ | G  | A  | B  |<button class="btn btn-quarto" onclick="playScale([0,2,4,6,7,9,11,12]); return false;">Play</button>|
+| Ionian     | 1 | | C | D  |E   | F  | G  | A  | B  |<button class="btn btn-quarto" onclick="playScale([0,2,4,5,7,9,11,12]); return false;">Play</button>|
+| Mixolydian | 5 | | C | D  |E   | F  | G  | A  | B♭ |<button class="btn btn-quarto" onclick="playScale([0,2,4,5,7,9,10,12]); return false;">Play</button>|
+| Dorian     | 2 | | C | D  |E♭  | F  | G  | A  | B♭ |<button class="btn btn-quarto" onclick="playScale([0,2,3,5,7,9,10,12]); return false;">Play</button>|
+| Aeolian    | 6 | | C | D  |E♭  | F  | G  | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,2,3,5,7,8,10,12]); return false;">Play</button>|
+| Phrygian   | 3 | | C | D♭ | E♭ | F  | G  | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,1,3,5,7,8,10,12]); return false;">Play</button>|
+| Locrian    | 7 | | C | D♭ | E♭ | F  | G♭ | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,1,3,5,6,8,10,12]); return false;">Play</button>|
 
 In this order, then, there's an easy way to "see" how the fingerings relate to one another in an instrument with strings tuned in straight fourths. Say you're playing the bass. Then, if you're playing scales in A, these are the modes, in logical order.
 
@@ -188,6 +188,19 @@ You can take modes of it too, and the fifth-degree mode of the harmonic minor is
 | Phrygian | C | D♭ | E♭ | F | G | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0, 1, 3, 5, 7, 8, 10, 12]); return false;">Play</button>|
 
 So it's almost exactly the Phrygian, but with a natural 3 instead of a flat 3.
+
+## Superlocrian
+
+Take the modes of the diatonic scale, follow the pattern, and notice that the only "scale degree left to flatten" is the 4. That doesn't lead to a mode of the diatonic scale, but
+leads to a useful scale, which is sometimes called the "superlocrian":
+
+| Name | | | | | | | | |
+|------|-------|-|-|-|-|-|-|-|
+| Locrian      | C | D♭ | E♭ | F  | G♭ | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,1,3,5,6,8,10,12]); return false;">Play</button>|
+| Superlocrian | C | D♭ | E♭ | F♭ | G♭ | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,1,3,4,6,8,10,12]); return false;">Play</button>|
+
+I can see a couple of ways to think about it. One is that it plays like "Ionian with a sharp 1". The other comes from inspecting the intervals. It's HWHWWWW, so the first four notes are the first half of the 8-note diminished scale (the "half whole scale"), and the last three notes are the second half of the whole-note scale.
+
 
 ```{ojs}
 //| output: false

@@ -8,4 +8,6 @@ listing:
     - title
 ---
 
-
+These are my notes from my Chapman Stick lessons.
+As you'll see, I'm _very much a beginner_. 
+You've been warned.

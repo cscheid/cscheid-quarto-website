@@ -10,6 +10,10 @@ repeat melody on right hand, progress chords on left
 
 blues scale doesn't matter so much on the left hand, chromatic notes ok
 
+## 12-bar blues form
+
+```
 I  IV I I
 IV IV I I
 V  IV I V
+```
