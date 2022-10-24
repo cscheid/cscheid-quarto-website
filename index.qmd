@@ -2,42 +2,15 @@
 title: Carlos Scheidegger
 ---
 
-I'm a software engineer at [RStudio](https://rstudio.com) working on [quarto](https://quarto.org), and an associate professor on leave in the [Department of Computer Science](https://www.cs.arizona.edu) at the University of Arizona.  Before coming to [sunny](https://www.flickr.com/photos/cscheid/16014561642/in/dateposted-public/), [beautiful](https://twitter.com/scheidegger/status/655907096991371264) [Tucson](https://www.flickr.com/photos/cscheid/16015254715/in/dateposted-public/), I worked at [AT&T Research](https://www.research.att.com) in New York.
+I'm a software engineer at [RStudio](https://rstudio.com) working on [quarto](https://quarto.org). 
+
+Before joining RStudio, I was an associate professor in the [Department of Computer Science](https://www.cs.arizona.edu) at the University of Arizona.
+
+## Other stuff
+
+I like to write small JavaScript demos:
+
+- [Explainers](explainers/)
+- [Hacks](hacks/)
 
 
-## Software I work(ed) on
-
-* [Quarto](https://quarto.org): language-agnostic reproducible computational documents, for the web and beyond. (2021-present)
-* [Lux](https://github.com/cscheid/lux/): write WebGL shaders in Javascript, composably. (2014)
-* [RCloud](https://github.com/att/rcloud): collaborative data analysis on the web (2014).
-* [Nanocubes](https://nanocubes.net): blazing fast large data visualization. (2013)
-* [VisTrails](https://www.vistrails.org): a provenance-aware scientific workflow system. (2009)
-
-
-## Some small stuff I made
-
-I like web browsers, and I like Javascript. (I know.)
-
-Graphics and data visualization:
-
-* If you take pictures of clouds from an airplane, you can see their [3D structure](http://cscheid.net/to/clouds.html).
-* If you stitch together 4 hours of an intercontinental flight, you get an interesting [map of the US](https://cscheid.net/static/windowseat).
-* An exploration of the [MLB Hall of Fame voting patterns](http://cscheid.net/static/mlb-hall-of-fame-voting/).
-
-Math:
-
-* The set of roots of polynomials with small integer coefficients has some [incredible structure](http://cscheid.github.io/lux/demos/beauty_of_roots/beauty_of_roots.html).
-* The [Fagan Nomogram](https://cscheid.net/projects/fagan_nomogram/) is a great way to build intuition for Bayes’s Theorem.
-* The [Bunimovich stadium](https://cscheid.net/projects/bunimovich_stadium/) is a neat dynamical system.
-* Some intuition for the [duality principle](https://cscheid.net/writing/data_science/duality.html) in convex optimization.
-* Some intuition for how [2x2 symmetric real matrices transform vectors](https://cscheid.net/courses/fal16/cs444/lectures/lecture15/eigenvectors.html) via the eigendecomposition.
-
-Optical illusions:
-
-* [Purple dots](https://cscheid.net/projects/illusions/purple-dots/)
-* [Ring with a rotating gap](https://cscheid.net/projects/illusions/ring-gap/)
-* [Variations on the Hermann Grid](https://cscheid.net/projects/illusions/variations-on-the-hermann-grid/)
-* [Straight Movement on Rotating Circle](https://cscheid.net/projects/illusions/straight-movement-on-circle/)
-* [Curvature Blindness](/hacks/curvature-blindness.qmd)
-* [Checkerboard and Crosses](https://cscheid.net/projects/illusions/checkerboard-crosses/)
-* [Seven Circles](https://cscheid.net/projects/illusions/seven-circles/)

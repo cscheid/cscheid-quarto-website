@@ -1,0 +1,29 @@
+---
+title: Carlos Scheidegger
+---
+
+## Employment
+
+- 2022 - present: Software Engineer, RStudio. Working on [quarto](https://quarto.org).
+
+- 2014 - 2022: Assistant and Associate Professor, [Department of Computer Science, University of Arizona](https://www.cs.arizona.edu). I was on leave from 2021-2022.
+
+- 2009 - 2014: PhD Student, [SCI Institute](http://www.sci.utah.edu), University of Utah. Advisor: Claudio Silva.
+
+## Software
+
+[The year in parenthesis denotes the last year I was directly involved with the project]{.aside}
+
+* [Quarto](https://quarto.org): language-agnostic reproducible computational documents, for the web and beyond.
+* [Nanocubes](https://nanocubes.net): blazing fast large data visualization. (2013)
+* [Lux](https://github.com/cscheid/lux/): WebGL shaders in Javascript, composably. (2014)
+* [RCloud](https://github.com/att/rcloud): collaborative data analysis on the web (2014).
+* [VisTrails](https://www.vistrails.org): a provenance-aware scientific workflow system. (2009)
+
+## Academic work
+
+Research interests: data visualization (especially interactivity and large datasets), machine learning (especially ML fairness and interpretability)
+
+- [academic CV](/cv.pdf) as of 2021
+- [Google Scholar](https://scholar.google.com/citations?user=8uHMJjsAAAAJ&hl=en&oi=ao).
+
