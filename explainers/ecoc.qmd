@@ -35,7 +35,7 @@ single classes, and the decision of the overall classifier.
 
 Graphically, it looks like this:
 
-<img src="ecoc-binary-tree.png">
+![A binary tree to convert single-class predictors into multi-class predictors.](ecoc-binary-tree.png)
 
 If you compare this scheme to the OVA and AVA ideas, you can notice a
 few similarities and a few differences.
