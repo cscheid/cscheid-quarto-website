@@ -47,9 +47,9 @@ export function rotate(r, x, y) {
 }
 
 export function useClipPath(clipEl) {
-  return function(sel) {
-    const id = clipEl.attr('id');
-    sel.attr('clip-path', `url(#${id})`);
+  return function (sel) {
+    const id = clipEl.attr("id");
+    sel.attr("clip-path", `url(#${id})`);
   };
 }
 
@@ -61,33 +61,42 @@ export function useClipPath(clipEl) {
 
 export function centeredTextRotate(r) {
   return centeredRotate(
-      function() {
-        return this.getAttribute('x') || 0;
-      },
-      function() {
-        return this.getAttribute('y') || 0;
-      },
-      r);
+    function () {
+      return this.getAttribute("x") || 0;
+    },
+    function () {
+      return this.getAttribute("y") || 0;
+    },
+    r,
+  );
 }
 
 export function centeredRotate(xAccessor, yAccessor, r) {
-  return function(d) {
+  return function (d) {
     const x = xAccessor.call(this, d);
     const y = yAccessor.call(this, d);
     return `rotate(${r}, ${x}, ${y})`;
   };
 }
 
-export const categoricalColorScheme =
-  ['rgb(2, 195, 219)', 'rgb(255, 200, 0)', 'rgb(244, 68, 82)',
-    'rgb(186, 216, 60)', 'rgb(216, 145, 205)', 'rgb(222, 222, 222)'];
+export const categoricalColorScheme = [
+  "rgb(2, 195, 219)",
+  "rgb(255, 200, 0)",
+  "rgb(244, 68, 82)",
+  "rgb(186, 216, 60)",
+  "rgb(216, 145, 205)",
+  "rgb(222, 222, 222)",
+];
 
 // ////////////////////////////////////////////////////////////////////////
 // extra methods for the selection prototype
 
 let setup = false;
-export function setupD3Prototype() {
+export function setupD3Prototype(d3) {
   if (setup) return;
+  if (d3 === undefined) {
+    d3 = window.d3;
+  }
   if (d3 !== undefined) {
     setup = true;
     // return a selection with the parent nodes of the current
@@ -95,35 +104,35 @@ export function setupD3Prototype() {
     //
     // FIXME: this destroys the nesting structure of the selection,
     // which could be a problem.
-    d3.selection.prototype.parents = function() {
-      return d3.selectAll(this.nodes().map(d => d.parentNode));
+    d3.selection.prototype.parents = function () {
+      return d3.selectAll(this.nodes().map((d) => d.parentNode));
     };
-    
+
     // http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
-    d3.selection.prototype.moveToFront = function() {
-      return this.each(function() {
+    d3.selection.prototype.moveToFront = function () {
+      return this.each(function () {
         this.parentNode.appendChild(this);
       });
     };
-  
+
     // http://bl.ocks.org/eesur/4e0a69d57d3bfc8a82c2
-    d3.selection.prototype.moveToBack = function() {
-      return this.each(function() {
+    d3.selection.prototype.moveToBack = function () {
+      return this.each(function () {
         const firstChild = this.parentNode.firstChild;
         if (firstChild) {
           this.parentNode.insertBefore(this, firstChild);
         }
       });
     };
-  
-    d3.selection.prototype.callReturn = function(callable) {
+
+    d3.selection.prototype.callReturn = function (callable) {
       return callable(this);
     };
-  
-    d3.selection.prototype.enterMany = function(data) {
-      return this.selectAll('.c :not(.c)')
-          .data(data)
-          .enter();
+
+    d3.selection.prototype.enterMany = function (data) {
+      return this.selectAll(".c :not(.c)")
+        .data(data)
+        .enter();
     };
-  }  
+  }
 }
