@@ -2,6 +2,10 @@
 
 * [Trigonometry](trigonometry.qmd)
 
+## Data Science
+
+* [Error-correcting output codes](ecoc.qmd)
+
 ## Music
 
 Index of [music explainers](music/index.qmd)
