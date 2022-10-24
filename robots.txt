@@ -1,1 +1,1 @@
-Sitemap: https://cscheid.github.io/cscheid-quarto-website/sitemap.xml
+Sitemap: https://github.com/cscheid/cscheid-quarto-website/sitemap.xml
