@@ -1,5 +1,24 @@
 [
   {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/2022-11-20.html",
+      "/hacks/cadence-sensor.html",
+      "/hacks/bunimovich-stadium.html",
+      "/hacks/fagan-nomogram.html",
+      "/hacks/straight-movement-on-circle.html",
+      "/explainers/ecoc.html",
+      "/explainers/mds.html",
+      "/hacks/variations-on-the-hermann-grid.html",
+      "/hacks/purple-dots.html",
+      "/hacks/ring-gap.html",
+      "/hacks/curvature-blindness.html",
+      "/hacks/checkerboard-and-crosses.html",
+      "/hacks/seven-circles.html",
+      "/explainers/trigonometry.html"
+    ]
+  },
+  {
     "listing": "/notes/music/chapman-stick/lessons/index.html",
     "items": [
       "/notes/music/chapman-stick/lessons/2022-04-11.html",
