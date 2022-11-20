@@ -4,10 +4,10 @@ categories: [signal-processing]
 date: 2022-06-02
 ---
 
-At some point during the pandemic, I became suspicious about the accuracy of my [Saris H3](https://saris.com/products/h3-direct-drive-smart-trainer) cadence sensor, so I wrote my own.
+At some point during the pandemic, I became suspicious about the accuracy of my [Saris H3](https://saris.com/products/h3-direct-drive-smart-trainer) cadence sensor, so I wrote my own. (It turns out that the cadence sensor is fine.)
 
-<script src="/src/lib/d3.v5.js"></script>
-<script src="/src/lib/dsp.js"></script>
+<script src="../src/lib/d3.v5.js"></script>
+<script src="../src/lib/dsp.js"></script>
 
 <button id="start">Start Cadence Sensor</button>
 <div>RPM: <span id="rpm-reader"></span></div>

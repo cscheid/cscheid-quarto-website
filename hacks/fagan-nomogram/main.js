@@ -1,4 +1,4 @@
-import * as cscheid from "/src/cscheid/cscheid.js";
+import * as cscheid from "../../src/cscheid/cscheid.js";
 
 cscheid.svg.setupD3Prototype();
 

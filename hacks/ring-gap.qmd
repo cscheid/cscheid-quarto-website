@@ -2,6 +2,7 @@
 title: Ring with rotating gap
 date: 2018-09-27
 categories: [optical-illusion]
+image: /images/ring-with-rotating-gap.jpg
 ---
 
 This is a continuous version of the [purple dots

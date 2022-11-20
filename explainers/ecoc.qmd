@@ -1,6 +1,8 @@
 ---
 title: Error-Correcting Output Codes
 layout: bootstrap_wide
+categories: [explainers, data-science]
+date: 2020-01-01
 ---
 
 Often it will be the case that we can model a process we care about as
@@ -13,10 +15,10 @@ change in perspective.
 
 Consider the problem of creating a classifier that can distinguish
 between more than two classes. We could try to solve this problem from
-first principles, but if we want to reuse some of our hard-earned
-knowledge, we could try to turn the problem of multiple classification
-into (many instances of) binary classification. The typical ways of
-doing this are called ["OVA" and "AVA"](../ova_ava/index.html), but there's a
+first principles and build that classifier "from nothing". But if we already know
+how to build binary classifiers, then we could try to turn the problem of multiple classification
+into (many instances of) binary classification. The usual way of
+doing this are called "OVA", and "AVA"], but there's a
 different method that sometimes works better, is elegant, simple to
 explain, and connects directly to the idea of two parties communicating over
 a noisy channel.

@@ -1,16 +1,30 @@
 ---
-title: Carlos Scheidegger
+title: "Carlos Scheidegger"
+image: cscheid.png
+about:
+  template: trestles
+  links:
+    - text: Twitter
+      icon: twitter
+      url: "https://twitter.com/scheidegger"
+    - text: Mastodon
+      icon: mastodon
+      url: "https://mastodon.social/@scheidegger"
+    - text: GitHub
+      icon: github
+      url: "https://github.com/cscheid"
+    - text: Email
+      url: "mailto:carlos.scheidegger@gmail.com"
+    - text: Blog
+      url: "blog.html"
+    - text: CV
+      url: "cv.pdf"
 ---
 
-I'm a software engineer at [RStudio](https://rstudio.com) working on [quarto](https://quarto.org). 
+::: {.column-page}
 
-Before joining RStudio, I was an associate professor in the [Department of Computer Science](https://www.cs.arizona.edu) at the University of Arizona.
+I'm a software engineer at [Posit](https://posit.co) ([RStudio](https://rstudio.com)'s new name), and I work full-time on [quarto](https://quarto.org). 
 
-## Other stuff
+Before joining Posit, I was an associate professor in the [Department of Computer Science](https://www.cs.arizona.edu) at the University of Arizona, where my colleagues and I ran the [HDC Lab](https://hdc.cs.arizona.edu).
 
-I like to write small JavaScript demos:
-
-- [Explainers](explainers/)
-- [Hacks](hacks/)
-
-
+:::

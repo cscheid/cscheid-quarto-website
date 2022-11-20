@@ -2,6 +2,7 @@
 title: Purple dots
 date: 2018-09-27
 categories: [optical-illusion]
+image: /images/purple-dots.jpg
 ---
 
 If you keep your gaze focused at the black crosshairs, eventually the

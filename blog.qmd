@@ -1,0 +1,22 @@
+---
+title: ""
+listing:
+  contents: 
+    - blog/*.qmd
+    - hacks/*.qmd
+    - "!hacks/index.qmd"
+    - explainers/*.qmd
+    - "!explainers/index.qmd"
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  feed: true
+page-layout: full
+title-block-banner: true
+---
+
+::: {.column-page}
+
+:::

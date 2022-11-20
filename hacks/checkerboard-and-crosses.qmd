@@ -2,6 +2,7 @@
 title: Checkerboard and Crosses
 date: 2017-12-05
 categories: [optical-illusion]
+image: /images/checkerboard-and-crosses.jpg
 ---
 
 The checkerboard stays straight throughout the animation.

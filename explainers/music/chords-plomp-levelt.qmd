@@ -223,14 +223,15 @@ function makeDiagram(chords, xMax)
 
 ### Notes
 
-Discouraging: some this ends up being "simple ratios are good".
+Discouraging: most of this ends up just being "simple ratios sound consonant". We now have an explanation for _why_, but the thing itself was already known.
 
 So maybe we need to include even temperament here since they're _not_ simple ratios but they can get close enough to just that our ears can't tell. This will require taking the actual Plomp-Levelt curve into account for each note.
 
 We can also take the Pythagorean tuning and predict how chords using wolf intervals will sound dissonant.
 
-TODO: compute clashes among tone pairs.
+Maybe we can do this analysis with closed-tube wind instruments, since they produce a different overtone series? And then we compare that to fully-harmonic instruments?
 
+TODO: compute clashes among tone pairs.
 
 ### Ideas
 

@@ -2,9 +2,10 @@
 title: Bunimovich Stadium
 categories: [mathematics]
 date: 2020-11-14
+image: /images/bunimovich-stadium.jpg
 ---
 
-<script src="/src/lib/d3.v5.js"></script>
+<script src="../src/lib/d3.v5.js"></script>
 
 The Bunimovich Stadium is one example of a
 [Dynamical Billiards](https://en.wikipedia.org/wiki/Dynamical_billiards)

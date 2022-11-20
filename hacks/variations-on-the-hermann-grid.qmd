@@ -2,6 +2,7 @@
 title: Variations on the Hermann grid
 date: 2018-10-13
 categories: [optical-illusion]
+image: /images/variations-on-the-hermann-grid.jpg
 ---
 
 The [Hermann grid](https://www.illusionsindex.org/i/hermann-grid) is the prototypical example of the extinction

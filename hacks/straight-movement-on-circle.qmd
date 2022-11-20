@@ -2,6 +2,7 @@
 title: Straight movement on circle
 date: 2020-11-14
 categories: [optical-illusion]
+image: /images/straight-movement-on-circle.jpg
 ---
 
 Each individual circle moves along a straight line, but collectively,

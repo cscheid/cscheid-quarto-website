@@ -2,7 +2,8 @@
 title: An Interactive Fagan Nomogram
 bibliography: fagan-nomogram.bib
 css: fagan-nomogram/main.css
-categories: [mathematics]
+categories: [mathematics, data-science]
+image: /images/fagan-nomogram.jpg
 date: 2020-11-14
 ---
 

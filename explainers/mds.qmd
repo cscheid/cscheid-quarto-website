@@ -1,5 +1,7 @@
 ---
 title: Multidimensional Scaling
+date: 2020-01-01
+categories: [mathematics, data-science]
 ---
 
 "Multidimensional Scaling" techniques turn measurements of similarities (or distances)

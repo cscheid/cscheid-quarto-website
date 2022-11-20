@@ -2,6 +2,7 @@
 title: Curvature Blindness
 date: 2017-12-10
 categories: [optical-illusion]
+image: /images/curvature-blindness.jpg
 ---
  
 Over a gray background, some of the wiggly lines appear much more
