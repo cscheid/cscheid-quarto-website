@@ -1,3 +1,10 @@
-all:
+all: staging
+
+production: render
+	rsync -avzh `pwd`/_site/ cscheid@cscheid.net:/home/cscheid/web/root/_site/v2
+
+render:
 	quarto render
-	rsync -avzh `pwd`/_site cscheid@cscheid.net:/home/cscheid/web/static/
+
+staging: render
+	rsync -avzh `pwd`/_site/ cscheid@cscheid.net:/home/cscheid/web/root/_staging_site/v2

@@ -17,12 +17,15 @@ about:
       url: "mailto:carlos.scheidegger@gmail.com"
     - text: Blog
       url: "blog.html"
+format:
+  html:
+    code-tools: false
 ---
 
 ::: {.column-page}
 
 I'm a software engineer at [Posit](https://posit.co) ([RStudio](https://rstudio.com)'s new name), and I work full-time on [quarto](https://quarto.org). 
 
-Before joining Posit, I was an associate professor in the [Department of Computer Science](https://www.cs.arizona.edu) at the University of Arizona, where my colleagues and I ran the [HDC Lab](https://hdc.cs.arizona.edu).
+Before joining Posit, I was an associate professor in the [Department of Computer Science](https://www.cs.arizona.edu) at the University of Arizona, where my colleagues and I ran the [HDC Lab](https://hdc.cs.arizona.edu). (If you're looking for content from my previous academic life, try my [old web page](../index-old.html).)
 
 :::
