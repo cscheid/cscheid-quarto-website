@@ -1,3 +1,7 @@
+---
+title: Explainers
+---
+
 ## Basics
 
 * [Trigonometry](trigonometry.qmd)
@@ -5,7 +9,8 @@
 ## Data Science
 
 * [Error-correcting output codes](ecoc.qmd)
+* [Multi-dimensional Scaling](mds.qmd)
 
-## Music
+## [Music](music/index.qmd)
 
-Index of [music explainers](music/index.qmd)
+Index of [music explainers](music/index.qmd).

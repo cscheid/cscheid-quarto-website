@@ -1,0 +1,78 @@
+---
+title: Multidimensional Scaling
+---
+
+"Multidimensional Scaling" techniques turn measurements of similarities (or distances)
+into **coordinates** of points in a low-dimensional space, usually 2D of 3D.
+
+## Classical MDS
+
+There are many variants of "multidimensional scaling", with different assumptions on the measurements, and different ways to reconstruct the values. Here we will focus on the very simplest of them, typically known as "Classical" multidimensional scaling, or CMDS. For more, the best reference is Borg and Groenen's Modern Multidimensional Scaling[^1].
+
+## From distances
+
+Imagine that, instead of knowing the coordinates of a set of points,
+all you knew were the distance from each point to each other
+point. Intuitively, it seems like it should be possible to convert
+this information back into coordinates which respect the
+distances. Consider the simplest case of three points A, B, and C,
+and that we know that
+
+$$ \begin{aligned} d(A,B) &= 3 \\ d(A,C) &= 4 \\ d(B,C) &= 5 \end{aligned} $$
+
+We instantly recognize those distances as forming a right triangle, and so a possible solution
+is $A = (0,0), B = (3,0), C = (0, 4)$. Note, however, that, there is more than one possible set of coordinates for that triangle. We could move it around the plane, we could rotate it, and we could flip it. 
+
+So, just remember that MDS generally will give _one_ possible set of coordinates, instead of a unique one. But how does it do that?
+
+Let's start with the description of the algorithm:
+
+1. $D = (||X_i - X_j||^2)_{ij}$: let $D$ be a matrix that stores the **squared** distance
+   from point $i$ to point $j$ (notice that we do not currently have
+   the $X_i$ and $X_j$ vectors; we're just using the notation to say
+   what the entries of the matrix should store.
+2. $P = (-1/2) H D H$: let $P$ be a row- and column-centered version of
+   $D$, multiplied by $-1/2$ ($H$ is the centering matrix, as
+   described in the [PCA](pca.html) section).
+3. Let $P = U \Lambda U^T$.
+4. The coordinates of $X$ are given by the first few columns of $U \Lambda^{1/2}$.
+
+The decision of how many coordinates to use for the MDS is similar to
+the decision of how many principal components to choose. As we go down the diagonal
+values of $\Lambda$, the values will get closer to zero (and we assume that they are sorted from largest to smallest). We will usually drop some columns, which is the same as setting some values in $\Lambda$ to zero. The smaller these non-zero values were, the more precise the result of the MDS will be (that is,
+the squared distance between $X_i$ and $X_j$ will become closer to the
+actual value in $D_{ij}$).
+
+In fact, the easiest way to understand how CMDS works is to compare it
+directly to PCA. Specifically, let's look at what happens if we
+started from an actual matrix $X$ from which to build $D$. In this
+case,
+
+$$\begin{align} D_{ij} &=& || X_i - X_j ||^2 \\ D_{ij} &=& \langle X_i - X_j, X_i - X_j \rangle\\ D_{ij} &=& \langle X_i, X_i \rangle + \langle X_j, X_j \rangle - 2 \langle X_i, X_j \rangle. \end{align}$$
+
+So what we get is that every entry $i, j$ of the matrix $D$ can be represented by a sum of three terms. So we write the matrix $D$ as a sum of three matrices:
+
+$$\begin{align} D &=& (\langle X_i, X_i \rangle)_{ij} + (\langle X_j, X_j \rangle)_{ij} + (-2 \langle X_i, X_j \rangle)_{ij}\\ D &=& A + B + C\end{align}$$
+
+Now we follow step 2 of the algorithm above, and let
+
+$$\begin{align} P &=& -1/2 H D H \\ P &=& -1/2 H (A + B + C) H \\ P &=& -(1/2) H A H -(1/2) H B H -(1/2) H C H \end{align}$$
+
+Now note that all of the columns of $A$ are identical, because the values only depend on the row index $i$. Similarly, all of the rows in $B$ are identical, because the values only depend on the column index $j$. This means that $HAH = HBH = 0$!, since column-centering $A$ will subtract the average column value; the analogous thing happens to row-centering $B$. As a result,
+
+$$\begin{align} P &=& -1/2 H D H \\ P &=& H (\langle X_i, X_j)_{ij} \rangle H \end{align}$$
+
+So our $P$ matrix is now exactly equal to a centered matrix of inner
+products of $X$, even though we never used the inner products directly
+-- all we had access to was squared distances. So if we take $P$ to be
+the matrix $M$ on step 3 of our
+<!-- [second PCA algorithm](pca.html#PCA%20%through%20%a%20matrix%20of%20inner%20products), -->
+we get to recover $X$ exactly! This is really neat.
+
+## From similarities
+
+The same algorithm also applies directly when all we have access to is a notion of **similarity** between points. Here the idea is even simpler. Let's say that we have a way to give a numerical value of similarity between points such that if two points are similar to each other, the value is relatively large, and if two points are relatively dissimilar, the value is relatively small. Then we can pretend that this value is "like an inner product", create a matrix of similarities, center the matrix in both rows and columns, and just compute the PCA directly like above. This will actually recover good coordinates the respect the similarities!
+
+# References
+
+[^1]: Borg, I. and Groenen, P.J.F. (2005). [Modern multidimensional scaling. 2nd edition](http://people.few.eur.nl/groenen/mmds/). New York: Springer.
