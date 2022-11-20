@@ -17,8 +17,6 @@ about:
       url: "mailto:carlos.scheidegger@gmail.com"
     - text: Blog
       url: "blog.html"
-    - text: CV
-      url: "cv.pdf"
 ---
 
 ::: {.column-page}

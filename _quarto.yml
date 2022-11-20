@@ -1,6 +1,6 @@
 project:
   type: website
-  title: "cscheid-quarto-website"
+  title: "Carlos Scheidegger"
 freeze: true
 format: 
   html:
@@ -10,4 +10,15 @@ format:
     code-tools: true
     code-fold: true
 
-
+website:
+  site-url: https://cscheid.net/v2/
+  page-footer:
+    left: "© Copyright 2022 Carlos Scheidegger. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0."
+  navbar:
+    right:
+      - text: "Home"
+        href: /index.html
+      - text: "Blog"
+        href: /blog.html
+      - icon: rss
+        href: /blog.xml
