@@ -16,7 +16,7 @@ about:
     - text: Email
       url: "mailto:carlos.scheidegger@gmail.com"
     - text: Blog
-      url: "blog.html"
+      url: "v2/blog.html" # sigh.
 format:
   html:
     code-tools: false

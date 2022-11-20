@@ -2,3 +2,4 @@
 _site
 *_files
 _Makefile
+/.luarc.json
