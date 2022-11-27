@@ -3,9 +3,9 @@ title: Same site, new look
 date: 2022-11-20
 ---
 
-It's been a while! The birdsite ate blogging, and then the muskrat ate the birdsite. As insurance policy, I'm on [mastodon](https://mastodon.social/@scheidegger).
+It's been a while! The birdsite ate blogging, and then the muskrat ate the birdsite. As insurance policy, I'm on [mastodon](https://mastodon.social/@scheidegger). But I'm trying blogging again.
 
-I also changed jobs. (I managed a good 6 months without writing the requisite academic quit-lit piece, but I make no future promises!) I'm now an engineer at [Posit](https://posit.co). We used to be called RStudio, you might remember that name instead! We still build RStudio, and still build world-class open-source R libraries. But we've been making tools for other ecosystems for a long while, and the R-centric name got in the way a little bit.
+Also, I changed jobs. (I managed a good 6 months without writing the requisite academic quit-lit piece, but I make no future promises!) I'm now an engineer at [Posit](https://posit.co). We used to be called RStudio, and you might remember that name instead! We still build RStudio, and still build world-class open-source R libraries. But we've been making tools for other ecosystems for a long while, and the R-centric name got in the way a little bit.
 
 I work full-time on [quarto](https://quarto.org), which I'm really excited about. I think we might actually make a dent on technical and academic communication. More about it soon.
 
