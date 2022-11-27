@@ -1,0 +1,52 @@
+---
+title: "The Chapman Stick"
+categories: [hobbies, music]
+date: 2022-11-27
+---
+
+I told myself as I was going through the tenure-track grind that I'd buy myself a Chapman Stick as a tenure gift to myself. My tenure notification arrived sometime in February 2020.
+
+A few weeks after, I went to the [Stick enterprises site](https://www.stick.com) and placed an order for a sweet Railboard.
+A couple of days went by, and I get a call from them. Do you remember what was going on in March 2020? ... yeah. Turns out the pickup manufacturer was shut down and they didn't know how long it'd be until they'd them again. As far as I can tell, the answer was, basically, "never", they actually had to come up with new pickups for the railboard. So it was not until early 2021 that I finally got it.
+
+I've finally started taking lessons earlier this year. It's a lot of fun to play. The best way I know how to describe it is that it's somewhere in the middle of a guitar, piano, bass, and cello. Here's the first piece I managed to learn well enough to record a video on it:
+
+{{< video https://youtu.be/IsYzu0_pFuY width="100%" height="400" >}}
+
+As I learn more, I'll post more.
+
+## Stick nerdery ahed
+
+But, you might ask, why the Stick?
+
+### Have you ever tried to bend a note on a piano?
+
+I've instinctively tried to "bend" a note on a piano by "shaking" the key. It's annoying and embarrassing! :) I always wanted something that gave me the expressivity of a guitar, but with the range of a piano or smaller synth. The Stick does something very much like that!
+
+When I was looking around, I found out there's also the [harpejji](https://en.wikipedia.org/wiki/Harpejji). It looks super cool too, and it also has its own uniquely cool tuning, though it's closer to the [chromatic button accordion system](Chromatic_button_accordion). But. The Stick is already not a cheap instrument, and a Harpejji with comparable range is easily two or three times as expensive. And there's one thing about the Harpejji that I think they need to solve first. Because it has so many strings and pickups, it's pretty clearly the case that there's some cross talk on the pickups. So they figured out a clever electronic way to solve the problem by only turning on the pickups when the string is actively touching the fret. But I think that somehow this gives the harpejji notes a pretty distinct attack, and I'm not 100% sure I love it.
+
+I'm sure this will be improved in time, and I'm looking forward to eventually spending a decade learning the harpejji, but this decade at least is going to the Stick :)
+
+### Tuning
+
+The standard configurations of the Stick have a bass side and a melody side. I have a 10-string railboard (a "railboard" is their name for an all-metal stick), which has 5 melody strings and 5 bass strings.
+
+The melody side of a Stick is tuned almost like a guitar. In a guitar tuning, the trick of tuning the second interval of a guitar as a major third instead of a perfect fourth gives you a lot of open-string chords (the "cowboy chords" in a guitar). But because you almost always tap a specific fret, you never really play open strings. So the Stick melody side is tuned in straight fourths. This makes it so that chord shapes are uniform across the neck.
+
+The bass side of a Stick, on the other hand, is tuned a little like a cello, in perfect fifths. The fifths tuning does make the super low notes stand out from each other a bit better than a standard bass tuning (there's a [psychoachoustic reason for that](/explainers/music/consonance-and-dissonance.qmd): lower-pitched sounds sound more like each other compared to higher-pitched sounds). 
+
+Unlike a cello, however, the bass strings are laid out in reverse order, so that the lowest string is on the center of the fretboard, and the highest bass side string is opposite the highest melody string. For people who are used to other string instruments, this is apparently very weird and hard to make sense of. But I've never really studied guitar seriously at all, so I don't have any real background to unlearn.
+
+This reversed layout, though, is what really gives the Stick its unique character: It makes the chord shapes work uniformly across the bass and guitar sides (!). If you go up one perfect fourth (same fret, one string down) from C on the melody side, you end up on F. But if you down one perfect fifth (same fret, one string down) from C on the bass side, you _also_ end up on F, just one octave down. So the same shape produces the same chords on the bass and melody sides, but on different voicings. For example, the shape that gives you a chord in first inversion on the melody side gives you a root-fifth-tenth version of the chord. As you learn voicings on one side, they just translate readily to the other side.
+
+This strange sideways layout gives you bass strings in fifths (which sound great like a cello), melody strings in fourths (which are almost like a guitar, so pretty familiar), and the same chord shapes on both sides. It's a really cool tuning.
+
+You get a few cool side effects of this regular tuning too. For example, the fretboard markers on a stick are regularly spaced at 5 semitones (a perfect fourth), so they are a better map of what's going on on the instrument: move up or down along a "marker space-full", and that's the same as moving up or down a string on the melody side. It doesn't quite match the bass side, but you learn the notes on the melody and the bass just works out in the other direction.
+
+It's all very neat.
+
+### And it's weird!
+
+I like weird!
+
+And finally, hear [this](https://www.youtube.com/watch?v=dYKB6Lag-wg) and [this](https://www.youtube.com/watch?v=T1CX1x6oulY). How can you not love the thing?
