@@ -31,7 +31,7 @@ I'm sure this will be improved in time, and I'm looking forward to eventually sp
 
 The standard configurations of the Stick have a bass side and a melody side. I have a 10-string railboard (a "railboard" is their name for an all-metal stick), which has 5 melody strings and 5 bass strings.
 
-The melody side of a Stick is tuned almost like a guitar. In a guitar tuning, the trick of tuning the second interval of a guitar as a major third instead of a perfect fourth gives you a lot of open-string chords (the "cowboy chords" in a guitar). But because you almost always tap a specific fret, you never really play open strings. So the Stick melody side is tuned in straight fourths. This makes it so that chord shapes are uniform across the neck.
+The melody side of a Stick is tuned almost like a guitar. In a guitar tuning, the trick of tuning the second interval of a guitar as a major third instead of a perfect fourth gives you a lot of open-string chords (the "cowboy chords" in a guitar). But because you almost always tap a specific fret, you never really play open strings on a Stick. So the Stick melody side is tuned in straight fourths. This makes it so that chord shapes are uniform across the neck.
 
 The bass side of a Stick, on the other hand, is tuned a little like a cello, in perfect fifths. The fifths tuning does make the super low notes stand out from each other a bit better than a standard bass tuning (there's a [psychoachoustic reason for that](/explainers/music/consonance-and-dissonance.qmd): lower-pitched sounds sound more like each other compared to higher-pitched sounds). 
 

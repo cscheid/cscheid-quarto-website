@@ -1,0 +1,82 @@
+---
+title: "Copiloting my way through Advent of Code"
+categories: [programming]
+date: 2022-12-04
+---
+
+Because of my work on [quarto](https://quarto.org), Microsoft offers me free access to GitHub Copilot (this is true for contributors of sufficiently popular open source repositories on GitHub). It's a smart move by Microsoft: they've gone ahead and crawled all of GitHub without caring too much about licensing issues, so presumably now they're preemptively extending olive branches to open source software developers. 
+
+Since 2022's advent of code is going on right now, I figured I'd try it out in a [bog-standard programming language](https://deno.land), so I could see how much it actually knows. I'm very impressed, and I'm usually quite cynical about this kind of stuff. (Copilot is also enabled by default in Markdown. So as I type this, it is happily suggesting things. As you'll see, it's... hit and miss.)
+
+### Copilot memorizes solutions
+
+Try solving the 2015 AOC problems. If you give your program file a name that indicates the year and number of the problem, Copilot will suggest variable names that show very clearly that it knows the solution. It's remarkable to see. It knows that the indexing required in some problems is 0-based, and in others is 1-based.
+
+### It's very good at teaching you APIs and tricks
+
+Just today, Copilot taught me that you can swap two variables in javascript using destructuring assignments, even without declarations. I knew that
+
+```javascript
+const [a, b] = [c, d]
+```
+
+was possible, but I didn't know that
+
+```javascript
+[a, b] = [b, a]
+```
+
+also worked. That's a trivial, minor thing, but it's a good trick to have under your fingers. The most surprising thing about Copilot is that it's _teaching_ me. If you're comfortable with ignoring some clearly bad suggestions, you're likely to learn a new thing every few days.
+
+### It's pretty good at simple functions
+
+Give it a few examples and it will suggest a function that works. It's great for when you know a function is easy to write, but you don't want to rederive it:
+
+```javascript
+// d(0) = 0
+// d(1) = 1
+// d(2) = 3
+// d(3) = 6
+// d(4) = 10
+const d = (x: number) => x * (x + 1) / 2 // Copilot knew this
+```
+
+### It can't really write prose
+
+Copilot itself is [hilariously bad at text](https://mastodon.social/@scheidegger/109458554184293542). But what's remarkable to me is that Copilot is much better at coding than the very latest chatbots are at natural language. 
+
+### It's very good at boilerplate
+
+Copilot truly shines at boilerplate code. If you structure your code so that it's amenable to a simple case analysis, it's very likely that that it can complete a `switch` statement from the first couple of cases. It also knows its way around the code in your workspace, so if your other files offer hints about your data structures or APIs, that tends to help.
+
+It's so good at following explicit structured boilerplate that I wonder if Copilot would be especially good with a language like SML. For example, Copilot consistently fails at distinguishing the different ways of determining data structure sizes in Lua (e.g. `#t` vs `table.getn(t)` vs `t.n`). I suspect this is because there is very little syntactic distinction between the different situations. But in a well-designed language like SML, this would not only be a non-issue, but the uniformity of the treatment would make it easier for Copilot to learn. And SML can be a little verbose, Copilot would presumably help with that.
+
+On a more somber note, I wonder if Haskell+Copilot programmers would ever feel the need to invent lenses or arrows or traversables or universal folds. Here's a bit of heresy: non-DRY code is not so bad when the repetition is local and Copilot knows about it.
+
+Where the next Copilot-like jump in suggestions will need to come from is _non-local_ suggestions, finding places to edit your code that are not under the cursor. That kind of boilerplate is still totally on the programmer, if for no other reason than the Copilot UX is very cursor-centric.
+
+## Why is it so good at coding?
+
+Copilot here suggested me that 
+
+> it's because the code is much more structured than natural language
+
+I don't think that's it. I think the reason is that there's a much stronger constraint on what source code ends up on GitHub than there is unstructured text on the internet. Code on GitHub is presumably interesting and good enough to warrant being on a repository. Text on the internet on the other hand, is maybe more like this blog.
+
+### Copilot and LSP are great friends
+
+Like I said, I'm using Copilot with Deno. What's very cool is that although the two pieces of technology offer "suggestions:, they tend to be orthogonal and they help one another. Again, because source code has semantic constraints, it's also easier to tell when Copilot makes a nonsense suggestion, and Deno's LSP does a great job at that. 
+
+You could even envision a future Copilot implementation having access to the LSP and only attempting semantically-valid suggestions.
+
+## Are us excel farmers going to be out of a job?
+
+One of my favorite descriptions of the modern knowledge worker is a "spreadsheet farmer". This is not to throw shade at farmers of either kind (and have you tried anything like growing food? It's _hard work_). But the idea is that there's a large group of people who end up doing essential work which happens to be of a relatively repetitive nature.
+
+A few years ago, I expect that if you were to ask people about which jobs would go away the soonest, you'd get "drivers, because self-driving cars". I now think that a better answer is "spreadsheet farmers, because Copilot".
+
+But there's at least two ways to think of what AI is going to do to programmers. It's clearly the case that it's a force multiplier. But is it a force multiplier like farming implements were force multipliers, where the workforce went from ~50% to under 2% [in 150 years](https://ourworldindata.org/employment-in-agriculture)? 
+
+<iframe src="https://ourworldindata.org/grapher/share-of-the-labor-force-employed-in-agriculture?tab=chart&time=1800..latest&country=ITA~FRA~NLD~POL~GBR" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+
+If you look at employment statistics, farming, transportation, and manufacturing have [pretty much all been replaced by service work](https://www.bls.gov/opub/ted/2016/employment-by-industry-1910-and-2015.htm). Are we going to get a new type of work that will exist once service work is automatable like farming was? Or are we changing the nature of service work such that there'll be even more demand for it? Are those the same thing?
