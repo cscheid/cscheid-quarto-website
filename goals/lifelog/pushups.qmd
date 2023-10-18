@@ -1,0 +1,168 @@
+---
+title: "Pushups"
+echo: false
+---
+
+```{python}
+import lifelog
+import datetime
+import polars as pl
+
+ll = lifelog.get_data_on("pushup")
+
+ojs_define(df = ll.to_dicts())
+```
+
+## Deficit
+
+```{ojs}
+deficitYDomain = [Math.min(0, ...df.map(d => d.deficit)), 1600]
+deficit = Plot.plot({
+    x: {
+        domain: [0, 365]
+    },
+    y: {
+        domain: deficitYDomain,
+        grid: true
+    },
+    marks: [
+        Plot.line(df, {x: "days", y: "deficit"})
+    ]
+})
+```
+
+## Average
+
+### Weekly windowed
+
+```{ojs}
+weeklyAverageYDomain = undefined
+weeklyAverage = Plot.plot({
+    x: {
+        domain: [0, 365]
+    },
+    y: {
+        domain: weeklyAverageYDomain,
+        grid: true
+    },
+    marks: [
+        Plot.line(df, {x: "days", y: "daily_avg_prev_week"})
+    ]
+})
+```
+
+### Yearly
+
+```{ojs}
+yearlyAverageYDomain = undefined
+yearlyAverage = Plot.plot({
+    x: {
+        domain: [0, 365]
+    },
+    y: {
+        domain: yearlyAverageYDomain,
+        grid: true
+    },
+    marks: [
+        Plot.line(df, {x: "days", y: "daily_avg_total"})
+    ]
+})
+```
+
+
+## Avg per day going forward
+
+```{ojs}
+remainderPerDayYDomain = [24, 30]
+remainderPerDay = Plot.plot({
+    x: {
+        domain: [0, 365]
+    },
+    y: {
+        domain: remainderPerDayYDomain,
+        grid: true
+    },
+    marks: [
+        Plot.line(df.map(x => ({...x, remainder_per_day: (24 * 365 - x.total) / (365 - x.days)})), {x: "days", y: "remainder_per_day"})
+    ]
+})
+```
+
+## Analysis
+
+```{python}
+#| output: asis
+
+goal = 24 * 365
+start = datetime.datetime(2023, 1, 1)
+days_elapsed = (datetime.datetime.now() - start).days
+days_left = (365 - days_elapsed)
+so_far = list(ll["total"])[-1]
+outstanding = goal - so_far
+
+avg_so_far = so_far / days_elapsed
+avg_target = 24
+
+# Now, if we need to improve a constant amount to barely make it on dec 31st,
+# that means starting from today's avg so far and hitting the midway point
+# between now and end of the year at the target daily average
+
+halfway_mark = days_left / 2
+target_delta_1 = (avg_target - avg_so_far) / halfway_mark
+avg_left = (outstanding / days_left)
+
+print("Days elapsed: %d\n\n" % days_elapsed)
+print("  - ('spread factor': %.03f)\n\n" % (1 / days_elapsed))
+print("Halfway mark: %d days from now\n\n" % halfway_mark)
+print("Average per day so far: %.3f\n\n" % avg_so_far)
+```
+
+### Totals
+
+```{python}
+#| output: asis
+
+today_target = 24 * days_elapsed
+deficit = today_target - so_far
+print("- so far: %.1f\n" % so_far)
+print("- deficit: %.1f\n" % deficit)
+print("  - in today's average days: %.1f days\n" % (deficit / avg_so_far))
+print("  - in overall average days: %.1f days\n" % (deficit / avg_target))
+print("  - in future required average days: %.1f days\n" % (deficit / avg_left))
+print()
+```
+
+### Daily scenarios
+```{python}
+#| output: asis
+
+print("There are %d days left. Scenarios:\n\n" % days_left)
+
+y2 = 2 * outstanding / days_left
+y1 = y2 - avg_so_far
+
+print("- a constant amount every day:\n  - tomorrow, you need %.01f.\n  - next week, %.01f.\n" % (avg_left, avg_left * 7))
+print("- improve daily until end of year:\n  - tomorrow, you need %.01f.\n  - next week, %.01f.\n" % (avg_so_far + target_delta_1, avg_so_far * 7 + target_delta_1 * 28)) # 1 + 2 + 3 + 4 + 5 + 6 + 7
+print("- improve daily then back out daily to end the year at current average:\n  - tomorrow, you need %.01f.\n  - next week, %.01f." % (avg_so_far + 2 * target_delta_1, avg_so_far * 7 + target_delta_1 * 56))
+print("- back out daily to end the year at zero:\n  - tomorrow, you need %.01f.\n  - next week, %.01f.\n" % (y2, y2 * 7))
+y1 = y2 - avg_so_far
+# x1 + x2 = days_left
+# x1/y1 = x2/y2
+# x2 = days_left - x1
+# x1 = x2 * y1 / y2
+# x1 = (y1 / y2) * (days_left - x1)
+# x1 + (y1 / y2) * x1 = (y1 / y2) * days_left 
+# (1 + y1/y2) x1 = y1/y2 * days_left
+x1 = (y1/y2) * days_left / (1+(y1/y2))
+slope = y1/x1
+print("- improve daily then back out at same rate to end the year at zero (The halfway point is %d days from now.):\n  - tomorrow, you need %.01f.\n  - next week, %.01f.\n" % (x1, avg_so_far + slope, avg_so_far * 7 + slope * 28))
+```
+
+
+### Appendix
+
+Raw data:
+
+```{ojs}
+df
+```
