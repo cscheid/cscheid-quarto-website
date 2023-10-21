@@ -4,13 +4,14 @@ categories: [external-memory]
 ---
 
 Your USB drive needs to be preformatted with FAT32. Use Disk Utility for this:
+
   - make sure to "Show All Devices" in View.
   - click the top-level device for your external drive, on the left window bar, then "erase" on the top window bar.
     
     ![](./disk-utility.jpg)
-
+    
   - Select "FAT", "Master Boot Record"
-
+    
     ![](./du-erase.jpg)
 
 Then:

@@ -90,11 +90,5 @@ as.character(na.omit(all_installs))
 #> [11] "apt-get install -y libudunits2-dev"  
 ```
 
-
-
-
-
-
-
 For the lockfile in [quarto](https://github.com/quarto-dev/quarto-cli)'s test suite and a bare-bones Debian install, this gives 237 dependencies.
 That's a lot of saved time!
