@@ -1,0 +1,21 @@
+---
+title: "TypeScript 4.9: NaN sanity, finally!"
+categories: [programming]
+date: 2022-12-16
+---
+
+[TypeScript 4.9 is out](https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/#checks-for-equality-on-nan), and it doesn't let you use `===` and `!==` on `NaN` by default. Finally someone decided to do this, it's a legitimately smart move.
+
+This is also a "JavaScript variant" having better equality behavior than _Haskell_ (nevermind my ancient GHC version, thankyouverymuch):
+
+```
+$ ghci
+GHCi, version 8.10.7: https://www.haskell.org/ghc/  :? for help
+Prelude> let x = 0.0 / 0.0
+Prelude> x == x
+False
+```
+
+Signed zeros, denormals, and infinities all make some sense in context of numerical analysis. But reflexivity is too strong a property to give up, and it's pretty gross that vaunted Haskell does this with its values and `==` function.
+
+Right from the start, these weird comparison operators that have no simple algebraic properties should have been `floatLess` instead of `<`, `floatEquals` instead of `==`, etc. But we're stuck with a horrible standard, and at least TypeScript can do minimally better.

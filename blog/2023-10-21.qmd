@@ -1,0 +1,38 @@
+---
+title: Create a bootable USB drive from macOS
+categories: [external-memory]
+---
+
+Your USB drive needs to be preformatted with FAT32. Use Disk Utility for this:
+  - make sure to "Show All Devices" in View.
+  - click the top-level device for your external drive, on the left window bar, then "erase" on the top window bar.
+    
+    ![](./disk-utility.jpg)
+
+  - Select "FAT", "Master Boot Record"
+
+    ![](./du-erase.jpg)
+
+Then:
+
+```
+$ diskutil list
+...
+# find the USB drive here.
+# IF YOU GET THIS WRONG, YOU WILL CORRUPT SOME OTHER DRIVE. DOUBLE CHECK.
+/dev/disk4 (external, physical):
+...
+$ diskutil unmountDisk /dev/disk4
+Unmount of all volumes on disk4 was successful
+$ sudo dd if=debian-12.2.0-amd64-netinst.iso of=/dev/rdisk4 bs=1m && sync
+```
+
+A popup will appear and claim that the disk is not readable. Hit Eject, remove the drive, and use your newly bootable USB drive.
+
+You might also need to configure the computer you're booting this from to actually boot from a USB device in BIOS settings.
+
+
+
+
+
+

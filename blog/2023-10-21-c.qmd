@@ -1,0 +1,100 @@
+---
+title: Install all library dependencies for a particular renv lockfile
+categories: [external-memory]
+---
+
+If you have a big [renv](https://rstudio.github.io/renv/articles/renv.html) lockfile and you need to install all dependencies 
+on a new machine, the naive strategy of just doing `renv::restore()` leads
+to a loop of:
+
+- `renv::restore()`,
+- wait for the next thing that fails to build because of missing system dependency,
+- install that one system dependency
+
+That's annoying.
+
+Here's a much better hack that [Tom Mock](https://themockup.blog/) taught me about.
+(Unfortunately, you'll still hit the above problem if you need dependencies for `httr`, in particular, `libcurl` and `libssl` dev dependencies)
+
+```r
+library(httr)
+library(jsonlite)
+library(tidyr)
+
+lock_json <- jsonlite::fromJSON("renv.lock", simplifyVector = FALSE)
+
+pkg_names <- names(lock_json$Packages)
+
+get_install_scripts <- function(pkg_names){
+
+    # Get package info from Posit package manager
+    get_pkg_info <- function(pkg_name){
+
+        # or whatever your distribution is
+        url <- paste0("https://packagemanager.posit.co/__api__/repos/1/sysreqs?all=false&pkgname=", pkg_name, "&distribution=debian")
+        response <- httr::GET(url, httr::accept_json())
+        raw_json <- jsonlite::fromJSON(content(response, "text"), simplifyVector = FALSE)
+
+    }
+
+    # Get install scripts
+    all_json <- lapply(pkg_names, get_pkg_info)
+
+    # Flatten to a df with install_scripts as a column
+    tibble(pkg = pkg_names, x = all_json) |> 
+        unnest_wider(x) |> 
+        unnest_longer(requirements) |> 
+        unnest_wider(requirements) |> 
+        unnest_wider(requirements) |> 
+        unnest_longer(install_scripts)
+}
+
+get_install_scripts("sf")
+
+# get them all
+all_pkgs <- get_install_scripts(pkg_names)
+
+#> # A tibble: 44 × 4
+#>    pkg        name  packages   install_scripts                        
+#>    <chr>      <chr> <list>     <chr>                                  
+#>  1 DBI        <NA>  <NULL>     <NA>                                   
+#>  2 KernSmooth <NA>  <NULL>     <NA>                                   
+#>  3 MASS       <NA>  <NULL>     <NA>                                   
+#>  4 R6         <NA>  <NULL>     <NA>                                   
+#>  5 Rcpp       <NA>  <NULL>     <NA>                                   
+#>  6 arrow      arrow <list [2]> apt-get install -y libcurl4-openssl-dev
+#>  7 arrow      arrow <list [2]> apt-get install -y libssl-dev          
+#>  8 assertthat <NA>  <NULL>     <NA>                                   
+#>  9 bit        <NA>  <NULL>     <NA>                                   
+#> 10 bit64      <NA>  <NULL>     <NA>                                   
+#> # ℹ 34 more rows
+#> # ℹ Use `print(n = ...)` to see more rows
+
+## ------- just install steps
+
+# pull out the install steps
+all_installs <- all_pkgs$install_scripts
+
+as.character(na.omit(all_installs))
+
+#>  [1] "apt-get install -y libcurl4-openssl-dev"
+#>  [2] "apt-get install -y libssl-dev"          
+#>  [3] "apt-get install -y libssl-dev"          
+#>  [4] "apt-get install -y libssl-dev"          
+#>  [5] "apt-get install -y libgdal-dev"         
+#>  [6] "apt-get install -y gdal-bin"            
+#>  [7] "apt-get install -y libgeos-dev"         
+#>  [8] "apt-get install -y libproj-dev"         
+#>  [9] "apt-get install -y libsqlite3-dev"      
+#> [10] "apt-get install -y libudunits2-dev"     
+#> [11] "apt-get install -y libudunits2-dev"  
+```
+
+
+
+
+
+
+
+For the lockfile in [quarto](https://github.com/quarto-dev/quarto-cli)'s test suite and a bare-bones Debian install, this gives 237 dependencies.
+That's a lot of saved time!

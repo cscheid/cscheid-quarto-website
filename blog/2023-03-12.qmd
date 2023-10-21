@@ -1,0 +1,87 @@
+---
+title: "Pitch sets, keys and modes"
+categories: [music]
+date: 2023-03-12
+---
+
+In one of my recent music lessons, [my teacher](https://greghoward.bandcamp.com/) suggested that it would be fun to improvise going between G Lydian and E Ionian ("major").
+He instantly suggested these two modes, and clearly in his mind/fingers he knew right away that this is fun because those modes share a bunch of common tones (in this case, they share 5 tones: A, B, D, E, and F♯). That good musicians can do this in a split second is mindblowing to me.
+
+I can't think so fast (especially not while playing!), so I spent a few hours figuring out how I can make a diagram that makes this stuff obvious. Here's the result.
+
+```{=html}
+<style>
+    .dim { opacity: 0.25 }
+</style>
+```
+
+:::{.column-page}
+
+```{=html}
+<table class="table-small">
+    <thead>
+        <tr><th></th><th colspan="15">pitch set</th><th>modes</th><th>Ly</th><th>I</th><th>M</th><th>D</th><th>A</th><th>P</th><th>Lo</th></tr>
+    </thead>
+    <tbody>
+<tr><td>5♭   </td><td class="dim"> C  </td><td class="dim"> D♭ </td><td class="dim"> E♭ </td><td class="dim"> F  </td><td class="bri"> G♭ </td><td class="dim"> A♭ </td><td class="dim"> B♭ </td><td class="dim"> C  </td><td class="dim"> D♭ </td><td class="dim"> E♭ </td><td class="dim"> F  </td><td class="bri"> G♭ </td><td class="dim"> A♭ </td><td class="dim"> B♭ </td><td class="dim"> C  </td><td class="dim"> </td><td class="bri"> G♭ </td><td class="dim"> D♭ </td><td class="dim"> A♭ </td><td class="dim"> E♭ </td><td class="dim"> B♭ </td><td class="dim"> F </td><td class="dim"> C  </td></tr>
+<tr><td>4♭   </td><td class="dim"> C  </td><td class="bri"> D♭ </td><td class="dim"> E♭ </td><td class="dim"> F  </td><td class="dim"> G  </td><td class="dim"> A♭ </td><td class="dim"> B♭ </td><td class="dim"> C  </td><td class="bri"> D♭ </td><td class="dim"> E♭ </td><td class="dim"> F  </td><td class="dim"> G  </td><td class="dim"> A♭ </td><td class="dim"> B♭ </td><td class="dim"> C  </td><td class="dim"> </td><td class="bri"> D♭ </td><td class="dim"> A♭ </td><td class="dim"> E♭ </td><td class="dim"> B♭ </td><td class="dim"> F  </td><td class="dim"> C </td><td class="dim"> G  </td></tr>
+<tr><td>3♭   </td><td class="dim"> C  </td><td class="dim"> D  </td><td class="dim"> E♭ </td><td class="dim"> F  </td><td class="dim"> G  </td><td class="bri"> A♭ </td><td class="dim"> B♭ </td><td class="dim"> C  </td><td class="dim"> D  </td><td class="dim"> E♭ </td><td class="dim"> F  </td><td class="dim"> G  </td><td class="bri"> A♭ </td><td class="dim"> B♭ </td><td class="dim"> C  </td><td class="dim"> </td><td class="bri"> A♭ </td><td class="dim"> E♭ </td><td class="dim"> B♭ </td><td class="dim"> F  </td><td class="dim"> C  </td><td class="dim"> G </td><td class="dim"> D  </td></tr>
+<tr><td>2♭   </td><td class="dim"> C  </td><td class="dim"> D  </td><td class="bri"> E♭ </td><td class="dim"> F  </td><td class="dim"> G  </td><td class="dim"> A  </td><td class="dim"> B♭ </td><td class="dim"> C  </td><td class="dim"> D  </td><td class="bri"> E♭ </td><td class="dim"> F  </td><td class="dim"> G  </td><td class="dim"> A  </td><td class="dim"> B♭ </td><td class="dim"> C  </td><td class="dim"> </td><td class="bri"> E♭ </td><td class="dim"> B♭ </td><td class="dim"> F  </td><td class="dim"> C  </td><td class="dim"> G  </td><td class="dim"> D </td><td class="dim"> A  </td></tr>
+<tr><td>1♭   </td><td class="dim"> C  </td><td class="dim"> D  </td><td class="dim"> E  </td><td class="dim"> F  </td><td class="dim"> G  </td><td class="dim"> A  </td><td class="bri"> B♭ </td><td class="dim"> C  </td><td class="dim"> D  </td><td class="dim"> E♭ </td><td class="dim"> F  </td><td class="dim"> G  </td><td class="dim"> A  </td><td class="dim"> B♭ </td><td class="dim"> C  </td><td class="dim"> </td><td class="bri"> B♭ </td><td class="dim"> F  </td><td class="dim"> C  </td><td class="dim"> G  </td><td class="dim"> D  </td><td class="dim"> A </td><td class="dim"> E  </td></tr>
+<tr><td>0♭   </td><td class="bri"> C  </td><td class="bri"> D  </td><td class="bri"> E  </td><td class="bri"> F  </td><td class="bri"> G  </td><td class="bri"> A  </td><td class="bri"> B  </td><td class="bri"> C  </td><td class="bri"> D  </td><td class="bri"> E  </td><td class="bri"> F  </td><td class="bri"> G  </td><td class="bri"> A  </td><td class="bri"> B  </td><td class="bri"> C  </td><td class="dim"> </td><td class="bri"> F  </td><td class="bri"> C  </td><td class="bri"> G  </td><td class="bri"> D  </td><td class="bri"> A  </td><td class="bri"> E </td><td class="bri"> B  </td></tr>
+<tr><td>1♯   </td><td class="dim"> C  </td><td class="dim"> D  </td><td class="dim"> E  </td><td class="bri"> F♯ </td><td class="dim"> G  </td><td class="dim"> A  </td><td class="dim"> B  </td><td class="dim"> C  </td><td class="dim"> D  </td><td class="dim"> E  </td><td class="bri"> F♯ </td><td class="dim"> G  </td><td class="dim"> A  </td><td class="dim"> B  </td><td class="dim"> C  </td><td class="dim"> </td><td class="dim"> C  </td><td class="dim"> G  </td><td class="dim"> D  </td><td class="dim"> A  </td><td class="dim"> E  </td><td class="dim"> B </td><td class="bri"> F♯ </td></tr>
+<tr><td>2♯   </td><td class="bri"> C♯ </td><td class="dim"> D  </td><td class="dim"> E  </td><td class="dim"> F♯ </td><td class="dim"> G  </td><td class="dim"> A  </td><td class="dim"> B  </td><td class="bri"> C♯ </td><td class="dim"> D  </td><td class="dim"> E  </td><td class="dim"> F♯ </td><td class="dim"> G  </td><td class="dim"> A  </td><td class="dim"> B  </td><td class="bri"> C♯ </td><td class="dim"> </td><td class="dim"> G  </td><td class="dim"> D  </td><td class="dim"> A  </td><td class="dim"> E  </td><td class="dim"> B  </td><td class="dim"> F♯</td><td class="bri"> C♯ </td></tr>
+<tr><td>3♯   </td><td class="dim"> C♯ </td><td class="dim"> D  </td><td class="dim"> E  </td><td class="dim"> F♯ </td><td class="bri"> G♯ </td><td class="dim"> A  </td><td class="dim"> B  </td><td class="dim"> C♯ </td><td class="dim"> D  </td><td class="dim"> E  </td><td class="dim"> F♯ </td><td class="bri"> G♯ </td><td class="dim"> A  </td><td class="dim"> B  </td><td class="dim"> C♯ </td><td class="dim"> </td><td class="dim"> D  </td><td class="dim"> A  </td><td class="dim"> E  </td><td class="dim"> B  </td><td class="dim"> F♯ </td><td class="dim"> C♯</td><td class="bri"> G♯ </td></tr>
+<tr><td>4♯   </td><td class="dim"> C♯ </td><td class="bri"> D♯ </td><td class="dim"> E  </td><td class="dim"> F♯ </td><td class="dim"> G♯ </td><td class="dim"> A  </td><td class="dim"> B  </td><td class="dim"> C♯ </td><td class="bri"> D♯ </td><td class="dim"> E  </td><td class="dim"> F♯ </td><td class="dim"> G♯ </td><td class="dim"> A  </td><td class="dim"> B  </td><td class="dim"> C♯ </td><td class="dim"> </td><td class="dim"> A  </td><td class="dim"> E  </td><td class="dim"> B  </td><td class="dim"> F♯ </td><td class="dim"> C♯ </td><td class="dim"> G♯</td><td class="bri"> D♯ </td></tr>
+<tr><td>5♯   </td><td class="dim"> C♯ </td><td class="dim"> D♯ </td><td class="dim"> E  </td><td class="dim"> F♯ </td><td class="dim"> G♯ </td><td class="dim"> A♯ </td><td class="dim"> B  </td><td class="dim"> C♯ </td><td class="dim"> D♯ </td><td class="dim"> E  </td><td class="dim"> F♯ </td><td class="dim"> G♯ </td><td class="bri"> A♯ </td><td class="dim"> B  </td><td class="dim"> C♯ </td><td class="dim"> </td><td class="dim"> E  </td><td class="dim"> B  </td><td class="dim"> F♯ </td><td class="dim"> C♯ </td><td class="dim"> G♯ </td><td class="dim"> D♯</td><td class="bri"> A♯ </td></tr>
+    </tbody>
+</table>
+```
+
+:::
+
+The legend for the modes columns:
+
+- **Ly**: Lydian
+- **I**: Ionian
+- **M**: Mixolydian
+- **D**: Dorian
+- **A**: Aeolian
+- **P**: Phrygian
+- **Lo**: Locrian
+
+
+## How to use this for the original problem
+
+The rows on this scale are "pitch sets", sets of specific pitches which differ by exactly one pitch class. You can think of it as the "key signature" on a piece of sheet music, which happens to not always denote keys especially if the song is in a less-traditional-in-18th-century-Europe mode like Phrygian.
+
+### The original example
+
+If we want to compare G Lydian to E Ionian, like my teacher suggested, we look up the rows where each mode-tonic pair are. G Lydian has a pitch class (aka a set of notes) with two sharps, and E Ionian has a scale with four. So it's a lot clearer (to me at least) that the two different notes have to be G and D (natural in G Lydian, sharp in E Ionian)
+
+But the diagram now makes it easier (again, for me at least) to do this in my head. Once you start thinking of modes
+as sharper or flatter (as implied by the ordering in the modes columns), as well as thinking of the "distance in the circle of fifths" between pitch classes, then you can do this in your head. Example:
+
+G is "three fifth-steps flatter" than E: circle of fifths says "G, D, A, E". Lydian is "one mode" sharper than Ionian (see the ordering above). So to change between G Lydian and E Ionian, we'll have to go "up two sharps", and those are the ones in the last column of the modes column as we go from the row of G Lydian to the one of E Ionian (because as we go sharper, we remove the note from the first mode column and add the one in the last column; the note changes go the other way if we go flatter).
+
+### Other examples
+
+- (Same tonic notes, different modes) G Mixolydian to E Locrian. From 0 flats to 1 flat, so that must be B to B♭
+- A Dorian to F Ionian. From 1 sharp to 1 flat, so that must be F♯ to F, B to B♭.
+
+A general rule about this exercise, then, is that the notes which change are always a consecutive row of notes in the circle of fifths.
+(This is the same observation that allows you to very easily know which notes are flat or sharp by just counting accidentals off of a key signature.)
+
+## Other uses
+
+This organization tells you when you "weird stuff will start happening": it's when you move away from the "middle" of this table. You can imagine this table extending infinitely up or down.
+
+If you stay within two rows of the center, then nothing weird happens. All notes with different names sound different, and everything is fine. But then you don't have a name for A♭/G♯.
+
+If you decide to add the next rows, you either end up with an asymmetrical table, or you end up with two notes that have different names and sound the same. In other words, the (in)famous "enharmonic equivalence" shows up.
+
+The next two rows up and down are necessary to be able to describe the notes of modes of the white keys, and add new enharmonic equivalents. For example, C Locrian needs a G♭, (that's _not_ an F♯!, because F is already there as a natural in the mode!).
+
+Finally, if you were to add any more notes up or down, you'd start having white keys being enharmonic equivalent to other white keys. Going up the table you will see C♭ and F♭, and going down the table will produce E♯ and B♯.
+
+But that's not all! One more step up or down the table, and you'll see the dreaded double sharps (𝄪) and double flats. That's how they come up "in practice". If you're doing weird modes and key changes, you might find yourself in (say) G♯ Ionian, where in order for the note names to make sense, you can't avoid C𝄪 and F𝄪!

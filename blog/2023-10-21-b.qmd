@@ -1,0 +1,21 @@
+---
+title: Install and setup Julia and its Jupyter kernel on macOS
+categories: [external-memory]
+---
+
+You need jupyter to be installed and available from your shell
+
+- Download and install Julia from https://julialang.org.
+
+Then:
+
+```bash
+$ rm -rf ~/.julia
+$ cd /usr/local/bin
+$ ln -s /Applications/Julia-${VERSION}.app/Contents/Resources/julia/bin/julia .
+$ julia
+> using Pkg
+> Pkg.add("IJulia")
+> using IJulia
+> installkernel("julia")
+```
