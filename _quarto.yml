@@ -5,7 +5,7 @@ freeze: true
 format: 
   html:
     theme: 
-      - sandstone
+      - flatly
       - cscheid-net.scss
     code-tools: true
     code-fold: true

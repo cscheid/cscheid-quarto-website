@@ -4,9 +4,6 @@ image: cscheid.png
 about:
   template: trestles
   links:
-    - text: Twitter
-      icon: twitter
-      url: "https://twitter.com/scheidegger"
     - text: Mastodon
       icon: mastodon
       url: "https://mastodon.social/@scheidegger"

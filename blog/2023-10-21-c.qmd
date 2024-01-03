@@ -1,6 +1,7 @@
 ---
 title: Install all library dependencies for a particular renv lockfile
 categories: [external-memory]
+date: 2023-10-21
 ---
 
 If you have a big [renv](https://rstudio.github.io/renv/articles/renv.html) lockfile and you need to install all dependencies 

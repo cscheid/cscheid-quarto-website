@@ -1,5 +1,6 @@
 ---
 title: Create a bootable USB drive from macOS
+date: 2023-10-21
 categories: [external-memory]
 ---
 
