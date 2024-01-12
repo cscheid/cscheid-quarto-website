@@ -1,0 +1,24 @@
+---
+title: "2024-01-05"
+date: 2024-01-05
+categories:
+  - defeat
+  - skill-issue
+---
+
+Death to misclick. The rust is real.
+
+First biome is ok. I find pheromone potion and broken wand, which makes the immediate problem to solve become "survive to Hiisi base". Holy Mountain #1 has nothing of note, I pick Greed.
+
+Instantly run into worms on biome 2. Nowhere near Steve-killing shape, I book it to the Holy Mountain to try to get to the Hiisi base with what I got. In another game-losing mistake, I don't realize I am very poor and can't buy anything on the HM. Still, I have teleport shot and can come back later.
+
+More worms on Snowy Depths. I got lucky to find a 1k gold chest on the way down, which would let me buy spells in HM.
+
+At Hiisi base, I'm making very good progress with Pheromone potion (healed twice from very little health) and Chain bolt to shoot enemies safely around corners. I manage to find a very good wand that would get me to the end of the game with the spells I had. That wand had 4 plasma beams on it.
+
+As I'm trying to navigate the base back to the HM to grab the spells I can now afford, I fat-finger the wrong wand, cast Plasma Beam, and walk into it. I had found no hearts, so 130 points are nowhere near enough: insta-ded.
+
+- Seed: 18033926
+- Perks: Greed, Critical Hit+, Fire Immunity
+- Died at Hiisi base, walked into plasma beams I accidentally cast
+- Final Wand: Plasma beams

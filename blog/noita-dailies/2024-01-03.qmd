@@ -1,0 +1,44 @@
+---
+title: "2024-01-03"
+date: 2024-01-03
+categories:
+  - defeat
+  - skill-issue
+---
+
+The first biome was, again, incredibly generous.
+Yesterday we had infinite hearts. Today, all spells one could possibly want: Black Hole and Add Mana on Biome 1, as well as Energy Orb.
+A trick worth noting here is that there were plenty of Fire Elementals to douse with water and
+get double gold from.
+The first Holy Mountain was also great: long-distance cast + teleport (trivial to traverse back to Holy Mountain), light saber, trigger.
+Picked No More Shuffle at first Holy Mountain, because I was pretty confident that would lead to a good wand in the run.
+
+On Biome 2, nothing of note, really (maybe a chainsaw in the Holy Mountain?).
+
+In Snowy Depths, I found nothing of use (as usual). 
+I saw a worm tearing through the level while I wasn't powerful enough to beat Steve, so I decided
+to just run towards the Hiisi base before Steve got mad at me.
+
+In the Holy Mountain before Hiisi base, I bought a wand that made me powerful enough to tear
+through most things possibly through the Vault.
+
+![A combination light-saber and fast wand lets you cheese the Hiisi base with relatively little risk](2024-01-03/wand.png)
+
+![A video of the wand in action](2024-01-03/video1.webm)
+
+This uses Add Mana + Chainsaw in the same spell so that the [Chainsaw negates the cast delay increase](https://noita.fandom.com/wiki/Chainsaw) from Add Mana. It's the easiest way to cheese an infinitely-firing machine gun, and the easiest way to get a game-winning wand.
+
+The Hiisi base was also generous in the number of healer Hiisi that were there.
+Although I found no pheromone potion, there were so many healers that you could use the kicking trick:
+
+![Kicking one healer Hiisi to make the others attempt to heal it, while you catch all the healing bolts](2024-01-03/video2.webm)
+
+I proceeded to find really good wands on the Hiisi base (as one does). As I was traversing back to the Holy Mountain to upgrade my machine gun, I totally ruined the run:
+
+![Lesson: don't freak yourself out when you miss one tank, or you can blow yourself up with the next one](2024-01-03/video3.webm)
+
+- Seed: 766380070
+- Outcome: died at Hiisi base, blown up by a propane tank.
+- Perks: No More Shuffle, Critical Hit+ (and one I don't remember?)
+- Final wand: Machine gun + lightsaber all in one (would have had full sustain if I had made it back to Holy Mountain)
+- Final health: 170

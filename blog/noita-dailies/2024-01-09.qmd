@@ -1,0 +1,36 @@
+---
+title: "2024-01-09"
+date: 2024-01-09
+categories:
+  - defeat
+  - skill-issue
+---
+
+For the first time in ~600 hours of Noita, I died to the boss.
+
+The run started with a sweet kick:
+
+![Sometimes you hit it just right](2024-01-09/kick.webm)
+
+Through the run, I had plenty of good wands, but no actual high-damage spells that I could sustain. Eventually I found a wand full of Large Magic Missiles, and that was what I used to get through the levels. By the time I got to the Vault, I had a flask of Invisiblium (like the previous run), which I combined with some Black Holes I found, and I just dug down from there.
+
+I had found no extra hearts, and so I really couldn't afford to go explore for better spells. I did manage to find a single Healing Bolt, which let me do the trick
+where you put that spell into a wand, and then throw the wand at an enemy so it will shoot at you:
+
+![This feels pretty good to pull off](2024-01-09/heal.webm)
+
+I had a funny lucky moment at the Temple of the Art, where I was hit by a blindness bolt, so I just fired a black hole down and started jumping in the dark.
+It worked:
+
+![At this point, might as well hope I don't hit anything scary](2024-01-09/dark-temple-of-the-art.webm)
+
+For the boss fight, I didn't realize my wand was so underpowered, and I stupidly jumped over it right as it blocked me into a pool of lava. 
+I ran out of places to go:
+
+![Protip: don't jump straight into where there's only lava](2024-01-09/lava.webm)
+
+- Seed: 767734707
+- Final wand: Something with not nearly enough damage or speed to get through the boss's shield.
+- Lesson: Projectile Repulsion Sector works _great_ with black holes for digging. It's much stronger than a single count of Repulsion Field.
+
+

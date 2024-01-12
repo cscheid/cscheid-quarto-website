@@ -1,0 +1,49 @@
+---
+title: "2024-01-11"
+date: 2024-01-11
+categories:
+  - victory
+  - fun
+---
+
+Always cast Circle of Transmogrification + Repulsion, gg.
+
+The run started well with a first biome full of goodies: Black Hole, a pretty fast damage wand, and a heart.
+The Holy Mountain had Protective Shield!
+
+My big real blunder on the run happened on B2, when I didn't notice a pile of gunpowder right over me.
+Got lucky to not be buried under it:
+
+![That should have gone worse than it did](2024-01-11/gunpowder.webm)
+
+The Fungal Caverns had a decent wand and a Pheromone Potion.
+Nothing good on Holy Mountain, picked up Living on the Edge (which I was lucky to never use).
+
+Snowy Depths again had nothing great but an Add Mana spell on a shop outside the Holy Mountain. In the
+Holy Mountain, I picked up Greed (I was short on gold, nothing else was worth it).
+
+The Hiisi base as usual was full of good stuff. Picked up a fast non-shuffler wand which should (barely)
+put me through the whole game here, as well as an extra heart and three separate heals from the Pheromone Potion.
+That Holy Mountain had three fine perks: Toxic Immunity, Peace with Gods, and +1.
+I picked Peace with Gods under the "minimize chaos" theory. 
+I also had enough damage and life to be able to deal with the poisonous Hiisi in the Jungle, but I didn't have a machine-gun wand to fight Steve.
+
+The Jungle was a bit of a miserable time because I had no good digging or movement spells, so it was pretty slow going.
+Eventually I found a wand with Always cast Circle of Transmogrification.
+I had no repulsion at this point, but this would let me at least play defense pretty well.
+The Holy Mountain delivered, though. There was All-Seeing Eye there, but this was probably the 1% time that some other perk is just better, because
+there was also a Projectile Repulsion Field, which makes the Always cast Circle of Transmog completely broken.
+
+![Sheep, as far as the eye can see](2024-01-11/sheep.webm)
+
+From there on it was smooth sailing.
+The projectile repulsion field makes the single Black Hole I found into a real digging tool, so downward I went.
+Made a bunch of sheep at the Temple of the Art, and picked up a Strong Teleport perk before the boss to avoid losing the way I did a few days ago.
+
+Two in a row, not bad!
+
+- Seed: 127298179
+- Final wand: typical trigger + multicast + whatever
+- Lesson: It seems like [this dude](https://noita.wiki.gg/wiki/Hahmonvaihtaja) has some resistance to Circle of Transmogrification? I'm not positive and the wiki says nothing, but I could swear I shot the Circle right through him a few times and he didn't turn into a sheep.
+
+

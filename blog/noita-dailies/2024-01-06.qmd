@@ -1,0 +1,21 @@
+---
+title: "2024-01-06"
+date: 2024-01-06
+categories:
+  - defeat
+  - "noita'd"
+---
+
+This was a pretty impressive display of spite from Noita. 
+
+I was exploring the first biome and I just barely saw (what in hindsight was) an exposed acid trap.
+I had never seen the level generation do that, so I was pretty confused.
+In the half-second it took me to recognize it, something tripped the trap. The ball of acid just expanded
+across this entire area I was in, and I had nowhere to go. Instant death.
+
+I was so shocked that I forgot to record the replay. Here's what little I got:
+
+![Acid, as far as the eye can see](2024-01-06/acid.webm)
+
+- Seed: 1262958058
+- Died at the first biome

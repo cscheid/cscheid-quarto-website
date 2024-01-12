@@ -1,11 +1,12 @@
 ---
 title: "2024-01-02"
+date: 2024-01-02
 categories:
   - victory
 ---
 
 
-This was a super generous first of biomes, with hearts everywhere to be found on the first couple of biomes, and All-Seeing Eye.
+This was a super generous start, with hearts everywhere to be found on the first couple of biomes, and All-Seeing Eye.
 The Firebolt starting spell let me cheese the first orb up the mountain as well. I made it to the Snowy Depths with 250 health or so, which as it turns out made the rest of the run possible.
 
 There were plenty of wands available but no great spells, so I was squeaking by on the Hiisi base with Glowing Lance and Firebolt for hitting big enemies. 

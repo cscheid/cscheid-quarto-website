@@ -1,0 +1,58 @@
+---
+title: "2024-01-10"
+date: 2024-01-10
+categories:
+  - victory
+---
+
+Good perks are good.
+
+The first biome had a lot of wands. I picked up something to make a wand for biome 2. 
+I also somehow ended up with about 1100 gold at the end of the biome, which is a
+maybe on the 95% percentile for money there. 
+
+Found a polymorphine flask that plays well with acid we start with: acid digs you a foothold on the Holy Mountain, then Polymorph lets you cross the tunnel without
+collapsing it.) No hearts, though. The first Holy Mountain
+had Electricity Immunity as the only viable perk. Because we started with 
+short-range spitter bolts, I picked up a Spark Bolt with an eye towards Snowy Chasm. 
+
+The mines had effectively nothing, but I found an Energy Orb which was my main digging tool throughout the run.
+With the orb, I dug through most of the biome, picked up another ton of gold (was at 3200 or so) and found
+only one heart. At 20 health, it was time to go to the Snowy Chasm. The Holy Mountain had Protective Shield,
+which is a top-5 perk for me. Bought another spark bolt, a reload spell, and a teleportation spell, 
+and cobbled together a wand with spark bolts spitter bolts, and multicasts.
+
+At this point I had a passable wand for the Snowy Chasm and Hiisi base, a means of digging (orb), and a means
+of getting out of trouble quick (teleport). The game now is about finding hearts. In the Chasm, I found an electricity stone,
+which puts out close to a good, fun build (breathless + electricity immunity + water everywhere +
+electricity). Managed to kill a worm by sheer luck with the electricity stone, too.
+Later, the Holy Mountain even had the Lightning bolt spell, but the explosion damage from the spell is scary
+and I had no immunity. So I bought it, stashed it, and never used it. Picked up Breathless still hoping
+to get a good water run. At this point my wand was pretty good with a damage+ spell in front of
+four projectile spells. 
+
+That should be good enough for the Hiisi base, and it was. It was almost pretty smooth sailing through the base.
+I found a broken wand I wanted to try to fix, and so I needed to get rid of my Polymorphine:
+
+![Better lucky than good](2024-01-10/polymorphine.webm)
+
+Later in the base I needed healing, which I got from kicking the healers:
+
+![Healing by kicking one of two healers](2024-01-10/healing.webm)
+
+When all was said and done, I had found two hearts, and a much faster wand. I now
+had everything I needed to beat the game, and just needed to not screw up (again). The Holy Mountain
+gave me Tinker With Wands Everywhere, which makes the two Ground to Sand spells I had very useful.
+So my plan became to find as many hearts as possible on the jungle, and then skip most of the Vault
+and Temple.
+
+That's pretty much what I did, though I only found two hearts on the jungle. At the Holy Mountain, I found Melee Immunity.
+That's a perfect perk for the jungle, but still pretty good for the Vault. At this point I added
+a Heavy Shot to the wand, so I was dealing about 800dps. The Vault had nothing super interesting, but the perk was All-Seeing Eye.
+That is almost exactly what you want to have for the Temple of the Art. So I just dug down with Ground-to-Sand, and
+beat the boss with no real drama.
+
+- Seed: 1838041457
+- Perks: Electricity Immunity, Protective Shield, Breathless, Tinker with Wands Everywhere, Melee Immunity, All-Seeing Eye (wow)
+- Final wand: straightforward machine gun with trigger + quadruple cast into damage+ and other projectiles
+- Lesson: the Water spell reduces cast time!
