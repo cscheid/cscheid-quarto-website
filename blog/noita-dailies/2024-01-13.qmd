@@ -1,0 +1,33 @@
+---
+title: "2024-01-14"
+date: 2024-01-14
+categories:
+  - defeat
+  - mistake
+  - dead-at-jungle
+---
+
+Interesting start with a 1000-gold chest. Didn't find very much besides gold.
+
+I was playing relatively tightly, including successfully managing two simultaneous [Suurlepakko](https://noita.wiki.gg/wiki/Suurlepakko) by
+switching from the Spark Bolt to dynamite and hitting each of them separately while avoiding their spawns.
+
+At the third Holy Mountain, I had enough gold for rerolling twice, 400+800, and
+could have taken a +50% health to go from 120 to 160 health. I decided to roll
+looking for Shield or Repulsion Field, but found nothing instead. Ended up paying 1200 gold
+for the Rats perk.
+
+Made it all the way to the jungle without finding a way to get
+fast digging. In the last Holy Mountain there was a teleport spell.
+I took it hoping I could traverse back to edit spells.
+Right after teleporting, I fell directly into two terrible enemies:
+a [Lance Sentry](https://noita.wiki.gg/wiki/Peitsivartija), and a [Coward](https://noita.wiki.gg/wiki/Raukka).
+Within a couple of seconds there were enough enemies teleported into me that I couldn't handle the mess, and I
+ended up killed by one of my own shots that bounced from a shield.
+
+I didn't think I horribly punted this run, but not taking the 50%+ health was almost certainly a mistake.
+
+- Seed: 881624274
+- Lesson: It seems that sometimes the camera follows friendly rats instead of you, and you can get teleported to where the
+rats are if you end up offscreen. Friendly rats tend to be on enemies, so that's bad news. I thought the Rats perk was neutral at worst,
+but I'll never take it again.

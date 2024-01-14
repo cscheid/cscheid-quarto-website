@@ -31,6 +31,9 @@ I also had enough damage and life to be able to deal with the poisonous Hiisi in
 The Jungle was a bit of a miserable time because I had no good digging or movement spells, so it was pretty slow going.
 Eventually I found a wand with Always cast Circle of Transmogrification.
 I had no repulsion at this point, but this would let me at least play defense pretty well.
+
+![All these wands, so good](2024-01-11/wands.png)
+
 The Holy Mountain delivered, though. There was All-Seeing Eye there, but this was probably the 1% time that some other perk is just better, because
 there was also a Projectile Repulsion Field, which makes the Always cast Circle of Transmog completely broken.
 
