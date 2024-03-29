@@ -1,0 +1,207 @@
+---
+title: 17l card pair analysis
+---
+
+<https://17lands.com> ("17l") has a dataset of game information, from which they derive a number of [metrics](https://www.17lands.com/metrics_definitions). 
+We're going to look at GIHWR.
+Specifically, we're going to do an analysis of GIHWR of card _pairs_.
+
+The source code for the analysis is [available](https://github.com/cscheid/17lands).
+
+## Replicating 17l single-card data
+
+We start with their game data, parse the games and cards out, and analyze single-card performance for [MOM, Premier Draft, as of 2013-06-04](https://17lands-public.s3.amazonaws.com/analysis_data/game_data/game_data_public.MOM.PremierDraft.csv.gz).
+This is to make sure we're not doing anything egregiously dumb.
+
+The single-card analysis matches 17l:
+
+```
+17l users win rate: 0.547566266992822
+
+Cards:
+42.1: Jin-Gitaxias, Core Augur
+42.4: Seizan, Perverter of Truth
+44.9: Crystal Carapace
+45.1: Yargle, Glutton of Urborg
+45.4: Firesong and Sunspeaker
+46.5: Vengeant Earth
+46.6: Radha, Coalition Warlord
+...
+63.8: Glissa, Herald of Predation
+64.0: Sheoldred
+64.5: Boon-Bringer Valkyrie
+64.8: Chrome Host Seedshark
+64.8: Breach the Multiverse
+67.1: Sunfall
+67.6: Elesh Norn, Grand Cenobite
+```
+
+## Card pairs
+
+### tl;dr
+
+@tbl-negative shows the 15 worst-performing pairs (for $n>1000$, sorted by "lift", see below).
+@tbl-positive shows the 15 best-performing pairs.
+
+| Lift | n | pure | Card 1 | Card 2 |
+|------|---|------|--------|--------|
+| −11.9%  |1142| 41.8% | Swordsworn Cavalier | Thrashing Frontliner |
+| −11.1%  |1045| 39.5% | Kithkin Billyrider | Pyretic Prankster |
+| −10.9%  |2633| 43.0% | Forest | Mirror-Shield Hoplite |
+| −10.5%  |1466| 45.3% | Ral's Reinforcements | Swordsworn Cavalier |
+| −10.2%  |1732| 42.2% | Drana and Linvala | Mountain |
+| −10.1%  |1690| 44.6% | Island | Mirror-Shield Hoplite |
+| −10.0%  |1188| 43.1% | Pyretic Prankster | Swordsworn Cavalier |
+| −10.0%  |1044| 45.5% | Forest | Reyav, Master Smith |
+| −9.8%  |1832| 41.8% | Ezuri, Claw of Progress | Plains |
+| −9.7%  |1031| 42.3% | Sun-Blessed Guardian | Timberland Ancient |
+| −9.5%  |4528| 45.0% | Botanical Brawler | Mountain |
+| −9.4%  |1004| 41.7% | Portent Tracker | Trailblazing Historian |
+| −9.4%  |1251| 42.9% | Redcap Heelslasher | Vanquish the Weak |
+| −9.3%  |1558| 43.4% | Invasion of Ergamon | Ral's Reinforcements |
+| −9.3%  |3332| 42.6% | Forest | Inspired Charge |
+: Negative synergy pairs ("build your deck right!") {#tbl-negative}
+
+| Lift | n | pure | Card 1 | Card 2 |
+|------|---|------|--------|--------|
+| 8.8% | 1817  | 69.7% | Blighted Burgeoning | Sunfall |
+| 8.8% | 2362  | 63.4% | Gloomfang Mauler | Invasion of Tolvada |
+| 8.8% | 48055 | 68.7% | Breach the Multiverse | Island |
+| 9.0% | 2222  | 68.9% | Scoured Barrens | Sunfall |
+| 9.1% | 4489  | 64.9% | Beamtown Beatstick | Reyav, Master Smith |
+| 9.3% | 7084  | 69.4% | Elesh Norn, Grand Cenobite | Forest |
+| 9.4% | 1109  | 70.2% | Corruption of Towashi | Sunfall |
+| 9.5% | 2335  | 67.3% | Etali, Primal Conqueror | Portent Tracker |
+| 10.4% | 1117  | 69.0% | Breach the Multiverse | Disturbing Conversion |
+| 11.2% | 3840  | 70.4% | Breach the Multiverse | Halo-Charged Skaab |
+| 11.3% | 2565  | 70.0% | Blighted Burgeoning | Etali, Primal Conqueror |
+| 11.3% | 1423  | 69.4% | Etali, Primal Conqueror | Invasion of Zendikar |
+| 11.5% | 1470  | 70.8% | Sculpted Perfection | Sunfall |
+| 16.2% | 2702  | 73.1% | See Double | See Double |
+| 19.6% | 1718  | 83.9% | Breach the Multiverse | Breach the Multiverse |
+: Positive synergy pairs {#tbl-positive}
+
+You'll notice I've kept lands in the analysis.
+It's easy to throw them away, but I wanted to see what the data said.
+@tbl-negative has the obvious egregious deck-building mistakes, "don't splash on aggressive decks/colors". 
+I do think it's interesting that they we can quantify the mistakes.
+
+Also, some of the negative ones are genuinely interesting to me! 
+I wouldn't have expected Redcap Heelslasher/Vanquish the Weak to be net -10% to your GIHWR.
+And, Sun-Blessed Guardian/Timberland Ancient is just funny :)
+
+The positive results in @tbl-positive aren't too surprising either.
+Ramp for Etali, self-mill for Breach the Multiverse.
+I do like that we can see the one place where the landcyclers were good with Gloomfang Mauler/Invasion of Tolvada.
+It's also fun to see the Beamtown Beatstick/Reyav combo there.
+Finally, there's at least one pretty surprising result, which is that See Double goes from 57.4% GIHWR to _73%_ when you see two of them in your game.
+And yeah, Breach is busted in half... 
+
+## Methods
+
+The technique for finding card pairs is pretty simple. 
+Just like we looked at per-game data and added a win or a loss for every card that was seen in game, we now add a win or a loss for each card _pair_ that was seen in game.
+We weigh them exactly the same.
+
+### "Pure performance" vs "lift"
+
+There are at least two ways of evaluating card pairs.
+The straightforward way is to look at their "pure performance", literally just the GIHWR of each pair.
+
+A slightly fancier one is to draw from the literature on [Fourier analysis of boolean functions](https://arxiv.org/abs/2105.10386) (sorry, I'm a CS nerd).
+The math works out to subtract the pure performance from the GIHWR of the average of the two cards.
+This is the proper contribution of the "pair itself". I call this the "lift" of the pair.
+
+### There are quadratically many pairs
+
+One piece of trouble comes from the fact that there's almost 120k possible card pairs.
+With 1.1M games, a large number of those pairs will be sparsely populated.
+In this analysis, I first tried something pretty basic, which is to replace raw percentages with the [lower bound of the Wilson score at 95%](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval).
+That didn't really help; I'm no statistician, but I'm pretty sure that's because the Wilson score is equivalent to Laplace smoothing for $(1/2) z^2$, and I used $z=1.96$.
+For 120k hypotheses, I bet I needed a stronger rule.
+So I just did something gross, which is to only show data that came from at least 1000 occurrences.
+I'll fix this soon.
+
+## A fixed reanalysis
+
+After I wrote the above, I fixed the analysis to account for low sample sizes and large hypotheses sets.
+I needed two different fixes.
+
+First, to do a multiple-testing correction for different sets of hypothesis sizes, we need to use different $z$ values. 
+I now use $z=2$ for individual cards, and $z=4$ for pairs.
+I believe this is the appropriate amount, doubling the $z$ score for every squaring of the hypothesis set. 
+Still, once again, I'm not a statistician so this deserves checking with the right PhD.
+
+Second, In order to find the correct low-performing pairs, we need to look at the _upper bound of the Wilson score_. 
+(For the high-performing pairs, we were correctly looking at the _lower bound_. )
+This makes sense: if we want to be conservative about our confidence bounds, then we must be optimistic when trying to find the low values ("it's unlikely to be better than $x$,and $x$ is terrible"), and pessimistic when trying to find the high values ("it's unlikely to be worse than $x$, and $x$ is amazing")
+
+For the low-performing pairs, now the data analysis is completely dominated by mana-fixing problems; that's unsurprising, since it's the source of most beginner's mistakes.
+Here are the new results, for the bottom 50 pairs, with basic lands removed:
+
+| Lift  | n | pure | Card 1 | Card 2 |
+|-------|---|------|--------|--------|
+| −4.5% | 312   | 51.7% | Botanical Brawler | Mirror-Shield Hoplite |
+| −4.3% | 147   | 48.5% | Invasion of Moag | Mirror-Shield Hoplite |
+| −3.9% | 965   | 48.7% | Sun-Blessed Guardian | War Historian |
+| −3.9% | 1142  | 50.6% | Swordsworn Cavalier | Thrashing Frontliner |
+| −3.6% | 440   | 49.3% | Marauding Dreadship | Tiller of Flesh |
+| −3.5% | 105   | 48.1% | Invasion of Kamigawa | Obosh, the Preypiercer |
+| −3.4% | 1466  | 53.0% | Ral's Reinforcements | Swordsworn Cavalier |
+| −3.4% | 827   | 47.7% | Karsus Depthguard | Kithkin Billyrider |
+| −3.2% | 760   | 49.6% | Invasion of Belenon | Kami of Whispered Hopes |
+| −3.0% | 2621  | 51.7% | Alabaster Host Sanctifier | Wary Thespian |
+| −2.8% | 1558  | 51.0% | Invasion of Ergamon | Ral's Reinforcements |
+| −2.8% | 848   | 52.5% | Sigiled Sentinel | Thornwood Falls |
+| −2.8% | 1045  | 48.7% | Kithkin Billyrider | Pyretic Prankster |
+| −2.7% | 224   | 49.1% | Iridescent Blademaster | Ramosian Greatsword |
+| −2.5% | 462   | 50.9% | Knight of the New Coalition | Trailblazing Historian |
+| −2.5% | 946   | 47.1% | Invasion of Kylem | Pyretic Prankster |
+| −2.5% | 829   | 49.6% | Compleated Huntmaster | Redcap Heelslasher |
+| −2.5% | 1820  | 50.8% | Order of the Mirror | War Historian |
+| −2.5% | 35    | 53.7% | Lathiel, the Bounteous Dawn | Marshal of Zhalfir |
+| −2.5% | 829   | 52.7% | Ral's Reinforcements | Sunder the Gateway |
+| −2.5% | 122   | 51.7% | Mutagen Connoisseur | Tarkir Duneshaper |
+| −2.4% | 219   | 51.0% | War-Trained Slasher | Zhalfirin Lancer |
+| −2.4% | 61    | 56.5% | Archangel Elspeth | Invasion of Pyrulea |
+| −2.4% | 898   | 51.7% | Knight of the New Coalition | Redcap Heelslasher |
+| −2.4% | 298   | 52.2% | Blossoming Sands | Mirror-Shield Hoplite |
+| −2.3% | 2108  | 51.0% | Attentive Skywarden | Zhalfirin Lancer |
+| −2.3% | 2156  | 49.3% | Attentive Skywarden | Kithkin Billyrider |
+| −2.3% | 2596  | 48.9% | Thrashing Frontliner | Trailblazing Historian |
+| −2.3% | 964   | 52.1% | Invasion of Mercadia | Kithkin Billyrider |
+| −2.3% | 4006  | 49.6% | Kithkin Billyrider | Kithkin Billyrider |
+| −2.3% | 72    | 51.3% | Botanical Brawler | Dina, Soul Steeper |
+| −2.2% | 3064  | 50.1% | Order of the Mirror | Pyretic Prankster |
+| −2.2% | 2343  | 52.7% | Portent Tracker | Sigiled Sentinel |
+| −2.1% | 929   | 49.2% | Enduring Bondwarden | Invasion of Kylem |
+| −2.1% | 323   | 48.3% | Renata, Called to the Hunt | Tiller of Flesh |
+| −2.1% | 3468  | 52.8% | Enduring Bondwarden | Zhalfirin Lancer |
+| −2.1% | 11484 | 50.8% | Order of the Mirror | Thunderhead Squadron |
+| −2.1% | 1494  | 51.0% | Aetherblade Agent | Redcap Heelslasher |
+| −2.1% | 1288  | 49.7% | Invasion of Kylem | Sigiled Sentinel |
+| −2.1% | 785   | 52.1% | Halo Hopper | Portent Tracker |
+| −2.1% | 1188  | 51.8% | Pyretic Prankster | Swordsworn Cavalier |
+| −1.9% | 1599  | 53.0% | Alabaster Host Sanctifier | Ral's Reinforcements |
+| −1.9% | 399   | 56.5% | Furnace Reins | Saiba Cryptomancer |
+| −1.9% | 741   | 56.1% | Halo Forager | Swordsworn Cavalier |
+| −1.9% | 13031 | 53.6% | Sigiled Sentinel | Zhalfirin Lancer |
+| −1.9% | 1251  | 51.3% | Redcap Heelslasher | Vanquish the Weak |
+| −1.9% | 1460  | 51.1% | Alabaster Host Sanctifier | Thrashing Frontliner |
+| −1.9% | 1955  | 55.3% | Final Flourish | Swordsworn Cavalier |
+| −1.8% | 362   | 52.5% | Disturbing Conversion | Enduring Bondwarden |
+| −1.8% | 420   | 50.0% | Invasion of Kylem | Zhalfirin Lancer |
+
+The percentage numbers for the "lifts" here are much lower than the positive ones.
+That makes sense once you realize that negative synergies are pretty uncommon in 17l users, who are generally good players.
+Because we're doing a low-data correction with the Wilson score, our analysis produces more conservative results: the smaller the sample size, the more we bias towards 50%.
+
+Most of these anti-synergies make sense, but I'm genuinely confused about the white/azorious ones: Sigiled Sentinel + Zhalfirin Lancer and Order of the Mirror + Thunderhead Squadron.
+
+Finally, the funny ones:
+
+- The bottom three: Botanical Brawler + Mirror-Shield Hoplite, Invasion of Moag + Mirror-Shield Hoplite, Sun-Blessed Guardian + War Historian. "Naya: not even once."
+- Disturbing Conversion + Enduring Bondwarden. "But blue white is the winningest pair now!"
+- Kithkin Billyrider + Kithkin Billyrider. "What do you mean we can't both wear this one pair of pants?"
+- Halo Hopper + Portent Tracker. "Here's our plan, we'll use portent tracker for convoke and tap it for mana too. Oh..."
+- Iridescent Blademaster + Ramosian Greatsword. "I always have spare mana playing red-green chonkers!"
