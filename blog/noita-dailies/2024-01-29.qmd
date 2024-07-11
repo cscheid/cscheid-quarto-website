@@ -1,0 +1,33 @@
+---
+title: "2024-01-29"
+date: 2024-01-29
+categories:
+  - victory
+  - easy-mode
+---
+
+Five!
+
+This was a breeze of a seed; at the very start of Biome 2 I had an endgame wand.
+There was a teleport wand at the literal beginning of the game in a chest, and a lot of wands just laying around.
+Picked up a heart on B1 too. The Holy Mountain had Black Holes _and_ Chainsaws. Rerolled the perks into additional capacity,
+and got +3. This wand should get me through the Jungle already. Looking good.
+
+At B2, there was an Add Mana right at the beginning, completing a real endgame machine gun right then and there.
+Since I had the Chainsaw, I could also dig through the terrain on B2. That meant I could explore everything there,
+so I left B2 with 2k gold or so, and another heart. The HM had digging bolts, and Exploding Corpses as a Perk. (from here on, I'm just shoring up
+whatever ways I could get killed. Explosions are big source of getting Noita'd.)
+
+Even though I had excellent drilling and traversal for B3, I was relatively squishy with "only" 170 HP or so, and in fact I almost got
+killed by a clump of enemies in a wide-open area. Snowy Depths is always where I feel the weakest.
+Luminous drill on the HM to buy, and an interesting choice in the Perks: should I take Healthy Exploration or Revenge Bullets (20% projectile resistance?)
+I picked the latter, and I think it's the right call. 
+Exploring is risky and I don't think 60HP minus whatever damage I take in order to find the new biome is worth the total amount of HP
+that 20% resistance gives me over the course of the run.
+
+The Hiisi Base had a Spark Bolt trigger and a Heart, and the HM had Repulsion Field, and a Shield spell, which my recently found 700-recharge-speed wand could easy handle.
+From then on it was just a matter of keeping it simple and navigating straight to the boss.
+
+- Seed: 838109468
+- Final Health: 335HP
+- Wand: Some incredibly overpowered machine gun with 2 chainsaws and 2 digging bolts at the end of a trigger, two extra critical hits, Add Mana, and luminous drill

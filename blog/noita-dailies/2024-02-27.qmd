@@ -1,0 +1,21 @@
+---
+title: "2024-02-27"
+date: 2024-02-27
+categories:
+  - victory
+  - hard-fought
+---
+
+B1: Almost killed myself grabbing a heart under acid guys. HM: Drill + trigger. Perk: Skip to come back, later rerolled into levitation. 135HP, 660g
+
+B2: Pheromone. HM: garbage trigger payloads. Perk: Extra Health over Perk lottery 145HP, 700g
+
+B3: Worms anger the gods. Use circle of stillness. Perk: reroll into nothing pickable. 227HP, 950g
+
+B4: Good wand. HM: nothing. Perk: reroll into exploding corpses. 287HP, 1kg
+
+No notes for the rest, except that I had to make it all the way down with a crappy wand with no great payload and with horizontal spells
+added to my main spell for enough DPS. Lots of maneuvering and jumping around, including three super steve kills with this bad wand.
+
+- Seed: 114485590
+- Final health: 360HP

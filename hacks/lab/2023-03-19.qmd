@@ -1,0 +1,56 @@
+---
+title: "Tonejs labs"
+echo: false
+---
+
+```{=html}
+<script src="http://unpkg.com/tone"></script>
+```
+
+```{ojs}
+viewof start = Inputs.button("start")
+viewof freq1 = Inputs.range([0, 1], {value: 0, step: 1/12,    label: "Oscillator 1 freq"})
+viewof freq2 = Inputs.range([0, 1], {value: 0, step: 1/12, label: "Oscillator 2 freq"})
+```
+
+```{ojs}
+buttonClickOnce = (number) => {
+    // impressively disgusting hack: only the first promise
+    // ever resolves, so anything after "buttonClickOnce(button)" 
+    // is only executed once.
+    if (number === 1) {
+        return Promise.resolve(true);
+    } else {
+        return new Promise(() => {});
+    }
+}
+
+mutable Tone = undefined
+{
+    await buttonClickOnce(start);
+    await window.Tone.start();
+    mutable Tone = window.Tone;
+}
+
+// {
+//     const now = oscillators[0].toSeconds();
+//     oscillators[0].frequency.setValueAtTime(, now);
+// }
+
+// {
+//     const now = oscillators[1].toSeconds();
+//     oscillators[1].frequency.setValueAtTime(, now);
+// }
+
+oscillators = {
+    if (window._oscillators) {
+        window._oscillators.map(x => x.stop());
+    }
+    const v = [
+        new Tone.Oscillator(110 * Math.pow(2, freq1), "triangle2").toDestination().start(),
+        // new Tone.Oscillator(110 * Math.pow(2, freq2), "sine").toDestination().start()
+    ];
+    window._oscillators = v;
+    return v;
+}
+```

@@ -1,6 +1,6 @@
 ---
-title: "2024-01-14"
-date: 2024-01-14
+title: "2024-01-13"
+date: 2024-01-13
 categories:
   - defeat
   - mistake

@@ -1,0 +1,11 @@
+---
+title: "Teaching myself sound synthesis: How not to do oscillators wrong"
+categories: [music]
+---
+
+I'm slowly teaching myself sound synthesis by writing Javascript implementations of a number of classic techniques.
+
+I've [written about the Karplus-Strong algorithm for synthesizing plucked strings](/blog/explainers/music/karplus-strong.qmd) before.
+
+I've started to work my way towards [FM synthesis](https://en.wikipedia.org/wiki/Frequency_modulation_synthesis) my usual way: making every possible mistake in the book so you don't have to.
+So here's a basic, fun bug to watch out for: [how to not do oscillators incorrectly](/explainers/music/oscillators.qmd).

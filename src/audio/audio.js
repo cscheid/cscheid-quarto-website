@@ -168,6 +168,10 @@ export function makePlayer() {
       ctx.playFloatArray(buf);
     },
 
+    playBuffer: function (buf) {
+      ctx.playFloatArray(buf);
+    },
+
     playTrack: function (track) {
       // let's make life easier for ourselves: a track can just be a waveform as well.
       if (track.waveForm) {

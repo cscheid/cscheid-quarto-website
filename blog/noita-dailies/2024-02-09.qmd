@@ -1,0 +1,20 @@
+---
+title: "2024-01-31"
+date: 2024-01-31
+categories:
+  - defeat
+  - mistake
+  - dead-at-vault
+---
+
+Lots of weirdness around this run that broke my 6-win streak, including a Leggy Mimic (!!).
+
+To make matters worse, I didn't know that Leggy Mimics drop a perk, and I accidentally picked it up. It made
+the run a lot harder. Eventually I found a teleport wand, and was carefully making my way around.
+
+I got to the Vault and I was still pretty tilted about the Leggy perk. I was getting really low on health
+and didn't pay attention to a dark spot where a Thunder Mage was hiding. I got one-shot. I could maybe have survived.
+if I paid more attention and had healed (since I had a healing bolt on a trigger from the previous HM).
+
+- Seed: 1550749019
+- Lesson: don't tilt.

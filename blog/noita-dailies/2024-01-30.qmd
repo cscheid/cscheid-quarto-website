@@ -1,0 +1,40 @@
+---
+title: "2024-01-30"
+date: 2024-01-30
+categories:
+  - victory
+  - mistake
+---
+
+6 in a row, 7 of the last 8 - that's a heater.
+
+The starting spells, potions or wands were all bad, but the very early teleport spells were a good omen.
+The HM had both Luminous Drill and Chainsaw spells, but no usable perk after a reroll.
+At this point I still had no digging tool of any kind, but the Pollen spell is technically explosion damage,
+so that's what I went with.
+
+Pollen was good for a bunch of gold in B2, some mediocre wands and most importantly two Spark Bolt with Trigger spells.
+At this point I'm already one Add Mana spell from an endgame machine gun.
+The HM had no good items, but Projectile Repulsion Field is a great perk. 
+Snowy Depths had nothing of interest either, but the HM had Add Mana _and_ another Chainsaw.
+
+Combining that with the triple scatter we got back in B1 made a 1k DPS + digging wand before even hitting the Hiisi base. 
+This setup is good for anything on the main Noita path, and would even get me up the Tower if I wanted to.
+Incredibly lucky.
+
+So now the plan is simply find extra health and immunities.
+In the Hiisi base I made a huge mistake and almost blew myself up triggering a propane tank across a wall, good for 120 dmg by itself.
+Since I had everything I needed I just carefully made my way to the Holy Mountain to heal.
+I couldn't afford anything there, and the perk wasn't good.
+
+So off to the Jungle I went, where I found half a dozen hearts, up to 350 HP. Again, this is very lucky.
+The HM had Black Hole spells, which is precisely what we want to skip the Vault and Temple. 
+No perks, but none were necessary.
+
+In the HM before the Temple of the Art, we even got Protective Shield.
+
+I'm running very hot.
+
+- Seed: 1156280645
+- Final Wand: 3-4k DPS machine gun+drilling with multiple digging 
+- Final Health: 350

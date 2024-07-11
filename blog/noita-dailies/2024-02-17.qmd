@@ -1,0 +1,13 @@
+---
+title: "2024-02-17"
+date: 2024-02-17
+categories:
+  - defeat
+  - idiocy
+  - dead-at-mines
+---
+
+I was feeling pretty smug after starting with Unstable Crystal and using it to trick-shot a number of [Swampling](https://noita.wiki.gg/wiki/M%C3%A4rki%C3%A4inen)s for a lot of cash.
+So I fired an Unstable Crystal at an enemy, missed the enemy, and walked into the Unstable Crystal.
+
+- Seed: 831070108

@@ -1,0 +1,22 @@
+---
+title: "2024-02-28"
+date: 2024-02-28
+categories:
+  - victory
+---
+
+B1: Lots of wands and spells. Perk: Melee Imm. HM: machine gun?! 110HP, 830g
+
+B2: Not much, almost killed myself by not thinking through where acid would appear. HM: Nothing. Perk: reroll into crit over unlimited spells (No dps from machine gun yet) 145HP, 210g
+
+B3: Nothing. HM: Nothing. Perk: Peace with gods (still concerned about Steve + low DPS). 155HP
+
+B4: Everything, pretty much. Spent a while here. HM: Nothing. Perk: Reroll into TWE over faster wands. 230HP, 2.3kg
+
+B5: Surprisingly, almost nothing. HM: Nothing, Perk: nothing. 265HP, 5.5kg
+
+B6: Lots of backtracking to the HM to improve wand. Perk: extra health, HM: healing bolt.
+
+B7: dig and kill boss.
+
+- Seed: 228533370

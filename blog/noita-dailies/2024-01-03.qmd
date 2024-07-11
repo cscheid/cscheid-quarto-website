@@ -4,6 +4,7 @@ date: 2024-01-03
 categories:
   - defeat
   - skill-issue
+  - dead-at-hiisi-base
 ---
 
 The first biome was, again, incredibly generous.

@@ -1,0 +1,42 @@
+---
+title: "2024-01-25"
+date: 2024-01-25
+categories:
+  - victory
+  - hard-fought
+---
+
+This was a fun one. The run started with maybe the worst combination of spells and potions:
+Bouncing Burst, Firebomb, and Flummoxium Potion. Can't dig, can't DPS, can't quench a fire.
+Soon in B1 I found some water and _two_ hearts - I can't remember the last time this happened.
+There was a shop soon after, with two good spells. After clearing the first biome, I had 609 gold.
+
+Collecting all of that was a good call, because at the HM, there were many good spells in two separate wands that totaled 600 gold.
+I still had no way to go back up the HM and the perks were all bad, so I just skipped them.
+
+In B2, I found two more hearts and a Chain Bolt. That should put me all the way through the Hiisi Base, I thought.
+The HM had Oil Blood, which really is just Fire Immunity with extra steps. Still great.
+
+The Snowy Depths had nothing much to offer aside from a Reduce Reload spell.
+The HM has a short teleport spell as well, so now all I needed was to find a good wand.
+This is precisely what the Hiisi base is for. But, somehow, all the seed's generosity dried out at the base.
+
+I was pretty thankful for the kick-the-healer trick, and for Chain Bolt.
+I literally explored all of the Hiisi Base, and found not a single wand upgrade.
+This was a bit of a problem, because non-Chain-Bolt wand didn't do enough damage for the Jungle.
+
+And, indeed, really early on in the Jungle I ran into the typical disaster scenario of Coward throwing
+too many enemies at me. I almost died right there dealing with the chaos, but managed to stabilize at 40 health or so,
+and started digging for wands. Soon I found a pair of wands that let me build end-game machine guns.
+
+The only thing left was the ability to traverse through the hard terrain from Temple walls.
+I wasn't able to find drills or black holes to do that on the Jungle or the Vault, so the Temple of the Art
+was quite risky.
+I, once again, almost died from a combination of [Glowing Creep](https://noita.wiki.gg/wiki/Hohtava_hyypi%C3%B6)s, [Masters of Polymorphing](https://noita.wiki.gg/wiki/Muodonmuutosmestari) and
+[Skull Flies](https://noita.wiki.gg/wiki/Kallok%C3%A4rp%C3%A4nen). At about 35 health I needed to teleport through a lot of garbage, but I managed to. Healed at the final HM, dispatched the Super Steve there, and then the boss with little trouble. I feel like I earned this one.
+
+- Seed: 846559016
+- Final Max Health: 300
+- Final Wand: some machine-gun nonsense from chainsaws, added crits, triggers and multicasts
+- Lesson: if you have Chain Bolt, always use it on the Hiisi Base. It's not great in the Snowy Depths
+or after the Jungle, but it hard-carries the Base.

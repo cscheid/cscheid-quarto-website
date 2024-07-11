@@ -1,0 +1,40 @@
+---
+title: "2024-01-28"
+date: 2024-01-28
+categories:
+  - victory
+  - hard-fought
+---
+
+Four in a row - that's a personal record.
+
+The first biome didn't have much, but the Oil Blood perk (which gives fire immunity + ...) is more than enough to make up for it.
+Fire immunity is the best single-immunity in the game, and for a plain run, I think I now would take it over Tinker with Wands Everywhere, and maybe
+even over All-Seeing Eye.
+
+In the Fungal Caverns, I almost died to a [Small tentacler](https://noita.wiki.gg/wiki/Pikkuturso) hiding behind a [Tentacler](https://noita.wiki.gg/wiki/Turso).
+I got trapped in an air pocket over an underground lake, and the small tentacler froze me almost to death.
+The Second Biome had Slime Blood over most things. I wasn't sure whether this would keep my fire immunity from the first perk, but I decided to pick it anyway.
+It does. So now I had full fire resistance and 25% projectile resistance. I had never thought of it this way, but Slime Blood is almost as good as
+a half Extra Health in terms of effective life points.
+
+As always, I felt the most at danger in the Snowy Depths, with multiple [thunder mage](https://noita.wiki.gg/wiki/Ukko)s and a Worm on a wide-open field.
+I was massively overpowered and at this point thought the run was doomed, but the Hiisi base had an early digging wand which made things easier.
+I also managed to heal myself once or twice with the starting Pheromone potion (you should always dilligently keep that, even at risk of burning to death in the first biome)
+The Hiisi base had a slightly faster wand that wouldn't be good enough for the Vault but might get me through the Jungle. At the HM, I picked up Speed Up, assuming I might need it to run away from enemies.
+
+In the Jungle I found both a black hole wand and an Add Mana wand.
+I didn't find much else there, and I needed to teleport to the HM earlier than I wished for, when the enemies crowded me at a spot where my wand just wasn't dealing enough damage.
+The HM there delivered, as I bought Reduce Recharge Time and +Dmg just in time for the [Spider](https://noita.wiki.gg/wiki/H%C3%A4m%C3%A4h%C3%A4kki)s to spawn Steve.
+With Steve gone, I rerolled into an Extra Health perk and full-sustain machine gun + luminous drill.
+
+The Vault and Temple were the same usual deal, go down conservatively and carefully. 
+The perk before the Temple was Protective Shield, which was actually welcome.
+The Temple of the Art is still quite challenging when your machine gun is not very high-DPS, and I was almost dispatched by the skull rats there.
+
+The boss was as easy as it always is with a full-sustain machine gun.
+
+- Seed: 1472649453
+- Lesson: The fire bolts (large and giant especially) remain a very good source of single-target damage. I used them to kill many Ukkos and Hiisi bosses. Being willing
+to put spells on wands that I'll eventually throw away is paying off; they do me no good if I die with them on the inventory.
+

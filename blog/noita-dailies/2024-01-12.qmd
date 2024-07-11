@@ -1,0 +1,44 @@
+---
+title: "2024-01-12"
+date: 2024-01-12
+categories:
+  - victory
+  - fun
+  - chaos
+---
+
+This is what Noita's about.
+
+The run had everything right from the first biome. Tinker with Wands Everywhere on the first Holy Mountain, usefully switching the first two spells for an early-game machine gun, and good spells right at the beginning: chain bolt, black hole. By the time I got to the Fungal Caverns I had 4 extra hearts and a wand that could carry me to the Jungle.
+
+I just kept getting good spells and good wands, and so I put this wand together by the start of the Hiisi base:
+
+![This looks innocuous, right?](2024-01-12/wand.png)
+
+This is what it does to the game:
+
+![Ok, this might be really good](2024-01-12/hiisi-base-2.webm)
+
+![Uhh, are we the baddies now?](2024-01-12/hiisi-base.webm)
+
+![Yes, we're definitely the baddies](2024-01-12/jungle.webm)
+
+(It's really wild that Noita lets you do this to the game.) From there, it's easy to find tons of hearts, which lets you play loose. Make chaos, _and_ beat the game? Hell yeah. I just had to:
+
+1. watch out for polymorphine.
+
+2. Slow down through the Temple of the Art, because [this enemy](https://noita.wiki.gg/wiki/Hohtava_hyypi%C3%B6) will make your life miserable if you hit it with anything.
+
+At that point all the damage+ spells stacked up to make the wand also just a fine damage dealer without the spiral shot. So I went through the Temple the simple way to get my second-ever 3-game daily streak. I'll take it!
+
+Other highlights:
+
+![Two [broken wands](https://noita.wiki.gg/wiki/Broken_Wand) to fix](2024-01-12/broken-wands.webm)
+
+![We got to see [Valtikka](https://noita.wiki.gg/wiki/Wands#Unique_wands)](2024-01-12/valtikka.webm)
+
+![[Draught of Midas](https://noita.wiki.gg/wiki/Draught_of_Midas) in the wild!](2024-01-12/midas.webm)
+
+- Seed: 1037578760
+- Final wand: damage+, multicast, spiral shot, luminous drill
+- Final Health: 470

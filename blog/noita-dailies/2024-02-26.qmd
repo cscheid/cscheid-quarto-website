@@ -1,0 +1,14 @@
+---
+title: "2024-02-26"
+date: 2024-02-26
+categories:
+  - victory
+  - easy-mode
+---
+
+Super generous run. I learned how good long-distance cast + teleport is.
+
+Find machine gun, skip through everything with combo above, win.
+
+- Seed: 1448135977
+- Max Health: 350HP

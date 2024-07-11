@@ -1,0 +1,15 @@
+---
+title: "2024-02-25"
+date: 2024-02-25
+categories:
+  - victory
+  - easy-mode
+---
+
+Heart at the very beginning. Good omen. Easy run.
+
+Good perks, easy end-game wand, lots of hearts. Just a matter of respecting the final biomes.
+
+- Seed: 2112534794
+- Max Health: 600
+- Lesson: It pays off to minimize the chaos of a machine-gun wand in order to not shoot self at Jungle (in case you get hit by the dude that inflicts self-pain on you) or the wrong thing at the temple.

@@ -1,0 +1,26 @@
+---
+title: "2024-02-20"
+date: 2024-02-20
+categories:
+  - good-decision
+  - victory
+---
+
+B1: No wands. Perks: reroll into Capacity+, spec on mediocre wand. 160HP.
+
+B2: Lots of tricky digging I felt pretty smart doing, found chainsaw in a wand. Perk: Tinker with Wands everywhere, 185HP and almost
+with a machine gun already.
+
+B3: Don't linger here, too much damage for no real need. Run into a pheromone potion. Perk: All Seeing Eye. 195HP.
+
+B4: Nothing great, really. 230HP. Perk: No more shuffle (spec paid off now)
+
+B5: Realized my wand had way too much spread and that's how I died yesterday, so went back up to get the Reduce Spread spell. Less chaos, lesson learned.
+Perks: Reroll 3x into stronger hearts. 250HP, 5816g
+
+B6: Just dig. 310HP, 1546g. Perk: No more knockback.
+
+B7: Dig.
+
+- Seed: 1233852542
+- Final Health: 370HP

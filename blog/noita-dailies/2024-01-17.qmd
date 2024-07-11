@@ -1,0 +1,23 @@
+---
+title: "2024-01-17"
+date: 2024-01-17
+categories:
+  - defeat
+  - skill-issue
+  - dead-at-steve
+---
+
+On the first biome I found nothing of note except a ton of gold, and the
+only good perk was Perk Lottery.
+
+The second biome has a heart and great wands, but I made a horrible mistake, _twice_.
+I forgot I had reassigned wand positions in my hotbar, and pressed the wrong one, firing a missile
+in my face and cutting the exploration short. 
+I didn't die right away, but it caused me to skip much of B2.
+
+At the Snowy Depths, someone angered the gods, but I managed to kill Steve #1 by kicking the statue on his face.
+
+At the Hiisi Base, I didn't find any good-enough wands to take down Steve, and so I died at the Holy Mountain
+by failing to hit Steve again. This is a skill I need to work on.
+
+- Seed: 960033721

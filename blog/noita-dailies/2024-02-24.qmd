@@ -1,0 +1,19 @@
+---
+title: "2024-02-24"
+date: 2024-02-24
+categories:
+  - defeat
+  - dead-at-temple
+  - skill-issue
+---
+
+Noita, still a hard game.
+
+B2 had everything I needed to a machine gun wand and teleport, but I never saw good digging.
+
+I got to the Temple of the Art with 340 Health and +1 Life perk. Although my damage
+was good enough for the boss, it was just barely acceptable for the temple enemies.
+Without any way to quickly dig through the terrain, I wasn't good enough to
+kill stuff around me and eventually got polymorphed and shot (which negates the +1 Life perk).
+
+- Seed: 1925326272

@@ -1,0 +1,22 @@
+---
+title: Some OJS utils
+---
+
+```{ojs}
+buttonClickOnce = const (number) => {
+    if (number === 1) {
+        return Promise.resolve(true);
+    } else {
+        return new Promise((_,_) => {});
+    }
+}
+
+mutable Tone = undefined
+
+{
+    await buttonClickOnce(start);
+
+    start;
+}
+
+```

@@ -1,0 +1,26 @@
+---
+title: "2024-03-06"
+date: 2024-03-06
+categories:
+  - victory
+  - easy-mode
+---
+
+Wand experimenter, good for some 600HP of healing.
+
+B1: we continue our worm streak. Acid, invisiblium, circle of stillness. HM: Nothing. Perk: Wand experimenter over toxic immunity. 135HP, 602g.
+
+B2: Lots of wands (= healing). HM: 2x each of drill and teleport (!) I found 4 or 5 other wands with multiple copies of luminous drill. Perk: Stronger Hearts. 160HP, 1.1kg
+
+B3: Nothing much, HM: wands I skipped to come back and heal if needed. Perki: Bleed Slime. 160HP (skip heart because not needed), 1.1kg
+
+B4: Lots of wands, no great spells (not needed). HM: Heavy Spread. Perk: Reroll 2x into Fire immunity, over peace with gods and +1 Life. 210HP, 2.3kg
+
+B5: More wands and hearts. HM: Nothing. Perk: Reroll into melee immunity. 430HP, 4.8kg
+
+B6: Damage+. HM: Wand for healing at temple. Perk: Wand radar 440HP, 800g
+
+B7: 1k recharge speed wand for drilling, dig for win.
+
+- Seed: 1368517962
+

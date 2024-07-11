@@ -1,0 +1,12 @@
+---
+title: "2024-02-10"
+date: 2024-02-10
+categories:
+  - defeat
+  - noitad
+  - dead-at-jungle
+---
+
+Typical run going as it would, but got offscreen one-shotted by an enemy holding a wand at the Jungle. So it goes.
+
+- Seed: 18962560

@@ -1,0 +1,41 @@
+---
+title: "2024-01-27"
+date: 2024-01-27
+categories:
+  - victory
+  - hard-fought
+---
+
+Jungle modification on the very first biome set the mood for the run.
+Almost got locked by the growing flowers one or two times, but made it to the HM.
+Nothing much in there, except Wand Radar, which I hadn't yet picked in a try-harding run.
+(Spoiler: it's very good).
+
+In B2, I found pretty much nothing at all, except that I got hit by a teleport shot
+in the Fungal Caverns, which teleported me on top of a heart. I'll take it. The HM
+had a lot of useful spells for the future, but no great perk. Picked Speed Up since
+my spells were all slow and I was heading to Snowy Depths with lots of very open areas.
+
+In B3, I found a rare Heart, but don't remember much else besides feeling I had everything
+I needed for the Hiisi Base - the Wand Radar perk really did help navigate this biome.
+
+In the Hiisi Base, I found a wand full of Healing Bolts right away, which made all
+the triggers I had quite useful, and set up the rest of the run very nicely.
+In between healing, Wand Radar and teleport, I had everything I needed to eventually make a good wand, even if it took
+many many trips up the HM to improve wands and trade spells.
+
+It took a whole lot of going back and forth to find and build a machine gun, but I got to it in the Jungle.
+I almost died there, but came back from 30 health or so by carefully teleporting back to a place with flat
+surfaces so I could heal myself by bouncing the healing bolts off of the ceiling.
+
+I usually prefer to go through the Vault and Temple with lightsabers or black holes.
+I found none after 30 or so wands, so I had to do it the hard way.
+I almost got noita'd in the Temple, where an offscreen chaotic poly potion got cracked, and one of the fluid pixels spawned on me.
+Luckily I polymorphed into a [Thunder Mage](https://noita.wiki.gg/wiki/Ukko) and had enough time to safely backtrack.
+
+Eventually I made it to the boss and the machine gun made it easy.
+
+- Seed: 1678113267
+- Final Health: 300 or so
+- Wand: boring machine gun
+- Lesson: Wand Radar (picked over Stronger Hearts on B1) is a very good early perk to set yourself up for the later biomes

@@ -4,6 +4,7 @@ date: 2024-01-05
 categories:
   - defeat
   - skill-issue
+  - dead-at-hiisi-base
 ---
 
 Death to misclick. The rust is real.

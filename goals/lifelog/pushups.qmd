@@ -13,16 +13,19 @@ ll = lifelog.get_data_on("pushup")
 ojs_define(df = ll.to_dicts())
 ```
 
+```{ojs}
+domain = (d) => [Math.min(...d), Math.max(...d)]
+```
+
 ## Deficit
 
 ```{ojs}
-deficitYDomain = [Math.min(0, ...df.map(d => d.deficit)), 1600]
 deficit = Plot.plot({
     x: {
         domain: [0, 365]
     },
     y: {
-        domain: deficitYDomain,
+        domain: domain([0, ...df.map(d => d.deficit)]),
         grid: true
     },
     marks: [
@@ -36,13 +39,12 @@ deficit = Plot.plot({
 ### Weekly windowed
 
 ```{ojs}
-weeklyAverageYDomain = undefined
 weeklyAverage = Plot.plot({
     x: {
         domain: [0, 365]
     },
     y: {
-        domain: weeklyAverageYDomain,
+        domain: domain([0, ...df.map(d => d.daily_avg_prev_week)]),
         grid: true
     },
     marks: [
@@ -73,17 +75,17 @@ yearlyAverage = Plot.plot({
 ## Avg per day going forward
 
 ```{ojs}
-remainderPerDayYDomain = [24, 30]
+remainderPerDayData = df.map(x => ({...x, remainder_per_day: (24 * 365 - x.total) / (365 - x.days)}))
 remainderPerDay = Plot.plot({
     x: {
         domain: [0, 365]
     },
     y: {
-        domain: remainderPerDayYDomain,
+        domain: domain(remainderPerDayData.map(x => x.remainder_per_day)),
         grid: true
     },
     marks: [
-        Plot.line(df.map(x => ({...x, remainder_per_day: (24 * 365 - x.total) / (365 - x.days)})), {x: "days", y: "remainder_per_day"})
+        Plot.line(remainderPerDayData, {x: "days", y: "remainder_per_day"})
     ]
 })
 ```
@@ -95,7 +97,7 @@ remainderPerDay = Plot.plot({
 
 goal = 24 * 365
 start = datetime.datetime(2023, 1, 1)
-days_elapsed = (datetime.datetime.now() - start).days
+days_elapsed = (datetime.datetime.now() - start).days + 1
 days_left = (365 - days_elapsed)
 so_far = list(ll["total"])[-1]
 outstanding = goal - so_far
@@ -114,7 +116,7 @@ avg_left = (outstanding / days_left)
 print("Days elapsed: %d\n\n" % days_elapsed)
 print("  - ('spread factor': %.03f)\n\n" % (1 / days_elapsed))
 print("Halfway mark: %d days from now\n\n" % halfway_mark)
-print("Average per day so far: %.3f\n\n" % avg_so_far)
+print("Average so far:\n\n  - %.3f per day\n  - %.1f per week\n\n" % (avg_so_far, 7 * avg_so_far))
 ```
 
 ### Totals
@@ -124,11 +126,12 @@ print("Average per day so far: %.3f\n\n" % avg_so_far)
 
 today_target = 24 * days_elapsed
 deficit = today_target - so_far
+word = "deficit" if deficit > 0 else "surplus"
 print("- so far: %.1f\n" % so_far)
-print("- deficit: %.1f\n" % deficit)
-print("  - in today's average days: %.1f days\n" % (deficit / avg_so_far))
-print("  - in overall average days: %.1f days\n" % (deficit / avg_target))
-print("  - in future required average days: %.1f days\n" % (deficit / avg_left))
+print("- %s: %.1f\n" % (word, abs(deficit)))
+print("  - in today's average days: %.1f days\n" % (abs(deficit) / avg_so_far))
+print("  - in overall average days: %.1f days\n" % (abs(deficit) / avg_target))
+print("  - in future required average days: %.1f days\n" % (abs(deficit) / avg_left))
 print()
 ```
 

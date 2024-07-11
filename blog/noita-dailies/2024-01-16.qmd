@@ -1,0 +1,17 @@
+---
+title: "2024-01-16"
+date: 2024-01-16
+categories:
+  - defeat
+  - mistake
+  - idiocy
+  - dead-at-mines
+---
+
+A lot of wands in the first level. And Chaos Dice. I know better than
+to kick Chaos Dice. And yet...
+
+![I'm an idiot](2024-01-16/dice.webm)
+
+- Seed: 1805271298
+

@@ -1,0 +1,19 @@
+---
+title: "2024-02-19"
+date: 2024-02-19
+categories:
+  - good-decision
+  - defeat
+  - noitad
+  - dead-at-jungle
+---
+
+Things were going great, and at some point I had all the good spells but only shuffle wands.
+
+I had the choice between No More Shuffle and Fire Immunity. I picked No More Shuffle, which is
+almost never the right call there. It let me make an end-game wand with 2kdps right away.
+
+... And then, in the Jungle, I got offscreen'ed by a [Master of Twitching](https://noita.wiki.gg/wiki/S%C3%A4tkymestari), which caused
+my end-game wand to fire and insta-kill me. 
+
+- Seed: 132652204

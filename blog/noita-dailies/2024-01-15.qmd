@@ -1,0 +1,26 @@
+---
+title: "2024-01-15"
+date: 2024-01-15
+categories:
+  - defeat
+  - mistake
+  - dead-at-snowy-depths
+---
+
+Snowy Depths is still the most punishing biome in the game.
+
+Generous seed at the first biome, with easily available hearts, enough money, and something like eight different wands.
+The first Holy Mountain had Black Hole _and_ Tinker with Wands Everywhere.
+Can't really ask for a better start.
+
+My main mistake was to believe that the extra health I had gotten would let me navigate
+the Snowy Depths unscathed.
+A quick sequence of three offscreen shots (a sniper into a Hiisi boss that hit me twice) disabused me of that notion.
+After that I was in enough trouble that I couldn't negotiate the resulting bullet hell,
+and a couple of additional offscreen turrets dispatched me.
+
+I didn't exactly get Noita'd; I should know better than to hang around the Snowy Depths. Serves me right.
+
+- Seed: 1129385518
+- Perks: Tinker with Wands Everywhere, Extra Health
+- Lesson: Extra Health is a good perk even without having picked up many hearts

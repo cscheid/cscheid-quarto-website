@@ -4,6 +4,7 @@ date: 2024-01-08
 categories:
   - defeat
   - skill-issue
+  - dead-at-temple
 ---
 
 Ghosts still bite you when you're invisible.

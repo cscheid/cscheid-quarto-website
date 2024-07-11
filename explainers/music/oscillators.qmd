@@ -1,0 +1,5 @@
+---
+title: How to implement an oscillator badly, and how to fix it
+---
+
+{{< include /notes/music/fm-synthesis/_bad-oscillators.md >}}

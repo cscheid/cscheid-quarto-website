@@ -1,0 +1,14 @@
+---
+title: "2024-02-23"
+date: 2024-02-23
+categories:
+  - victory
+  - easy-mode
+---
+
+Good wand right at the start set the mood for a pretty typical easy run, except
+for almost dying to random earthquake spells triggered by enemies picking up a wand
+at the Hiisi base.
+
+- Seed: 2022476551
+- Max Health: 275

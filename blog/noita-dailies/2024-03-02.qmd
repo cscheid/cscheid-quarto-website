@@ -1,0 +1,19 @@
+---
+title: "2024-03-02"
+date: 2024-03-02
+categories:
+  - victory
+  - easy-mode
+---
+
+B1: Good start wand. HM: Black hole, AC reload speed. Perk: Shield! 135HP, 620g
+
+B2: Spells, items. HM: Nothing. Perk: Bleed oil. 145HP, 720g
+
+B3: More worms?! HM: Long distance cast. Perk: Repulsion. 155HP, 730g
+
+B4: Wands, spells. HM: Add mana. Perk: 2x reroll into electricity immunity. 165HP, 2100g
+
+B5: All the hearts in the world, and then black hole dig down through to boss.
+
+- Seed: 1818915907

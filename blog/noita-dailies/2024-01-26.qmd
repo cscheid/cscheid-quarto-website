@@ -1,0 +1,30 @@
+---
+title: "2024-01-26"
+date: 2024-01-26
+categories:
+  - victory
+---
+
+First biome had a lot of Money but also a lot of [Acid Slime](https://noita.wiki.gg/wiki/Happonuljaska)s.
+I almost got cornered going into the Abandoned Mines looking for hearts, but made it out.
+At the HM, used all the gold for two rerolls, picked Electricity Immunity.
+
+With the help of dynamite and some magic missiles, I managed to explore quite a bit of the Fungal Caverns, but couldn't find anything there. 
+ad the same issue at Snowy Depths, and felt underpowered going into the Hiisi Base.
+
+I had some good digging tools by then, so I chose to equip a Magic Missile as a last-resort DPS.
+That was a good call, my low DPS would have been hard to work with otherwise. 
+Same happened at the Jungle, I was still quite underpowered.
+At the HM, I found Projectile Repulsion Field and black holes, so my only hope was to try and dig around for wands and spells at the Vault and Temple.
+
+Going through the Temple was very chancy and I think I was fairly lucky to make it to the last HM.
+On the way there, I found another cast delay reducer.
+It made my wand into a low-DPS machine gun that couldn't sustain itself for more than 1-2 seconds at a time.
+
+I thought that would be enough to make the boss fight easy, but it has resistances to the low-DPS spells I had, so it took quite much longer to kill than I expected.
+If I didn't have Projectile Repulsion Field, I'm pretty sure I'd have died to the bullet hell.
+Whatever, I'll take the W.
+
+- Seed: 839325436
+- Final wand: 4 or 5 small DPS spells on multicasts, with a couple of [Glimmer](https://noita.wiki.gg/wiki/Glimmer)s to bring cast delay to 0
+- Lesson: Projectile Repulsion Field makes the boss fight that much easier when you're low on DPS

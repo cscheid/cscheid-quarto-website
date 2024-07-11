@@ -1,0 +1,23 @@
+---
+title: "2024-01-24"
+date: 2024-01-24
+categories:
+  - defeat
+  - mistake
+  - dead-at-hiisi-base
+  - idiocy
+---
+
+The seed was quite generous, with an extra Heart and Black Hole at the first biome, and Teleport
+at the first HM. In B2, lots of goodies at the Fungal Caverns, including an extra heart. The
+HM had an Add Mana spell, which put me in a good spot.
+
+Snowy Depths, as usual, delivers its awfulness, and I was almost eaten by the worm there.
+I barely made it to the HM, where All-Seeing Eye was the ideal perk for the Hiisi Base.
+
+Things were going ok there, and then I was instantly dead. Never trust a Hiisi with a wand...
+
+![boom](2024-01-24/boom.webm)
+
+- Seed: 1300086933
+- Final Max Health: 180

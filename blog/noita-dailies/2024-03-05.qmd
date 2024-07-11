@@ -1,0 +1,26 @@
+---
+title: "2024-03-05"
+date: 2024-03-05
+categories:
+  - victory
+  - hard-fought
+---
+
+Saved by +1 life, for the first time in this series?
+
+B1: 1000g chest, good wands for the level. HM: Black Hole, Chain Bolt. Perk: 2x reroll into faster wands. 110 HP, 1.2kg
+
+B2: Chainsaw HM: Bomb, All-Seeing Eye. Perk: Reroll into nothing. 120HP, 800g
+
+B3: Worm once more. HM: Add Mana, trigger, but no gold or way to easily come back for either. Perk: Feared by worms. 130HP, 560g.
+
+B4: Use acid to go back up to get wands and edit them at next HM. HM: Black Hole. Perk. 2x reroll into nothing, again. No good perks. 185HP, 143g
+
+B5: Everything needed except for teleport. HM: Nothing. Perk: Wand capacity. 275HP, 3kg
+
+B6: Finally get a teleport spell. Now need to make it to the end. HM: Nothing. Perk: Reroll into +1 Life over Lottery. 285HP, 4.2kg
+
+B7: My DPS is slow, so digging is not going great and getting overwhelmed. At some point I need to run away and get into a big monster fight, which kills me except for +1 Life. Teleport away for the HM and win.
+
+- Seed: 372866828
+- Final Health: 285HP

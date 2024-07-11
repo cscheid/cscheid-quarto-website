@@ -1,0 +1,25 @@
+---
+title: "2024-02-12"
+date: 2024-02-12
+categories:
+  - victory
+  - mistake
+  - hard-fought
+---
+
+B1: Rough start with fireballer right at the entrance, yikes. Found a broken Pheromone potion which I partially refilled to 25% or so.
+Perk: Repulsion field over Stronger Hearts
+
+B2: Found digging wand, Heart
+
+B3: Learned the hard way that Chain Bolt works _terribly_ with Repulsion, making it impossible to aim.
+
+B4: Nothing much, went into HM with quite bad wands.
+HM: Had to make a call on whether to keep HM open to come back later to reassemble wands by angering the gods or just go.
+Decided to anger the gods, almost died, had to repeatedly dodge Steve until I could dig my way into editing an end-game wand.
+After that, I played super conservatively to heal at the Vault HM, and it was uneventful from there
+
+- Seed: 1972871717
+- Lesson: Don't use Chain Bolt with Projectile Repulsion Field.
+- Lesson: You need a lot of sustained high rate fire to kill Steve reliably
+- Final Health: 245

@@ -1,0 +1,13 @@
+---
+title: "2024-02-29"
+date: 2024-02-29
+categories:
+  - defeat
+  - noitad
+  - dead-at-mines
+---
+
+B1: Worm, angered the gods before I had anything going. Debris fell around
+statue which I failed to kick at Steve.
+
+- Seed: 631259747

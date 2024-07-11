@@ -1,0 +1,19 @@
+---
+title: "2024-01-23"
+date: 2024-01-23
+categories:
+  - victory
+  - easy-mode
+---
+
+This was the easiest seed all year.
+The first biome had a clear heart at the beginning, and the first Holy Mountain had every spell you could hope for: Luminous Drill, Teleport, and something else (a trigger? I don't remember)
+
+By the end of the Hiisi Base, I had an end-game machine gun wand with essentially the setup as my final wand: chainsaws, spiral shots, triggers, multicast.
+I also had a 15 Black-Hole wand to dig down, easily putting me at the boss and dispatching them with no difficulty.
+
+![Another Spiral Shot win](./2024-01-23/wand.png)
+
+- Seed: 727952781
+- Final Health: 280 or so
+- Final Wand: Spiral-Shot + Luminous drill machine gun

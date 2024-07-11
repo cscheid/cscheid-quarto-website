@@ -13,64 +13,43 @@ import altair as alt
 import os
 import json
 import numpy as np
+import requests
 
-os.environ["STRAVA_ACCESS_TOKEN"] = json.loads(open("strava-auth.json").readline())["access_token"]
+start = datetime(2023, 1, 1)
+days_elapsed = (datetime.now() - start).days
+distance_goal_miles = 105 * 52 * 1609
+
+
+# to get this file, use the curl flow described here:
+# https://developers.strava.com/docs/getting-started/#oauth
+
+# http://www.strava.com/oauth/authorize?client_id=39414&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=activity:read_all
+# strava_auth = json.loads(open("strava-auth.json").read())
+
+# result = requests.post("https://www.strava.com/oauth/token", {
+#     "client_id": strava_auth["STRAVA_CLIENT_ID"],
+#     "client_secret": strava_auth["STRAVA_CLIENT_SECRET"],
+#     "code": strava_auth["STRAVA_ACCESS_CODE"]
+# })
+
+# # with open("out.json", "w") as out:
+# #     out.write(json.dumps(result.json()))
+
+# json = result.json()
+# os.environ["STRAVA_ACCESS_TOKEN"] = json["access_token"]
+# os.environ["STRAVA_CLIENT_ID"] = strava_auth["STRAVA_CLIENT_ID"]
+# os.environ["STRAVA_CLIENT_SECRET"] = strava_auth["STRAVA_CLIENT_SECRET"]
 ```
 
 ```{python}
 #| output: false
-start = datetime(2022, 1, 1)
+start = datetime(2023, 1, 1)
 
-client = StravaIO() # expects STRAVA_ACCESS_TOKEN environment variable
+days_elapsed = (datetime.now() - start).days
 
-acts = list(
-    act 
-    for act in client.get_logged_in_athlete_activities(after="last year")
-    if act.start_date.replace(tzinfo=None) >= start)
+df = pd.read_csv("strava-data.csv")
 
-#moving_time = list(a.moving_time for a in list(acts))
-#start_date = list(a.start_date_local for a in list(acts))
-#distance = list(a.distance for a in list(acts))
-#
-#df = pd.DataFrame({
-#    "moving_time": moving_time, 
-#    "start_date": start_date,
-#    "distance": distance
-#    })
-
-distance_so_far = []
-distance_goal_miles = 105 * 52 * 1609
-deficit = []
-remainder_per_day = []
-for i in range(365):
-    so_far = sum(
-        a.distance for a in acts 
-        if (a.start_date_local.replace(tzinfo=None) >= datetime(2022,1,1) and
-            a.start_date_local.replace(tzinfo=None) <= (datetime(2022, 1, 1) + timedelta(days = i)))
-    )
-    distance_so_far.append(so_far)
-    deficit_today = (i / 365) * distance_goal_miles - so_far
-    deficit.append(deficit_today)
-    remainder = distance_goal_miles - so_far
-    remainder_per_day_today = remainder / (365 - i)
-    remainder_per_day.append(remainder_per_day_today)
-```
-
-```{python}
-days = list(range(365))
-df = pd.DataFrame({ 
-    "days": days, 
-    "deficit": deficit, 
-    "distance_so_far": distance_so_far,
-    "remainder_per_day": remainder_per_day
-    })
-df["deficit"] = df["deficit"] / 1609
-df["remainder_per_day"] = df["remainder_per_day"] / 1609
-df["mpd_so_far"] = (df["distance_so_far"] / 1609) / np.maximum(df["days"], 1)
-
-df["mpd_monthly"] = np.pad(
-    np.array(df["distance_so_far"])[30:] - np.array(df["distance_so_far"])[:-30], 
-    (30, 0), mode='edge') / (30 * 1609)
+distance_so_far = list(df["distance_so_far"])
 
 def style(chart):
     return chart.properties(
@@ -153,3 +132,73 @@ Plot.plot({
     ]
 })
 ```
+
+## Analysis
+
+```{python}
+#| output: asis
+
+days_left = (365 - days_elapsed)
+outstanding_miles = (distance_goal_miles - distance_so_far[-1]) / 1609
+
+avg_so_far = distance_so_far[-1] / days_elapsed
+avg_so_far_miles = avg_so_far / 1609
+avg_target = 15 * 1609
+
+# Now, if we need to improve a constant amount to barely make it on dec 31st,
+# that means starting from today's avg so far and hitting the midway point
+# between now and end of the year at the target daily average
+
+halfway_mark = days_left / 2
+target_delta_1 = ((avg_target - avg_so_far) / halfway_mark) / 1609
+mpd_left = (outstanding_miles / days_left)
+
+print("Days elapsed: %d\n\n" % days_elapsed)
+print("  - ('spread factor': %.03f)\n\n" % (1 / days_elapsed))
+print("Halfway mark: %d days from now\n\n" % halfway_mark)
+print("Average per day so far: %.3f mi (%.3f km)\n\n" % (avg_so_far_miles, avg_so_far_miles * 1.609))
+```
+
+### Total mileage
+
+```{python}
+#| output: asis
+
+total_distance = distance_so_far[-1]
+today_target = (15 * 1609) * days_elapsed
+deficit = today_target - total_distance
+print("- so far: %.1f mi (%.1f km)\n" % (total_distance / 1609, total_distance / 1000))
+print("- deficit: %.1f mi (%.1f km)\n" % (deficit / 1609, deficit / 1000))
+print("  - in today's average days: %.1f days\n" % (deficit / avg_so_far))
+print("  - in overall average days: %.1f days\n" % (deficit / avg_target))
+print("  - in future required average days: %.1f days\n" % (deficit / (mpd_left * 1609)))
+print()
+```
+
+### Daily riding scenarios
+```{python}
+#| output: asis
+
+print("There are %d days left. Scenarios:\n\n" % days_left)
+
+y2 = 2 * outstanding_miles / days_left
+y1 = y2 - avg_so_far_miles
+
+print("- ride a constant amount every day:\n  - tomorrow, you need to ride %.01f mi (%.01f km).\n  - next week, %.01f mi.\n" % (mpd_left, mpd_left * 1.609, mpd_left * 7))
+print("- improve daily until end of year:\n  - tomorrow, you need to ride %.01f mi (%.01f km).\n  - next week, %.01f mi.\n" % (avg_so_far_miles + target_delta_1, (avg_so_far_miles + target_delta_1) * 1.609, avg_so_far_miles * 7 + target_delta_1 * 28)) # 1 + 2 + 3 + 4 + 5 + 6 + 7
+print("- improve daily then back out daily to end the year at current average:\n  - tomorrow, you need to ride %.01f mi (%.01f km).\n  - next week, %.01f mi." % (avg_so_far_miles + 2 * target_delta_1, (avg_so_far_miles + 2 * target_delta_1) * 1.609, avg_so_far_miles * 7 + target_delta_1 * 56))
+print("- back out daily to end the year at zero:\n  - tomorrow, you need to ride %.01f mi (%.01f km).\n  - next week, %.01f mi.\n" % (y2, y2 * 1.609, y2 * 7))
+y1 = y2 - avg_so_far_miles
+# x1 + x2 = days_left
+# x1/y1 = x2/y2
+# x2 = days_left - x1
+# x1 = x2 * y1 / y2
+# x1 = (y1 / y2) * (days_left - x1)
+# x1 + (y1 / y2) * x1 = (y1 / y2) * days_left 
+# (1 + y1/y2) x1 = y1/y2 * days_left
+x1 = (y1/y2) * days_left / (1+(y1/y2))
+slope = y1/x1
+print("- improve daily then back out at same rate to end the year riding nothing (The halfway point is %d days from now.):\n  - tomorrow, you need to ride %.01f mi (%.01f km).\n  - next week, %.01f mi.\n" % (x1, avg_so_far_miles + slope, (avg_so_far_miles + slope) * 1.609, avg_so_far_miles * 7 + slope * 28))
+```
+
+

@@ -1,0 +1,22 @@
+---
+title: "2024-02-22"
+date: 2024-02-22
+categories:
+  - defeat
+  - dead-at-boss
+  - hard-fought
+---
+
+The most frustrating loss so far. I _killed_ the boss, but
+I had to skip Super Steve along the way because I wasn't
+strong enough to get him. So I died to Super Steve as
+I was waiting for the portal to the victory room.
+
+Strange seed, where I dug through most of the Jungle and never found
+anything good, only getting a boss killer wand at the beginning of the Vault.
+Along the way there, I clawed my way from single-digit life totals
+a couple of times. I even navigated bullet hell from Temple of the Art pretty well.
+Still, not good enough.
+
+- Seed: 996357356
+- Max health: 335HP

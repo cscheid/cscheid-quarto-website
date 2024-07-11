@@ -1,0 +1,32 @@
+---
+title: "2024-02-21"
+date: 2024-02-21
+categories:
+  - victory
+  - easy-mode
+---
+
+Lots of wands early on into 300+HP at Hiisi base. GGs.
+
+B1: Plenty of wands, but nothing else. HM: Tele wand + chainsaws. 670g, 110HP
+Perk: Perk Lottery over Unlimited Spells. Didn't trigger.
+
+B2: Many more wands, almost a machine gun already. 750g, 120HP.
+HM: Damage+ spell. Perk: Reroll twice into Toxic immunity.
+
+B3: More wands, lots of harassment from offscreen as usual. Hurry to Hiisi base. 444g, 130HP.
+Perks: Melee immunity + speedup (lottery win #1)
+
+B4: No wands, but 7 hearts, lots of healing from double healers. 2100g, 305HP.
+HM: Nothing, Perk: Extra Health (!)
+
+B5: Wand with 10+ Black Holes for digging and Add Mana. GGs if I don't screw up. 3145g, 517HP
+HM: Healing Bolt. Perk: Shield, + Fire Immunity (lottery win #2)
+
+B6: Let's just go win. HM: nothing. Perks: Slime Blood. 527HP, 2974g.
+
+B7: Same.
+
+- Seed: 1535362055
+- Final Health: 575
+- Total time: 1:37

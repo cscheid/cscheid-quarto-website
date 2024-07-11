@@ -1,0 +1,29 @@
+---
+title: "2024-01-18"
+date: 2024-01-18
+categories:
+  - defeat
+  - dead-at-boss
+  - mistake
+---
+
+Found Chain Bolt early on, which is a spell that by itself is almost enough to make it to the Jungle.
+In addition, plenty of early-on hearts, a teleport spell and a passable wand up to the Hiisi Base.
+
+From then on, I found absolutely nothing of note.
+Unfortunately, that meant I was underpowered at the Jungle, with no way to dig through the terrain to find better wands.
+My only plausible play was to teleport my way through the Vault and Temple. 
+That put me at the boss with a bad wand, so I died there again.
+
+Two big mistakes here.
+
+1. I should have picked the Extra Health perk over Extra Perk (I already had Perk Lottery).
+   The Health was a guaranteed extra 50% time exploring the Jungle. 
+   The Extra Perk would only, _maybe_, do anything
+
+2. I should have explored to death at the Jungle: that's the best risk-reward ratio for how powered I was at the time.
+   It was also obvious I wouldn't be able to beat the boss with my setup, and being 99% to die at the boss is obviously worse than being
+   90% to die at the Jungle vs actually getting a machine-gun wand.
+
+
+- Seed: 97384368

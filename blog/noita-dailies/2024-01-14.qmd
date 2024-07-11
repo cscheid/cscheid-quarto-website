@@ -1,0 +1,25 @@
+---
+title: "2024-01-14"
+date: 2024-01-14
+categories:
+  - defeat
+  - skill-issue
+  - dead-at-jungle
+---
+
+Very similar run to [the previous one](./2024-01-13.qmd).
+
+Once again I made it all the way to the jungle without finding a way to get fast digging, and once again in the last Holy Mountain there was a teleport spell (short-lived this time).
+I took it hoping I could traverse back to edit spells.
+
+Soon after teleporting, I ran into a pile of Hiisi Bosses and Cowards.
+Within a couple of seconds there were enough enemies teleported into me that I couldn't handle the mess, and I ended up one-shot by the Coward.
+
+Early on in the run I had the chance to buy a Reduce Reload spell but I had nothing else like a machine gun and I skipped it.
+In hindsight that was a big mistake: I eventually found a fast, Always-Cast Add Mana wand that I could have turned into a game winner.
+Instead, I had to cobble together a bad wand for the Jungle that didn't have enough DPS and I got overwhelmed.
+
+I overreached at the Jungle again. I have to start being more conservative there when I'm not overpowered.
+
+- Seed: 1091337680
+- Lesson: the Coward shot actually hurts you a lot if you get hit straight on. It's bad enough that it teleports an enemy when it hits a wall, but it can one-shot you from ~180 health...

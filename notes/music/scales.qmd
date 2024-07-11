@@ -172,7 +172,7 @@ It is much easier for me to see the changes in scales with this fingering, where
 Take the Aeolian (the "minor scale") and raise the 7 to a natural B
 
 | Name           |   | | | | | | | |
-|----------------|---|-|-|-|-|-|-|-|
+|-|-|-|-|-|-|-|-|-|
 | Aeolian        | C | D | E♭ | F | G | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0, 2, 3, 5, 7, 8, 10, 12]); return false;">Play</button>|
 | Harmonic Minor | C | D | E♭ | F | G | A♭ | B  |<button class="btn btn-quarto" onclick="playScale([0, 2, 3, 5, 7, 8, 11, 12]); return false;">Play</button>|
 
@@ -183,23 +183,57 @@ The typical use of this scale is (like the name says) in harmony, so that you ha
 You can take modes of it too, and the fifth-degree mode of the harmonic minor is called the "Phrygian Dominant", presumably because it's the mode starting at the fifth ("dominant") scale degree of the harmonic minor, but it's very close to the Phrygian mode of the diatonic:
 
 | Name | | | | | | | | |
-|------|-------|-|-|-|-|-|-|-|
+|-|-|-|-|-|-|-|-|-|
 | Phrygian Dominant | C | D♭ | E | F | G | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0, 1, 4, 5, 7, 8, 10, 12]); return false;">Play</button>|
 | Phrygian | C | D♭ | E♭ | F | G | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0, 1, 3, 5, 7, 8, 10, 12]); return false;">Play</button>|
 
 So it's almost exactly the Phrygian, but with a natural 3 instead of a flat 3.
 
-## Superlocrian
+## Altered (or superlocrian)
 
 Take the modes of the diatonic scale, follow the pattern, and notice that the only "scale degree left to flatten" is the 4. That doesn't lead to a mode of the diatonic scale, but
-leads to a useful scale, which is sometimes called the "superlocrian":
+leads to a useful scale, which is sometimes called the "superlocrian", or "altered":
 
 | Name | | | | | | | | |
-|------|-------|-|-|-|-|-|-|-|
+|-|-|-|-|-|-|-|-|-|
 | Locrian      | C | D♭ | E♭ | F  | G♭ | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,1,3,5,6,8,10,12]); return false;">Play</button>|
 | Superlocrian | C | D♭ | E♭ | F♭ | G♭ | A♭ | B♭ |<button class="btn btn-quarto" onclick="playScale([0,1,3,4,6,8,10,12]); return false;">Play</button>|
 
 I can see a couple of ways to think about it. One is that it plays like "Ionian with a sharp 1". The other comes from inspecting the intervals. It's HWHWWWW, so the first four notes are the first half of the 8-note diminished scale (the "half whole scale"), and the last three notes are the second half of the whole-note scale.
+
+## Diminished Scale
+
+The diminished scale is an _8_-note scale, built by alternating whole and half steps.
+It only has two modes: starting on whole steps, and starting on half steps. It must be called the diminished scale because every triad chord is diminished, and every "seventh" chord is a dim7. It hass got "period 3", so it's symmetric around minor third transpositions, exactly like the (full) diminished 7 chord.
+
+Because it has 8 notes, it's hard to match them with 7-scale note names directly.
+
+Consider the diminished H-W scale in C. In integer notation, we have (0, 1, 3, 4, 6, 7, 9, 10, 12). How do we give the notes in this scale names? Clearly we'll have to repeat _some_ of the note names.
+
+But which? Here's an idea. First we try to match all the pitches that exist in the diatonic scale:
+
+| 0 | 1 | 3 | 4 | 6 | 7 | 9 | 10 | 12 |
+| C |   |   | E |   | G | A |    | C  |
+
+Then the ones there are left will have the same name, but with accidentals:
+
+| 0 | 1 | 3 | 4 | 6 | 7 | 9 | 10 | 12 |
+| C |   |   | E |   | G | A |    | C  |
+| C | Db | D# | E | F# | G | A | Bb | C |
+
+I've heard some musicians use this naming style (talking about how the HW scale has a flat ninth and a sharp ninth, eg).
+
+Then for the WH scale, we get
+
+| 0 | 2 | 3  | 5 | 6  | 8  | 9 | 11 | 12 |
+| C | D | Eb | F | Gb | G# | A |  B | C  |
+
+This naming makes sense to me because it gives the triad chord names of C a diminished triad. But I guess diminished note names are a bit of a sham anyway, because calling the diminished seventh "diminished" seems a bit of shoehorning to make the names "triadic". 
+
+| Name | |
+|-|-|
+| H-W |<button class="btn btn-quarto" onclick="playScale([0,1,3,4,6,7,9,10,12]); return false;">Play</button>|
+| W-H |<button class="btn btn-quarto" onclick="playScale([0,2,3,5,6,8,9,11,12]); return false;">Play</button>|
 
 
 ```{ojs}

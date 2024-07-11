@@ -1,0 +1,25 @@
+---
+title: "2024-03-04"
+date: 2024-03-04
+categories:
+  - victory
+---
+
+Ups and downs. Generous start that dried up through Base, Jungle, and Vault. HM before Temple
+got the boss killer wand, and then black holes all the way down.
+
+B1: Tele. HM: Black hole. Perk: reroll twice into reload speed. 160HP, 820g
+
+B2: Very generous in wands and items. HM: Trigger. Perk: Lottery, Wand Radar, Feared by Worms. 245HP, 1kg
+
+B3: Pheromone. HM: nothing. Perk: Electricity Immunity. 255HP, 1.1kg
+
+B4: Not much. HM: nothing. Perk: Wand experimenter. 265HP, 2kg
+
+B5: Still no great wand. HM: Nothing. Perk: Extra Health. 500HP
+
+B6: Still no great wand. HM: Ok, wand. Perk: skip. 600HP
+
+B7: Dig, win.
+
+- Seed: 1543059435
